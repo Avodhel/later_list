@@ -70,6 +70,7 @@
             this.movie_listbox.Name = "movie_listbox";
             this.movie_listbox.Size = new System.Drawing.Size(261, 184);
             this.movie_listbox.TabIndex = 8;
+            this.movie_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
             // 
             // movie_name_lbl
             // 
@@ -135,13 +136,12 @@
             this.edit_button.TabIndex = 13;
             this.edit_button.Text = "Edit";
             this.edit_button.UseVisualStyleBackColor = false;
+            this.edit_button.Click += new System.EventHandler(this.edit_button_Click);
             // 
             // second_panel
             // 
             this.second_panel.BackColor = System.Drawing.Color.LightSkyBlue;
             this.second_panel.Controls.Add(this.save_button);
-            this.second_panel.Controls.Add(this.book_listbox);
-            this.second_panel.Controls.Add(this.serie_listbox);
             this.second_panel.Controls.Add(this.book_name_lbl);
             this.second_panel.Controls.Add(this.serie_name_lbl);
             this.second_panel.Controls.Add(this.movie_name_lbl);
@@ -232,21 +232,23 @@
             // 
             this.serie_listbox.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serie_listbox.ItemHeight = 15;
-            this.serie_listbox.Location = new System.Drawing.Point(277, 9);
+            this.serie_listbox.Location = new System.Drawing.Point(289, 279);
             this.serie_listbox.Name = "serie_listbox";
             this.serie_listbox.Size = new System.Drawing.Size(261, 184);
             this.serie_listbox.TabIndex = 9;
             this.serie_listbox.Visible = false;
+            this.serie_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
             // 
             // book_listbox
             // 
             this.book_listbox.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.book_listbox.ItemHeight = 15;
-            this.book_listbox.Location = new System.Drawing.Point(277, 9);
+            this.book_listbox.Location = new System.Drawing.Point(12, 279);
             this.book_listbox.Name = "book_listbox";
             this.book_listbox.Size = new System.Drawing.Size(261, 184);
             this.book_listbox.TabIndex = 10;
             this.book_listbox.Visible = false;
+            this.book_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
             // 
             // save_button
             // 
@@ -265,8 +267,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 278);
+            this.ClientSize = new System.Drawing.Size(564, 469);
             this.Controls.Add(this.main_panel);
+            this.Controls.Add(this.serie_listbox);
+            this.Controls.Add(this.book_listbox);
             this.Controls.Add(this.second_panel);
             this.Name = "watch_list";
             this.Text = "Watch_List_Form";

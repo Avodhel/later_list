@@ -20,13 +20,16 @@ namespace watch_list
         ListBox listBox = new ListBox();
         #endregion
 
+        #region start
         public watch_list()
         {
             InitializeComponent();
             choose_listbox();
             load_list();
         }
+        #endregion
 
+        #region choose genre
         private void rbCheckedChanged(object sender, EventArgs e)
         {
             if (movie_rb.Checked && !series_rb.Checked && !books_rb.Checked)
@@ -43,6 +46,9 @@ namespace watch_list
                 //load list
                 choose_listbox();
                 load_list();
+                //refresh input fields
+                name_tb.Text = "";
+                genre_cb.Text = "";
             }
             if (!movie_rb.Checked && series_rb.Checked && !books_rb.Checked)
             {
@@ -58,6 +64,9 @@ namespace watch_list
                 //load list
                 choose_listbox();
                 load_list();
+                //textbox
+                name_tb.Text = "";
+                genre_cb.Text = "";
             }
             if (!movie_rb.Checked && !series_rb.Checked && books_rb.Checked)
             {
@@ -73,9 +82,14 @@ namespace watch_list
                 //load list
                 choose_listbox();
                 load_list();
+                //textbox
+                name_tb.Text = "";
+                genre_cb.Text = "";
             }
         }
+        #endregion
 
+        #region add
         private void add_button_Click(object sender, EventArgs e)
         {
             if (name_tb.Text == "")
@@ -107,19 +121,50 @@ namespace watch_list
                     break;
             }
         }
+        #endregion
 
+        #region remove
         private void remove_button_Click(object sender, EventArgs e)
         {
             listBox.Items.Remove(listBox.SelectedItem);
+            //refresh input fields
+            name_tb.Text = "";
+            genre_cb.Text = "";
+        }
+        #endregion
+
+        #region edit
+        private void selectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                name_tb.Text = listBox.SelectedItem.ToString();
+            }
+            catch
+            {
+
+            }
         }
 
+        private void edit_button_Click(object sender, EventArgs e)
+        {
+            int index = listBox.SelectedIndex;
+            listBox.Items.RemoveAt(index);
+            listBox.Items.Insert(index, name_tb.Text);
+            //refresh input fields
+            name_tb.Text = "";
+            genre_cb.Text = "";
+        }
+        #endregion
+
+        #region save
         private void save_button_Click(object sender, EventArgs e)
         {
             save_list();
         }
+        #endregion
 
         #region save and load system
-
         private void choose_listbox()
         {
             listBox.Items.Clear();
