@@ -36,7 +36,7 @@
             this.remove_button = new System.Windows.Forms.Button();
             this.genre_label = new System.Windows.Forms.Label();
             this.edit_button = new System.Windows.Forms.Button();
-            this.movie_panel = new System.Windows.Forms.Panel();
+            this.second_panel = new System.Windows.Forms.Panel();
             this.book_name_lbl = new System.Windows.Forms.Label();
             this.serie_name_lbl = new System.Windows.Forms.Label();
             this.main_panel = new System.Windows.Forms.Panel();
@@ -45,19 +45,21 @@
             this.movie_rb = new System.Windows.Forms.RadioButton();
             this.serie_listbox = new System.Windows.Forms.ListBox();
             this.book_listbox = new System.Windows.Forms.ListBox();
-            this.movie_panel.SuspendLayout();
+            this.save_button = new System.Windows.Forms.Button();
+            this.second_panel.SuspendLayout();
             this.main_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // add_button
             // 
+            this.add_button.BackColor = System.Drawing.Color.PaleGreen;
             this.add_button.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.add_button.Location = new System.Drawing.Point(6, 64);
             this.add_button.Name = "add_button";
             this.add_button.Size = new System.Drawing.Size(261, 26);
             this.add_button.TabIndex = 0;
-            this.add_button.Text = "Add";
-            this.add_button.UseVisualStyleBackColor = true;
+            this.add_button.Text = "Add to List";
+            this.add_button.UseVisualStyleBackColor = false;
             this.add_button.Click += new System.EventHandler(this.add_button_Click);
             // 
             // movie_listbox
@@ -66,7 +68,7 @@
             this.movie_listbox.ItemHeight = 15;
             this.movie_listbox.Location = new System.Drawing.Point(277, 9);
             this.movie_listbox.Name = "movie_listbox";
-            this.movie_listbox.Size = new System.Drawing.Size(261, 154);
+            this.movie_listbox.Size = new System.Drawing.Size(261, 184);
             this.movie_listbox.TabIndex = 8;
             // 
             // movie_name_lbl
@@ -97,18 +99,20 @@
             // 
             this.name_tb.Location = new System.Drawing.Point(79, 9);
             this.name_tb.Name = "name_tb";
-            this.name_tb.Size = new System.Drawing.Size(188, 20);
+            this.name_tb.Size = new System.Drawing.Size(185, 20);
             this.name_tb.TabIndex = 10;
             // 
             // remove_button
             // 
+            this.remove_button.BackColor = System.Drawing.Color.Salmon;
             this.remove_button.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.remove_button.Location = new System.Drawing.Point(6, 96);
             this.remove_button.Name = "remove_button";
             this.remove_button.Size = new System.Drawing.Size(261, 28);
             this.remove_button.TabIndex = 11;
-            this.remove_button.Text = "Remove";
-            this.remove_button.UseVisualStyleBackColor = true;
+            this.remove_button.Text = "Remove from List";
+            this.remove_button.UseVisualStyleBackColor = false;
+            this.remove_button.Click += new System.EventHandler(this.remove_button_Click);
             // 
             // genre_label
             // 
@@ -123,32 +127,35 @@
             // 
             // edit_button
             // 
+            this.edit_button.BackColor = System.Drawing.Color.Yellow;
             this.edit_button.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.edit_button.Location = new System.Drawing.Point(6, 130);
             this.edit_button.Name = "edit_button";
             this.edit_button.Size = new System.Drawing.Size(261, 28);
             this.edit_button.TabIndex = 13;
             this.edit_button.Text = "Edit";
-            this.edit_button.UseVisualStyleBackColor = true;
+            this.edit_button.UseVisualStyleBackColor = false;
             // 
-            // movie_panel
+            // second_panel
             // 
-            this.movie_panel.Controls.Add(this.book_listbox);
-            this.movie_panel.Controls.Add(this.serie_listbox);
-            this.movie_panel.Controls.Add(this.book_name_lbl);
-            this.movie_panel.Controls.Add(this.serie_name_lbl);
-            this.movie_panel.Controls.Add(this.movie_name_lbl);
-            this.movie_panel.Controls.Add(this.edit_button);
-            this.movie_panel.Controls.Add(this.genre_label);
-            this.movie_panel.Controls.Add(this.remove_button);
-            this.movie_panel.Controls.Add(this.name_tb);
-            this.movie_panel.Controls.Add(this.add_button);
-            this.movie_panel.Controls.Add(this.movie_listbox);
-            this.movie_panel.Controls.Add(this.genre_cb);
-            this.movie_panel.Location = new System.Drawing.Point(12, 73);
-            this.movie_panel.Name = "movie_panel";
-            this.movie_panel.Size = new System.Drawing.Size(541, 171);
-            this.movie_panel.TabIndex = 14;
+            this.second_panel.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.second_panel.Controls.Add(this.save_button);
+            this.second_panel.Controls.Add(this.book_listbox);
+            this.second_panel.Controls.Add(this.serie_listbox);
+            this.second_panel.Controls.Add(this.book_name_lbl);
+            this.second_panel.Controls.Add(this.serie_name_lbl);
+            this.second_panel.Controls.Add(this.movie_name_lbl);
+            this.second_panel.Controls.Add(this.edit_button);
+            this.second_panel.Controls.Add(this.genre_label);
+            this.second_panel.Controls.Add(this.remove_button);
+            this.second_panel.Controls.Add(this.name_tb);
+            this.second_panel.Controls.Add(this.add_button);
+            this.second_panel.Controls.Add(this.movie_listbox);
+            this.second_panel.Controls.Add(this.genre_cb);
+            this.second_panel.Location = new System.Drawing.Point(12, 73);
+            this.second_panel.Name = "second_panel";
+            this.second_panel.Size = new System.Drawing.Size(541, 200);
+            this.second_panel.TabIndex = 14;
             // 
             // book_name_lbl
             // 
@@ -174,6 +181,7 @@
             // 
             // main_panel
             // 
+            this.main_panel.BackColor = System.Drawing.Color.LightSkyBlue;
             this.main_panel.Controls.Add(this.books_rb);
             this.main_panel.Controls.Add(this.series_rb);
             this.main_panel.Controls.Add(this.movie_rb);
@@ -226,7 +234,7 @@
             this.serie_listbox.ItemHeight = 15;
             this.serie_listbox.Location = new System.Drawing.Point(277, 9);
             this.serie_listbox.Name = "serie_listbox";
-            this.serie_listbox.Size = new System.Drawing.Size(261, 154);
+            this.serie_listbox.Size = new System.Drawing.Size(261, 184);
             this.serie_listbox.TabIndex = 9;
             this.serie_listbox.Visible = false;
             // 
@@ -236,21 +244,34 @@
             this.book_listbox.ItemHeight = 15;
             this.book_listbox.Location = new System.Drawing.Point(277, 9);
             this.book_listbox.Name = "book_listbox";
-            this.book_listbox.Size = new System.Drawing.Size(261, 154);
+            this.book_listbox.Size = new System.Drawing.Size(261, 184);
             this.book_listbox.TabIndex = 10;
             this.book_listbox.Visible = false;
+            // 
+            // save_button
+            // 
+            this.save_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.save_button.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.save_button.Location = new System.Drawing.Point(6, 164);
+            this.save_button.Name = "save_button";
+            this.save_button.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.save_button.Size = new System.Drawing.Size(261, 28);
+            this.save_button.TabIndex = 18;
+            this.save_button.Text = "Save";
+            this.save_button.UseVisualStyleBackColor = false;
+            this.save_button.Click += new System.EventHandler(this.save_button_Click);
             // 
             // watch_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(572, 255);
+            this.ClientSize = new System.Drawing.Size(564, 278);
             this.Controls.Add(this.main_panel);
-            this.Controls.Add(this.movie_panel);
+            this.Controls.Add(this.second_panel);
             this.Name = "watch_list";
             this.Text = "Watch_List_Form";
-            this.movie_panel.ResumeLayout(false);
-            this.movie_panel.PerformLayout();
+            this.second_panel.ResumeLayout(false);
+            this.second_panel.PerformLayout();
             this.main_panel.ResumeLayout(false);
             this.main_panel.PerformLayout();
             this.ResumeLayout(false);
@@ -267,7 +288,7 @@
         private System.Windows.Forms.Button remove_button;
         private System.Windows.Forms.Label genre_label;
         private System.Windows.Forms.Button edit_button;
-        private System.Windows.Forms.Panel movie_panel;
+        private System.Windows.Forms.Panel second_panel;
         private System.Windows.Forms.Panel main_panel;
         private System.Windows.Forms.RadioButton books_rb;
         private System.Windows.Forms.RadioButton series_rb;
@@ -276,6 +297,7 @@
         private System.Windows.Forms.Label book_name_lbl;
         private System.Windows.Forms.ListBox book_listbox;
         private System.Windows.Forms.ListBox serie_listbox;
+        private System.Windows.Forms.Button save_button;
     }
 }
 
