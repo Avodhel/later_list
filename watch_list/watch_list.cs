@@ -33,16 +33,12 @@ namespace watch_list
         #region exit from app
         private void watch_list_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult confirm = MessageBox.Show("If you don't save, changes'll be lost. Save changes?", "Exit",
-                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            DialogResult confirm = MessageBox.Show("Unsaved changes will be lost. Continue?", "Exit",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            if (confirm == DialogResult.Yes)
+            if (confirm == DialogResult.OK)
             {
-                save_list(false);
-            }
-            else if (confirm == DialogResult.No)
-            {
-                
+
             }
             else if(confirm == DialogResult.Cancel)
             {
@@ -51,7 +47,7 @@ namespace watch_list
         }
         #endregion
 
-        #region choose genre
+        #region choose section
         private void rbCheckedChanged(object sender, EventArgs e)
         {
             if (movie_rb.Checked && !series_rb.Checked && !books_rb.Checked)
@@ -240,10 +236,6 @@ namespace watch_list
         
         private void load_list()
         {
-            //OpenFileDialog f = new OpenFileDialog();
-            //listBox.Items.Clear();
-
-            List<string> lines = new List<string>();
             string file_path = which_section + "list.txt";
 
             try
