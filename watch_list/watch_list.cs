@@ -18,6 +18,7 @@ namespace watch_list
         string data;
         //List<string> listbox = new List<string>();
         ListBox listBox = new ListBox();
+        string genre_part;
         #endregion
 
         #region start
@@ -138,7 +139,22 @@ namespace watch_list
         {
             try
             {
-                name_tb.Text = listBox.SelectedItem.ToString();
+                //name_tb.Text = listBox.SelectedItem.ToString();
+                string get_info = listBox.SelectedItem.ToString();
+                string name_part = get_info.Split('(')[0];
+                name_part = name_part.TrimEnd(' ');
+
+                try
+                {
+                    genre_part = get_info.Split('(')[1];
+                    genre_part = genre_part.TrimEnd(')');
+                }
+                catch
+                {
+                    genre_part = "";
+                }
+                name_tb.Text = name_part;
+                genre_cb.Text = genre_part;
             }
             catch
             {
@@ -150,7 +166,7 @@ namespace watch_list
         {
             int index = listBox.SelectedIndex;
             listBox.Items.RemoveAt(index);
-            listBox.Items.Insert(index, name_tb.Text);
+            listBox.Items.Insert(index, name_tb.Text + " (" + genre_cb.Text + ")");
             //refresh input fields
             name_tb.Text = "";
             genre_cb.Text = "";

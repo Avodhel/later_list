@@ -37,6 +37,7 @@
             this.genre_label = new System.Windows.Forms.Label();
             this.edit_button = new System.Windows.Forms.Button();
             this.second_panel = new System.Windows.Forms.Panel();
+            this.save_button = new System.Windows.Forms.Button();
             this.book_name_lbl = new System.Windows.Forms.Label();
             this.serie_name_lbl = new System.Windows.Forms.Label();
             this.main_panel = new System.Windows.Forms.Panel();
@@ -45,7 +46,6 @@
             this.movie_rb = new System.Windows.Forms.RadioButton();
             this.serie_listbox = new System.Windows.Forms.ListBox();
             this.book_listbox = new System.Windows.Forms.ListBox();
-            this.save_button = new System.Windows.Forms.Button();
             this.second_panel.SuspendLayout();
             this.main_panel.SuspendLayout();
             this.SuspendLayout();
@@ -119,7 +119,7 @@
             // 
             this.genre_label.AutoSize = true;
             this.genre_label.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.genre_label.Location = new System.Drawing.Point(3, 40);
+            this.genre_label.Location = new System.Drawing.Point(6, 41);
             this.genre_label.Name = "genre_label";
             this.genre_label.Size = new System.Drawing.Size(41, 15);
             this.genre_label.TabIndex = 12;
@@ -157,6 +157,19 @@
             this.second_panel.Size = new System.Drawing.Size(541, 200);
             this.second_panel.TabIndex = 14;
             // 
+            // save_button
+            // 
+            this.save_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.save_button.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.save_button.Location = new System.Drawing.Point(6, 164);
+            this.save_button.Name = "save_button";
+            this.save_button.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.save_button.Size = new System.Drawing.Size(261, 28);
+            this.save_button.TabIndex = 18;
+            this.save_button.Text = "Save";
+            this.save_button.UseVisualStyleBackColor = false;
+            this.save_button.Click += new System.EventHandler(this.save_button_Click);
+            // 
             // book_name_lbl
             // 
             this.book_name_lbl.AutoSize = true;
@@ -189,6 +202,7 @@
             this.main_panel.Name = "main_panel";
             this.main_panel.Size = new System.Drawing.Size(541, 54);
             this.main_panel.TabIndex = 15;
+            this.main_panel.Tag = "";
             // 
             // books_rb
             // 
@@ -249,19 +263,6 @@
             this.book_listbox.TabIndex = 10;
             this.book_listbox.Visible = false;
             this.book_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
-            // 
-            // save_button
-            // 
-            this.save_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.save_button.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.save_button.Location = new System.Drawing.Point(6, 164);
-            this.save_button.Name = "save_button";
-            this.save_button.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.save_button.Size = new System.Drawing.Size(261, 28);
-            this.save_button.TabIndex = 18;
-            this.save_button.Text = "Save";
-            this.save_button.UseVisualStyleBackColor = false;
-            this.save_button.Click += new System.EventHandler(this.save_button_Click);
             // 
             // watch_list
             // 
