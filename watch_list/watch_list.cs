@@ -33,16 +33,19 @@ namespace watch_list
         #region exit from app
         private void watch_list_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult confirm = MessageBox.Show("Unsaved changes will be lost. Continue?", "Exit",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-            if (confirm == DialogResult.OK)
+            if (save_button.Enabled == true)
             {
+                DialogResult confirm = MessageBox.Show("Unsaved changes will be lost. Continue?", "Exit",
+                                                        MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            }
-            else if(confirm == DialogResult.Cancel)
-            {
-                e.Cancel = true;
+                if (confirm == DialogResult.OK)
+                {
+
+                }
+                else if (confirm == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
             }
         }
         #endregion
@@ -67,6 +70,11 @@ namespace watch_list
                 //refresh input fields
                 name_tb.Text = "";
                 genre_cb.Text = "";
+                //enable buttons
+                add_button.Enabled = true;
+                remove_button.Enabled = false;
+                edit_button.Enabled = false;
+                save_button.Enabled = false;
             }
             if (!movie_rb.Checked && series_rb.Checked && !books_rb.Checked)
             {
@@ -85,6 +93,11 @@ namespace watch_list
                 //textbox
                 name_tb.Text = "";
                 genre_cb.Text = "";
+                //enable buttons
+                add_button.Enabled = true;
+                remove_button.Enabled = false;
+                edit_button.Enabled = false;
+                save_button.Enabled = false;
             }
             if (!movie_rb.Checked && !series_rb.Checked && books_rb.Checked)
             {
@@ -103,13 +116,43 @@ namespace watch_list
                 //textbox
                 name_tb.Text = "";
                 genre_cb.Text = "";
+                //enable buttons
+                add_button.Enabled = true;
+                remove_button.Enabled = false;
+                edit_button.Enabled = false;
+                save_button.Enabled = false;
             }
+        }
+        #endregion
+
+        #region input fields
+        private void input_fields_Click(object sender, EventArgs e)
+        {
+            if (name_tb.Text == "" && genre_cb.Text == "")
+            {
+                add_button.Enabled = true;
+                remove_button.Enabled = false;
+                edit_button.Enabled = false;
+            }
+        }
+
+        private void clear_button_Click(object sender, EventArgs e)
+        {
+            name_tb.Text = "";
+            genre_cb.Text = "";
+
+            //enable buttons
+            add_button.Enabled = true;
+            remove_button.Enabled = false;
+            edit_button.Enabled = false;
         }
         #endregion
 
         #region add
         private void add_button_Click(object sender, EventArgs e)
         {
+            save_button.Enabled = true;
+
             if (name_tb.Text == "")
             {
                 MessageBox.Show("Please add a " + which_section + " name", "Error",
@@ -144,6 +187,8 @@ namespace watch_list
         #region remove
         private void remove_button_Click(object sender, EventArgs e)
         {
+            save_button.Enabled = true;
+
             listBox.Items.Remove(listBox.SelectedItem);
             //refresh input fields
             name_tb.Text = "";
@@ -154,6 +199,10 @@ namespace watch_list
         #region edit
         private void selectedIndexChanged(object sender, EventArgs e)
         {
+            add_button.Enabled = false;
+            remove_button.Enabled = true;
+            edit_button.Enabled = true;
+
             try
             {
                 //name_tb.Text = listBox.SelectedItem.ToString();
@@ -181,6 +230,8 @@ namespace watch_list
 
         private void edit_button_Click(object sender, EventArgs e)
         {
+            save_button.Enabled = true;
+
             int index = listBox.SelectedIndex;
             listBox.Items.RemoveAt(index);
             listBox.Items.Insert(index, name_tb.Text + " (" + genre_cb.Text + ")");
@@ -219,7 +270,7 @@ namespace watch_list
         {
             string sPath = which_section + "list.txt";
 
-            StreamWriter saveFile = new System.IO.StreamWriter(sPath);
+            StreamWriter saveFile = new StreamWriter(sPath);
             foreach (var item in listBox.Items)
             {
                 saveFile.WriteLine(item);
@@ -231,6 +282,7 @@ namespace watch_list
             {
                 MessageBox.Show(which_section + " list saved!");
                 show_message = false;
+                save_button.Enabled = false;
             }
         }
         

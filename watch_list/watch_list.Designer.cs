@@ -46,6 +46,7 @@
             this.movie_rb = new System.Windows.Forms.RadioButton();
             this.serie_listbox = new System.Windows.Forms.ListBox();
             this.book_listbox = new System.Windows.Forms.ListBox();
+            this.clear_button = new System.Windows.Forms.Button();
             this.second_panel.SuspendLayout();
             this.main_panel.SuspendLayout();
             this.SuspendLayout();
@@ -54,9 +55,9 @@
             // 
             this.add_button.BackColor = System.Drawing.Color.PaleGreen;
             this.add_button.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.add_button.Location = new System.Drawing.Point(6, 64);
+            this.add_button.Location = new System.Drawing.Point(9, 78);
             this.add_button.Name = "add_button";
-            this.add_button.Size = new System.Drawing.Size(261, 26);
+            this.add_button.Size = new System.Drawing.Size(128, 26);
             this.add_button.TabIndex = 0;
             this.add_button.Text = "Add to List";
             this.add_button.UseVisualStyleBackColor = false;
@@ -93,23 +94,26 @@
             "Science Fiction"});
             this.genre_cb.Location = new System.Drawing.Point(79, 37);
             this.genre_cb.Name = "genre_cb";
-            this.genre_cb.Size = new System.Drawing.Size(185, 24);
+            this.genre_cb.Size = new System.Drawing.Size(135, 24);
             this.genre_cb.TabIndex = 6;
+            this.genre_cb.Click += new System.EventHandler(this.input_fields_Click);
             // 
             // name_tb
             // 
             this.name_tb.Location = new System.Drawing.Point(79, 9);
             this.name_tb.Name = "name_tb";
-            this.name_tb.Size = new System.Drawing.Size(185, 20);
+            this.name_tb.Size = new System.Drawing.Size(135, 20);
             this.name_tb.TabIndex = 10;
+            this.name_tb.Click += new System.EventHandler(this.input_fields_Click);
             // 
             // remove_button
             // 
             this.remove_button.BackColor = System.Drawing.Color.Salmon;
+            this.remove_button.Enabled = false;
             this.remove_button.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.remove_button.Location = new System.Drawing.Point(6, 96);
+            this.remove_button.Location = new System.Drawing.Point(143, 76);
             this.remove_button.Name = "remove_button";
-            this.remove_button.Size = new System.Drawing.Size(261, 28);
+            this.remove_button.Size = new System.Drawing.Size(128, 28);
             this.remove_button.TabIndex = 11;
             this.remove_button.Text = "Remove from List";
             this.remove_button.UseVisualStyleBackColor = false;
@@ -129,10 +133,11 @@
             // edit_button
             // 
             this.edit_button.BackColor = System.Drawing.Color.Yellow;
+            this.edit_button.Enabled = false;
             this.edit_button.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.edit_button.Location = new System.Drawing.Point(6, 130);
+            this.edit_button.Location = new System.Drawing.Point(9, 110);
             this.edit_button.Name = "edit_button";
-            this.edit_button.Size = new System.Drawing.Size(261, 28);
+            this.edit_button.Size = new System.Drawing.Size(128, 28);
             this.edit_button.TabIndex = 13;
             this.edit_button.Text = "Edit";
             this.edit_button.UseVisualStyleBackColor = false;
@@ -141,6 +146,7 @@
             // second_panel
             // 
             this.second_panel.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.second_panel.Controls.Add(this.clear_button);
             this.second_panel.Controls.Add(this.save_button);
             this.second_panel.Controls.Add(this.book_name_lbl);
             this.second_panel.Controls.Add(this.serie_name_lbl);
@@ -160,11 +166,12 @@
             // save_button
             // 
             this.save_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.save_button.Enabled = false;
             this.save_button.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.save_button.Location = new System.Drawing.Point(6, 164);
+            this.save_button.Location = new System.Drawing.Point(143, 110);
             this.save_button.Name = "save_button";
             this.save_button.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.save_button.Size = new System.Drawing.Size(261, 28);
+            this.save_button.Size = new System.Drawing.Size(128, 28);
             this.save_button.TabIndex = 18;
             this.save_button.Text = "Save";
             this.save_button.UseVisualStyleBackColor = false;
@@ -207,10 +214,10 @@
             // books_rb
             // 
             this.books_rb.AutoSize = true;
-            this.books_rb.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.books_rb.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.books_rb.Location = new System.Drawing.Point(449, 18);
             this.books_rb.Name = "books_rb";
-            this.books_rb.Size = new System.Drawing.Size(61, 22);
+            this.books_rb.Size = new System.Drawing.Size(62, 23);
             this.books_rb.TabIndex = 2;
             this.books_rb.Text = "books";
             this.books_rb.UseVisualStyleBackColor = true;
@@ -219,10 +226,10 @@
             // series_rb
             // 
             this.series_rb.AutoSize = true;
-            this.series_rb.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.series_rb.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.series_rb.Location = new System.Drawing.Point(242, 18);
             this.series_rb.Name = "series_rb";
-            this.series_rb.Size = new System.Drawing.Size(62, 22);
+            this.series_rb.Size = new System.Drawing.Size(63, 23);
             this.series_rb.TabIndex = 1;
             this.series_rb.Text = "series";
             this.series_rb.UseVisualStyleBackColor = true;
@@ -232,10 +239,10 @@
             // 
             this.movie_rb.AutoSize = true;
             this.movie_rb.Checked = true;
-            this.movie_rb.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.movie_rb.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.movie_rb.Location = new System.Drawing.Point(37, 18);
             this.movie_rb.Name = "movie_rb";
-            this.movie_rb.Size = new System.Drawing.Size(65, 22);
+            this.movie_rb.Size = new System.Drawing.Size(67, 23);
             this.movie_rb.TabIndex = 0;
             this.movie_rb.TabStop = true;
             this.movie_rb.Text = "movies";
@@ -264,11 +271,23 @@
             this.book_listbox.Visible = false;
             this.book_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
             // 
+            // clear_button
+            // 
+            this.clear_button.BackColor = System.Drawing.Color.Thistle;
+            this.clear_button.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.clear_button.Location = new System.Drawing.Point(225, 8);
+            this.clear_button.Name = "clear_button";
+            this.clear_button.Size = new System.Drawing.Size(46, 53);
+            this.clear_button.TabIndex = 19;
+            this.clear_button.Text = "Clear Input Fields";
+            this.clear_button.UseVisualStyleBackColor = false;
+            this.clear_button.Click += new System.EventHandler(this.clear_button_Click);
+            // 
             // watch_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 469);
+            this.ClientSize = new System.Drawing.Size(569, 469);
             this.Controls.Add(this.main_panel);
             this.Controls.Add(this.serie_listbox);
             this.Controls.Add(this.book_listbox);
@@ -304,6 +323,7 @@
         private System.Windows.Forms.ListBox book_listbox;
         private System.Windows.Forms.ListBox serie_listbox;
         private System.Windows.Forms.Button save_button;
+        private System.Windows.Forms.Button clear_button;
     }
 }
 
