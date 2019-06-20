@@ -14,14 +14,14 @@ namespace watch_list
     public partial class watch_list : Form
     {
         #region variables
-        string which_genre = "movie";
+        string which_section = "movie";
         string data;
         //List<string> listbox = new List<string>();
         ListBox listBox = new ListBox();
         string genre_part;
         #endregion
 
-        #region start
+        #region start app
         public watch_list()
         {
             InitializeComponent();
@@ -38,7 +38,7 @@ namespace watch_list
 
             if (confirm == DialogResult.Yes)
             {
-                save_list();
+                save_list(false);
             }
             else if (confirm == DialogResult.No)
             {
@@ -56,7 +56,7 @@ namespace watch_list
         {
             if (movie_rb.Checked && !series_rb.Checked && !books_rb.Checked)
             {
-                which_genre = "movie";
+                which_section = "movie";
                 //labels
                 movie_name_lbl.Visible = true;
                 serie_name_lbl.Visible = false;
@@ -74,7 +74,7 @@ namespace watch_list
             }
             if (!movie_rb.Checked && series_rb.Checked && !books_rb.Checked)
             {
-                which_genre = "serie";
+                which_section = "serie";
                 //labels
                 movie_name_lbl.Visible = false;
                 serie_name_lbl.Visible = true;
@@ -92,7 +92,7 @@ namespace watch_list
             }
             if (!movie_rb.Checked && !series_rb.Checked && books_rb.Checked)
             {
-                which_genre = "book";
+                which_section = "book";
                 //labels
                 movie_name_lbl.Visible = false;
                 serie_name_lbl.Visible = false;
@@ -116,7 +116,7 @@ namespace watch_list
         {
             if (name_tb.Text == "")
             {
-                MessageBox.Show("Please add a " + which_genre + " name", "Error",
+                MessageBox.Show("Please add a " + which_section + " name", "Error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
@@ -130,7 +130,7 @@ namespace watch_list
 
         private void addToList(string info)
         {
-            switch (which_genre)
+            switch (which_section)
             {
                 case "movie":
                     movie_listbox.Items.Add(info);
@@ -197,7 +197,7 @@ namespace watch_list
         #region save
         private void save_button_Click(object sender, EventArgs e)
         {
-            save_list();
+            save_list(true);
         }
         #endregion
 
@@ -205,7 +205,7 @@ namespace watch_list
         private void choose_listbox()
         {
             listBox.Items.Clear();
-            switch (which_genre)
+            switch (which_section)
             {
                 case "movie":
                     listBox = movie_listbox;
@@ -219,9 +219,9 @@ namespace watch_list
             }
         }
         
-        private void save_list()
+        private void save_list(bool show_message)
         {
-            string sPath = which_genre + "list.txt";
+            string sPath = which_section + "list.txt";
 
             StreamWriter saveFile = new System.IO.StreamWriter(sPath);
             foreach (var item in listBox.Items)
@@ -231,16 +231,20 @@ namespace watch_list
 
             saveFile.Close();
 
-            MessageBox.Show(which_genre + " list saved!");
+            if (show_message)
+            {
+                MessageBox.Show(which_section + " list saved!");
+                show_message = false;
+            }
         }
-
+        
         private void load_list()
         {
             //OpenFileDialog f = new OpenFileDialog();
             //listBox.Items.Clear();
 
             List<string> lines = new List<string>();
-            string file_path = which_genre + "list.txt";
+            string file_path = which_section + "list.txt";
 
             try
             {
@@ -255,7 +259,7 @@ namespace watch_list
             }
             catch (FileNotFoundException)
             {
-                MessageBox.Show("There isn't a " + which_genre + " list.", "Warning",
+                MessageBox.Show("There isn't a " + which_section + " list.", "File Not Found",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
