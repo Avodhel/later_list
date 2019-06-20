@@ -308,6 +308,5 @@ namespace watch_list
             }
         }
         #endregion
-
     }
 }
