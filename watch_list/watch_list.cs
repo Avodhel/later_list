@@ -30,6 +30,27 @@ namespace watch_list
         }
         #endregion
 
+        #region exit from app
+        private void watch_list_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show("If you don't save, changes'll be lost. Save changes?", "Exit",
+                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                save_list();
+            }
+            else if (confirm == DialogResult.No)
+            {
+                
+            }
+            else if(confirm == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+        }
+        #endregion
+
         #region choose genre
         private void rbCheckedChanged(object sender, EventArgs e)
         {
@@ -239,5 +260,6 @@ namespace watch_list
             }
         }
         #endregion
+
     }
 }

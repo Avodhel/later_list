@@ -275,6 +275,7 @@
             this.Controls.Add(this.second_panel);
             this.Name = "watch_list";
             this.Text = "Watch_List_Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.watch_list_FormClosing);
             this.second_panel.ResumeLayout(false);
             this.second_panel.PerformLayout();
             this.main_panel.ResumeLayout(false);
