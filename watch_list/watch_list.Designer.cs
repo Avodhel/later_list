@@ -55,6 +55,12 @@
             this.openfiledialog = new System.Windows.Forms.OpenFileDialog();
             this.save_settings_button = new System.Windows.Forms.Button();
             this.savefiledialog = new System.Windows.Forms.SaveFileDialog();
+            this.serie_path_lbl = new System.Windows.Forms.Label();
+            this.serie_path_tb = new System.Windows.Forms.TextBox();
+            this.open_serie_path_button = new System.Windows.Forms.Button();
+            this.book_path_lbl = new System.Windows.Forms.Label();
+            this.book_path_tb = new System.Windows.Forms.TextBox();
+            this.open_book_path_button = new System.Windows.Forms.Button();
             this.second_panel.SuspendLayout();
             this.main_panel.SuspendLayout();
             this.settings_gb.SuspendLayout();
@@ -314,6 +320,12 @@
             // settings_gb
             // 
             this.settings_gb.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.settings_gb.Controls.Add(this.open_book_path_button);
+            this.settings_gb.Controls.Add(this.book_path_tb);
+            this.settings_gb.Controls.Add(this.book_path_lbl);
+            this.settings_gb.Controls.Add(this.open_serie_path_button);
+            this.settings_gb.Controls.Add(this.serie_path_tb);
+            this.settings_gb.Controls.Add(this.serie_path_lbl);
             this.settings_gb.Controls.Add(this.save_settings_button);
             this.settings_gb.Controls.Add(this.open_movie_path_button);
             this.settings_gb.Controls.Add(this.movie_path_tb);
@@ -328,17 +340,17 @@
             // movie_path_lbl
             // 
             this.movie_path_lbl.AutoSize = true;
-            this.movie_path_lbl.Location = new System.Drawing.Point(7, 31);
+            this.movie_path_lbl.Location = new System.Drawing.Point(2, 32);
             this.movie_path_lbl.Name = "movie_path_lbl";
-            this.movie_path_lbl.Size = new System.Drawing.Size(83, 13);
+            this.movie_path_lbl.Size = new System.Drawing.Size(58, 13);
             this.movie_path_lbl.TabIndex = 0;
-            this.movie_path_lbl.Text = "Movie File Path:";
+            this.movie_path_lbl.Text = "Movie List:";
             // 
             // movie_path_tb
             // 
-            this.movie_path_tb.Location = new System.Drawing.Point(96, 28);
+            this.movie_path_tb.Location = new System.Drawing.Point(71, 28);
             this.movie_path_tb.Name = "movie_path_tb";
-            this.movie_path_tb.Size = new System.Drawing.Size(161, 20);
+            this.movie_path_tb.Size = new System.Drawing.Size(186, 20);
             this.movie_path_tb.TabIndex = 1;
             // 
             // open_movie_path_button
@@ -357,13 +369,65 @@
             // 
             // save_settings_button
             // 
-            this.save_settings_button.Location = new System.Drawing.Point(10, 107);
+            this.save_settings_button.Location = new System.Drawing.Point(7, 113);
             this.save_settings_button.Name = "save_settings_button";
-            this.save_settings_button.Size = new System.Drawing.Size(88, 23);
+            this.save_settings_button.Size = new System.Drawing.Size(299, 23);
             this.save_settings_button.TabIndex = 3;
             this.save_settings_button.Text = "save settings";
             this.save_settings_button.UseVisualStyleBackColor = true;
             this.save_settings_button.Click += new System.EventHandler(this.save_settings_button_Click);
+            // 
+            // serie_path_lbl
+            // 
+            this.serie_path_lbl.AutoSize = true;
+            this.serie_path_lbl.Location = new System.Drawing.Point(7, 59);
+            this.serie_path_lbl.Name = "serie_path_lbl";
+            this.serie_path_lbl.Size = new System.Drawing.Size(53, 13);
+            this.serie_path_lbl.TabIndex = 4;
+            this.serie_path_lbl.Text = "Serie List:";
+            // 
+            // serie_path_tb
+            // 
+            this.serie_path_tb.Location = new System.Drawing.Point(71, 56);
+            this.serie_path_tb.Name = "serie_path_tb";
+            this.serie_path_tb.Size = new System.Drawing.Size(186, 20);
+            this.serie_path_tb.TabIndex = 5;
+            // 
+            // open_serie_path_button
+            // 
+            this.open_serie_path_button.Location = new System.Drawing.Point(263, 56);
+            this.open_serie_path_button.Name = "open_serie_path_button";
+            this.open_serie_path_button.Size = new System.Drawing.Size(43, 20);
+            this.open_serie_path_button.TabIndex = 6;
+            this.open_serie_path_button.Text = "open";
+            this.open_serie_path_button.UseVisualStyleBackColor = true;
+            this.open_serie_path_button.Click += new System.EventHandler(this.open_serie_path_button_Click);
+            // 
+            // book_path_lbl
+            // 
+            this.book_path_lbl.AutoSize = true;
+            this.book_path_lbl.Location = new System.Drawing.Point(6, 85);
+            this.book_path_lbl.Name = "book_path_lbl";
+            this.book_path_lbl.Size = new System.Drawing.Size(54, 13);
+            this.book_path_lbl.TabIndex = 7;
+            this.book_path_lbl.Text = "Book List:";
+            // 
+            // book_path_tb
+            // 
+            this.book_path_tb.Location = new System.Drawing.Point(71, 82);
+            this.book_path_tb.Name = "book_path_tb";
+            this.book_path_tb.Size = new System.Drawing.Size(186, 20);
+            this.book_path_tb.TabIndex = 8;
+            // 
+            // open_book_path_button
+            // 
+            this.open_book_path_button.Location = new System.Drawing.Point(263, 82);
+            this.open_book_path_button.Name = "open_book_path_button";
+            this.open_book_path_button.Size = new System.Drawing.Size(43, 20);
+            this.open_book_path_button.TabIndex = 9;
+            this.open_book_path_button.Text = "open";
+            this.open_book_path_button.UseVisualStyleBackColor = true;
+            this.open_book_path_button.Click += new System.EventHandler(this.open_book_path_button_Click);
             // 
             // watch_list
             // 
@@ -418,6 +482,12 @@
         private System.Windows.Forms.OpenFileDialog openfiledialog;
         private System.Windows.Forms.Button save_settings_button;
         private System.Windows.Forms.SaveFileDialog savefiledialog;
+        private System.Windows.Forms.Button open_book_path_button;
+        private System.Windows.Forms.TextBox book_path_tb;
+        private System.Windows.Forms.Label book_path_lbl;
+        private System.Windows.Forms.Button open_serie_path_button;
+        private System.Windows.Forms.TextBox serie_path_tb;
+        private System.Windows.Forms.Label serie_path_lbl;
     }
 }
 

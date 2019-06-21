@@ -34,5 +34,29 @@ namespace watch_list.Properties {
                 this["movie_path"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string serie_path {
+            get {
+                return ((string)(this["serie_path"]));
+            }
+            set {
+                this["serie_path"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string book_path {
+            get {
+                return ((string)(this["book_path"]));
+            }
+            set {
+                this["book_path"] = value;
+            }
+        }
     }
 }

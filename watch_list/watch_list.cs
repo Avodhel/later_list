@@ -28,7 +28,7 @@ namespace watch_list
         {
             InitializeComponent();
             choose_listbox();
-            if(Properties.Settings.Default.movie_path != "")
+            if(which_section == "movie" && Properties.Settings.Default.movie_path != "")
             {
                 load_list();
             }
@@ -72,7 +72,10 @@ namespace watch_list
                 book_listbox.Visible = false;
                 //load list
                 choose_listbox();
-                load_list();
+                if (Properties.Settings.Default.movie_path != "")
+                {
+                    load_list();
+                }
                 //refresh input fields
                 name_tb.Text = "";
                 genre_cb.Text = "";
@@ -95,7 +98,10 @@ namespace watch_list
                 book_listbox.Visible = false;
                 //load list
                 choose_listbox();
-                load_list();
+                if (Properties.Settings.Default.serie_path != "")
+                {
+                    load_list();
+                }
                 //textbox
                 name_tb.Text = "";
                 genre_cb.Text = "";
@@ -118,7 +124,10 @@ namespace watch_list
                 book_listbox.Visible = true;
                 //load list
                 choose_listbox();
-                load_list();
+                if (Properties.Settings.Default.book_path != "")
+                {
+                    load_list();
+                }
                 //textbox
                 name_tb.Text = "";
                 genre_cb.Text = "";
@@ -250,7 +259,8 @@ namespace watch_list
         #region save
         private void save_button_Click(object sender, EventArgs e)
         {
-            if(which_section == "movie" && Properties.Settings.Default.movie_path == "")
+            #region movie
+            if (which_section == "movie" && Properties.Settings.Default.movie_path == "")
             {
                 savefiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 savefiledialog.RestoreDirectory = true;
@@ -273,6 +283,59 @@ namespace watch_list
             {
                 save_list(true);
             }
+            #endregion
+
+            #region serie
+            if (which_section == "serie" && Properties.Settings.Default.serie_path == "")
+            {
+                savefiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                savefiledialog.RestoreDirectory = true;
+                savefiledialog.FileName = "serielist";
+                savefiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
+                if (savefiledialog.ShowDialog() == DialogResult.OK)
+                {
+                    serie_path_tb.Text = savefiledialog.FileName;
+                    saveSettings();
+                    save_path = Properties.Settings.Default.serie_path;
+                    load_path = Properties.Settings.Default.serie_path;
+                    save_list(true);
+                }
+                else
+                {
+                    getSettings();
+                }
+            }
+            else if (which_section == "serie" && Properties.Settings.Default.serie_path != "")
+            {
+                save_list(true);
+            }
+            #endregion
+
+            #region book
+            if (which_section == "book" && Properties.Settings.Default.book_path == "")
+            {
+                savefiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                savefiledialog.RestoreDirectory = true;
+                savefiledialog.FileName = "booklist";
+                savefiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
+                if (savefiledialog.ShowDialog() == DialogResult.OK)
+                {
+                    book_path_tb.Text = savefiledialog.FileName;
+                    saveSettings();
+                    save_path = Properties.Settings.Default.book_path;
+                    load_path = Properties.Settings.Default.book_path;
+                    save_list(true);
+                }
+                else
+                {
+                    getSettings();
+                }
+            }
+            else if (which_section == "book" && Properties.Settings.Default.book_path != "")
+            {
+                save_list(true);
+            }
+            #endregion
         }
         #endregion
 
@@ -289,9 +352,13 @@ namespace watch_list
                     break;
                 case "serie":
                     listBox = serie_listbox;
+                    save_path = Properties.Settings.Default.serie_path;
+                    load_path = Properties.Settings.Default.serie_path;
                     break;
                 case "book":
                     listBox = book_listbox;
+                    save_path = Properties.Settings.Default.book_path;
+                    load_path = Properties.Settings.Default.book_path;
                     break;
             }
         }
@@ -343,11 +410,15 @@ namespace watch_list
         public void getSettings()
         {
             movie_path_tb.Text = Properties.Settings.Default.movie_path;
+            serie_path_tb.Text = Properties.Settings.Default.serie_path;
+            book_path_tb.Text = Properties.Settings.Default.book_path;
         }
 
         public void saveSettings()
         {
             Properties.Settings.Default.movie_path = movie_path_tb.Text;
+            Properties.Settings.Default.serie_path = serie_path_tb.Text;
+            Properties.Settings.Default.book_path = book_path_tb.Text;
 
             Properties.Settings.Default.Save();
         }
@@ -362,14 +433,43 @@ namespace watch_list
             if (openfiledialog.ShowDialog() == DialogResult.OK)
             {
                 movie_path_tb.Text = openfiledialog.FileName;
-                listBox.Items.Clear();
-                load_path = openfiledialog.FileName;
-                load_list();
-                //getSettings();
             }
             else
             {
-                //moviefilepath_tb.Text = moviefilesavedialog.FileName;
+                getSettings();
+            }
+        }
+
+        private void open_serie_path_button_Click(object sender, EventArgs e)
+        {
+            openfiledialog.InitialDirectory = @Properties.Settings.Default.serie_path;
+            openfiledialog.RestoreDirectory = true;
+            openfiledialog.FileName = "serielist";
+            openfiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
+            openfiledialog.FilterIndex = 0;
+            if (openfiledialog.ShowDialog() == DialogResult.OK)
+            {
+                serie_path_tb.Text = openfiledialog.FileName;
+            }
+            else
+            {
+                getSettings();
+            }
+        }
+
+        private void open_book_path_button_Click(object sender, EventArgs e)
+        {
+            openfiledialog.InitialDirectory = @Properties.Settings.Default.book_path;
+            openfiledialog.RestoreDirectory = true;
+            openfiledialog.FileName = "booklist";
+            openfiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
+            openfiledialog.FilterIndex = 0;
+            if (openfiledialog.ShowDialog() == DialogResult.OK)
+            {
+                book_path_tb.Text = openfiledialog.FileName;
+            }
+            else
+            {
                 getSettings();
             }
         }
