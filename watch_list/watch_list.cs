@@ -19,6 +19,8 @@ namespace watch_list
         //List<string> listbox = new List<string>();
         ListBox listBox = new ListBox();
         string genre_part;
+        string save_path;
+        string load_path;
         #endregion
 
         #region start app
@@ -26,7 +28,11 @@ namespace watch_list
         {
             InitializeComponent();
             choose_listbox();
-            load_list();
+            if(Properties.Settings.Default.movie_path != "")
+            {
+                load_list();
+            }
+            getSettings();
         }
         #endregion
 
@@ -244,7 +250,29 @@ namespace watch_list
         #region save
         private void save_button_Click(object sender, EventArgs e)
         {
-            save_list(true);
+            if(which_section == "movie" && Properties.Settings.Default.movie_path == "")
+            {
+                savefiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                savefiledialog.RestoreDirectory = true;
+                savefiledialog.FileName = "movielist";
+                savefiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
+                if (savefiledialog.ShowDialog() == DialogResult.OK)
+                {
+                    movie_path_tb.Text = savefiledialog.FileName;
+                    saveSettings();
+                    save_path = Properties.Settings.Default.movie_path;
+                    load_path = Properties.Settings.Default.movie_path;
+                    save_list(true);
+                }
+                else
+                {
+                    getSettings();
+                }
+            }
+            else if(which_section == "movie" && Properties.Settings.Default.movie_path != "")
+            {
+                save_list(true);
+            }
         }
         #endregion
 
@@ -256,6 +284,8 @@ namespace watch_list
             {
                 case "movie":
                     listBox = movie_listbox;
+                    save_path = Properties.Settings.Default.movie_path;
+                    load_path = Properties.Settings.Default.movie_path;
                     break;
                 case "serie":
                     listBox = serie_listbox;
@@ -268,9 +298,9 @@ namespace watch_list
         
         private void save_list(bool show_message)
         {
-            string sPath = which_section + "list.txt";
+            //save_path = which_section + "list.txt";
 
-            StreamWriter saveFile = new StreamWriter(sPath);
+            StreamWriter saveFile = new StreamWriter(save_path);
             foreach (var item in listBox.Items)
             {
                 saveFile.WriteLine(item);
@@ -288,11 +318,11 @@ namespace watch_list
         
         private void load_list()
         {
-            string file_path = which_section + "list.txt";
+            //load_path = which_section + "list.txt";
 
             try
             {
-                using (StreamReader loadFile = new StreamReader(file_path))
+                using (StreamReader loadFile = new StreamReader(load_path))
                 {
                     string line;
                     while ((line = loadFile.ReadLine()) != null)
@@ -303,9 +333,50 @@ namespace watch_list
             }
             catch (FileNotFoundException)
             {
-                MessageBox.Show("There isn't a " + which_section + " list.", "File Not Found",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show("There isn't a " + which_section + " list.", "File Not Found",
+                //                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        #endregion
+
+        #region settings
+        public void getSettings()
+        {
+            movie_path_tb.Text = Properties.Settings.Default.movie_path;
+        }
+
+        public void saveSettings()
+        {
+            Properties.Settings.Default.movie_path = movie_path_tb.Text;
+
+            Properties.Settings.Default.Save();
+        }
+
+        private void open_movie_path_button_Click(object sender, EventArgs e)
+        {
+            openfiledialog.InitialDirectory = @Properties.Settings.Default.movie_path;
+            openfiledialog.RestoreDirectory = true;
+            openfiledialog.FileName = "movielist";
+            openfiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
+            openfiledialog.FilterIndex = 0;
+            if (openfiledialog.ShowDialog() == DialogResult.OK)
+            {
+                movie_path_tb.Text = openfiledialog.FileName;
+                listBox.Items.Clear();
+                load_path = openfiledialog.FileName;
+                load_list();
+                //getSettings();
+            }
+            else
+            {
+                //moviefilepath_tb.Text = moviefilesavedialog.FileName;
+                getSettings();
+            }
+        }
+
+        private void save_settings_button_Click(object sender, EventArgs e)
+        {
+            saveSettings();
         }
         #endregion
     }

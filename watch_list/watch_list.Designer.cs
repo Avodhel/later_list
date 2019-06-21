@@ -38,18 +38,26 @@
             this.edit_button = new System.Windows.Forms.Button();
             this.second_panel = new System.Windows.Forms.Panel();
             this.clear_button = new System.Windows.Forms.Button();
+            this.serie_listbox = new System.Windows.Forms.ListBox();
             this.save_button = new System.Windows.Forms.Button();
+            this.book_listbox = new System.Windows.Forms.ListBox();
             this.book_name_lbl = new System.Windows.Forms.Label();
             this.serie_name_lbl = new System.Windows.Forms.Label();
             this.main_panel = new System.Windows.Forms.Panel();
             this.books_rb = new System.Windows.Forms.RadioButton();
             this.series_rb = new System.Windows.Forms.RadioButton();
             this.movie_rb = new System.Windows.Forms.RadioButton();
-            this.serie_listbox = new System.Windows.Forms.ListBox();
-            this.book_listbox = new System.Windows.Forms.ListBox();
             this.version_lbl = new System.Windows.Forms.Label();
+            this.settings_gb = new System.Windows.Forms.GroupBox();
+            this.movie_path_lbl = new System.Windows.Forms.Label();
+            this.movie_path_tb = new System.Windows.Forms.TextBox();
+            this.open_movie_path_button = new System.Windows.Forms.Button();
+            this.openfiledialog = new System.Windows.Forms.OpenFileDialog();
+            this.save_settings_button = new System.Windows.Forms.Button();
+            this.savefiledialog = new System.Windows.Forms.SaveFileDialog();
             this.second_panel.SuspendLayout();
             this.main_panel.SuspendLayout();
+            this.settings_gb.SuspendLayout();
             this.SuspendLayout();
             // 
             // add_button
@@ -181,6 +189,17 @@
             this.clear_button.UseVisualStyleBackColor = false;
             this.clear_button.Click += new System.EventHandler(this.clear_button_Click);
             // 
+            // serie_listbox
+            // 
+            this.serie_listbox.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serie_listbox.ItemHeight = 15;
+            this.serie_listbox.Location = new System.Drawing.Point(277, 9);
+            this.serie_listbox.Name = "serie_listbox";
+            this.serie_listbox.Size = new System.Drawing.Size(261, 124);
+            this.serie_listbox.TabIndex = 9;
+            this.serie_listbox.Visible = false;
+            this.serie_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
+            // 
             // save_button
             // 
             this.save_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -194,6 +213,17 @@
             this.save_button.Text = "Save";
             this.save_button.UseVisualStyleBackColor = false;
             this.save_button.Click += new System.EventHandler(this.save_button_Click);
+            // 
+            // book_listbox
+            // 
+            this.book_listbox.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.book_listbox.ItemHeight = 15;
+            this.book_listbox.Location = new System.Drawing.Point(277, 9);
+            this.book_listbox.Name = "book_listbox";
+            this.book_listbox.Size = new System.Drawing.Size(261, 124);
+            this.book_listbox.TabIndex = 10;
+            this.book_listbox.Visible = false;
+            this.book_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
             // 
             // book_name_lbl
             // 
@@ -270,28 +300,6 @@
             this.movie_rb.UseVisualStyleBackColor = true;
             this.movie_rb.CheckedChanged += new System.EventHandler(this.rbCheckedChanged);
             // 
-            // serie_listbox
-            // 
-            this.serie_listbox.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serie_listbox.ItemHeight = 15;
-            this.serie_listbox.Location = new System.Drawing.Point(277, 9);
-            this.serie_listbox.Name = "serie_listbox";
-            this.serie_listbox.Size = new System.Drawing.Size(261, 124);
-            this.serie_listbox.TabIndex = 9;
-            this.serie_listbox.Visible = false;
-            this.serie_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
-            // 
-            // book_listbox
-            // 
-            this.book_listbox.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.book_listbox.ItemHeight = 15;
-            this.book_listbox.Location = new System.Drawing.Point(277, 9);
-            this.book_listbox.Name = "book_listbox";
-            this.book_listbox.Size = new System.Drawing.Size(261, 124);
-            this.book_listbox.TabIndex = 10;
-            this.book_listbox.Visible = false;
-            this.book_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
-            // 
             // version_lbl
             // 
             this.version_lbl.AutoSize = true;
@@ -303,12 +311,67 @@
             this.version_lbl.TabIndex = 3;
             this.version_lbl.Text = "v1.0";
             // 
+            // settings_gb
+            // 
+            this.settings_gb.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.settings_gb.Controls.Add(this.save_settings_button);
+            this.settings_gb.Controls.Add(this.open_movie_path_button);
+            this.settings_gb.Controls.Add(this.movie_path_tb);
+            this.settings_gb.Controls.Add(this.movie_path_lbl);
+            this.settings_gb.Location = new System.Drawing.Point(12, 210);
+            this.settings_gb.Name = "settings_gb";
+            this.settings_gb.Size = new System.Drawing.Size(550, 142);
+            this.settings_gb.TabIndex = 16;
+            this.settings_gb.TabStop = false;
+            this.settings_gb.Text = "Settings";
+            // 
+            // movie_path_lbl
+            // 
+            this.movie_path_lbl.AutoSize = true;
+            this.movie_path_lbl.Location = new System.Drawing.Point(7, 31);
+            this.movie_path_lbl.Name = "movie_path_lbl";
+            this.movie_path_lbl.Size = new System.Drawing.Size(83, 13);
+            this.movie_path_lbl.TabIndex = 0;
+            this.movie_path_lbl.Text = "Movie File Path:";
+            // 
+            // movie_path_tb
+            // 
+            this.movie_path_tb.Location = new System.Drawing.Point(96, 28);
+            this.movie_path_tb.Name = "movie_path_tb";
+            this.movie_path_tb.Size = new System.Drawing.Size(161, 20);
+            this.movie_path_tb.TabIndex = 1;
+            // 
+            // open_movie_path_button
+            // 
+            this.open_movie_path_button.Location = new System.Drawing.Point(263, 28);
+            this.open_movie_path_button.Name = "open_movie_path_button";
+            this.open_movie_path_button.Size = new System.Drawing.Size(43, 20);
+            this.open_movie_path_button.TabIndex = 2;
+            this.open_movie_path_button.Text = "open";
+            this.open_movie_path_button.UseVisualStyleBackColor = true;
+            this.open_movie_path_button.Click += new System.EventHandler(this.open_movie_path_button_Click);
+            // 
+            // openfiledialog
+            // 
+            this.openfiledialog.FileName = "openfiledialog";
+            // 
+            // save_settings_button
+            // 
+            this.save_settings_button.Location = new System.Drawing.Point(10, 107);
+            this.save_settings_button.Name = "save_settings_button";
+            this.save_settings_button.Size = new System.Drawing.Size(88, 23);
+            this.save_settings_button.TabIndex = 3;
+            this.save_settings_button.Text = "save settings";
+            this.save_settings_button.UseVisualStyleBackColor = true;
+            this.save_settings_button.Click += new System.EventHandler(this.save_settings_button_Click);
+            // 
             // watch_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(572, 207);
+            this.ClientSize = new System.Drawing.Size(572, 371);
+            this.Controls.Add(this.settings_gb);
             this.Controls.Add(this.version_lbl);
             this.Controls.Add(this.main_panel);
             this.Controls.Add(this.second_panel);
@@ -319,6 +382,8 @@
             this.second_panel.PerformLayout();
             this.main_panel.ResumeLayout(false);
             this.main_panel.PerformLayout();
+            this.settings_gb.ResumeLayout(false);
+            this.settings_gb.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,6 +411,13 @@
         private System.Windows.Forms.Button save_button;
         private System.Windows.Forms.Button clear_button;
         private System.Windows.Forms.Label version_lbl;
+        private System.Windows.Forms.GroupBox settings_gb;
+        private System.Windows.Forms.Button open_movie_path_button;
+        private System.Windows.Forms.TextBox movie_path_tb;
+        private System.Windows.Forms.Label movie_path_lbl;
+        private System.Windows.Forms.OpenFileDialog openfiledialog;
+        private System.Windows.Forms.Button save_settings_button;
+        private System.Windows.Forms.SaveFileDialog savefiledialog;
     }
 }
 
