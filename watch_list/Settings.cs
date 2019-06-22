@@ -173,7 +173,6 @@ namespace watch_list
             if (formList.Contains(form)) formList.Remove(form);
         }
 
-
         public static void setAllBackcolors(Color backColor)
         {
             foreach (Form f in formList) if (f != null) f.BackColor = backColor;
