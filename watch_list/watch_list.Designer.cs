@@ -276,7 +276,7 @@
             this.version_lbl.AutoSize = true;
             this.version_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.version_lbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.version_lbl.Location = new System.Drawing.Point(512, 21);
+            this.version_lbl.Location = new System.Drawing.Point(505, 9);
             this.version_lbl.Name = "version_lbl";
             this.version_lbl.Size = new System.Drawing.Size(33, 14);
             this.version_lbl.TabIndex = 3;
@@ -325,7 +325,7 @@
             // 
             this.settings_button.Image = ((System.Drawing.Image)(resources.GetObject("settings_button.Image")));
             this.settings_button.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.settings_button.Location = new System.Drawing.Point(481, 16);
+            this.settings_button.Location = new System.Drawing.Point(508, 28);
             this.settings_button.Name = "settings_button";
             this.settings_button.Size = new System.Drawing.Size(25, 24);
             this.settings_button.TabIndex = 21;
@@ -345,6 +345,7 @@
             this.Name = "watch_list";
             this.Text = "Later List";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.watch_list_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.watch_list_FormClosed);
             this.sections_gb.ResumeLayout(false);
             this.sections_gb.PerformLayout();
             this.list_operations_gb.ResumeLayout(false);

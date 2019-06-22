@@ -29,6 +29,7 @@ namespace watch_list
         #region start app
         public watch_list()
         {
+            FormManager.registerForm(this);
             InitializeComponent();
             choose_listbox();
             if(which_section == "movie" && Properties.Settings.Default.movie_path != "")
@@ -36,6 +37,7 @@ namespace watch_list
                 load_list();
             }
             settings_screen.getSettings();
+            theme_control();
         }
         #endregion
 
@@ -56,6 +58,11 @@ namespace watch_list
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void watch_list_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormManager.unRegisterForm(this);
         }
         #endregion
 
@@ -413,6 +420,22 @@ namespace watch_list
         private void settings_button_Click(object sender, EventArgs e)
         { 
             settings_screen.ShowDialog();
+        }
+
+        private void theme_control()
+        {
+            if (Properties.Settings.Default.theme == "Light")
+            {
+                FormManager.setAllBackcolors(SystemColors.InactiveBorder);
+                settings_screen.LightThemeCheck = true;
+                settings_screen.DarkThemeCheck = false;
+            }
+            if (Properties.Settings.Default.theme == "Dark")
+            {
+                FormManager.setAllBackcolors(SystemColors.InactiveCaptionText);
+                settings_screen.LightThemeCheck = false;
+                settings_screen.DarkThemeCheck = true;
+            }
         }
         #endregion
     }

@@ -35,8 +35,8 @@
             this.save_settings_button = new System.Windows.Forms.Button();
             this.settings_gb = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.dark_rb = new System.Windows.Forms.RadioButton();
+            this.light_rb = new System.Windows.Forms.RadioButton();
             this.open_book_path_button = new System.Windows.Forms.Button();
             this.book_path_tb = new System.Windows.Forms.TextBox();
             this.book_path_lbl = new System.Windows.Forms.Label();
@@ -116,8 +116,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.dark_rb);
+            this.groupBox1.Controls.Add(this.light_rb);
             this.groupBox1.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(315, 14);
             this.groupBox1.Name = "groupBox1";
@@ -126,29 +126,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Themes";
             // 
-            // radioButton2
+            // dark_rb
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(16, 48);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(52, 20);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Dark";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.dark_rb.AutoSize = true;
+            this.dark_rb.Checked = true;
+            this.dark_rb.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dark_rb.Location = new System.Drawing.Point(16, 48);
+            this.dark_rb.Name = "dark_rb";
+            this.dark_rb.Size = new System.Drawing.Size(52, 20);
+            this.dark_rb.TabIndex = 1;
+            this.dark_rb.TabStop = true;
+            this.dark_rb.Text = "Dark";
+            this.dark_rb.UseVisualStyleBackColor = true;
+            this.dark_rb.CheckedChanged += new System.EventHandler(this.theme_rb_CheckedChanged);
             // 
-            // radioButton1
+            // light_rb
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(16, 22);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(56, 20);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.Text = "Light";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.light_rb.AutoSize = true;
+            this.light_rb.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.light_rb.Location = new System.Drawing.Point(16, 22);
+            this.light_rb.Name = "light_rb";
+            this.light_rb.Size = new System.Drawing.Size(56, 20);
+            this.light_rb.TabIndex = 0;
+            this.light_rb.Text = "Light";
+            this.light_rb.UseVisualStyleBackColor = true;
+            this.light_rb.CheckedChanged += new System.EventHandler(this.theme_rb_CheckedChanged);
             // 
             // open_book_path_button
             // 
@@ -240,8 +242,8 @@
         private System.Windows.Forms.Button save_settings_button;
         private System.Windows.Forms.GroupBox settings_gb;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton dark_rb;
+        private System.Windows.Forms.RadioButton light_rb;
         private System.Windows.Forms.Button open_book_path_button;
         private System.Windows.Forms.TextBox book_path_tb;
         private System.Windows.Forms.Label book_path_lbl;

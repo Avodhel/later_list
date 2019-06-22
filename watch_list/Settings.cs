@@ -12,8 +12,14 @@ namespace watch_list
 {
     public partial class Settings : Form
     {
+        #region variables
+        string which_theme;
+        #endregion
+
+        #region settings opened
         public Settings()
         {
+            FormManager.registerForm(this);
             InitializeComponent();
         }
 
@@ -28,7 +34,9 @@ namespace watch_list
         {
 
         }
+        #endregion
 
+        #region settings option variables
         public string MovieTextBoxText
         {
             get { return movie_path_tb.Text; }
@@ -47,10 +55,22 @@ namespace watch_list
             set { book_path_tb.Text = value; }
         }
 
+        public bool LightThemeCheck
+        {
+            get { return light_rb.Checked; }
+            set { light_rb.Checked = value; }
+        }
+
+        public bool DarkThemeCheck
+        {
+            get { return dark_rb.Checked; }
+            set { dark_rb.Checked = value; }
+        }
+        #endregion 
+
         #region settings
         public void getSettings()
         {
-            //MovieTextBox = Properties.Settings.Default.movie_path;
             movie_path_tb.Text = Properties.Settings.Default.movie_path;
             serie_path_tb.Text = Properties.Settings.Default.serie_path;
             book_path_tb.Text = Properties.Settings.Default.book_path;
@@ -61,6 +81,7 @@ namespace watch_list
             Properties.Settings.Default.movie_path = movie_path_tb.Text;
             Properties.Settings.Default.serie_path = serie_path_tb.Text;
             Properties.Settings.Default.book_path = book_path_tb.Text;
+            Properties.Settings.Default.theme = which_theme;
 
             Properties.Settings.Default.Save();
         }
@@ -116,11 +137,47 @@ namespace watch_list
             }
         }
 
+        public void theme_rb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (light_rb.Checked)
+            {
+                which_theme = "Light";
+                FormManager.setAllBackcolors(SystemColors.InactiveBorder);
+            }
+            if (dark_rb.Checked)
+            {
+                which_theme = "Dark";
+                FormManager.setAllBackcolors(SystemColors.InactiveCaptionText);
+            }
+        }
+
         private void save_settings_button_Click(object sender, EventArgs e)
         {
-
             saveSettings();
         }
         #endregion
     }
+
+    #region Form Manager
+    public static class FormManager
+    {
+        private static List<Form> formList = new List<Form>();
+
+        public static void registerForm(Form form)
+        {
+            if (!formList.Contains(form)) formList.Add(form);
+        }
+
+        public static void unRegisterForm(Form form)
+        {
+            if (formList.Contains(form)) formList.Remove(form);
+        }
+
+
+        public static void setAllBackcolors(Color backColor)
+        {
+            foreach (Form f in formList) if (f != null) f.BackColor = backColor;
+        }
+    }
+    #endregion
 }

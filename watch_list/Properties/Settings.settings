@@ -11,5 +11,8 @@
     <Setting Name="book_path" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="theme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Dark</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
