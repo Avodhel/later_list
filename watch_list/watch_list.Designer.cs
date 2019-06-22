@@ -46,28 +46,12 @@
             this.series_rb = new System.Windows.Forms.RadioButton();
             this.movie_rb = new System.Windows.Forms.RadioButton();
             this.version_lbl = new System.Windows.Forms.Label();
-            this.settings_gb = new System.Windows.Forms.GroupBox();
-            this.movie_path_lbl = new System.Windows.Forms.Label();
-            this.movie_path_tb = new System.Windows.Forms.TextBox();
-            this.open_movie_path_button = new System.Windows.Forms.Button();
-            this.openfiledialog = new System.Windows.Forms.OpenFileDialog();
-            this.save_settings_button = new System.Windows.Forms.Button();
             this.savefiledialog = new System.Windows.Forms.SaveFileDialog();
-            this.serie_path_lbl = new System.Windows.Forms.Label();
-            this.serie_path_tb = new System.Windows.Forms.TextBox();
-            this.open_serie_path_button = new System.Windows.Forms.Button();
-            this.book_path_lbl = new System.Windows.Forms.Label();
-            this.book_path_tb = new System.Windows.Forms.TextBox();
-            this.open_book_path_button = new System.Windows.Forms.Button();
             this.sections_gb = new System.Windows.Forms.GroupBox();
             this.list_operations_gb = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.settings_gb.SuspendLayout();
+            this.settings_button = new System.Windows.Forms.Button();
             this.sections_gb.SuspendLayout();
             this.list_operations_gb.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // add_button
@@ -286,134 +270,6 @@
             this.version_lbl.TabIndex = 3;
             this.version_lbl.Text = "v1.0";
             // 
-            // settings_gb
-            // 
-            this.settings_gb.BackColor = System.Drawing.Color.Transparent;
-            this.settings_gb.Controls.Add(this.groupBox1);
-            this.settings_gb.Controls.Add(this.open_book_path_button);
-            this.settings_gb.Controls.Add(this.book_path_tb);
-            this.settings_gb.Controls.Add(this.book_path_lbl);
-            this.settings_gb.Controls.Add(this.open_serie_path_button);
-            this.settings_gb.Controls.Add(this.serie_path_tb);
-            this.settings_gb.Controls.Add(this.serie_path_lbl);
-            this.settings_gb.Controls.Add(this.save_settings_button);
-            this.settings_gb.Controls.Add(this.open_movie_path_button);
-            this.settings_gb.Controls.Add(this.movie_path_tb);
-            this.settings_gb.Controls.Add(this.movie_path_lbl);
-            this.settings_gb.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settings_gb.Location = new System.Drawing.Point(12, 202);
-            this.settings_gb.Name = "settings_gb";
-            this.settings_gb.Size = new System.Drawing.Size(451, 126);
-            this.settings_gb.TabIndex = 16;
-            this.settings_gb.TabStop = false;
-            this.settings_gb.Text = "Settings";
-            // 
-            // movie_path_lbl
-            // 
-            this.movie_path_lbl.AutoSize = true;
-            this.movie_path_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.movie_path_lbl.Location = new System.Drawing.Point(8, 19);
-            this.movie_path_lbl.Name = "movie_path_lbl";
-            this.movie_path_lbl.Size = new System.Drawing.Size(72, 16);
-            this.movie_path_lbl.TabIndex = 0;
-            this.movie_path_lbl.Text = "Movie List:";
-            // 
-            // movie_path_tb
-            // 
-            this.movie_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.movie_path_tb.Location = new System.Drawing.Point(91, 14);
-            this.movie_path_tb.Name = "movie_path_tb";
-            this.movie_path_tb.Size = new System.Drawing.Size(186, 26);
-            this.movie_path_tb.TabIndex = 1;
-            // 
-            // open_movie_path_button
-            // 
-            this.open_movie_path_button.BackColor = System.Drawing.Color.Khaki;
-            this.open_movie_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.open_movie_path_button.Location = new System.Drawing.Point(283, 14);
-            this.open_movie_path_button.Name = "open_movie_path_button";
-            this.open_movie_path_button.Size = new System.Drawing.Size(43, 26);
-            this.open_movie_path_button.TabIndex = 2;
-            this.open_movie_path_button.Text = "open";
-            this.open_movie_path_button.UseVisualStyleBackColor = false;
-            this.open_movie_path_button.Click += new System.EventHandler(this.open_movie_path_button_Click);
-            // 
-            // openfiledialog
-            // 
-            this.openfiledialog.FileName = "openfiledialog";
-            // 
-            // save_settings_button
-            // 
-            this.save_settings_button.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.save_settings_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.save_settings_button.Location = new System.Drawing.Point(3, 100);
-            this.save_settings_button.Name = "save_settings_button";
-            this.save_settings_button.Size = new System.Drawing.Size(323, 23);
-            this.save_settings_button.TabIndex = 3;
-            this.save_settings_button.Text = "Save Settings";
-            this.save_settings_button.UseVisualStyleBackColor = false;
-            this.save_settings_button.Click += new System.EventHandler(this.save_settings_button_Click);
-            // 
-            // serie_path_lbl
-            // 
-            this.serie_path_lbl.AutoSize = true;
-            this.serie_path_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serie_path_lbl.Location = new System.Drawing.Point(8, 47);
-            this.serie_path_lbl.Name = "serie_path_lbl";
-            this.serie_path_lbl.Size = new System.Drawing.Size(72, 16);
-            this.serie_path_lbl.TabIndex = 4;
-            this.serie_path_lbl.Text = "Serie List:";
-            // 
-            // serie_path_tb
-            // 
-            this.serie_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serie_path_tb.Location = new System.Drawing.Point(91, 43);
-            this.serie_path_tb.Name = "serie_path_tb";
-            this.serie_path_tb.Size = new System.Drawing.Size(186, 26);
-            this.serie_path_tb.TabIndex = 5;
-            // 
-            // open_serie_path_button
-            // 
-            this.open_serie_path_button.BackColor = System.Drawing.Color.Khaki;
-            this.open_serie_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.open_serie_path_button.Location = new System.Drawing.Point(283, 43);
-            this.open_serie_path_button.Name = "open_serie_path_button";
-            this.open_serie_path_button.Size = new System.Drawing.Size(43, 26);
-            this.open_serie_path_button.TabIndex = 6;
-            this.open_serie_path_button.Text = "open";
-            this.open_serie_path_button.UseVisualStyleBackColor = false;
-            this.open_serie_path_button.Click += new System.EventHandler(this.open_serie_path_button_Click);
-            // 
-            // book_path_lbl
-            // 
-            this.book_path_lbl.AutoSize = true;
-            this.book_path_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.book_path_lbl.Location = new System.Drawing.Point(12, 75);
-            this.book_path_lbl.Name = "book_path_lbl";
-            this.book_path_lbl.Size = new System.Drawing.Size(68, 16);
-            this.book_path_lbl.TabIndex = 7;
-            this.book_path_lbl.Text = "Book List:";
-            // 
-            // book_path_tb
-            // 
-            this.book_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.book_path_tb.Location = new System.Drawing.Point(91, 71);
-            this.book_path_tb.Name = "book_path_tb";
-            this.book_path_tb.Size = new System.Drawing.Size(186, 26);
-            this.book_path_tb.TabIndex = 8;
-            // 
-            // open_book_path_button
-            // 
-            this.open_book_path_button.BackColor = System.Drawing.Color.Khaki;
-            this.open_book_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.open_book_path_button.Location = new System.Drawing.Point(283, 71);
-            this.open_book_path_button.Name = "open_book_path_button";
-            this.open_book_path_button.Size = new System.Drawing.Size(43, 27);
-            this.open_book_path_button.TabIndex = 9;
-            this.open_book_path_button.Text = "open";
-            this.open_book_path_button.UseVisualStyleBackColor = false;
-            this.open_book_path_button.Click += new System.EventHandler(this.open_book_path_button_Click);
-            // 
             // sections_gb
             // 
             this.sections_gb.BackColor = System.Drawing.Color.Transparent;
@@ -453,63 +309,33 @@
             this.list_operations_gb.TabStop = false;
             this.list_operations_gb.Text = "List Operations";
             // 
-            // groupBox1
+            // settings_button
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(350, 14);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(88, 96);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Themes";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(16, 29);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(56, 20);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.Text = "Light";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(16, 55);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(52, 20);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Dark";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.settings_button.Location = new System.Drawing.Point(431, 17);
+            this.settings_button.Name = "settings_button";
+            this.settings_button.Size = new System.Drawing.Size(75, 23);
+            this.settings_button.TabIndex = 21;
+            this.settings_button.Text = "Settings";
+            this.settings_button.UseVisualStyleBackColor = true;
+            this.settings_button.Click += new System.EventHandler(this.settings_button_Click);
             // 
             // watch_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(574, 340);
+            this.ClientSize = new System.Drawing.Size(574, 205);
+            this.Controls.Add(this.settings_button);
             this.Controls.Add(this.list_operations_gb);
             this.Controls.Add(this.sections_gb);
-            this.Controls.Add(this.settings_gb);
             this.Controls.Add(this.version_lbl);
             this.Name = "watch_list";
             this.Text = "Later List";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.watch_list_FormClosing);
-            this.settings_gb.ResumeLayout(false);
-            this.settings_gb.PerformLayout();
             this.sections_gb.ResumeLayout(false);
             this.sections_gb.PerformLayout();
             this.list_operations_gb.ResumeLayout(false);
             this.list_operations_gb.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -535,24 +361,10 @@
         private System.Windows.Forms.Button save_button;
         private System.Windows.Forms.Button clear_button;
         private System.Windows.Forms.Label version_lbl;
-        private System.Windows.Forms.GroupBox settings_gb;
-        private System.Windows.Forms.Button open_movie_path_button;
-        private System.Windows.Forms.TextBox movie_path_tb;
-        private System.Windows.Forms.Label movie_path_lbl;
-        private System.Windows.Forms.OpenFileDialog openfiledialog;
-        private System.Windows.Forms.Button save_settings_button;
         private System.Windows.Forms.SaveFileDialog savefiledialog;
-        private System.Windows.Forms.Button open_book_path_button;
-        private System.Windows.Forms.TextBox book_path_tb;
-        private System.Windows.Forms.Label book_path_lbl;
-        private System.Windows.Forms.Button open_serie_path_button;
-        private System.Windows.Forms.TextBox serie_path_tb;
-        private System.Windows.Forms.Label serie_path_lbl;
         private System.Windows.Forms.GroupBox sections_gb;
         private System.Windows.Forms.GroupBox list_operations_gb;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Button settings_button;
     }
 }
 

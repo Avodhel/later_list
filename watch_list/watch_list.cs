@@ -21,6 +21,9 @@ namespace watch_list
         string genre_part;
         string save_path;
         string load_path;
+        //Settings Form
+        Settings settings_screen = new Settings();
+        
         #endregion
 
         #region start app
@@ -32,7 +35,7 @@ namespace watch_list
             {
                 load_list();
             }
-            getSettings();
+            settings_screen.getSettings();
         }
         #endregion
 
@@ -268,15 +271,15 @@ namespace watch_list
                 savefiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
                 if (savefiledialog.ShowDialog() == DialogResult.OK)
                 {
-                    movie_path_tb.Text = savefiledialog.FileName;
-                    saveSettings();
+                    settings_screen.MovieTextBoxText = savefiledialog.FileName;
+                    settings_screen.saveSettings();
                     save_path = Properties.Settings.Default.movie_path;
                     load_path = Properties.Settings.Default.movie_path;
                     save_list(true);
                 }
                 else
                 {
-                    getSettings();
+                    settings_screen.getSettings();
                 }
             }
             else if(which_section == "movie" && Properties.Settings.Default.movie_path != "")
@@ -294,15 +297,15 @@ namespace watch_list
                 savefiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
                 if (savefiledialog.ShowDialog() == DialogResult.OK)
                 {
-                    serie_path_tb.Text = savefiledialog.FileName;
-                    saveSettings();
+                    settings_screen.SerieTextBoxText = savefiledialog.FileName;
+                    settings_screen.saveSettings();
                     save_path = Properties.Settings.Default.serie_path;
                     load_path = Properties.Settings.Default.serie_path;
                     save_list(true);
                 }
                 else
                 {
-                    getSettings();
+                    settings_screen.getSettings();
                 }
             }
             else if (which_section == "serie" && Properties.Settings.Default.serie_path != "")
@@ -320,15 +323,15 @@ namespace watch_list
                 savefiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
                 if (savefiledialog.ShowDialog() == DialogResult.OK)
                 {
-                    book_path_tb.Text = savefiledialog.FileName;
-                    saveSettings();
+                    settings_screen.BookTextBoxText = savefiledialog.FileName;
+                    settings_screen.saveSettings();
                     save_path = Properties.Settings.Default.book_path;
                     load_path = Properties.Settings.Default.book_path;
                     save_list(true);
                 }
                 else
                 {
-                    getSettings();
+                    settings_screen.getSettings();
                 }
             }
             else if (which_section == "book" && Properties.Settings.Default.book_path != "")
@@ -406,77 +409,10 @@ namespace watch_list
         }
         #endregion
 
-        #region settings
-        public void getSettings()
-        {
-            movie_path_tb.Text = Properties.Settings.Default.movie_path;
-            serie_path_tb.Text = Properties.Settings.Default.serie_path;
-            book_path_tb.Text = Properties.Settings.Default.book_path;
-        }
-
-        public void saveSettings()
-        {
-            Properties.Settings.Default.movie_path = movie_path_tb.Text;
-            Properties.Settings.Default.serie_path = serie_path_tb.Text;
-            Properties.Settings.Default.book_path = book_path_tb.Text;
-
-            Properties.Settings.Default.Save();
-        }
-
-        private void open_movie_path_button_Click(object sender, EventArgs e)
-        {
-            openfiledialog.InitialDirectory = @Properties.Settings.Default.movie_path;
-            openfiledialog.RestoreDirectory = true;
-            openfiledialog.FileName = "movielist";
-            openfiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
-            openfiledialog.FilterIndex = 0;
-            if (openfiledialog.ShowDialog() == DialogResult.OK)
-            {
-                movie_path_tb.Text = openfiledialog.FileName;
-            }
-            else
-            {
-                getSettings();
-            }
-        }
-
-        private void open_serie_path_button_Click(object sender, EventArgs e)
-        {
-            openfiledialog.InitialDirectory = @Properties.Settings.Default.serie_path;
-            openfiledialog.RestoreDirectory = true;
-            openfiledialog.FileName = "serielist";
-            openfiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
-            openfiledialog.FilterIndex = 0;
-            if (openfiledialog.ShowDialog() == DialogResult.OK)
-            {
-                serie_path_tb.Text = openfiledialog.FileName;
-            }
-            else
-            {
-                getSettings();
-            }
-        }
-
-        private void open_book_path_button_Click(object sender, EventArgs e)
-        {
-            openfiledialog.InitialDirectory = @Properties.Settings.Default.book_path;
-            openfiledialog.RestoreDirectory = true;
-            openfiledialog.FileName = "booklist";
-            openfiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
-            openfiledialog.FilterIndex = 0;
-            if (openfiledialog.ShowDialog() == DialogResult.OK)
-            {
-                book_path_tb.Text = openfiledialog.FileName;
-            }
-            else
-            {
-                getSettings();
-            }
-        }
-
-        private void save_settings_button_Click(object sender, EventArgs e)
-        {
-            saveSettings();
+        #region settings screen
+        private void settings_button_Click(object sender, EventArgs e)
+        { 
+            settings_screen.ShowDialog();
         }
         #endregion
     }
