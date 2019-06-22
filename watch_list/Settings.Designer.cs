@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.open_movie_path_button = new System.Windows.Forms.Button();
             this.movie_path_tb = new System.Windows.Forms.TextBox();
             this.movie_path_lbl = new System.Windows.Forms.Label();
@@ -51,18 +52,18 @@
             // 
             this.open_movie_path_button.BackColor = System.Drawing.Color.Khaki;
             this.open_movie_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.open_movie_path_button.Location = new System.Drawing.Point(283, 14);
+            this.open_movie_path_button.Image = ((System.Drawing.Image)(resources.GetObject("open_movie_path_button.Image")));
+            this.open_movie_path_button.Location = new System.Drawing.Point(278, 14);
             this.open_movie_path_button.Name = "open_movie_path_button";
-            this.open_movie_path_button.Size = new System.Drawing.Size(43, 26);
+            this.open_movie_path_button.Size = new System.Drawing.Size(31, 26);
             this.open_movie_path_button.TabIndex = 5;
-            this.open_movie_path_button.Text = "open";
             this.open_movie_path_button.UseVisualStyleBackColor = false;
             this.open_movie_path_button.Click += new System.EventHandler(this.open_movie_path_button_Click);
             // 
             // movie_path_tb
             // 
             this.movie_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.movie_path_tb.Location = new System.Drawing.Point(91, 14);
+            this.movie_path_tb.Location = new System.Drawing.Point(86, 14);
             this.movie_path_tb.Name = "movie_path_tb";
             this.movie_path_tb.Size = new System.Drawing.Size(186, 26);
             this.movie_path_tb.TabIndex = 4;
@@ -81,9 +82,11 @@
             // 
             this.save_settings_button.BackColor = System.Drawing.Color.LightSeaGreen;
             this.save_settings_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.save_settings_button.Location = new System.Drawing.Point(91, 104);
+            this.save_settings_button.Image = ((System.Drawing.Image)(resources.GetObject("save_settings_button.Image")));
+            this.save_settings_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.save_settings_button.Location = new System.Drawing.Point(86, 98);
             this.save_settings_button.Name = "save_settings_button";
-            this.save_settings_button.Size = new System.Drawing.Size(186, 23);
+            this.save_settings_button.Size = new System.Drawing.Size(186, 29);
             this.save_settings_button.TabIndex = 6;
             this.save_settings_button.Text = "Save Settings";
             this.save_settings_button.UseVisualStyleBackColor = false;
@@ -106,7 +109,7 @@
             this.settings_gb.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settings_gb.Location = new System.Drawing.Point(12, 12);
             this.settings_gb.Name = "settings_gb";
-            this.settings_gb.Size = new System.Drawing.Size(430, 133);
+            this.settings_gb.Size = new System.Drawing.Size(417, 133);
             this.settings_gb.TabIndex = 23;
             this.settings_gb.TabStop = false;
             this.settings_gb.Text = "Settings";
@@ -116,7 +119,7 @@
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(332, 14);
+            this.groupBox1.Location = new System.Drawing.Point(315, 14);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(88, 84);
             this.groupBox1.TabIndex = 10;
@@ -151,18 +154,18 @@
             // 
             this.open_book_path_button.BackColor = System.Drawing.Color.Khaki;
             this.open_book_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.open_book_path_button.Location = new System.Drawing.Point(283, 71);
+            this.open_book_path_button.Image = ((System.Drawing.Image)(resources.GetObject("open_book_path_button.Image")));
+            this.open_book_path_button.Location = new System.Drawing.Point(278, 71);
             this.open_book_path_button.Name = "open_book_path_button";
-            this.open_book_path_button.Size = new System.Drawing.Size(43, 27);
+            this.open_book_path_button.Size = new System.Drawing.Size(31, 27);
             this.open_book_path_button.TabIndex = 9;
-            this.open_book_path_button.Text = "open";
             this.open_book_path_button.UseVisualStyleBackColor = false;
             this.open_book_path_button.Click += new System.EventHandler(this.open_book_path_button_Click);
             // 
             // book_path_tb
             // 
             this.book_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.book_path_tb.Location = new System.Drawing.Point(91, 71);
+            this.book_path_tb.Location = new System.Drawing.Point(86, 71);
             this.book_path_tb.Name = "book_path_tb";
             this.book_path_tb.Size = new System.Drawing.Size(186, 26);
             this.book_path_tb.TabIndex = 8;
@@ -181,18 +184,18 @@
             // 
             this.open_serie_path_button.BackColor = System.Drawing.Color.Khaki;
             this.open_serie_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.open_serie_path_button.Location = new System.Drawing.Point(283, 43);
+            this.open_serie_path_button.Image = ((System.Drawing.Image)(resources.GetObject("open_serie_path_button.Image")));
+            this.open_serie_path_button.Location = new System.Drawing.Point(278, 43);
             this.open_serie_path_button.Name = "open_serie_path_button";
-            this.open_serie_path_button.Size = new System.Drawing.Size(43, 26);
+            this.open_serie_path_button.Size = new System.Drawing.Size(31, 26);
             this.open_serie_path_button.TabIndex = 6;
-            this.open_serie_path_button.Text = "open";
             this.open_serie_path_button.UseVisualStyleBackColor = false;
             this.open_serie_path_button.Click += new System.EventHandler(this.open_serie_path_button_Click);
             // 
             // serie_path_tb
             // 
             this.serie_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serie_path_tb.Location = new System.Drawing.Point(91, 43);
+            this.serie_path_tb.Location = new System.Drawing.Point(86, 43);
             this.serie_path_tb.Name = "serie_path_tb";
             this.serie_path_tb.Size = new System.Drawing.Size(186, 26);
             this.serie_path_tb.TabIndex = 5;
@@ -216,7 +219,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(454, 156);
+            this.ClientSize = new System.Drawing.Size(443, 156);
             this.Controls.Add(this.settings_gb);
             this.Name = "Settings";
             this.Text = "Settings";

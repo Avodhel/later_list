@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(watch_list));
             this.add_button = new System.Windows.Forms.Button();
             this.movie_listbox = new System.Windows.Forms.ListBox();
             this.movie_name_lbl = new System.Windows.Forms.Label();
@@ -58,9 +59,11 @@
             // 
             this.add_button.BackColor = System.Drawing.Color.PaleGreen;
             this.add_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_button.Location = new System.Drawing.Point(6, 73);
+            this.add_button.Image = ((System.Drawing.Image)(resources.GetObject("add_button.Image")));
+            this.add_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.add_button.Location = new System.Drawing.Point(11, 72);
             this.add_button.Name = "add_button";
-            this.add_button.Size = new System.Drawing.Size(128, 26);
+            this.add_button.Size = new System.Drawing.Size(129, 27);
             this.add_button.TabIndex = 0;
             this.add_button.Text = "Add to List";
             this.add_button.UseVisualStyleBackColor = false;
@@ -116,11 +119,13 @@
             this.remove_button.BackColor = System.Drawing.Color.Salmon;
             this.remove_button.Enabled = false;
             this.remove_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.remove_button.Image = ((System.Drawing.Image)(resources.GetObject("remove_button.Image")));
+            this.remove_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.remove_button.Location = new System.Drawing.Point(149, 72);
             this.remove_button.Name = "remove_button";
             this.remove_button.Size = new System.Drawing.Size(128, 28);
             this.remove_button.TabIndex = 11;
-            this.remove_button.Text = "Remove from List";
+            this.remove_button.Text = "Remove Item";
             this.remove_button.UseVisualStyleBackColor = false;
             this.remove_button.Click += new System.EventHandler(this.remove_button_Click);
             // 
@@ -141,23 +146,28 @@
             this.edit_button.BackColor = System.Drawing.Color.Yellow;
             this.edit_button.Enabled = false;
             this.edit_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.edit_button.Location = new System.Drawing.Point(7, 101);
+            this.edit_button.Image = ((System.Drawing.Image)(resources.GetObject("edit_button.Image")));
+            this.edit_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.edit_button.Location = new System.Drawing.Point(12, 101);
             this.edit_button.Name = "edit_button";
             this.edit_button.Size = new System.Drawing.Size(128, 28);
             this.edit_button.TabIndex = 13;
-            this.edit_button.Text = "Edit";
+            this.edit_button.Text = "Edit Item";
             this.edit_button.UseVisualStyleBackColor = false;
             this.edit_button.Click += new System.EventHandler(this.edit_button_Click);
             // 
             // clear_button
             // 
             this.clear_button.BackColor = System.Drawing.Color.Thistle;
-            this.clear_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clear_button.Font = new System.Drawing.Font("Advanced Pixel-7", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clear_button.Image = ((System.Drawing.Image)(resources.GetObject("clear_button.Image")));
+            this.clear_button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.clear_button.Location = new System.Drawing.Point(231, 13);
             this.clear_button.Name = "clear_button";
             this.clear_button.Size = new System.Drawing.Size(46, 53);
             this.clear_button.TabIndex = 19;
-            this.clear_button.Text = "Clear";
+            this.clear_button.Text = "Clear Fields";
+            this.clear_button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.clear_button.UseVisualStyleBackColor = false;
             this.clear_button.Click += new System.EventHandler(this.clear_button_Click);
             // 
@@ -177,12 +187,14 @@
             this.save_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.save_button.Enabled = false;
             this.save_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.save_button.Image = ((System.Drawing.Image)(resources.GetObject("save_button.Image")));
+            this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.save_button.Location = new System.Drawing.Point(149, 101);
             this.save_button.Name = "save_button";
             this.save_button.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.save_button.Size = new System.Drawing.Size(128, 28);
             this.save_button.TabIndex = 18;
-            this.save_button.Text = "Save";
+            this.save_button.Text = "Save List";
             this.save_button.UseVisualStyleBackColor = false;
             this.save_button.Click += new System.EventHandler(this.save_button_Click);
             // 
@@ -287,17 +299,17 @@
             // list_operations_gb
             // 
             this.list_operations_gb.BackColor = System.Drawing.Color.Transparent;
-            this.list_operations_gb.Controls.Add(this.edit_button);
             this.list_operations_gb.Controls.Add(this.save_button);
             this.list_operations_gb.Controls.Add(this.movie_name_lbl);
+            this.list_operations_gb.Controls.Add(this.edit_button);
             this.list_operations_gb.Controls.Add(this.serie_name_lbl);
-            this.list_operations_gb.Controls.Add(this.add_button);
             this.list_operations_gb.Controls.Add(this.remove_button);
             this.list_operations_gb.Controls.Add(this.genre_label);
             this.list_operations_gb.Controls.Add(this.book_name_lbl);
             this.list_operations_gb.Controls.Add(this.clear_button);
             this.list_operations_gb.Controls.Add(this.serie_listbox);
             this.list_operations_gb.Controls.Add(this.book_listbox);
+            this.list_operations_gb.Controls.Add(this.add_button);
             this.list_operations_gb.Controls.Add(this.movie_listbox);
             this.list_operations_gb.Controls.Add(this.name_tb);
             this.list_operations_gb.Controls.Add(this.genre_cb);
@@ -311,11 +323,12 @@
             // 
             // settings_button
             // 
-            this.settings_button.Location = new System.Drawing.Point(431, 17);
+            this.settings_button.Image = ((System.Drawing.Image)(resources.GetObject("settings_button.Image")));
+            this.settings_button.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.settings_button.Location = new System.Drawing.Point(481, 16);
             this.settings_button.Name = "settings_button";
-            this.settings_button.Size = new System.Drawing.Size(75, 23);
+            this.settings_button.Size = new System.Drawing.Size(25, 24);
             this.settings_button.TabIndex = 21;
-            this.settings_button.Text = "Settings";
             this.settings_button.UseVisualStyleBackColor = true;
             this.settings_button.Click += new System.EventHandler(this.settings_button_Click);
             // 
@@ -324,7 +337,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(574, 205);
+            this.ClientSize = new System.Drawing.Size(574, 208);
             this.Controls.Add(this.settings_button);
             this.Controls.Add(this.list_operations_gb);
             this.Controls.Add(this.sections_gb);
