@@ -81,6 +81,7 @@
             // save_settings_button
             // 
             this.save_settings_button.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.save_settings_button.Enabled = false;
             this.save_settings_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.save_settings_button.Image = ((System.Drawing.Image)(resources.GetObject("save_settings_button.Image")));
             this.save_settings_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -225,6 +226,7 @@
             this.Controls.Add(this.settings_gb);
             this.Name = "Settings";
             this.Text = "Settings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_FormClosing);
             this.Load += new System.EventHandler(this.Settings_Load);
             this.settings_gb.ResumeLayout(false);
             this.settings_gb.PerformLayout();

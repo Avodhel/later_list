@@ -36,6 +36,26 @@ namespace watch_list
         }
         #endregion
 
+        #region settings closed
+        private void Settings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (save_settings_button.Enabled == true)
+            {
+                DialogResult confirm = MessageBox.Show("Unsaved changes will be lost. Continue?", "Exit",
+                                                        MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (confirm == DialogResult.OK)
+                {
+
+                }
+                else if (confirm == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+        #endregion
+
         #region settings option variables
         public string MovieTextBoxText
         {
@@ -84,6 +104,8 @@ namespace watch_list
             Properties.Settings.Default.theme = which_theme;
 
             Properties.Settings.Default.Save();
+            MessageBox.Show("Settings Saved!");
+            save_settings_button.Enabled = false;
         }
 
         private void open_movie_path_button_Click(object sender, EventArgs e)
@@ -96,10 +118,12 @@ namespace watch_list
             if (openfiledialog.ShowDialog() == DialogResult.OK)
             {
                 movie_path_tb.Text = openfiledialog.FileName;
+                save_settings_button.Enabled = true;
             }
             else
             {
                 getSettings();
+                save_settings_button.Enabled = false;
             }
         }
 
@@ -113,10 +137,12 @@ namespace watch_list
             if (openfiledialog.ShowDialog() == DialogResult.OK)
             {
                 serie_path_tb.Text = openfiledialog.FileName;
+                save_settings_button.Enabled = true;
             }
             else
             {
                 getSettings();
+                save_settings_button.Enabled = false;
             }
         }
 
@@ -130,10 +156,12 @@ namespace watch_list
             if (openfiledialog.ShowDialog() == DialogResult.OK)
             {
                 book_path_tb.Text = openfiledialog.FileName;
+                save_settings_button.Enabled = true;
             }
             else
             {
                 getSettings();
+                save_settings_button.Enabled = false;
             }
         }
 
@@ -143,11 +171,27 @@ namespace watch_list
             {
                 which_theme = "Light";
                 FormManager.setAllBackcolors(SystemColors.InactiveBorder);
+                if(Properties.Settings.Default.theme == "Dark")
+                {
+                    save_settings_button.Enabled = true;
+                }
+                //else if (Properties.Settings.Default.theme == "Light")
+                //{
+                //    save_settings_button.Enabled = false;
+                //}
             }
             if (dark_rb.Checked)
             {
                 which_theme = "Dark";
                 FormManager.setAllBackcolors(SystemColors.InactiveCaptionText);
+                if (Properties.Settings.Default.theme == "Light")
+                {
+                    save_settings_button.Enabled = true;
+                }
+                //else if (Properties.Settings.Default.theme == "Dark")
+                //{
+                //    save_settings_button.Enabled = false;
+                //}
             }
         }
 

@@ -134,7 +134,7 @@
             this.genre_label.AutoSize = true;
             this.genre_label.BackColor = System.Drawing.Color.Transparent;
             this.genre_label.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genre_label.Location = new System.Drawing.Point(11, 45);
+            this.genre_label.Location = new System.Drawing.Point(42, 47);
             this.genre_label.Name = "genre_label";
             this.genre_label.Size = new System.Drawing.Size(42, 16);
             this.genre_label.TabIndex = 12;
