@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(watch_list));
             this.add_button = new System.Windows.Forms.Button();
             this.movie_listbox = new System.Windows.Forms.ListBox();
@@ -51,8 +52,10 @@
             this.sections_gb = new System.Windows.Forms.GroupBox();
             this.list_operations_gb = new System.Windows.Forms.GroupBox();
             this.settings_button = new System.Windows.Forms.Button();
+            this.error_provider = new System.Windows.Forms.ErrorProvider(this.components);
             this.sections_gb.SuspendLayout();
             this.list_operations_gb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.error_provider)).BeginInit();
             this.SuspendLayout();
             // 
             // add_button
@@ -196,6 +199,7 @@
             this.save_button.TabIndex = 18;
             this.save_button.Text = "Save List";
             this.save_button.UseVisualStyleBackColor = false;
+            this.save_button.EnabledChanged += new System.EventHandler(this.save_button_EnabledChanged);
             this.save_button.Click += new System.EventHandler(this.save_button_Click);
             // 
             // book_listbox
@@ -276,7 +280,7 @@
             this.version_lbl.AutoSize = true;
             this.version_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.version_lbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.version_lbl.Location = new System.Drawing.Point(262, 321);
+            this.version_lbl.Location = new System.Drawing.Point(282, 321);
             this.version_lbl.Name = "version_lbl";
             this.version_lbl.Size = new System.Drawing.Size(27, 12);
             this.version_lbl.TabIndex = 3;
@@ -316,7 +320,7 @@
             this.list_operations_gb.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.list_operations_gb.Location = new System.Drawing.Point(12, 53);
             this.list_operations_gb.Name = "list_operations_gb";
-            this.list_operations_gb.Size = new System.Drawing.Size(288, 265);
+            this.list_operations_gb.Size = new System.Drawing.Size(297, 265);
             this.list_operations_gb.TabIndex = 20;
             this.list_operations_gb.TabStop = false;
             this.list_operations_gb.Text = "List Operations";
@@ -325,19 +329,23 @@
             // 
             this.settings_button.Image = ((System.Drawing.Image)(resources.GetObject("settings_button.Image")));
             this.settings_button.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.settings_button.Location = new System.Drawing.Point(264, 18);
+            this.settings_button.Location = new System.Drawing.Point(284, 18);
             this.settings_button.Name = "settings_button";
             this.settings_button.Size = new System.Drawing.Size(25, 24);
             this.settings_button.TabIndex = 21;
             this.settings_button.UseVisualStyleBackColor = true;
             this.settings_button.Click += new System.EventHandler(this.settings_button_Click);
             // 
+            // error_provider
+            // 
+            this.error_provider.ContainerControl = this;
+            // 
             // watch_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(313, 335);
+            this.ClientSize = new System.Drawing.Size(321, 335);
             this.Controls.Add(this.settings_button);
             this.Controls.Add(this.list_operations_gb);
             this.Controls.Add(this.sections_gb);
@@ -350,6 +358,7 @@
             this.sections_gb.PerformLayout();
             this.list_operations_gb.ResumeLayout(false);
             this.list_operations_gb.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.error_provider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,6 +388,7 @@
         private System.Windows.Forms.GroupBox sections_gb;
         private System.Windows.Forms.GroupBox list_operations_gb;
         private System.Windows.Forms.Button settings_button;
+        private System.Windows.Forms.ErrorProvider error_provider;
     }
 }
 

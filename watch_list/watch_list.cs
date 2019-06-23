@@ -347,6 +347,18 @@ namespace watch_list
             }
             #endregion
         }
+
+        private void save_button_EnabledChanged(object sender, EventArgs e)
+        {
+            if (save_button.Enabled == true)
+            {
+                error_provider.SetError(save_button, "There're unsaved changes in " + which_section + " list!");
+            }
+            if (save_button.Enabled == false)
+            {
+                error_provider.Clear();
+            }
+        }
         #endregion
 
         #region save and load system
@@ -438,5 +450,6 @@ namespace watch_list
             }
         }
         #endregion
+
     }
 }

@@ -41,7 +41,7 @@ namespace watch_list
         {
             if (save_settings_button.Enabled == true)
             {
-                DialogResult confirm = MessageBox.Show("Unsaved changes will be lost. Continue?", "Exit",
+                DialogResult confirm = MessageBox.Show("Unsaved settings will be lost. Continue?", "Exit",
                                                         MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 if (confirm == DialogResult.OK)
