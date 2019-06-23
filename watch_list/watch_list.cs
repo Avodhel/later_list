@@ -21,6 +21,9 @@ namespace watch_list
         string genre_part;
         string save_path;
         string load_path;
+        string[] movie_genres = {"Comedy", "Sci-Fi"};
+        string[] serie_genres = {"Drama", "Horror"};
+        string[] book_genres = {"Classic", "Humor"};
         //Settings Form
         Settings settings_screen = new Settings();
         
@@ -32,6 +35,7 @@ namespace watch_list
             FormManager.registerForm(this);
             InitializeComponent();
             choose_listbox();
+            load_genres();
             if(which_section == "movie" && Properties.Settings.Default.movie_path != "")
             {
                 load_list();
@@ -86,9 +90,10 @@ namespace watch_list
                 {
                     load_list();
                 }
+                //load genres
+                load_genres();
                 //refresh input fields
-                name_tb.Text = "";
-                genre_cb.Text = "";
+                refresh_input_fields();
                 //enable buttons
                 add_button.Enabled = true;
                 remove_button.Enabled = false;
@@ -112,9 +117,10 @@ namespace watch_list
                 {
                     load_list();
                 }
-                //textbox
-                name_tb.Text = "";
-                genre_cb.Text = "";
+                //load genres
+                load_genres();
+                //refresh input fields
+                refresh_input_fields();
                 //enable buttons
                 add_button.Enabled = true;
                 remove_button.Enabled = false;
@@ -138,9 +144,10 @@ namespace watch_list
                 {
                     load_list();
                 }
-                //textbox
-                name_tb.Text = "";
-                genre_cb.Text = "";
+                //load genres
+                load_genres();
+                //refresh input fields
+                refresh_input_fields();
                 //enable buttons
                 add_button.Enabled = true;
                 remove_button.Enabled = false;
@@ -163,13 +170,34 @@ namespace watch_list
 
         private void clear_button_Click(object sender, EventArgs e)
         {
-            name_tb.Text = "";
-            genre_cb.Text = "";
-
+            refresh_input_fields();
             //enable buttons
             add_button.Enabled = true;
             remove_button.Enabled = false;
             edit_button.Enabled = false;
+        }
+
+        private void refresh_input_fields()
+        {
+            name_tb.Text = "";
+            genre_cb.Text = "";
+        }
+
+        private void load_genres()
+        {
+            genre_cb.Items.Clear();
+            switch (which_section)
+            {
+                case "movie":
+                    genre_cb.Items.AddRange(movie_genres);
+                    break;
+                case "serie":
+                    genre_cb.Items.AddRange(serie_genres);
+                    break;
+                case "book":
+                    genre_cb.Items.AddRange(book_genres);
+                    break;
+            }
         }
         #endregion
 
@@ -187,8 +215,7 @@ namespace watch_list
             {
                 data = name_tb.Text + " (" + genre_cb.Text + ")";
                 addToList(data);
-                name_tb.Text = "";
-                genre_cb.Text = "";
+                refresh_input_fields();
             }
         }
 
@@ -216,8 +243,7 @@ namespace watch_list
 
             listBox.Items.Remove(listBox.SelectedItem);
             //refresh input fields
-            name_tb.Text = "";
-            genre_cb.Text = "";
+            refresh_input_fields();
         }
         #endregion
 
@@ -261,8 +287,7 @@ namespace watch_list
             listBox.Items.RemoveAt(index);
             listBox.Items.Insert(index, name_tb.Text + " (" + genre_cb.Text + ")");
             //refresh input fields
-            name_tb.Text = "";
-            genre_cb.Text = "";
+            refresh_input_fields();
         }
         #endregion
 
