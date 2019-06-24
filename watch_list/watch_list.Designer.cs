@@ -64,7 +64,7 @@
             this.add_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.add_button.Image = ((System.Drawing.Image)(resources.GetObject("add_button.Image")));
             this.add_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.add_button.Location = new System.Drawing.Point(11, 72);
+            this.add_button.Location = new System.Drawing.Point(24, 76);
             this.add_button.Name = "add_button";
             this.add_button.Size = new System.Drawing.Size(129, 27);
             this.add_button.TabIndex = 0;
@@ -76,7 +76,7 @@
             // 
             this.movie_listbox.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.movie_listbox.ItemHeight = 14;
-            this.movie_listbox.Location = new System.Drawing.Point(11, 135);
+            this.movie_listbox.Location = new System.Drawing.Point(24, 139);
             this.movie_listbox.Name = "movie_listbox";
             this.movie_listbox.Size = new System.Drawing.Size(266, 116);
             this.movie_listbox.TabIndex = 8;
@@ -87,7 +87,7 @@
             this.movie_name_lbl.AutoSize = true;
             this.movie_name_lbl.BackColor = System.Drawing.Color.Transparent;
             this.movie_name_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.movie_name_lbl.Location = new System.Drawing.Point(8, 19);
+            this.movie_name_lbl.Location = new System.Drawing.Point(21, 23);
             this.movie_name_lbl.Name = "movie_name_lbl";
             this.movie_name_lbl.Size = new System.Drawing.Size(76, 16);
             this.movie_name_lbl.TabIndex = 4;
@@ -102,7 +102,7 @@
             "Drama",
             "Fiction",
             "Science Fiction"});
-            this.genre_cb.Location = new System.Drawing.Point(90, 43);
+            this.genre_cb.Location = new System.Drawing.Point(103, 47);
             this.genre_cb.Name = "genre_cb";
             this.genre_cb.Size = new System.Drawing.Size(135, 22);
             this.genre_cb.TabIndex = 6;
@@ -111,7 +111,7 @@
             // name_tb
             // 
             this.name_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.name_tb.Location = new System.Drawing.Point(90, 13);
+            this.name_tb.Location = new System.Drawing.Point(103, 17);
             this.name_tb.Name = "name_tb";
             this.name_tb.Size = new System.Drawing.Size(135, 26);
             this.name_tb.TabIndex = 10;
@@ -124,7 +124,7 @@
             this.remove_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.remove_button.Image = ((System.Drawing.Image)(resources.GetObject("remove_button.Image")));
             this.remove_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.remove_button.Location = new System.Drawing.Point(149, 72);
+            this.remove_button.Location = new System.Drawing.Point(162, 76);
             this.remove_button.Name = "remove_button";
             this.remove_button.Size = new System.Drawing.Size(128, 28);
             this.remove_button.TabIndex = 11;
@@ -137,7 +137,7 @@
             this.genre_label.AutoSize = true;
             this.genre_label.BackColor = System.Drawing.Color.Transparent;
             this.genre_label.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genre_label.Location = new System.Drawing.Point(42, 47);
+            this.genre_label.Location = new System.Drawing.Point(55, 51);
             this.genre_label.Name = "genre_label";
             this.genre_label.Size = new System.Drawing.Size(42, 16);
             this.genre_label.TabIndex = 12;
@@ -151,7 +151,7 @@
             this.edit_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.edit_button.Image = ((System.Drawing.Image)(resources.GetObject("edit_button.Image")));
             this.edit_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.edit_button.Location = new System.Drawing.Point(11, 101);
+            this.edit_button.Location = new System.Drawing.Point(24, 105);
             this.edit_button.Name = "edit_button";
             this.edit_button.Size = new System.Drawing.Size(129, 28);
             this.edit_button.TabIndex = 13;
@@ -165,7 +165,7 @@
             this.clear_button.Font = new System.Drawing.Font("Advanced Pixel-7", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clear_button.Image = ((System.Drawing.Image)(resources.GetObject("clear_button.Image")));
             this.clear_button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.clear_button.Location = new System.Drawing.Point(231, 13);
+            this.clear_button.Location = new System.Drawing.Point(244, 17);
             this.clear_button.Name = "clear_button";
             this.clear_button.Size = new System.Drawing.Size(46, 53);
             this.clear_button.TabIndex = 19;
@@ -178,7 +178,7 @@
             // 
             this.serie_listbox.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serie_listbox.ItemHeight = 14;
-            this.serie_listbox.Location = new System.Drawing.Point(11, 135);
+            this.serie_listbox.Location = new System.Drawing.Point(24, 139);
             this.serie_listbox.Name = "serie_listbox";
             this.serie_listbox.Size = new System.Drawing.Size(266, 116);
             this.serie_listbox.TabIndex = 9;
@@ -192,7 +192,7 @@
             this.save_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.save_button.Image = ((System.Drawing.Image)(resources.GetObject("save_button.Image")));
             this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.save_button.Location = new System.Drawing.Point(149, 101);
+            this.save_button.Location = new System.Drawing.Point(162, 105);
             this.save_button.Name = "save_button";
             this.save_button.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.save_button.Size = new System.Drawing.Size(128, 28);
@@ -206,7 +206,7 @@
             // 
             this.book_listbox.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.book_listbox.ItemHeight = 14;
-            this.book_listbox.Location = new System.Drawing.Point(11, 135);
+            this.book_listbox.Location = new System.Drawing.Point(24, 139);
             this.book_listbox.Name = "book_listbox";
             this.book_listbox.Size = new System.Drawing.Size(266, 116);
             this.book_listbox.TabIndex = 10;
@@ -218,7 +218,7 @@
             this.book_name_lbl.AutoSize = true;
             this.book_name_lbl.BackColor = System.Drawing.Color.Transparent;
             this.book_name_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.book_name_lbl.Location = new System.Drawing.Point(12, 19);
+            this.book_name_lbl.Location = new System.Drawing.Point(25, 23);
             this.book_name_lbl.Name = "book_name_lbl";
             this.book_name_lbl.Size = new System.Drawing.Size(72, 16);
             this.book_name_lbl.TabIndex = 17;
@@ -230,7 +230,7 @@
             this.serie_name_lbl.AutoSize = true;
             this.serie_name_lbl.BackColor = System.Drawing.Color.Transparent;
             this.serie_name_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serie_name_lbl.Location = new System.Drawing.Point(8, 19);
+            this.serie_name_lbl.Location = new System.Drawing.Point(21, 23);
             this.serie_name_lbl.Name = "serie_name_lbl";
             this.serie_name_lbl.Size = new System.Drawing.Size(76, 16);
             this.serie_name_lbl.TabIndex = 4;
@@ -280,7 +280,7 @@
             this.version_lbl.AutoSize = true;
             this.version_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.version_lbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.version_lbl.Location = new System.Drawing.Point(282, 321);
+            this.version_lbl.Location = new System.Drawing.Point(301, 321);
             this.version_lbl.Name = "version_lbl";
             this.version_lbl.Size = new System.Drawing.Size(27, 12);
             this.version_lbl.TabIndex = 3;
@@ -320,7 +320,7 @@
             this.list_operations_gb.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.list_operations_gb.Location = new System.Drawing.Point(12, 53);
             this.list_operations_gb.Name = "list_operations_gb";
-            this.list_operations_gb.Size = new System.Drawing.Size(297, 265);
+            this.list_operations_gb.Size = new System.Drawing.Size(316, 265);
             this.list_operations_gb.TabIndex = 20;
             this.list_operations_gb.TabStop = false;
             this.list_operations_gb.Text = "List Operations";
@@ -329,7 +329,7 @@
             // 
             this.settings_button.Image = ((System.Drawing.Image)(resources.GetObject("settings_button.Image")));
             this.settings_button.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.settings_button.Location = new System.Drawing.Point(284, 18);
+            this.settings_button.Location = new System.Drawing.Point(303, 16);
             this.settings_button.Name = "settings_button";
             this.settings_button.Size = new System.Drawing.Size(25, 24);
             this.settings_button.TabIndex = 21;
@@ -345,7 +345,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(321, 335);
+            this.ClientSize = new System.Drawing.Size(341, 335);
             this.Controls.Add(this.settings_button);
             this.Controls.Add(this.list_operations_gb);
             this.Controls.Add(this.sections_gb);
