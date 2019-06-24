@@ -1,6 +1,6 @@
-﻿namespace watch_list
+﻿namespace later_list
 {
-    partial class watch_list
+    partial class later_list
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(watch_list));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(later_list));
             this.add_button = new System.Windows.Forms.Button();
             this.movie_listbox = new System.Windows.Forms.ListBox();
             this.movie_name_lbl = new System.Windows.Forms.Label();
@@ -340,7 +340,7 @@
             // 
             this.error_provider.ContainerControl = this;
             // 
-            // watch_list
+            // later_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -350,10 +350,10 @@
             this.Controls.Add(this.list_operations_gb);
             this.Controls.Add(this.sections_gb);
             this.Controls.Add(this.version_lbl);
-            this.Name = "watch_list";
+            this.Name = "later_list";
             this.Text = "Later List";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.watch_list_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.watch_list_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.later_list_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.later_list_FormClosed);
             this.sections_gb.ResumeLayout(false);
             this.sections_gb.PerformLayout();
             this.list_operations_gb.ResumeLayout(false);

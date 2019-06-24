@@ -1,4 +1,4 @@
-﻿namespace watch_list
+﻿namespace later_list
 {
     partial class Settings
     {

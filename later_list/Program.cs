@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace watch_list
+namespace later_list
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace watch_list
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new watch_list());
+            Application.Run(new later_list());
         }
     }
 }

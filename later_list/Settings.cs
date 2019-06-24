@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace watch_list
+namespace later_list
 {
     public partial class Settings : Form
     {
@@ -106,6 +106,7 @@ namespace watch_list
             Properties.Settings.Default.Save();
             MessageBox.Show("Settings Saved!");
             save_settings_button.Enabled = false;
+            this.Close();
         }
 
         private void open_movie_path_button_Click(object sender, EventArgs e)

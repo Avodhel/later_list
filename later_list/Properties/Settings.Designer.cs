@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace watch_list.Properties {
+namespace later_list.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

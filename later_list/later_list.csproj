@@ -6,14 +6,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3783B7DC-60A0-4F43-8E77-F7C6FC7D1404}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>watch_list</RootNamespace>
-    <AssemblyName>watch_list</AssemblyName>
+    <RootNamespace>later_list</RootNamespace>
+    <AssemblyName>later_list</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\XqW\Desktop\</PublishUrl>
+    <PublishUrl>C:\Users\XqW\Desktop\.Net Programlar\Later List\publish\</PublishUrl>
     <Install>false</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>14</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -81,19 +81,19 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="watch_list.cs">
+    <Compile Include="later_list.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="watch_list.Designer.cs">
-      <DependentUpon>watch_list.cs</DependentUpon>
+    <Compile Include="later_list.Designer.cs">
+      <DependentUpon>later_list.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="watch_list.resx">
-      <DependentUpon>watch_list.cs</DependentUpon>
+    <EmbeddedResource Include="later_list.resx">
+      <DependentUpon>later_list.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -103,6 +103,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -113,7 +114,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="watch_list_TemporaryKey.pfx" />
+    <None Include="later_list_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

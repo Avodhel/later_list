@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace watch_list
+namespace later_list
 { 
-    public partial class watch_list : Form
+    public partial class later_list : Form
     {
         #region variables
         string which_section = "movie";
@@ -110,7 +110,7 @@ namespace watch_list
         #endregion
 
         #region start app
-        public watch_list()
+        public later_list()
         {
             FormManager.registerForm(this);
             InitializeComponent();
@@ -126,7 +126,7 @@ namespace watch_list
         #endregion
 
         #region exit from app
-        private void watch_list_FormClosing(object sender, FormClosingEventArgs e)
+        private void later_list_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (save_button.Enabled == true)
             {
@@ -144,7 +144,7 @@ namespace watch_list
             }
         }
 
-        private void watch_list_FormClosed(object sender, FormClosedEventArgs e)
+        private void later_list_FormClosed(object sender, FormClosedEventArgs e)
         {
             FormManager.unRegisterForm(this);
         }
