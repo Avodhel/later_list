@@ -350,6 +350,7 @@
             this.Controls.Add(this.list_operations_gb);
             this.Controls.Add(this.sections_gb);
             this.Controls.Add(this.version_lbl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "later_list";
             this.Text = "Later List";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.later_list_FormClosing);
