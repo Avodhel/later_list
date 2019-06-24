@@ -1,5 +1,6 @@
-# Watch List
+![later_list_logo](later_list_logo.png)
+# Later List
 
 ![later_list](later_list.png)
 
-### Make your own watch list for movies and series or read list for books.
+### Make your own later list for movies, series and books.
