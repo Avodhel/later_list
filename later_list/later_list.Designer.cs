@@ -75,6 +75,7 @@
             // movie_listbox
             // 
             this.movie_listbox.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.movie_listbox.HorizontalScrollbar = true;
             this.movie_listbox.ItemHeight = 14;
             this.movie_listbox.Location = new System.Drawing.Point(24, 139);
             this.movie_listbox.Name = "movie_listbox";
@@ -177,6 +178,7 @@
             // serie_listbox
             // 
             this.serie_listbox.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serie_listbox.HorizontalScrollbar = true;
             this.serie_listbox.ItemHeight = 14;
             this.serie_listbox.Location = new System.Drawing.Point(24, 139);
             this.serie_listbox.Name = "serie_listbox";
@@ -205,6 +207,7 @@
             // book_listbox
             // 
             this.book_listbox.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.book_listbox.HorizontalScrollbar = true;
             this.book_listbox.ItemHeight = 14;
             this.book_listbox.Location = new System.Drawing.Point(24, 139);
             this.book_listbox.Name = "book_listbox";
@@ -282,9 +285,9 @@
             this.version_lbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.version_lbl.Location = new System.Drawing.Point(301, 321);
             this.version_lbl.Name = "version_lbl";
-            this.version_lbl.Size = new System.Drawing.Size(27, 12);
+            this.version_lbl.Size = new System.Drawing.Size(26, 12);
             this.version_lbl.TabIndex = 3;
-            this.version_lbl.Text = "v1.0";
+            this.version_lbl.Text = "v1.1";
             // 
             // sections_gb
             // 
