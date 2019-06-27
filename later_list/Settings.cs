@@ -103,10 +103,18 @@ namespace later_list
             Properties.Settings.Default.book_path = book_path_tb.Text;
             Properties.Settings.Default.theme = which_theme;
 
-            Properties.Settings.Default.Save();
-            MessageBox.Show("Settings Saved!");
             save_settings_button.Enabled = false;
-            this.Close();
+            Properties.Settings.Default.Save();
+
+            //check settings form is already open
+            FormCollection fc = Application.OpenForms;
+            foreach (Form frm in fc)
+            {
+                if (frm.Name == "Settings")
+                {
+                    this.Close(); //if it's close it
+                }
+            }
         }
 
         private void open_movie_path_button_Click(object sender, EventArgs e)
@@ -199,6 +207,7 @@ namespace later_list
         private void save_settings_button_Click(object sender, EventArgs e)
         {
             saveSettings();
+            MessageBox.Show("Settings Saved!");
         }
         #endregion
     }
