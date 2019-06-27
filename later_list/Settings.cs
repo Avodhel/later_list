@@ -112,7 +112,7 @@ namespace later_list
             {
                 if (frm.Name == "Settings")
                 {
-                    this.Close(); //if it's close it
+                    this.Close(); //if it's, close it
                 }
             }
         }
@@ -122,7 +122,7 @@ namespace later_list
             openfiledialog.InitialDirectory = @Properties.Settings.Default.movie_path;
             openfiledialog.RestoreDirectory = true;
             openfiledialog.FileName = "movielist";
-            openfiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
+            openfiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
             openfiledialog.FilterIndex = 0;
             if (openfiledialog.ShowDialog() == DialogResult.OK)
             {
@@ -141,7 +141,7 @@ namespace later_list
             openfiledialog.InitialDirectory = @Properties.Settings.Default.serie_path;
             openfiledialog.RestoreDirectory = true;
             openfiledialog.FileName = "serielist";
-            openfiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
+            openfiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
             openfiledialog.FilterIndex = 0;
             if (openfiledialog.ShowDialog() == DialogResult.OK)
             {
@@ -160,7 +160,7 @@ namespace later_list
             openfiledialog.InitialDirectory = @Properties.Settings.Default.book_path;
             openfiledialog.RestoreDirectory = true;
             openfiledialog.FileName = "booklist";
-            openfiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
+            openfiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
             openfiledialog.FilterIndex = 0;
             if (openfiledialog.ShowDialog() == DialogResult.OK)
             {

@@ -380,7 +380,7 @@ namespace later_list
                 savefiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 savefiledialog.RestoreDirectory = true;
                 savefiledialog.FileName = "movielist";
-                savefiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
+                savefiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
                 if (savefiledialog.ShowDialog() == DialogResult.OK)
                 {
                     settings_screen.MovieTextBoxText = savefiledialog.FileName;
@@ -406,7 +406,7 @@ namespace later_list
                 savefiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 savefiledialog.RestoreDirectory = true;
                 savefiledialog.FileName = "serielist";
-                savefiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
+                savefiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
                 if (savefiledialog.ShowDialog() == DialogResult.OK)
                 {
                     settings_screen.SerieTextBoxText = savefiledialog.FileName;
@@ -432,7 +432,7 @@ namespace later_list
                 savefiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 savefiledialog.RestoreDirectory = true;
                 savefiledialog.FileName = "booklist";
-                savefiledialog.Filter = "Metin dosyaları (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*";
+                savefiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
                 if (savefiledialog.ShowDialog() == DialogResult.OK)
                 {
                     settings_screen.BookTextBoxText = savefiledialog.FileName;
@@ -492,8 +492,6 @@ namespace later_list
         
         private void save_list(bool show_message)
         {
-            //save_path = which_section + "list.txt";
-
             StreamWriter saveFile = new StreamWriter(save_path);
             foreach (var item in listBox.Items)
             {
@@ -512,8 +510,6 @@ namespace later_list
         
         private void load_list()
         {
-            //load_path = which_section + "list.txt";
-
             try
             {
                 using (StreamReader loadFile = new StreamReader(load_path))
