@@ -46,7 +46,7 @@ namespace later_list
 
                 if (confirm == DialogResult.OK)
                 {
-
+                    save_settings_button.Enabled = false;
                 }
                 else if (confirm == DialogResult.Cancel)
                 {

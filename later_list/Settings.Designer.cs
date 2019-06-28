@@ -65,6 +65,7 @@
             this.movie_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.movie_path_tb.Location = new System.Drawing.Point(86, 14);
             this.movie_path_tb.Name = "movie_path_tb";
+            this.movie_path_tb.ReadOnly = true;
             this.movie_path_tb.Size = new System.Drawing.Size(186, 26);
             this.movie_path_tb.TabIndex = 4;
             // 
@@ -170,6 +171,7 @@
             this.book_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.book_path_tb.Location = new System.Drawing.Point(86, 71);
             this.book_path_tb.Name = "book_path_tb";
+            this.book_path_tb.ReadOnly = true;
             this.book_path_tb.Size = new System.Drawing.Size(186, 26);
             this.book_path_tb.TabIndex = 8;
             // 
@@ -200,6 +202,7 @@
             this.serie_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serie_path_tb.Location = new System.Drawing.Point(86, 43);
             this.serie_path_tb.Name = "serie_path_tb";
+            this.serie_path_tb.ReadOnly = true;
             this.serie_path_tb.Size = new System.Drawing.Size(186, 26);
             this.serie_path_tb.TabIndex = 5;
             // 
