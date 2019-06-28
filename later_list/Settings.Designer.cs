@@ -1,6 +1,6 @@
 ﻿namespace later_list
 {
-    partial class Settings
+    partial class settings
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(settings));
             this.open_movie_path_button = new System.Windows.Forms.Button();
             this.movie_path_tb = new System.Windows.Forms.TextBox();
             this.movie_path_lbl = new System.Windows.Forms.Label();

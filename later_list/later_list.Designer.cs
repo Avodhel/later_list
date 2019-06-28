@@ -51,15 +51,15 @@
             this.savefiledialog = new System.Windows.Forms.SaveFileDialog();
             this.sections_gb = new System.Windows.Forms.GroupBox();
             this.list_operations_gb = new System.Windows.Forms.GroupBox();
-            this.settings_button = new System.Windows.Forms.Button();
-            this.error_provider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.input_fields_panel = new System.Windows.Forms.Panel();
             this.author_lbl = new System.Windows.Forms.Label();
             this.author_tb = new System.Windows.Forms.TextBox();
+            this.settings_button = new System.Windows.Forms.Button();
+            this.error_provider = new System.Windows.Forms.ErrorProvider(this.components);
             this.sections_gb.SuspendLayout();
             this.list_operations_gb.SuspendLayout();
+            this.input_fields_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error_provider)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // add_button
@@ -310,7 +310,7 @@
             // list_operations_gb
             // 
             this.list_operations_gb.BackColor = System.Drawing.Color.Transparent;
-            this.list_operations_gb.Controls.Add(this.panel1);
+            this.list_operations_gb.Controls.Add(this.input_fields_panel);
             this.list_operations_gb.Controls.Add(this.save_button);
             this.list_operations_gb.Controls.Add(this.edit_button);
             this.list_operations_gb.Controls.Add(this.remove_button);
@@ -327,36 +327,21 @@
             this.list_operations_gb.TabStop = false;
             this.list_operations_gb.Text = "List Operations";
             // 
-            // settings_button
+            // input_fields_panel
             // 
-            this.settings_button.Image = ((System.Drawing.Image)(resources.GetObject("settings_button.Image")));
-            this.settings_button.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.settings_button.Location = new System.Drawing.Point(303, 16);
-            this.settings_button.Name = "settings_button";
-            this.settings_button.Size = new System.Drawing.Size(25, 24);
-            this.settings_button.TabIndex = 21;
-            this.settings_button.UseVisualStyleBackColor = true;
-            this.settings_button.Click += new System.EventHandler(this.settings_button_Click);
-            // 
-            // error_provider
-            // 
-            this.error_provider.ContainerControl = this;
-            // 
-            // panel1
-            // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.author_lbl);
-            this.panel1.Controls.Add(this.author_tb);
-            this.panel1.Controls.Add(this.movie_name_lbl);
-            this.panel1.Controls.Add(this.name_tb);
-            this.panel1.Controls.Add(this.serie_name_lbl);
-            this.panel1.Controls.Add(this.genre_lbl);
-            this.panel1.Controls.Add(this.book_name_lbl);
-            this.panel1.Controls.Add(this.genre_cb);
-            this.panel1.Location = new System.Drawing.Point(8, 13);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(239, 65);
-            this.panel1.TabIndex = 22;
+            this.input_fields_panel.AutoScroll = true;
+            this.input_fields_panel.Controls.Add(this.author_lbl);
+            this.input_fields_panel.Controls.Add(this.author_tb);
+            this.input_fields_panel.Controls.Add(this.movie_name_lbl);
+            this.input_fields_panel.Controls.Add(this.name_tb);
+            this.input_fields_panel.Controls.Add(this.serie_name_lbl);
+            this.input_fields_panel.Controls.Add(this.genre_lbl);
+            this.input_fields_panel.Controls.Add(this.book_name_lbl);
+            this.input_fields_panel.Controls.Add(this.genre_cb);
+            this.input_fields_panel.Location = new System.Drawing.Point(8, 13);
+            this.input_fields_panel.Name = "input_fields_panel";
+            this.input_fields_panel.Size = new System.Drawing.Size(239, 65);
+            this.input_fields_panel.TabIndex = 22;
             // 
             // author_lbl
             // 
@@ -379,6 +364,21 @@
             this.author_tb.TabIndex = 19;
             this.author_tb.Visible = false;
             // 
+            // settings_button
+            // 
+            this.settings_button.Image = ((System.Drawing.Image)(resources.GetObject("settings_button.Image")));
+            this.settings_button.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.settings_button.Location = new System.Drawing.Point(303, 16);
+            this.settings_button.Name = "settings_button";
+            this.settings_button.Size = new System.Drawing.Size(25, 24);
+            this.settings_button.TabIndex = 21;
+            this.settings_button.UseVisualStyleBackColor = true;
+            this.settings_button.Click += new System.EventHandler(this.settings_button_Click);
+            // 
+            // error_provider
+            // 
+            this.error_provider.ContainerControl = this;
+            // 
             // later_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,9 +399,9 @@
             this.sections_gb.ResumeLayout(false);
             this.sections_gb.PerformLayout();
             this.list_operations_gb.ResumeLayout(false);
+            this.input_fields_panel.ResumeLayout(false);
+            this.input_fields_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error_provider)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,7 +432,7 @@
         private System.Windows.Forms.GroupBox list_operations_gb;
         private System.Windows.Forms.Button settings_button;
         private System.Windows.Forms.ErrorProvider error_provider;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel input_fields_panel;
         private System.Windows.Forms.Label author_lbl;
         private System.Windows.Forms.TextBox author_tb;
     }

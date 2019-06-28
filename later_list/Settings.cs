@@ -10,23 +10,23 @@ using System.Windows.Forms;
 
 namespace later_list
 {
-    public partial class Settings : Form
+    public partial class settings : Form
     {
         #region variables
-        string which_theme;
+        string whichTheme;
         #endregion
 
         #region settings opened
-        public Settings()
+        public settings()
         {
             FormManager.registerForm(this);
             InitializeComponent();
         }
 
         private Form mainForm = null;
-        public Settings(Form settings)
+        public settings(Form settings)
         {
-            mainForm = settings as Settings;
+            mainForm = settings as settings;
             InitializeComponent();
         }
 
@@ -101,7 +101,7 @@ namespace later_list
             Properties.Settings.Default.movie_path = movie_path_tb.Text;
             Properties.Settings.Default.serie_path = serie_path_tb.Text;
             Properties.Settings.Default.book_path = book_path_tb.Text;
-            Properties.Settings.Default.theme = which_theme;
+            Properties.Settings.Default.theme = whichTheme;
 
             save_settings_button.Enabled = false;
             Properties.Settings.Default.Save();
@@ -178,7 +178,7 @@ namespace later_list
         {
             if (light_rb.Checked)
             {
-                which_theme = "Light";
+                whichTheme = "Light";
                 FormManager.setAllBackcolors(SystemColors.InactiveBorder);
                 if(Properties.Settings.Default.theme == "Dark")
                 {
@@ -191,7 +191,7 @@ namespace later_list
             }
             if (dark_rb.Checked)
             {
-                which_theme = "Dark";
+                whichTheme = "Dark";
                 FormManager.setAllBackcolors(SystemColors.InactiveCaptionText);
                 if (Properties.Settings.Default.theme == "Light")
                 {
