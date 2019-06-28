@@ -49,6 +49,7 @@ namespace later_list
                 if (confirm == DialogResult.OK)
                 {
                     save_settings_button.Enabled = false;
+                    getSettings();
                 }
                 else if (confirm == DialogResult.Cancel)
                 {
@@ -172,6 +173,23 @@ namespace later_list
             {
                 getSettings();
                 save_settings_button.Enabled = false;
+            }
+        }
+
+        private void clearPath(object sender, EventArgs e)
+        {
+            save_settings_button.Enabled = true;
+            switch (((Button)sender).Name)
+            {
+                case "clear_movie_path_button":
+                    movie_path_tb.Text = "";
+                    break;
+                case "clear_serie_path_button":
+                    serie_path_tb.Text = "";
+                    break;
+                case "clear_book_path_button":
+                    book_path_tb.Text = "";
+                    break;
             }
         }
 
