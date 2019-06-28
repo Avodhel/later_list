@@ -16,8 +16,10 @@ namespace later_list
         #region variables
         string which_section = "movie";
         string data;
-        //List<string> listbox = new List<string>();
         ListBox listBox = new ListBox();
+        string get_info;
+        string name_part;
+        string author_part;
         string genre_part;
         string save_path;
         string load_path;
@@ -310,9 +312,15 @@ namespace later_list
                 MessageBox.Show("Please add a " + which_section + " name", "Error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
+            else if(which_section != "book")
             {
                 data = name_tb.Text + " (" + genre_cb.Text + ")";
+                addToList(data);
+                refresh_input_fields();
+            }
+            else if(which_section == "book")
+            {
+                data = name_tb.Text + " - " + author_tb.Text + " (" + genre_cb.Text + ")";
                 addToList(data);
                 refresh_input_fields();
             }
@@ -355,10 +363,31 @@ namespace later_list
 
             try
             {
-                //name_tb.Text = listBox.SelectedItem.ToString();
-                string get_info = listBox.SelectedItem.ToString();
-                string name_part = get_info.Split('(')[0];
+                get_info = listBox.SelectedItem.ToString();        
+                if (which_section != "book")
+                {
+                    name_part = get_info.Split('(')[0];
+                }
+                else if (which_section == "book")
+                {
+                    name_part = get_info.Split('-')[0];
+                    author_part = get_info.Split('-')[1];
+                    author_part = author_part.TrimStart(' ');
+                }
                 name_part = name_part.TrimEnd(' ');
+
+                if (which_section == "book")
+                {
+                    try
+                    {
+                        author_part = author_part.Split('(')[0];
+                        author_part = author_part.TrimEnd(' ');
+                    }
+                    catch
+                    {
+                        author_part = "";
+                    }
+                }
 
                 try
                 {
@@ -369,7 +398,12 @@ namespace later_list
                 {
                     genre_part = "";
                 }
+
                 name_tb.Text = name_part;
+                if (which_section == "book")
+                {
+                    author_tb.Text = author_part;
+                }
                 genre_cb.Text = genre_part;
             }
             catch
@@ -384,7 +418,14 @@ namespace later_list
 
             int index = listBox.SelectedIndex;
             listBox.Items.RemoveAt(index);
-            listBox.Items.Insert(index, name_tb.Text + " (" + genre_cb.Text + ")");
+            if(which_section != "book")
+            {
+                listBox.Items.Insert(index, name_tb.Text + " (" + genre_cb.Text + ")");
+            }
+            else if (which_section == "book")
+            {
+               listBox.Items.Insert(index, name_tb.Text + " - " + author_tb.Text + " (" + genre_cb.Text + ")");
+            }
             //refresh input fields
             refresh_input_fields();
         }
