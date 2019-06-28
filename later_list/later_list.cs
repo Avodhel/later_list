@@ -160,6 +160,12 @@ namespace later_list
                 movie_name_lbl.Visible = true;
                 serie_name_lbl.Visible = false;
                 book_name_lbl.Visible = false;
+                author_lbl.Visible = false;
+                genre_lbl.Location = new Point(37, 37);
+                //checkbox
+                genre_cb.Location = new Point(85, 35);
+                //textbox
+                author_tb.Visible = false;
                 //listbox
                 movie_listbox.Visible = true;
                 serie_listbox.Visible = false;
@@ -187,6 +193,12 @@ namespace later_list
                 movie_name_lbl.Visible = false;
                 serie_name_lbl.Visible = true;
                 book_name_lbl.Visible = false;
+                author_lbl.Visible = false;
+                genre_lbl.Location = new Point(37, 37);
+                //checkbox
+                genre_cb.Location = new Point(85, 35);
+                //textbox
+                author_tb.Visible = false;
                 //listbox
                 movie_listbox.Visible = false;
                 serie_listbox.Visible = true;
@@ -214,6 +226,12 @@ namespace later_list
                 movie_name_lbl.Visible = false;
                 serie_name_lbl.Visible = false;
                 book_name_lbl.Visible = true;
+                author_lbl.Visible = true;
+                genre_lbl.Location = new Point(37, 69);
+                //checkbox
+                genre_cb.Location = new Point(85, 67);
+                //textbox
+                author_tb.Visible = true;
                 //listbox
                 movie_listbox.Visible = false;
                 serie_listbox.Visible = false;
@@ -261,6 +279,7 @@ namespace later_list
         {
             name_tb.Text = "";
             genre_cb.Text = "";
+            author_tb.Text = "";
         }
 
         private void load_genres()
@@ -551,6 +570,5 @@ namespace later_list
             }
         }
         #endregion
-
     }
 }

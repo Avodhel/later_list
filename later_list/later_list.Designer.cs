@@ -36,7 +36,7 @@
             this.genre_cb = new System.Windows.Forms.ComboBox();
             this.name_tb = new System.Windows.Forms.TextBox();
             this.remove_button = new System.Windows.Forms.Button();
-            this.genre_label = new System.Windows.Forms.Label();
+            this.genre_lbl = new System.Windows.Forms.Label();
             this.edit_button = new System.Windows.Forms.Button();
             this.clear_button = new System.Windows.Forms.Button();
             this.serie_listbox = new System.Windows.Forms.ListBox();
@@ -53,9 +53,13 @@
             this.list_operations_gb = new System.Windows.Forms.GroupBox();
             this.settings_button = new System.Windows.Forms.Button();
             this.error_provider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.author_lbl = new System.Windows.Forms.Label();
+            this.author_tb = new System.Windows.Forms.TextBox();
             this.sections_gb.SuspendLayout();
             this.list_operations_gb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error_provider)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // add_button
@@ -64,7 +68,7 @@
             this.add_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.add_button.Image = ((System.Drawing.Image)(resources.GetObject("add_button.Image")));
             this.add_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.add_button.Location = new System.Drawing.Point(24, 76);
+            this.add_button.Location = new System.Drawing.Point(24, 80);
             this.add_button.Name = "add_button";
             this.add_button.Size = new System.Drawing.Size(129, 27);
             this.add_button.TabIndex = 0;
@@ -77,7 +81,7 @@
             this.movie_listbox.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.movie_listbox.HorizontalScrollbar = true;
             this.movie_listbox.ItemHeight = 14;
-            this.movie_listbox.Location = new System.Drawing.Point(24, 139);
+            this.movie_listbox.Location = new System.Drawing.Point(24, 143);
             this.movie_listbox.Name = "movie_listbox";
             this.movie_listbox.Size = new System.Drawing.Size(266, 116);
             this.movie_listbox.TabIndex = 8;
@@ -88,7 +92,7 @@
             this.movie_name_lbl.AutoSize = true;
             this.movie_name_lbl.BackColor = System.Drawing.Color.Transparent;
             this.movie_name_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.movie_name_lbl.Location = new System.Drawing.Point(21, 23);
+            this.movie_name_lbl.Location = new System.Drawing.Point(3, 5);
             this.movie_name_lbl.Name = "movie_name_lbl";
             this.movie_name_lbl.Size = new System.Drawing.Size(76, 16);
             this.movie_name_lbl.TabIndex = 4;
@@ -103,7 +107,7 @@
             "Drama",
             "Fiction",
             "Science Fiction"});
-            this.genre_cb.Location = new System.Drawing.Point(103, 47);
+            this.genre_cb.Location = new System.Drawing.Point(85, 35);
             this.genre_cb.Name = "genre_cb";
             this.genre_cb.Size = new System.Drawing.Size(135, 22);
             this.genre_cb.TabIndex = 6;
@@ -112,7 +116,7 @@
             // name_tb
             // 
             this.name_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.name_tb.Location = new System.Drawing.Point(103, 17);
+            this.name_tb.Location = new System.Drawing.Point(85, 3);
             this.name_tb.Name = "name_tb";
             this.name_tb.Size = new System.Drawing.Size(135, 26);
             this.name_tb.TabIndex = 10;
@@ -125,7 +129,7 @@
             this.remove_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.remove_button.Image = ((System.Drawing.Image)(resources.GetObject("remove_button.Image")));
             this.remove_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.remove_button.Location = new System.Drawing.Point(162, 76);
+            this.remove_button.Location = new System.Drawing.Point(162, 80);
             this.remove_button.Name = "remove_button";
             this.remove_button.Size = new System.Drawing.Size(128, 28);
             this.remove_button.TabIndex = 11;
@@ -133,17 +137,17 @@
             this.remove_button.UseVisualStyleBackColor = false;
             this.remove_button.Click += new System.EventHandler(this.remove_button_Click);
             // 
-            // genre_label
+            // genre_lbl
             // 
-            this.genre_label.AutoSize = true;
-            this.genre_label.BackColor = System.Drawing.Color.Transparent;
-            this.genre_label.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genre_label.Location = new System.Drawing.Point(55, 51);
-            this.genre_label.Name = "genre_label";
-            this.genre_label.Size = new System.Drawing.Size(42, 16);
-            this.genre_label.TabIndex = 12;
-            this.genre_label.Text = "Genre:";
-            this.genre_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.genre_lbl.AutoSize = true;
+            this.genre_lbl.BackColor = System.Drawing.Color.Transparent;
+            this.genre_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.genre_lbl.Location = new System.Drawing.Point(37, 37);
+            this.genre_lbl.Name = "genre_lbl";
+            this.genre_lbl.Size = new System.Drawing.Size(42, 16);
+            this.genre_lbl.TabIndex = 12;
+            this.genre_lbl.Text = "Genre:";
+            this.genre_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // edit_button
             // 
@@ -152,7 +156,7 @@
             this.edit_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.edit_button.Image = ((System.Drawing.Image)(resources.GetObject("edit_button.Image")));
             this.edit_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.edit_button.Location = new System.Drawing.Point(24, 105);
+            this.edit_button.Location = new System.Drawing.Point(24, 109);
             this.edit_button.Name = "edit_button";
             this.edit_button.Size = new System.Drawing.Size(129, 28);
             this.edit_button.TabIndex = 13;
@@ -166,9 +170,9 @@
             this.clear_button.Font = new System.Drawing.Font("Advanced Pixel-7", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clear_button.Image = ((System.Drawing.Image)(resources.GetObject("clear_button.Image")));
             this.clear_button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.clear_button.Location = new System.Drawing.Point(244, 17);
+            this.clear_button.Location = new System.Drawing.Point(251, 13);
             this.clear_button.Name = "clear_button";
-            this.clear_button.Size = new System.Drawing.Size(46, 53);
+            this.clear_button.Size = new System.Drawing.Size(39, 61);
             this.clear_button.TabIndex = 19;
             this.clear_button.Text = "Clear Fields";
             this.clear_button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -180,7 +184,7 @@
             this.serie_listbox.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serie_listbox.HorizontalScrollbar = true;
             this.serie_listbox.ItemHeight = 14;
-            this.serie_listbox.Location = new System.Drawing.Point(24, 139);
+            this.serie_listbox.Location = new System.Drawing.Point(24, 143);
             this.serie_listbox.Name = "serie_listbox";
             this.serie_listbox.Size = new System.Drawing.Size(266, 116);
             this.serie_listbox.TabIndex = 9;
@@ -194,7 +198,7 @@
             this.save_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.save_button.Image = ((System.Drawing.Image)(resources.GetObject("save_button.Image")));
             this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.save_button.Location = new System.Drawing.Point(162, 105);
+            this.save_button.Location = new System.Drawing.Point(162, 109);
             this.save_button.Name = "save_button";
             this.save_button.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.save_button.Size = new System.Drawing.Size(128, 28);
@@ -209,7 +213,7 @@
             this.book_listbox.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.book_listbox.HorizontalScrollbar = true;
             this.book_listbox.ItemHeight = 14;
-            this.book_listbox.Location = new System.Drawing.Point(24, 139);
+            this.book_listbox.Location = new System.Drawing.Point(24, 143);
             this.book_listbox.Name = "book_listbox";
             this.book_listbox.Size = new System.Drawing.Size(266, 116);
             this.book_listbox.TabIndex = 10;
@@ -221,7 +225,7 @@
             this.book_name_lbl.AutoSize = true;
             this.book_name_lbl.BackColor = System.Drawing.Color.Transparent;
             this.book_name_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.book_name_lbl.Location = new System.Drawing.Point(25, 23);
+            this.book_name_lbl.Location = new System.Drawing.Point(7, 5);
             this.book_name_lbl.Name = "book_name_lbl";
             this.book_name_lbl.Size = new System.Drawing.Size(72, 16);
             this.book_name_lbl.TabIndex = 17;
@@ -233,7 +237,7 @@
             this.serie_name_lbl.AutoSize = true;
             this.serie_name_lbl.BackColor = System.Drawing.Color.Transparent;
             this.serie_name_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serie_name_lbl.Location = new System.Drawing.Point(21, 23);
+            this.serie_name_lbl.Location = new System.Drawing.Point(3, 5);
             this.serie_name_lbl.Name = "serie_name_lbl";
             this.serie_name_lbl.Size = new System.Drawing.Size(76, 16);
             this.serie_name_lbl.TabIndex = 4;
@@ -244,7 +248,7 @@
             // 
             this.books_rb.AutoSize = true;
             this.books_rb.Font = new System.Drawing.Font("Advanced Pixel-7", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.books_rb.Location = new System.Drawing.Point(165, 16);
+            this.books_rb.Location = new System.Drawing.Point(155, 16);
             this.books_rb.Name = "books_rb";
             this.books_rb.Size = new System.Drawing.Size(61, 22);
             this.books_rb.TabIndex = 2;
@@ -256,7 +260,7 @@
             // 
             this.series_rb.AutoSize = true;
             this.series_rb.Font = new System.Drawing.Font("Advanced Pixel-7", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.series_rb.Location = new System.Drawing.Point(93, 16);
+            this.series_rb.Location = new System.Drawing.Point(83, 16);
             this.series_rb.Name = "series_rb";
             this.series_rb.Size = new System.Drawing.Size(66, 22);
             this.series_rb.TabIndex = 1;
@@ -269,7 +273,7 @@
             this.movie_rb.AutoSize = true;
             this.movie_rb.Checked = true;
             this.movie_rb.Font = new System.Drawing.Font("Advanced Pixel-7", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.movie_rb.Location = new System.Drawing.Point(18, 16);
+            this.movie_rb.Location = new System.Drawing.Point(8, 16);
             this.movie_rb.Name = "movie_rb";
             this.movie_rb.Size = new System.Drawing.Size(69, 22);
             this.movie_rb.TabIndex = 0;
@@ -283,7 +287,7 @@
             this.version_lbl.AutoSize = true;
             this.version_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.version_lbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.version_lbl.Location = new System.Drawing.Point(301, 321);
+            this.version_lbl.Location = new System.Drawing.Point(301, 323);
             this.version_lbl.Name = "version_lbl";
             this.version_lbl.Size = new System.Drawing.Size(26, 12);
             this.version_lbl.TabIndex = 3;
@@ -298,7 +302,7 @@
             this.sections_gb.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sections_gb.Location = new System.Drawing.Point(12, 2);
             this.sections_gb.Name = "sections_gb";
-            this.sections_gb.Size = new System.Drawing.Size(238, 45);
+            this.sections_gb.Size = new System.Drawing.Size(228, 45);
             this.sections_gb.TabIndex = 17;
             this.sections_gb.TabStop = false;
             this.sections_gb.Text = "Sections";
@@ -306,24 +310,19 @@
             // list_operations_gb
             // 
             this.list_operations_gb.BackColor = System.Drawing.Color.Transparent;
+            this.list_operations_gb.Controls.Add(this.panel1);
             this.list_operations_gb.Controls.Add(this.save_button);
-            this.list_operations_gb.Controls.Add(this.movie_name_lbl);
             this.list_operations_gb.Controls.Add(this.edit_button);
-            this.list_operations_gb.Controls.Add(this.serie_name_lbl);
             this.list_operations_gb.Controls.Add(this.remove_button);
-            this.list_operations_gb.Controls.Add(this.genre_label);
-            this.list_operations_gb.Controls.Add(this.book_name_lbl);
-            this.list_operations_gb.Controls.Add(this.clear_button);
             this.list_operations_gb.Controls.Add(this.serie_listbox);
+            this.list_operations_gb.Controls.Add(this.clear_button);
             this.list_operations_gb.Controls.Add(this.book_listbox);
             this.list_operations_gb.Controls.Add(this.add_button);
             this.list_operations_gb.Controls.Add(this.movie_listbox);
-            this.list_operations_gb.Controls.Add(this.name_tb);
-            this.list_operations_gb.Controls.Add(this.genre_cb);
             this.list_operations_gb.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.list_operations_gb.Location = new System.Drawing.Point(12, 53);
             this.list_operations_gb.Name = "list_operations_gb";
-            this.list_operations_gb.Size = new System.Drawing.Size(316, 265);
+            this.list_operations_gb.Size = new System.Drawing.Size(316, 267);
             this.list_operations_gb.TabIndex = 20;
             this.list_operations_gb.TabStop = false;
             this.list_operations_gb.Text = "List Operations";
@@ -343,12 +342,49 @@
             // 
             this.error_provider.ContainerControl = this;
             // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.author_lbl);
+            this.panel1.Controls.Add(this.author_tb);
+            this.panel1.Controls.Add(this.movie_name_lbl);
+            this.panel1.Controls.Add(this.name_tb);
+            this.panel1.Controls.Add(this.serie_name_lbl);
+            this.panel1.Controls.Add(this.genre_lbl);
+            this.panel1.Controls.Add(this.book_name_lbl);
+            this.panel1.Controls.Add(this.genre_cb);
+            this.panel1.Location = new System.Drawing.Point(8, 13);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(239, 65);
+            this.panel1.TabIndex = 22;
+            // 
+            // author_lbl
+            // 
+            this.author_lbl.AutoSize = true;
+            this.author_lbl.BackColor = System.Drawing.Color.Transparent;
+            this.author_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.author_lbl.Location = new System.Drawing.Point(31, 37);
+            this.author_lbl.Name = "author_lbl";
+            this.author_lbl.Size = new System.Drawing.Size(48, 16);
+            this.author_lbl.TabIndex = 18;
+            this.author_lbl.Text = "Author:";
+            this.author_lbl.Visible = false;
+            // 
+            // author_tb
+            // 
+            this.author_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.author_tb.Location = new System.Drawing.Point(85, 35);
+            this.author_tb.Name = "author_tb";
+            this.author_tb.Size = new System.Drawing.Size(135, 26);
+            this.author_tb.TabIndex = 19;
+            this.author_tb.Visible = false;
+            // 
             // later_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(341, 335);
+            this.ClientSize = new System.Drawing.Size(340, 336);
             this.Controls.Add(this.settings_button);
             this.Controls.Add(this.list_operations_gb);
             this.Controls.Add(this.sections_gb);
@@ -363,8 +399,9 @@
             this.sections_gb.ResumeLayout(false);
             this.sections_gb.PerformLayout();
             this.list_operations_gb.ResumeLayout(false);
-            this.list_operations_gb.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error_provider)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,7 +415,7 @@
         private System.Windows.Forms.ComboBox genre_cb;
         private System.Windows.Forms.TextBox name_tb;
         private System.Windows.Forms.Button remove_button;
-        private System.Windows.Forms.Label genre_label;
+        private System.Windows.Forms.Label genre_lbl;
         private System.Windows.Forms.Button edit_button;
         private System.Windows.Forms.RadioButton books_rb;
         private System.Windows.Forms.RadioButton series_rb;
@@ -395,6 +432,9 @@
         private System.Windows.Forms.GroupBox list_operations_gb;
         private System.Windows.Forms.Button settings_button;
         private System.Windows.Forms.ErrorProvider error_provider;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label author_lbl;
+        private System.Windows.Forms.TextBox author_tb;
     }
 }
 
