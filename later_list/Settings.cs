@@ -14,6 +14,8 @@ namespace later_list
     {
         #region variables
         string whichTheme;
+        string fileName;
+        string filePath;
         #endregion
 
         #region settings opened
@@ -88,7 +90,7 @@ namespace later_list
         }
         #endregion 
 
-        #region settings
+        #region settings datas
         public void getSettings()
         {
             movie_path_tb.Text = Properties.Settings.Default.movie_path;
@@ -110,61 +112,60 @@ namespace later_list
             FormCollection fc = Application.OpenForms;
             foreach (Form frm in fc)
             {
-                if (frm.Name == "Settings")
+                if (frm.Name == "settings")
                 {
                     this.Close(); //if it's, close it
                 }
             }
         }
+        #endregion
 
-        private void open_movie_path_button_Click(object sender, EventArgs e)
+        #region settings buttons
+        private void setFileName(string whichButton, string fileName)
         {
-            openfiledialog.InitialDirectory = @Properties.Settings.Default.movie_path;
-            openfiledialog.RestoreDirectory = true;
-            openfiledialog.FileName = "movielist";
-            openfiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            openfiledialog.FilterIndex = 0;
-            if (openfiledialog.ShowDialog() == DialogResult.OK)
+            switch (whichButton)
             {
-                movie_path_tb.Text = openfiledialog.FileName;
-                save_settings_button.Enabled = true;
-            }
-            else
-            {
-                getSettings();
-                save_settings_button.Enabled = false;
+                case "open_movie_path_button":
+                    movie_path_tb.Text = fileName;
+                    break;
+                case "open_serie_path_button":
+                    serie_path_tb.Text = fileName;
+                    break;
+                case "open_book_path_button":
+                    book_path_tb.Text = fileName;
+                    break;
             }
         }
 
-        private void open_serie_path_button_Click(object sender, EventArgs e)
+        private void detectButton(string whichButton)
         {
-            openfiledialog.InitialDirectory = @Properties.Settings.Default.serie_path;
-            openfiledialog.RestoreDirectory = true;
-            openfiledialog.FileName = "serielist";
-            openfiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            openfiledialog.FilterIndex = 0;
-            if (openfiledialog.ShowDialog() == DialogResult.OK)
+            switch (whichButton)
             {
-                serie_path_tb.Text = openfiledialog.FileName;
-                save_settings_button.Enabled = true;
-            }
-            else
-            {
-                getSettings();
-                save_settings_button.Enabled = false;
+                case "open_movie_path_button":
+                    filePath = @Properties.Settings.Default.movie_path;
+                    fileName = "movielist";
+                    break;
+                case "open_serie_path_button":
+                    filePath = @Properties.Settings.Default.serie_path;
+                    fileName = "serielist";
+                    break;
+                case "open_book_path_button":
+                    filePath = @Properties.Settings.Default.book_path;
+                    fileName = "booklist";
+                    break;
             }
         }
-
-        private void open_book_path_button_Click(object sender, EventArgs e)
+        private void openPath(object sender, EventArgs e)
         {
-            openfiledialog.InitialDirectory = @Properties.Settings.Default.book_path;
+            detectButton(((Button)sender).Name);
+            openfiledialog.InitialDirectory = filePath;
             openfiledialog.RestoreDirectory = true;
-            openfiledialog.FileName = "booklist";
+            openfiledialog.FileName = fileName;
             openfiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
             openfiledialog.FilterIndex = 0;
             if (openfiledialog.ShowDialog() == DialogResult.OK)
             {
-                book_path_tb.Text = openfiledialog.FileName;
+                setFileName(((Button)sender).Name, openfiledialog.FileName);
                 save_settings_button.Enabled = true;
             }
             else

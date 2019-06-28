@@ -22,6 +22,7 @@ namespace later_list
         string genrePart;
         string savePath;
         string loadPath;
+        string listPath;
         string[] movieGenres = {"Action",
                                  "Adventure",
                                  "Animation",
@@ -436,47 +437,55 @@ namespace later_list
         #endregion
 
         #region save
+        private void setListPath()
+        {
+            switch (whichSection)
+            {
+                case "movie":
+                    listPath = Properties.Settings.Default.movie_path;
+                    break;
+                case "serie":
+                    listPath = Properties.Settings.Default.serie_path;
+                    break;
+                case "book":
+                    listPath = Properties.Settings.Default.book_path;
+                    break;
+            }
+        }
+
+        private void setFileName(string fileName)
+        {
+            switch (whichSection)
+            {
+                case "movie":
+                    settingsForm.MovieTextBoxText = fileName;
+                    break;
+                case "serie":
+                    settingsForm.SerieTextBoxText = fileName;
+                    break;
+                case "book":
+                    settingsForm.BookTextBoxText = fileName;
+                    break;
+            }
+        }
+
         private void save_button_Click(object sender, EventArgs e)
         {
-            #region movie
-            if (whichSection == "movie" && Properties.Settings.Default.movie_path == "")
-            {
-                savefiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                savefiledialog.RestoreDirectory = true;
-                savefiledialog.FileName = "movielist";
-                savefiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-                if (savefiledialog.ShowDialog() == DialogResult.OK)
-                {
-                    settingsForm.MovieTextBoxText = savefiledialog.FileName;
-                    settingsForm.saveSettings();
-                    savePath = Properties.Settings.Default.movie_path;
-                    loadPath = Properties.Settings.Default.movie_path;
-                    saveList(true);
-                }
-                else
-                {
-                    settingsForm.getSettings();
-                }
-            }
-            else if(whichSection == "movie" && Properties.Settings.Default.movie_path != "")
-            {
-                saveList(true);
-            }
-            #endregion
+            setListPath();
 
-            #region serie
-            if (whichSection == "serie" && Properties.Settings.Default.serie_path == "")
+            if ( listPath == "")
             {
                 savefiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 savefiledialog.RestoreDirectory = true;
-                savefiledialog.FileName = "serielist";
+                savefiledialog.FileName = whichSection + "list";
                 savefiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
                 if (savefiledialog.ShowDialog() == DialogResult.OK)
                 {
-                    settingsForm.SerieTextBoxText = savefiledialog.FileName;
+                    setFileName(savefiledialog.FileName);
                     settingsForm.saveSettings();
-                    savePath = Properties.Settings.Default.serie_path;
-                    loadPath = Properties.Settings.Default.serie_path;
+                    setListPath();
+                    savePath = listPath;
+                    loadPath = listPath;
                     saveList(true);
                 }
                 else
@@ -484,37 +493,10 @@ namespace later_list
                     settingsForm.getSettings();
                 }
             }
-            else if (whichSection == "serie" && Properties.Settings.Default.serie_path != "")
+            else if (listPath != "")
             {
                 saveList(true);
             }
-            #endregion
-
-            #region book
-            if (whichSection == "book" && Properties.Settings.Default.book_path == "")
-            {
-                savefiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                savefiledialog.RestoreDirectory = true;
-                savefiledialog.FileName = "booklist";
-                savefiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-                if (savefiledialog.ShowDialog() == DialogResult.OK)
-                {
-                    settingsForm.BookTextBoxText = savefiledialog.FileName;
-                    settingsForm.saveSettings();
-                    savePath = Properties.Settings.Default.book_path;
-                    loadPath = Properties.Settings.Default.book_path;
-                    saveList(true);
-                }
-                else
-                {
-                    settingsForm.getSettings();
-                }
-            }
-            else if (whichSection == "book" && Properties.Settings.Default.book_path != "")
-            {
-                saveList(true);
-            }
-            #endregion
         }
 
         private void save_button_EnabledChanged(object sender, EventArgs e)

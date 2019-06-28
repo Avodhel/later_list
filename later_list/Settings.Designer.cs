@@ -58,14 +58,13 @@
             this.open_movie_path_button.Size = new System.Drawing.Size(31, 26);
             this.open_movie_path_button.TabIndex = 5;
             this.open_movie_path_button.UseVisualStyleBackColor = false;
-            this.open_movie_path_button.Click += new System.EventHandler(this.open_movie_path_button_Click);
+            this.open_movie_path_button.Click += new System.EventHandler(this.openPath);
             // 
             // movie_path_tb
             // 
             this.movie_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.movie_path_tb.Location = new System.Drawing.Point(86, 14);
             this.movie_path_tb.Name = "movie_path_tb";
-            this.movie_path_tb.ReadOnly = true;
             this.movie_path_tb.Size = new System.Drawing.Size(186, 26);
             this.movie_path_tb.TabIndex = 4;
             // 
@@ -164,14 +163,13 @@
             this.open_book_path_button.Size = new System.Drawing.Size(31, 27);
             this.open_book_path_button.TabIndex = 9;
             this.open_book_path_button.UseVisualStyleBackColor = false;
-            this.open_book_path_button.Click += new System.EventHandler(this.open_book_path_button_Click);
+            this.open_book_path_button.Click += new System.EventHandler(this.openPath);
             // 
             // book_path_tb
             // 
             this.book_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.book_path_tb.Location = new System.Drawing.Point(86, 71);
             this.book_path_tb.Name = "book_path_tb";
-            this.book_path_tb.ReadOnly = true;
             this.book_path_tb.Size = new System.Drawing.Size(186, 26);
             this.book_path_tb.TabIndex = 8;
             // 
@@ -195,14 +193,13 @@
             this.open_serie_path_button.Size = new System.Drawing.Size(31, 26);
             this.open_serie_path_button.TabIndex = 6;
             this.open_serie_path_button.UseVisualStyleBackColor = false;
-            this.open_serie_path_button.Click += new System.EventHandler(this.open_serie_path_button_Click);
+            this.open_serie_path_button.Click += new System.EventHandler(this.openPath);
             // 
             // serie_path_tb
             // 
             this.serie_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serie_path_tb.Location = new System.Drawing.Point(86, 43);
             this.serie_path_tb.Name = "serie_path_tb";
-            this.serie_path_tb.ReadOnly = true;
             this.serie_path_tb.Size = new System.Drawing.Size(186, 26);
             this.serie_path_tb.TabIndex = 5;
             // 
@@ -220,7 +217,7 @@
             // 
             this.openfiledialog.FileName = "openfiledialog";
             // 
-            // Settings
+            // settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -230,7 +227,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Settings";
+            this.Name = "settings";
             this.Text = "Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_FormClosing);
             this.Load += new System.EventHandler(this.Settings_Load);
