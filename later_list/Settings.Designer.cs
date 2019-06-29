@@ -74,6 +74,7 @@
             this.movie_path_tb.ReadOnly = true;
             this.movie_path_tb.Size = new System.Drawing.Size(186, 26);
             this.movie_path_tb.TabIndex = 4;
+            this.movie_path_tb.TextChanged += new System.EventHandler(this.pathChanged);
             // 
             // movie_path_lbl
             // 
@@ -129,6 +130,7 @@
             // clear_book_path_button
             // 
             this.clear_book_path_button.BackColor = System.Drawing.Color.Thistle;
+            this.clear_book_path_button.Enabled = false;
             this.clear_book_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clear_book_path_button.Image = ((System.Drawing.Image)(resources.GetObject("clear_book_path_button.Image")));
             this.clear_book_path_button.Location = new System.Drawing.Point(307, 72);
@@ -141,6 +143,7 @@
             // clear_serie_path_button
             // 
             this.clear_serie_path_button.BackColor = System.Drawing.Color.Thistle;
+            this.clear_serie_path_button.Enabled = false;
             this.clear_serie_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clear_serie_path_button.Image = ((System.Drawing.Image)(resources.GetObject("clear_serie_path_button.Image")));
             this.clear_serie_path_button.Location = new System.Drawing.Point(307, 43);
@@ -153,6 +156,7 @@
             // clear_movie_path_button
             // 
             this.clear_movie_path_button.BackColor = System.Drawing.Color.Thistle;
+            this.clear_movie_path_button.Enabled = false;
             this.clear_movie_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clear_movie_path_button.Image = ((System.Drawing.Image)(resources.GetObject("clear_movie_path_button.Image")));
             this.clear_movie_path_button.Location = new System.Drawing.Point(307, 14);
@@ -220,6 +224,7 @@
             this.book_path_tb.ReadOnly = true;
             this.book_path_tb.Size = new System.Drawing.Size(186, 26);
             this.book_path_tb.TabIndex = 8;
+            this.book_path_tb.TextChanged += new System.EventHandler(this.pathChanged);
             // 
             // book_path_lbl
             // 
@@ -251,6 +256,7 @@
             this.serie_path_tb.ReadOnly = true;
             this.serie_path_tb.Size = new System.Drawing.Size(186, 26);
             this.serie_path_tb.TabIndex = 5;
+            this.serie_path_tb.TextChanged += new System.EventHandler(this.pathChanged);
             // 
             // serie_path_lbl
             // 

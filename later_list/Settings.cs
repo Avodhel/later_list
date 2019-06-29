@@ -121,6 +121,38 @@ namespace later_list
         }
         #endregion
 
+        #region settings input fields
+        private void pathChanged(object sender, EventArgs e)
+        {
+            if (movie_path_tb.Text == "")
+            {
+                clear_movie_path_button.Enabled = false;
+            }
+            else if (movie_path_tb.Text != "")
+            {
+                clear_movie_path_button.Enabled = true;
+            }
+
+            if (serie_path_tb.Text == "")
+            {
+                clear_serie_path_button.Enabled = false;
+            }
+            else if (serie_path_tb.Text != "")
+            {
+                clear_serie_path_button.Enabled = true;
+            }
+
+            if (book_path_tb.Text == "")
+            {
+                clear_book_path_button.Enabled = false;
+            }
+            else if (book_path_tb.Text != "")
+            {
+                clear_book_path_button.Enabled = true;
+            }
+        }
+        #endregion
+
         #region settings buttons
         private void setFileName(string whichButton, string fileName)
         {
@@ -241,6 +273,7 @@ namespace later_list
             }
         }
         #endregion
+
     }
 
     #region Form Manager
