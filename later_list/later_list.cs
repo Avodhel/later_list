@@ -155,7 +155,7 @@ namespace later_list
         #region choose section
         private void rbCheckedChanged(object sender, EventArgs e)
         {
-            if (movie_rb.Checked && !series_rb.Checked && !books_rb.Checked)
+            if (movie_rb.Checked && !serie_rb.Checked && !book_rb.Checked)
             {
                 whichSection = "movie";
                 //panel scroll
@@ -190,7 +190,8 @@ namespace later_list
                 edit_button.Enabled = false;
                 save_button.Enabled = false;
             }
-            if (!movie_rb.Checked && series_rb.Checked && !books_rb.Checked)
+
+            if (!movie_rb.Checked && serie_rb.Checked && !book_rb.Checked)
             {
                 whichSection = "serie";
                 //panel scroll
@@ -225,7 +226,8 @@ namespace later_list
                 edit_button.Enabled = false;
                 save_button.Enabled = false;
             }
-            if (!movie_rb.Checked && !series_rb.Checked && books_rb.Checked)
+
+            if (!movie_rb.Checked && !serie_rb.Checked && book_rb.Checked)
             {
                 whichSection = "book";
                 //panel scroll
@@ -276,6 +278,9 @@ namespace later_list
 
         private void clear_button_Click(object sender, EventArgs e)
         {
+            movie_listbox.ClearSelected();
+            serie_listbox.ClearSelected();
+            book_listbox.ClearSelected();
             refreshInputFields();
             //enable buttons
             add_button.Enabled = true;
@@ -510,11 +515,61 @@ namespace later_list
         {
             if (save_button.Enabled == true)
             {
+                switch (whichSection)
+                {
+                    case "movie":
+                        serie_rb.Enabled = false;
+                        book_rb.Enabled = false;
+                        break;
+                    case "serie":
+                        movie_rb.Enabled = false;
+                        book_rb.Enabled = false;
+                        break;
+                    case "book":
+                        movie_rb.Enabled = false;
+                        serie_rb.Enabled = false;
+                        break;
+                }
                 error_provider.SetError(save_button, "There're unsaved changes in " + whichSection + " list!");
+                discard_button.Visible = true;
             }
             if (save_button.Enabled == false)
             {
+                movie_rb.Enabled = true;
+                serie_rb.Enabled = true;
+                book_rb.Enabled = true;
                 error_provider.Clear();
+                discard_button.Visible = false;
+            }
+        }
+        #endregion
+
+        #region discard
+        private void discard_button_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show("All changes will discard, Continue ?", "Discard",
+                                        MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.OK)
+            {
+                switch (whichSection)
+                {
+                    case "movie":
+                        movie_listbox.Items.Clear();
+                        break;
+                    case "serie":
+                        serie_listbox.Items.Clear();
+                        break;
+                    case "book":
+                        book_listbox.Items.Clear();
+                        break;
+                }
+                loadList();
+                save_button.Enabled = false;
+            }
+            else if (confirm == DialogResult.Cancel)
+            {
+               
             }
         }
         #endregion
@@ -604,5 +659,6 @@ namespace later_list
             }
         }
         #endregion
+
     }
 }

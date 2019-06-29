@@ -44,8 +44,8 @@
             this.book_listbox = new System.Windows.Forms.ListBox();
             this.book_name_lbl = new System.Windows.Forms.Label();
             this.serie_name_lbl = new System.Windows.Forms.Label();
-            this.books_rb = new System.Windows.Forms.RadioButton();
-            this.series_rb = new System.Windows.Forms.RadioButton();
+            this.book_rb = new System.Windows.Forms.RadioButton();
+            this.serie_rb = new System.Windows.Forms.RadioButton();
             this.movie_rb = new System.Windows.Forms.RadioButton();
             this.version_lbl = new System.Windows.Forms.Label();
             this.savefiledialog = new System.Windows.Forms.SaveFileDialog();
@@ -56,6 +56,7 @@
             this.author_tb = new System.Windows.Forms.TextBox();
             this.settings_button = new System.Windows.Forms.Button();
             this.error_provider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.discard_button = new System.Windows.Forms.Button();
             this.sections_gb.SuspendLayout();
             this.list_operations_gb.SuspendLayout();
             this.input_fields_panel.SuspendLayout();
@@ -244,29 +245,29 @@
             this.serie_name_lbl.Text = "Serie Name:";
             this.serie_name_lbl.Visible = false;
             // 
-            // books_rb
+            // book_rb
             // 
-            this.books_rb.AutoSize = true;
-            this.books_rb.Font = new System.Drawing.Font("Advanced Pixel-7", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.books_rb.Location = new System.Drawing.Point(155, 16);
-            this.books_rb.Name = "books_rb";
-            this.books_rb.Size = new System.Drawing.Size(61, 22);
-            this.books_rb.TabIndex = 2;
-            this.books_rb.Text = "books";
-            this.books_rb.UseVisualStyleBackColor = true;
-            this.books_rb.CheckedChanged += new System.EventHandler(this.rbCheckedChanged);
+            this.book_rb.AutoSize = true;
+            this.book_rb.Font = new System.Drawing.Font("Advanced Pixel-7", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.book_rb.Location = new System.Drawing.Point(155, 16);
+            this.book_rb.Name = "book_rb";
+            this.book_rb.Size = new System.Drawing.Size(61, 22);
+            this.book_rb.TabIndex = 2;
+            this.book_rb.Text = "books";
+            this.book_rb.UseVisualStyleBackColor = true;
+            this.book_rb.CheckedChanged += new System.EventHandler(this.rbCheckedChanged);
             // 
-            // series_rb
+            // serie_rb
             // 
-            this.series_rb.AutoSize = true;
-            this.series_rb.Font = new System.Drawing.Font("Advanced Pixel-7", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.series_rb.Location = new System.Drawing.Point(83, 16);
-            this.series_rb.Name = "series_rb";
-            this.series_rb.Size = new System.Drawing.Size(66, 22);
-            this.series_rb.TabIndex = 1;
-            this.series_rb.Text = "series";
-            this.series_rb.UseVisualStyleBackColor = true;
-            this.series_rb.CheckedChanged += new System.EventHandler(this.rbCheckedChanged);
+            this.serie_rb.AutoSize = true;
+            this.serie_rb.Font = new System.Drawing.Font("Advanced Pixel-7", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serie_rb.Location = new System.Drawing.Point(83, 16);
+            this.serie_rb.Name = "serie_rb";
+            this.serie_rb.Size = new System.Drawing.Size(66, 22);
+            this.serie_rb.TabIndex = 1;
+            this.serie_rb.Text = "series";
+            this.serie_rb.UseVisualStyleBackColor = true;
+            this.serie_rb.CheckedChanged += new System.EventHandler(this.rbCheckedChanged);
             // 
             // movie_rb
             // 
@@ -296,9 +297,9 @@
             // sections_gb
             // 
             this.sections_gb.BackColor = System.Drawing.Color.Transparent;
-            this.sections_gb.Controls.Add(this.books_rb);
+            this.sections_gb.Controls.Add(this.book_rb);
             this.sections_gb.Controls.Add(this.movie_rb);
-            this.sections_gb.Controls.Add(this.series_rb);
+            this.sections_gb.Controls.Add(this.serie_rb);
             this.sections_gb.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sections_gb.Location = new System.Drawing.Point(12, 2);
             this.sections_gb.Name = "sections_gb";
@@ -310,6 +311,7 @@
             // list_operations_gb
             // 
             this.list_operations_gb.BackColor = System.Drawing.Color.Transparent;
+            this.list_operations_gb.Controls.Add(this.discard_button);
             this.list_operations_gb.Controls.Add(this.input_fields_panel);
             this.list_operations_gb.Controls.Add(this.save_button);
             this.list_operations_gb.Controls.Add(this.edit_button);
@@ -379,6 +381,20 @@
             // 
             this.error_provider.ContainerControl = this;
             // 
+            // discard_button
+            // 
+            this.discard_button.BackColor = System.Drawing.Color.Salmon;
+            this.discard_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.discard_button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.discard_button.Location = new System.Drawing.Point(291, 143);
+            this.discard_button.Name = "discard_button";
+            this.discard_button.Size = new System.Drawing.Size(19, 116);
+            this.discard_button.TabIndex = 22;
+            this.discard_button.Text = "Discard";
+            this.discard_button.UseVisualStyleBackColor = false;
+            this.discard_button.Visible = false;
+            this.discard_button.Click += new System.EventHandler(this.discard_button_Click);
+            // 
             // later_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -417,8 +433,8 @@
         private System.Windows.Forms.Button remove_button;
         private System.Windows.Forms.Label genre_lbl;
         private System.Windows.Forms.Button edit_button;
-        private System.Windows.Forms.RadioButton books_rb;
-        private System.Windows.Forms.RadioButton series_rb;
+        private System.Windows.Forms.RadioButton book_rb;
+        private System.Windows.Forms.RadioButton serie_rb;
         private System.Windows.Forms.RadioButton movie_rb;
         private System.Windows.Forms.Label serie_name_lbl;
         private System.Windows.Forms.Label book_name_lbl;
@@ -435,6 +451,7 @@
         private System.Windows.Forms.Panel input_fields_panel;
         private System.Windows.Forms.Label author_lbl;
         private System.Windows.Forms.TextBox author_tb;
+        private System.Windows.Forms.Button discard_button;
     }
 }
 
