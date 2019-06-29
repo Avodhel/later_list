@@ -177,13 +177,11 @@
             // dark_rb
             // 
             this.dark_rb.AutoSize = true;
-            this.dark_rb.Checked = true;
             this.dark_rb.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dark_rb.Location = new System.Drawing.Point(6, 48);
             this.dark_rb.Name = "dark_rb";
             this.dark_rb.Size = new System.Drawing.Size(52, 20);
             this.dark_rb.TabIndex = 1;
-            this.dark_rb.TabStop = true;
             this.dark_rb.Text = "Dark";
             this.dark_rb.UseVisualStyleBackColor = true;
             this.dark_rb.CheckedChanged += new System.EventHandler(this.theme_rb_CheckedChanged);
@@ -191,11 +189,13 @@
             // light_rb
             // 
             this.light_rb.AutoSize = true;
+            this.light_rb.Checked = true;
             this.light_rb.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.light_rb.Location = new System.Drawing.Point(6, 22);
             this.light_rb.Name = "light_rb";
             this.light_rb.Size = new System.Drawing.Size(56, 20);
             this.light_rb.TabIndex = 0;
+            this.light_rb.TabStop = true;
             this.light_rb.Text = "Light";
             this.light_rb.UseVisualStyleBackColor = true;
             this.light_rb.CheckedChanged += new System.EventHandler(this.theme_rb_CheckedChanged);
@@ -274,7 +274,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(443, 156);
             this.Controls.Add(this.settings_gb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
