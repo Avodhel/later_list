@@ -228,6 +228,18 @@ namespace later_list
             saveSettings();
             MessageBox.Show("Settings Saved!");
         }
+
+        private void save_settings_button_EnabledChanged(object sender, EventArgs e)
+        {
+            if (save_settings_button.Enabled == true)
+            {
+                settings_error_provider.SetError(save_settings_button, "There're unsaved settings!");
+            }
+            if (save_settings_button.Enabled == false)
+            {
+                settings_error_provider.Clear();
+            }
+        }
         #endregion
     }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(settings));
             this.open_movie_path_button = new System.Windows.Forms.Button();
             this.movie_path_tb = new System.Windows.Forms.TextBox();
@@ -47,8 +48,10 @@
             this.serie_path_tb = new System.Windows.Forms.TextBox();
             this.serie_path_lbl = new System.Windows.Forms.Label();
             this.openfiledialog = new System.Windows.Forms.OpenFileDialog();
+            this.settings_error_provider = new System.Windows.Forms.ErrorProvider(this.components);
             this.settings_gb.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.settings_error_provider)).BeginInit();
             this.SuspendLayout();
             // 
             // open_movie_path_button
@@ -95,6 +98,7 @@
             this.save_settings_button.TabIndex = 6;
             this.save_settings_button.Text = "Save Settings";
             this.save_settings_button.UseVisualStyleBackColor = false;
+            this.save_settings_button.EnabledChanged += new System.EventHandler(this.save_settings_button_EnabledChanged);
             this.save_settings_button.Click += new System.EventHandler(this.save_settings_button_Click);
             // 
             // settings_gb
@@ -262,6 +266,10 @@
             // 
             this.openfiledialog.FileName = "openfiledialog";
             // 
+            // settings_error_provider
+            // 
+            this.settings_error_provider.ContainerControl = this;
+            // 
             // settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -280,6 +288,7 @@
             this.settings_gb.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.settings_error_provider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -304,5 +313,6 @@
         private System.Windows.Forms.Button clear_movie_path_button;
         private System.Windows.Forms.Button clear_book_path_button;
         private System.Windows.Forms.Button clear_serie_path_button;
+        private System.Windows.Forms.ErrorProvider settings_error_provider;
     }
 }

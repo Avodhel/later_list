@@ -106,6 +106,7 @@ namespace later_list
                                 "Suspense/Thriller",
                                 "Textbook",
                                 "Poetry"};
+        bool canAddListControl = true;
         ListBox listBox = new ListBox();
         settings settingsForm = new settings();
         #endregion
@@ -310,20 +311,26 @@ namespace later_list
         #region add
         private void add_button_Click(object sender, EventArgs e)
         {
-            save_button.Enabled = true;
-
-            if (name_tb.Text == "")
+            if(name_tb.Text != "")
             {
-                MessageBox.Show("Please add a " + whichSection + " name", "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                save_button.Enabled = true;
+                canAddListControl = true;
             }
-            else if(whichSection != "book")
+            else if (name_tb.Text == "")
+            {
+                MessageBox.Show("Please add a " + whichSection + " name", "Warning",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                save_button.Enabled = false;
+                canAddListControl = false;
+            }
+
+            if (whichSection != "book" && canAddListControl)
             {
                 data = name_tb.Text + " (" + genre_cb.Text + ")";
                 addToList(data);
                 refreshInputFields();
             }
-            else if(whichSection == "book")
+            else if(whichSection == "book" && canAddListControl)
             {
                 data = name_tb.Text + " - " + author_tb.Text + " (" + genre_cb.Text + ")";
                 addToList(data);
