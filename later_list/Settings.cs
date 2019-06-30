@@ -231,27 +231,13 @@ namespace later_list
             {
                 whichTheme = "Light";
                 FormManager.setAllBackcolors(SystemColors.InactiveBorder);
-                if(Properties.Settings.Default.theme == "Dark")
-                {
-                    save_settings_button.Enabled = true;
-                }
-                //else if (Properties.Settings.Default.theme == "Light")
-                //{
-                //    save_settings_button.Enabled = false;
-                //}
+                save_settings_button.Enabled = true;
             }
             if (dark_rb.Checked)
             {
                 whichTheme = "Dark";
                 FormManager.setAllBackcolors(SystemColors.InactiveCaptionText);
-                if (Properties.Settings.Default.theme == "Light")
-                {
-                    save_settings_button.Enabled = true;
-                }
-                //else if (Properties.Settings.Default.theme == "Dark")
-                //{
-                //    save_settings_button.Enabled = false;
-                //}
+                save_settings_button.Enabled = true;
             }
         }
 
