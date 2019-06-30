@@ -114,6 +114,7 @@ namespace later_list
         #region start app
         public later_list()
         {
+            this.CenterToScreen();
             FormManager.registerForm(this);
             InitializeComponent();
             chooseListbox();

@@ -21,6 +21,7 @@ namespace later_list
         #region settings opened
         public settings()
         {
+            this.StartPosition = FormStartPosition.CenterParent;
             FormManager.registerForm(this);
             InitializeComponent();
         }
