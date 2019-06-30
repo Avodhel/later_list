@@ -657,13 +657,13 @@ namespace later_list
 
         private void themeControl()
         {
-            if (Properties.Settings.Default.theme == "Light")
+            if (Properties.Settings.Default.light_checked == true)
             {
                 FormManager.setAllBackcolors(SystemColors.InactiveBorder);
                 settingsForm.LightThemeCheck = true;
                 settingsForm.DarkThemeCheck = false;
             }
-            if (Properties.Settings.Default.theme == "Dark")
+            if (Properties.Settings.Default.dark_checked == true)
             {
                 FormManager.setAllBackcolors(SystemColors.InactiveCaptionText);
                 settingsForm.LightThemeCheck = false;

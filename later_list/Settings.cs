@@ -13,7 +13,6 @@ namespace later_list
     public partial class settings : Form
     {
         #region variables
-        string whichTheme;
         string fileName;
         string filePath;
         #endregion
@@ -51,6 +50,18 @@ namespace later_list
                 {
                     save_settings_button.Enabled = false;
                     getSettings();
+                    if (Properties.Settings.Default.light_checked == true)
+                    {
+                        light_rb.Checked = true;
+                        dark_rb.Checked = false;
+                        FormManager.setAllBackcolors(SystemColors.InactiveBorder);
+                    }
+                    if (Properties.Settings.Default.dark_checked == true)
+                    {
+                        dark_rb.Checked = true;
+                        light_rb.Checked = false;
+                        FormManager.setAllBackcolors(SystemColors.InactiveCaptionText);
+                    }
                 }
                 else if (confirm == DialogResult.Cancel)
                 {
@@ -105,8 +116,17 @@ namespace later_list
             Properties.Settings.Default.movie_path = movie_path_tb.Text;
             Properties.Settings.Default.serie_path = serie_path_tb.Text;
             Properties.Settings.Default.book_path = book_path_tb.Text;
-            Properties.Settings.Default.theme = whichTheme;
+            if (light_rb.Checked)
+            {
+                Properties.Settings.Default.light_checked = true;
+                Properties.Settings.Default.dark_checked = false;
+            }
 
+            if (dark_rb.Checked)
+            {
+                Properties.Settings.Default.dark_checked = true;
+                Properties.Settings.Default.light_checked = false;
+            }
             save_settings_button.Enabled = false;
             Properties.Settings.Default.Save();
 
@@ -230,15 +250,19 @@ namespace later_list
         {
             if (light_rb.Checked)
             {
-                whichTheme = "Light";
                 FormManager.setAllBackcolors(SystemColors.InactiveBorder);
-                save_settings_button.Enabled = true;
+                if (Properties.Settings.Default.dark_checked == true)
+                {
+                    save_settings_button.Enabled = true;
+                }
             }
-            if (dark_rb.Checked)
+            else if (dark_rb.Checked)
             {
-                whichTheme = "Dark";
                 FormManager.setAllBackcolors(SystemColors.InactiveCaptionText);
-                save_settings_button.Enabled = true;
+                if (Properties.Settings.Default.light_checked == true)
+                {
+                    save_settings_button.Enabled = true;
+                }
             }
         }
 

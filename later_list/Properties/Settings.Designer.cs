@@ -61,13 +61,25 @@ namespace later_list.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Light")]
-        public string theme {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool dark_checked {
             get {
-                return ((string)(this["theme"]));
+                return ((bool)(this["dark_checked"]));
             }
             set {
-                this["theme"] = value;
+                this["dark_checked"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool light_checked {
+            get {
+                return ((bool)(this["light_checked"]));
+            }
+            set {
+                this["light_checked"] = value;
             }
         }
     }
