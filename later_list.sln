@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "later_list", "later_list\later_list.csproj", "{3783B7DC-60A0-4F43-8E77-F7C6FC7D1404}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "later_list_v1.0_setup", "..\..\..\Desktop\.Net Programlar\Later List\later_list_v1.0_setup.vdproj", "{FBD5EAEC-DACC-414B-9E00-89CE01FECAD3}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "later_list_v1.1_setup", "..\..\..\Desktop\.Net Programlar\Later List\later_list_v1.1_setup.vdproj", "{FBD5EAEC-DACC-414B-9E00-89CE01FECAD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,10 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3783B7DC-60A0-4F43-8E77-F7C6FC7D1404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3783B7DC-60A0-4F43-8E77-F7C6FC7D1404}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3783B7DC-60A0-4F43-8E77-F7C6FC7D1404}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{3783B7DC-60A0-4F43-8E77-F7C6FC7D1404}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{3783B7DC-60A0-4F43-8E77-F7C6FC7D1404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3783B7DC-60A0-4F43-8E77-F7C6FC7D1404}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FBD5EAEC-DACC-414B-9E00-89CE01FECAD3}.Debug|Any CPU.ActiveCfg = Debug
-		{FBD5EAEC-DACC-414B-9E00-89CE01FECAD3}.Release|Any CPU.ActiveCfg = Debug
+		{FBD5EAEC-DACC-414B-9E00-89CE01FECAD3}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
