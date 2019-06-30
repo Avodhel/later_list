@@ -556,15 +556,26 @@ namespace later_list
                 {
                     case "movie":
                         movie_listbox.Items.Clear();
+                        if (Properties.Settings.Default.movie_path != "")
+                        {
+                            loadList();
+                        }
                         break;
                     case "serie":
                         serie_listbox.Items.Clear();
+                        if (Properties.Settings.Default.serie_path != "")
+                        {
+                            loadList();
+                        }
                         break;
                     case "book":
                         book_listbox.Items.Clear();
+                        if (Properties.Settings.Default.book_path != "")
+                        {
+                            loadList();
+                        }
                         break;
                 }
-                loadList();
                 save_button.Enabled = false;
             }
             else if (confirm == DialogResult.Cancel)
