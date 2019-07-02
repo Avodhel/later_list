@@ -685,12 +685,14 @@ namespace later_list
             if (Properties.Settings.Default.light_checked == true)
             {
                 ThemeManager.setAllBackcolors(SystemColors.InactiveBorder, Color.Black);
+                settingsForm.loadTheme();
                 settingsForm.LightThemeCheck = true;
                 settingsForm.DarkThemeCheck = false;
             }
             if (Properties.Settings.Default.dark_checked == true)
             {
                 ThemeManager.setAllBackcolors(SystemColors.InactiveCaptionText, Color.White);
+                settingsForm.loadTheme();
                 settingsForm.LightThemeCheck = false;
                 settingsForm.DarkThemeCheck = true;
             }

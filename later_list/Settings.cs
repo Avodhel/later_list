@@ -33,6 +33,11 @@ namespace later_list
 
         private void Settings_Load(object sender, EventArgs e)
         {
+            loadTheme();
+        }
+
+        public void loadTheme()
+        {
             ThemeManager.registerForm(this);
 
             ThemeManager.registerGB(settings_gb);
