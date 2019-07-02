@@ -38,7 +38,7 @@
             this.clear_book_path_button = new System.Windows.Forms.Button();
             this.clear_serie_path_button = new System.Windows.Forms.Button();
             this.clear_movie_path_button = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.themes_gb = new System.Windows.Forms.GroupBox();
             this.dark_rb = new System.Windows.Forms.RadioButton();
             this.light_rb = new System.Windows.Forms.RadioButton();
             this.open_book_path_button = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@
             this.openfiledialog = new System.Windows.Forms.OpenFileDialog();
             this.settings_error_provider = new System.Windows.Forms.ErrorProvider(this.components);
             this.settings_gb.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.themes_gb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.settings_error_provider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,7 +108,7 @@
             this.settings_gb.Controls.Add(this.clear_book_path_button);
             this.settings_gb.Controls.Add(this.clear_serie_path_button);
             this.settings_gb.Controls.Add(this.clear_movie_path_button);
-            this.settings_gb.Controls.Add(this.groupBox1);
+            this.settings_gb.Controls.Add(this.themes_gb);
             this.settings_gb.Controls.Add(this.save_settings_button);
             this.settings_gb.Controls.Add(this.open_book_path_button);
             this.settings_gb.Controls.Add(this.open_movie_path_button);
@@ -166,17 +166,17 @@
             this.clear_movie_path_button.UseVisualStyleBackColor = false;
             this.clear_movie_path_button.Click += new System.EventHandler(this.clearPath);
             // 
-            // groupBox1
+            // themes_gb
             // 
-            this.groupBox1.Controls.Add(this.dark_rb);
-            this.groupBox1.Controls.Add(this.light_rb);
-            this.groupBox1.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(344, 14);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(67, 84);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Themes";
+            this.themes_gb.Controls.Add(this.dark_rb);
+            this.themes_gb.Controls.Add(this.light_rb);
+            this.themes_gb.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.themes_gb.Location = new System.Drawing.Point(344, 14);
+            this.themes_gb.Name = "themes_gb";
+            this.themes_gb.Size = new System.Drawing.Size(67, 84);
+            this.themes_gb.TabIndex = 10;
+            this.themes_gb.TabStop = false;
+            this.themes_gb.Text = "Themes";
             // 
             // dark_rb
             // 
@@ -292,8 +292,8 @@
             this.Load += new System.EventHandler(this.Settings_Load);
             this.settings_gb.ResumeLayout(false);
             this.settings_gb.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.themes_gb.ResumeLayout(false);
+            this.themes_gb.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.settings_error_provider)).EndInit();
             this.ResumeLayout(false);
 
@@ -306,7 +306,7 @@
         private System.Windows.Forms.Label movie_path_lbl;
         private System.Windows.Forms.Button save_settings_button;
         private System.Windows.Forms.GroupBox settings_gb;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox themes_gb;
         private System.Windows.Forms.RadioButton dark_rb;
         private System.Windows.Forms.RadioButton light_rb;
         private System.Windows.Forms.Button open_book_path_button;

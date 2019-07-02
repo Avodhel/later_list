@@ -115,7 +115,6 @@ namespace later_list
         public later_list()
         {
             this.CenterToScreen();
-            FormManager.registerForm(this);
             InitializeComponent();
             chooseListbox();
             loadGenres();
@@ -124,6 +123,32 @@ namespace later_list
                 loadList();
             }
             settingsForm.getSettings();
+            
+        }
+
+        private void later_list_Load(object sender, EventArgs e)
+        {
+            ThemeManager.registerForm(this);
+
+            ThemeManager.registerGB(sections_gb);
+            ThemeManager.registerGB(list_operations_gb);
+
+            ThemeManager.registerTB(name_tb);
+            ThemeManager.registerTB(author_tb);
+
+            ThemeManager.registerCB(genre_cb);
+
+            ThemeManager.registerLB(movie_listbox);
+            ThemeManager.registerLB(serie_listbox);
+            ThemeManager.registerLB(book_listbox);
+
+            ThemeManager.registerButton(clear_button);
+            ThemeManager.registerButton(add_button);
+            ThemeManager.registerButton(remove_button);
+            ThemeManager.registerButton(edit_button);
+            ThemeManager.registerButton(save_button);
+            ThemeManager.registerButton(discard_button);
+
             themeControl();
         }
         #endregion
@@ -149,7 +174,7 @@ namespace later_list
 
         private void later_list_FormClosed(object sender, FormClosedEventArgs e)
         {
-            FormManager.unRegisterForm(this);
+            ThemeManager.unRegisterForm(this);
         }
         #endregion
 
@@ -659,18 +684,17 @@ namespace later_list
         {
             if (Properties.Settings.Default.light_checked == true)
             {
-                FormManager.setAllBackcolors(SystemColors.InactiveBorder);
+                ThemeManager.setAllBackcolors(SystemColors.InactiveBorder, Color.Black);
                 settingsForm.LightThemeCheck = true;
                 settingsForm.DarkThemeCheck = false;
             }
             if (Properties.Settings.Default.dark_checked == true)
             {
-                FormManager.setAllBackcolors(SystemColors.InactiveCaptionText);
+                ThemeManager.setAllBackcolors(SystemColors.InactiveCaptionText, Color.White);
                 settingsForm.LightThemeCheck = false;
                 settingsForm.DarkThemeCheck = true;
             }
         }
         #endregion
-
     }
 }

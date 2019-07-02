@@ -21,7 +21,6 @@ namespace later_list
         public settings()
         {
             this.StartPosition = FormStartPosition.CenterParent;
-            FormManager.registerForm(this);
             InitializeComponent();
         }
 
@@ -34,7 +33,16 @@ namespace later_list
 
         private void Settings_Load(object sender, EventArgs e)
         {
+            ThemeManager.registerForm(this);
 
+            ThemeManager.registerGB(settings_gb);
+            ThemeManager.registerGB(themes_gb);
+
+            ThemeManager.registerTB(movie_path_tb);
+            ThemeManager.registerTB(serie_path_tb);
+            ThemeManager.registerTB(book_path_tb);
+
+            ThemeManager.registerButton(save_settings_button);
         }
         #endregion
 
@@ -54,13 +62,13 @@ namespace later_list
                     {
                         light_rb.Checked = true;
                         dark_rb.Checked = false;
-                        FormManager.setAllBackcolors(SystemColors.InactiveBorder);
+                        ThemeManager.setAllBackcolors(SystemColors.InactiveBorder, Color.Black);
                     }
                     if (Properties.Settings.Default.dark_checked == true)
                     {
                         dark_rb.Checked = true;
                         light_rb.Checked = false;
-                        FormManager.setAllBackcolors(SystemColors.InactiveCaptionText);
+                        ThemeManager.setAllBackcolors(SystemColors.InactiveCaptionText, Color.White);
                     }
                 }
                 else if (confirm == DialogResult.Cancel)
@@ -250,7 +258,7 @@ namespace later_list
         {
             if (light_rb.Checked)
             {
-                FormManager.setAllBackcolors(SystemColors.InactiveBorder);
+                ThemeManager.setAllBackcolors(SystemColors.InactiveBorder, Color.Black);
                 if (Properties.Settings.Default.dark_checked == true)
                 {
                     save_settings_button.Enabled = true;
@@ -258,7 +266,7 @@ namespace later_list
             }
             else if (dark_rb.Checked)
             {
-                FormManager.setAllBackcolors(SystemColors.InactiveCaptionText);
+                ThemeManager.setAllBackcolors(SystemColors.InactiveCaptionText, Color.White);
                 if (Properties.Settings.Default.light_checked == true)
                 {
                     save_settings_button.Enabled = true;
@@ -287,9 +295,10 @@ namespace later_list
 
     }
 
-    #region Form Manager
-    public static class FormManager
+    #region Theme Manager
+    public static class ThemeManager
     {
+        //FORMS
         private static List<Form> formList = new List<Form>();
 
         public static void registerForm(Form form)
@@ -302,9 +311,83 @@ namespace later_list
             if (formList.Contains(form)) formList.Remove(form);
         }
 
-        public static void setAllBackcolors(Color backColor)
+        //GROUP BOX
+        private static List<GroupBox> gbList = new List<GroupBox>();
+
+        public static void registerGB(GroupBox gb)
         {
-            foreach (Form f in formList) if (f != null) f.BackColor = backColor;
+            if (!gbList.Contains(gb)) gbList.Add(gb);
+        }
+
+        public static void unRegisterGB(GroupBox gb)
+        {
+            if (gbList.Contains(gb)) gbList.Remove(gb);
+        }
+
+        //TEXTBOX
+        private static List<TextBox> tbList = new List<TextBox>();
+
+        public static void registerTB(TextBox tb)
+        {
+            if (!tbList.Contains(tb)) tbList.Add(tb);
+        }
+
+        public static void unRegisterTB(TextBox tb)
+        {
+            if (tbList.Contains(tb)) tbList.Remove(tb);
+        }
+
+        //COMBOBOX
+        private static List<ComboBox> cbList = new List<ComboBox>();
+
+        public static void registerCB(ComboBox cb)
+        {
+            if (!cbList.Contains(cb)) cbList.Add(cb);
+        }
+
+        public static void unRegisterCB(ComboBox cb)
+        {
+            if (cbList.Contains(cb)) cbList.Remove(cb);
+        }
+
+        //LISTS
+        private static List<ListBox> lbList = new List<ListBox>();
+
+        public static void registerLB(ListBox lb)
+        {
+            if (!lbList.Contains(lb)) lbList.Add(lb);
+        }
+
+        public static void unRegisterLB(ListBox lb)
+        {
+            if (lbList.Contains(lb)) lbList.Remove(lb);
+        }
+
+        //BUTTONS
+        private static List<Button> buttonList = new List<Button>();
+
+        public static void registerButton(Button btn)
+        {
+            if (!buttonList.Contains(btn)) buttonList.Add(btn);
+        }
+
+        public static void unRegisterButton(Button btn)
+        {
+            if (buttonList.Contains(btn)) buttonList.Remove(btn);
+        }
+
+        //SET ALL COLORS
+        public static void setAllBackcolors(Color BackColor, Color TextColor)
+        {
+            foreach (Form f in formList) if (f != null) f.BackColor = BackColor;
+            foreach (GroupBox gb in gbList) if (gb != null) gb.ForeColor = TextColor;
+            foreach (TextBox tb in tbList) if (tb != null) tb.ForeColor = TextColor;
+            foreach (TextBox tb in tbList) if (tb != null) tb.BackColor = BackColor;
+            foreach (ComboBox cb in cbList) if (cb != null) cb.ForeColor = TextColor;
+            foreach (ComboBox cb in cbList) if (cb != null) cb.BackColor = BackColor;
+            foreach (ListBox lb in lbList) if (lb != null) lb.ForeColor = TextColor;
+            foreach (ListBox lb in lbList) if (lb != null) lb.BackColor = BackColor;
+            foreach (Button b in buttonList) if (b != null) b.ForeColor = Color.Black;
         }
     }
     #endregion

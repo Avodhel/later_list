@@ -51,12 +51,12 @@
             this.savefiledialog = new System.Windows.Forms.SaveFileDialog();
             this.sections_gb = new System.Windows.Forms.GroupBox();
             this.list_operations_gb = new System.Windows.Forms.GroupBox();
+            this.discard_button = new System.Windows.Forms.Button();
             this.input_fields_panel = new System.Windows.Forms.Panel();
             this.author_lbl = new System.Windows.Forms.Label();
             this.author_tb = new System.Windows.Forms.TextBox();
             this.settings_button = new System.Windows.Forms.Button();
             this.error_provider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.discard_button = new System.Windows.Forms.Button();
             this.sections_gb.SuspendLayout();
             this.list_operations_gb.SuspendLayout();
             this.input_fields_panel.SuspendLayout();
@@ -287,7 +287,7 @@
             // 
             this.version_lbl.AutoSize = true;
             this.version_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.version_lbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.version_lbl.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.version_lbl.Location = new System.Drawing.Point(301, 323);
             this.version_lbl.Name = "version_lbl";
             this.version_lbl.Size = new System.Drawing.Size(26, 12);
@@ -328,6 +328,20 @@
             this.list_operations_gb.TabIndex = 20;
             this.list_operations_gb.TabStop = false;
             this.list_operations_gb.Text = "List Operations";
+            // 
+            // discard_button
+            // 
+            this.discard_button.BackColor = System.Drawing.Color.Salmon;
+            this.discard_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.discard_button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.discard_button.Location = new System.Drawing.Point(291, 143);
+            this.discard_button.Name = "discard_button";
+            this.discard_button.Size = new System.Drawing.Size(19, 116);
+            this.discard_button.TabIndex = 22;
+            this.discard_button.Text = "Discard";
+            this.discard_button.UseVisualStyleBackColor = false;
+            this.discard_button.Visible = false;
+            this.discard_button.Click += new System.EventHandler(this.discard_button_Click);
             // 
             // input_fields_panel
             // 
@@ -381,20 +395,6 @@
             // 
             this.error_provider.ContainerControl = this;
             // 
-            // discard_button
-            // 
-            this.discard_button.BackColor = System.Drawing.Color.Salmon;
-            this.discard_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.discard_button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.discard_button.Location = new System.Drawing.Point(291, 143);
-            this.discard_button.Name = "discard_button";
-            this.discard_button.Size = new System.Drawing.Size(19, 116);
-            this.discard_button.TabIndex = 22;
-            this.discard_button.Text = "Discard";
-            this.discard_button.UseVisualStyleBackColor = false;
-            this.discard_button.Visible = false;
-            this.discard_button.Click += new System.EventHandler(this.discard_button_Click);
-            // 
             // later_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -412,6 +412,7 @@
             this.Text = "Later List";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.later_list_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.later_list_FormClosed);
+            this.Load += new System.EventHandler(this.later_list_Load);
             this.sections_gb.ResumeLayout(false);
             this.sections_gb.PerformLayout();
             this.list_operations_gb.ResumeLayout(false);
