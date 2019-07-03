@@ -72,9 +72,9 @@
             this.add_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.add_button.Image = ((System.Drawing.Image)(resources.GetObject("add_button.Image")));
             this.add_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.add_button.Location = new System.Drawing.Point(11, 120);
+            this.add_button.Location = new System.Drawing.Point(18, 118);
             this.add_button.Name = "add_button";
-            this.add_button.Size = new System.Drawing.Size(171, 31);
+            this.add_button.Size = new System.Drawing.Size(165, 30);
             this.add_button.TabIndex = 0;
             this.add_button.Text = "Add to List";
             this.add_button.UseVisualStyleBackColor = false;
@@ -85,9 +85,9 @@
             this.movie_listbox.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.movie_listbox.HorizontalScrollbar = true;
             this.movie_listbox.ItemHeight = 15;
-            this.movie_listbox.Location = new System.Drawing.Point(11, 201);
+            this.movie_listbox.Location = new System.Drawing.Point(18, 201);
             this.movie_listbox.Name = "movie_listbox";
-            this.movie_listbox.Size = new System.Drawing.Size(363, 124);
+            this.movie_listbox.Size = new System.Drawing.Size(356, 124);
             this.movie_listbox.TabIndex = 8;
             this.movie_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
             // 
@@ -104,25 +104,25 @@
             // 
             // genre_cb
             // 
-            this.genre_cb.Font = new System.Drawing.Font("Raleway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.genre_cb.Font = new System.Drawing.Font("Raleway", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.genre_cb.FormattingEnabled = true;
             this.genre_cb.Items.AddRange(new object[] {
             "Comedy",
             "Drama",
             "Fiction",
             "Science Fiction"});
-            this.genre_cb.Location = new System.Drawing.Point(97, 36);
+            this.genre_cb.Location = new System.Drawing.Point(97, 41);
             this.genre_cb.Name = "genre_cb";
-            this.genre_cb.Size = new System.Drawing.Size(179, 27);
+            this.genre_cb.Size = new System.Drawing.Size(179, 26);
             this.genre_cb.TabIndex = 6;
             this.genre_cb.Click += new System.EventHandler(this.input_fields_Click);
             // 
             // name_tb
             // 
-            this.name_tb.Font = new System.Drawing.Font("Raleway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name_tb.Font = new System.Drawing.Font("Raleway", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.name_tb.Location = new System.Drawing.Point(97, 3);
             this.name_tb.Name = "name_tb";
-            this.name_tb.Size = new System.Drawing.Size(179, 26);
+            this.name_tb.Size = new System.Drawing.Size(179, 25);
             this.name_tb.TabIndex = 10;
             this.name_tb.Click += new System.EventHandler(this.input_fields_Click);
             // 
@@ -134,9 +134,9 @@
             this.remove_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.remove_button.Image = ((System.Drawing.Image)(resources.GetObject("remove_button.Image")));
             this.remove_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.remove_button.Location = new System.Drawing.Point(204, 120);
+            this.remove_button.Location = new System.Drawing.Point(209, 118);
             this.remove_button.Name = "remove_button";
-            this.remove_button.Size = new System.Drawing.Size(170, 32);
+            this.remove_button.Size = new System.Drawing.Size(165, 30);
             this.remove_button.TabIndex = 11;
             this.remove_button.Text = "Remove Item";
             this.remove_button.UseVisualStyleBackColor = false;
@@ -147,7 +147,7 @@
             this.genre_lbl.AutoSize = true;
             this.genre_lbl.BackColor = System.Drawing.Color.Transparent;
             this.genre_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.genre_lbl.Location = new System.Drawing.Point(43, 42);
+            this.genre_lbl.Location = new System.Drawing.Point(43, 47);
             this.genre_lbl.Name = "genre_lbl";
             this.genre_lbl.Size = new System.Drawing.Size(48, 15);
             this.genre_lbl.TabIndex = 12;
@@ -162,9 +162,9 @@
             this.edit_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.edit_button.Image = ((System.Drawing.Image)(resources.GetObject("edit_button.Image")));
             this.edit_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.edit_button.Location = new System.Drawing.Point(11, 158);
+            this.edit_button.Location = new System.Drawing.Point(18, 157);
             this.edit_button.Name = "edit_button";
-            this.edit_button.Size = new System.Drawing.Size(171, 32);
+            this.edit_button.Size = new System.Drawing.Size(165, 30);
             this.edit_button.TabIndex = 13;
             this.edit_button.Text = "Edit Item";
             this.edit_button.UseVisualStyleBackColor = false;
@@ -191,9 +191,9 @@
             this.serie_listbox.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.serie_listbox.HorizontalScrollbar = true;
             this.serie_listbox.ItemHeight = 15;
-            this.serie_listbox.Location = new System.Drawing.Point(10, 201);
+            this.serie_listbox.Location = new System.Drawing.Point(18, 201);
             this.serie_listbox.Name = "serie_listbox";
-            this.serie_listbox.Size = new System.Drawing.Size(364, 124);
+            this.serie_listbox.Size = new System.Drawing.Size(356, 124);
             this.serie_listbox.TabIndex = 9;
             this.serie_listbox.Visible = false;
             this.serie_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
@@ -206,10 +206,10 @@
             this.save_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.save_button.Image = ((System.Drawing.Image)(resources.GetObject("save_button.Image")));
             this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.save_button.Location = new System.Drawing.Point(204, 158);
+            this.save_button.Location = new System.Drawing.Point(209, 157);
             this.save_button.Name = "save_button";
             this.save_button.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.save_button.Size = new System.Drawing.Size(170, 32);
+            this.save_button.Size = new System.Drawing.Size(165, 30);
             this.save_button.TabIndex = 18;
             this.save_button.Text = "Save List";
             this.save_button.UseVisualStyleBackColor = false;
@@ -221,9 +221,9 @@
             this.book_listbox.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.book_listbox.HorizontalScrollbar = true;
             this.book_listbox.ItemHeight = 15;
-            this.book_listbox.Location = new System.Drawing.Point(11, 201);
+            this.book_listbox.Location = new System.Drawing.Point(18, 201);
             this.book_listbox.Name = "book_listbox";
-            this.book_listbox.Size = new System.Drawing.Size(363, 124);
+            this.book_listbox.Size = new System.Drawing.Size(356, 124);
             this.book_listbox.TabIndex = 10;
             this.book_listbox.Visible = false;
             this.book_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
@@ -279,7 +279,7 @@
             this.list_operations_gb.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.list_operations_gb.Location = new System.Drawing.Point(105, 3);
             this.list_operations_gb.Name = "list_operations_gb";
-            this.list_operations_gb.Size = new System.Drawing.Size(406, 340);
+            this.list_operations_gb.Size = new System.Drawing.Size(394, 340);
             this.list_operations_gb.TabIndex = 20;
             this.list_operations_gb.TabStop = false;
             this.list_operations_gb.Text = "Movies";
@@ -289,9 +289,9 @@
             this.discard_button.BackColor = System.Drawing.Color.Salmon;
             this.discard_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.discard_button.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.discard_button.Location = new System.Drawing.Point(380, 201);
+            this.discard_button.Location = new System.Drawing.Point(375, 201);
             this.discard_button.Name = "discard_button";
-            this.discard_button.Size = new System.Drawing.Size(18, 124);
+            this.discard_button.Size = new System.Drawing.Size(14, 124);
             this.discard_button.TabIndex = 22;
             this.discard_button.Text = "Discard";
             this.discard_button.UseVisualStyleBackColor = false;
@@ -319,7 +319,7 @@
             this.author_lbl.AutoSize = true;
             this.author_lbl.BackColor = System.Drawing.Color.Transparent;
             this.author_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.author_lbl.Location = new System.Drawing.Point(39, 42);
+            this.author_lbl.Location = new System.Drawing.Point(39, 47);
             this.author_lbl.Name = "author_lbl";
             this.author_lbl.Size = new System.Drawing.Size(52, 15);
             this.author_lbl.TabIndex = 18;
@@ -328,10 +328,10 @@
             // 
             // author_tb
             // 
-            this.author_tb.Font = new System.Drawing.Font("Raleway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.author_tb.Location = new System.Drawing.Point(97, 39);
+            this.author_tb.Font = new System.Drawing.Font("Raleway", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.author_tb.Location = new System.Drawing.Point(97, 41);
             this.author_tb.Name = "author_tb";
-            this.author_tb.Size = new System.Drawing.Size(179, 26);
+            this.author_tb.Size = new System.Drawing.Size(179, 25);
             this.author_tb.TabIndex = 19;
             this.author_tb.Visible = false;
             // 
@@ -429,7 +429,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(517, 350);
+            this.ClientSize = new System.Drawing.Size(504, 350);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.list_operations_gb);
             this.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));

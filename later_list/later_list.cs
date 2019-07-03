@@ -203,6 +203,10 @@ namespace later_list
             {
                 whichSection = "movie";
                 list_operations_gb.Text = "Movies";
+                //section buttons
+                movieSectionBtn.BackColor = SystemColors.ButtonFace;
+                serieSectionBtn.BackColor = SystemColors.Highlight;
+                bookSectionBtn.BackColor = SystemColors.Highlight;
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -240,6 +244,10 @@ namespace later_list
             {
                 whichSection = "serie";
                 list_operations_gb.Text = "Series";
+                //section buttons
+                movieSectionBtn.BackColor = SystemColors.Highlight;
+                serieSectionBtn.BackColor = SystemColors.ButtonFace;
+                bookSectionBtn.BackColor = SystemColors.Highlight;
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -277,6 +285,10 @@ namespace later_list
             {
                 whichSection = "book";
                 list_operations_gb.Text = "Books";
+                //section buttons
+                movieSectionBtn.BackColor = SystemColors.Highlight;
+                serieSectionBtn.BackColor = SystemColors.Highlight;
+                bookSectionBtn.BackColor = SystemColors.ButtonFace;
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -284,9 +296,9 @@ namespace later_list
                 serie_name_lbl.Visible = false;
                 book_name_lbl.Visible = true;
                 author_lbl.Visible = true;
-                genre_lbl.Location = new Point(43, 77);
+                genre_lbl.Location = new Point(43, 82);
                 //checkbox
-                genre_cb.Location = new Point(97, 71);
+                genre_cb.Location = new Point(97, 76);
                 //textbox
                 author_tb.Visible = true;
                 //listbox
