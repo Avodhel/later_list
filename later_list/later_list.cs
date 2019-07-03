@@ -128,9 +128,11 @@ namespace later_list
 
         private void later_list_Load(object sender, EventArgs e)
         {
+            prepareSection(whichSection);
+
             ThemeManager.registerForm(this);
 
-            ThemeManager.registerGB(sections_gb);
+            //ThemeManager.registerGB(sections_gb);
             ThemeManager.registerGB(list_operations_gb);
 
             ThemeManager.registerTB(name_tb);
@@ -179,11 +181,28 @@ namespace later_list
         #endregion
 
         #region choose section
-        private void rbCheckedChanged(object sender, EventArgs e)
+        private void chooseSection(object sender, EventArgs e)
         {
-            if (movie_rb.Checked && !serie_rb.Checked && !book_rb.Checked)
+            switch (((Button)sender).Name)
+            {
+                case "movieSectionBtn":
+                    prepareSection("movie");
+                    break;
+                case "serieSectionBtn":
+                    prepareSection("serie");
+                    break;
+                case "bookSectionBtn":
+                    prepareSection("book");
+                    break;
+            }
+        }
+
+        private void prepareSection(string section)
+        {
+            if (section == "movie")
             {
                 whichSection = "movie";
+                list_operations_gb.Text = "Movies";
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -191,9 +210,9 @@ namespace later_list
                 serie_name_lbl.Visible = false;
                 book_name_lbl.Visible = false;
                 author_lbl.Visible = false;
-                genre_lbl.Location = new Point(37, 37);
+                genre_lbl.Location = new Point(43, 47);
                 //checkbox
-                genre_cb.Location = new Point(85, 35);
+                genre_cb.Location = new Point(97, 41);
                 //textbox
                 author_tb.Visible = false;
                 //listbox
@@ -217,9 +236,10 @@ namespace later_list
                 save_button.Enabled = false;
             }
 
-            if (!movie_rb.Checked && serie_rb.Checked && !book_rb.Checked)
+            if (section == "serie")
             {
                 whichSection = "serie";
+                list_operations_gb.Text = "Series";
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -227,9 +247,9 @@ namespace later_list
                 serie_name_lbl.Visible = true;
                 book_name_lbl.Visible = false;
                 author_lbl.Visible = false;
-                genre_lbl.Location = new Point(37, 37);
+                genre_lbl.Location = new Point(43, 47);
                 //checkbox
-                genre_cb.Location = new Point(85, 35);
+                genre_cb.Location = new Point(97, 41);
                 //textbox
                 author_tb.Visible = false;
                 //listbox
@@ -253,9 +273,10 @@ namespace later_list
                 save_button.Enabled = false;
             }
 
-            if (!movie_rb.Checked && !serie_rb.Checked && book_rb.Checked)
+            if (section == "book")
             {
                 whichSection = "book";
+                list_operations_gb.Text = "Books";
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -263,9 +284,9 @@ namespace later_list
                 serie_name_lbl.Visible = false;
                 book_name_lbl.Visible = true;
                 author_lbl.Visible = true;
-                genre_lbl.Location = new Point(37, 69);
+                genre_lbl.Location = new Point(43, 77);
                 //checkbox
-                genre_cb.Location = new Point(85, 67);
+                genre_cb.Location = new Point(97, 71);
                 //textbox
                 author_tb.Visible = true;
                 //listbox
@@ -544,16 +565,16 @@ namespace later_list
                 switch (whichSection)
                 {
                     case "movie":
-                        serie_rb.Enabled = false;
-                        book_rb.Enabled = false;
+                        serieSectionBtn.Enabled = false;
+                        bookSectionBtn.Enabled = false;
                         break;
                     case "serie":
-                        movie_rb.Enabled = false;
-                        book_rb.Enabled = false;
+                        movieSectionBtn.Enabled = false;
+                        bookSectionBtn.Enabled = false;
                         break;
                     case "book":
-                        movie_rb.Enabled = false;
-                        serie_rb.Enabled = false;
+                        movieSectionBtn.Enabled = false;
+                        serieSectionBtn.Enabled = false;
                         break;
                 }
                 error_provider.SetError(save_button, "There're unsaved changes in " + whichSection + " list!");
@@ -561,9 +582,9 @@ namespace later_list
             }
             if (save_button.Enabled == false)
             {
-                movie_rb.Enabled = true;
-                serie_rb.Enabled = true;
-                book_rb.Enabled = true;
+                movieSectionBtn.Enabled = true;
+                serieSectionBtn.Enabled = true;
+                bookSectionBtn.Enabled = true;
                 error_provider.Clear();
                 discard_button.Visible = false;
             }

@@ -57,45 +57,47 @@
             // open_movie_path_button
             // 
             this.open_movie_path_button.BackColor = System.Drawing.Color.Khaki;
+            this.open_movie_path_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.open_movie_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.open_movie_path_button.Image = ((System.Drawing.Image)(resources.GetObject("open_movie_path_button.Image")));
-            this.open_movie_path_button.Location = new System.Drawing.Point(278, 14);
+            this.open_movie_path_button.Location = new System.Drawing.Point(335, 16);
             this.open_movie_path_button.Name = "open_movie_path_button";
-            this.open_movie_path_button.Size = new System.Drawing.Size(31, 26);
+            this.open_movie_path_button.Size = new System.Drawing.Size(36, 26);
             this.open_movie_path_button.TabIndex = 5;
             this.open_movie_path_button.UseVisualStyleBackColor = false;
             this.open_movie_path_button.Click += new System.EventHandler(this.openPath);
             // 
             // movie_path_tb
             // 
-            this.movie_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.movie_path_tb.Location = new System.Drawing.Point(86, 14);
+            this.movie_path_tb.Font = new System.Drawing.Font("Raleway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.movie_path_tb.Location = new System.Drawing.Point(83, 16);
             this.movie_path_tb.Name = "movie_path_tb";
             this.movie_path_tb.ReadOnly = true;
-            this.movie_path_tb.Size = new System.Drawing.Size(186, 26);
+            this.movie_path_tb.Size = new System.Drawing.Size(246, 26);
             this.movie_path_tb.TabIndex = 4;
             this.movie_path_tb.TextChanged += new System.EventHandler(this.pathChanged);
             // 
             // movie_path_lbl
             // 
             this.movie_path_lbl.AutoSize = true;
-            this.movie_path_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.movie_path_lbl.Location = new System.Drawing.Point(8, 19);
+            this.movie_path_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.movie_path_lbl.Location = new System.Drawing.Point(1, 23);
             this.movie_path_lbl.Name = "movie_path_lbl";
-            this.movie_path_lbl.Size = new System.Drawing.Size(72, 16);
+            this.movie_path_lbl.Size = new System.Drawing.Size(71, 15);
             this.movie_path_lbl.TabIndex = 3;
             this.movie_path_lbl.Text = "Movie List:";
             // 
             // save_settings_button
             // 
-            this.save_settings_button.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.save_settings_button.BackColor = System.Drawing.SystemColors.Highlight;
             this.save_settings_button.Enabled = false;
-            this.save_settings_button.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.save_settings_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.save_settings_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.save_settings_button.Image = ((System.Drawing.Image)(resources.GetObject("save_settings_button.Image")));
             this.save_settings_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.save_settings_button.Location = new System.Drawing.Point(86, 98);
+            this.save_settings_button.Location = new System.Drawing.Point(83, 113);
             this.save_settings_button.Name = "save_settings_button";
-            this.save_settings_button.Size = new System.Drawing.Size(186, 29);
+            this.save_settings_button.Size = new System.Drawing.Size(248, 27);
             this.save_settings_button.TabIndex = 6;
             this.save_settings_button.Text = "Save Settings";
             this.save_settings_button.UseVisualStyleBackColor = false;
@@ -119,10 +121,10 @@
             this.settings_gb.Controls.Add(this.open_serie_path_button);
             this.settings_gb.Controls.Add(this.serie_path_tb);
             this.settings_gb.Controls.Add(this.serie_path_lbl);
-            this.settings_gb.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settings_gb.Location = new System.Drawing.Point(12, 12);
+            this.settings_gb.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.settings_gb.Location = new System.Drawing.Point(12, 11);
             this.settings_gb.Name = "settings_gb";
-            this.settings_gb.Size = new System.Drawing.Size(419, 133);
+            this.settings_gb.Size = new System.Drawing.Size(513, 149);
             this.settings_gb.TabIndex = 23;
             this.settings_gb.TabStop = false;
             this.settings_gb.Text = "Settings";
@@ -131,11 +133,12 @@
             // 
             this.clear_book_path_button.BackColor = System.Drawing.Color.Thistle;
             this.clear_book_path_button.Enabled = false;
+            this.clear_book_path_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clear_book_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clear_book_path_button.Image = ((System.Drawing.Image)(resources.GetObject("clear_book_path_button.Image")));
-            this.clear_book_path_button.Location = new System.Drawing.Point(307, 72);
+            this.clear_book_path_button.Location = new System.Drawing.Point(377, 81);
             this.clear_book_path_button.Name = "clear_book_path_button";
-            this.clear_book_path_button.Size = new System.Drawing.Size(31, 26);
+            this.clear_book_path_button.Size = new System.Drawing.Size(36, 26);
             this.clear_book_path_button.TabIndex = 13;
             this.clear_book_path_button.UseVisualStyleBackColor = false;
             this.clear_book_path_button.Click += new System.EventHandler(this.clearPath);
@@ -144,11 +147,12 @@
             // 
             this.clear_serie_path_button.BackColor = System.Drawing.Color.Thistle;
             this.clear_serie_path_button.Enabled = false;
+            this.clear_serie_path_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clear_serie_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clear_serie_path_button.Image = ((System.Drawing.Image)(resources.GetObject("clear_serie_path_button.Image")));
-            this.clear_serie_path_button.Location = new System.Drawing.Point(307, 43);
+            this.clear_serie_path_button.Location = new System.Drawing.Point(377, 49);
             this.clear_serie_path_button.Name = "clear_serie_path_button";
-            this.clear_serie_path_button.Size = new System.Drawing.Size(31, 26);
+            this.clear_serie_path_button.Size = new System.Drawing.Size(36, 26);
             this.clear_serie_path_button.TabIndex = 12;
             this.clear_serie_path_button.UseVisualStyleBackColor = false;
             this.clear_serie_path_button.Click += new System.EventHandler(this.clearPath);
@@ -157,11 +161,12 @@
             // 
             this.clear_movie_path_button.BackColor = System.Drawing.Color.Thistle;
             this.clear_movie_path_button.Enabled = false;
+            this.clear_movie_path_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clear_movie_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clear_movie_path_button.Image = ((System.Drawing.Image)(resources.GetObject("clear_movie_path_button.Image")));
-            this.clear_movie_path_button.Location = new System.Drawing.Point(307, 14);
+            this.clear_movie_path_button.Location = new System.Drawing.Point(377, 16);
             this.clear_movie_path_button.Name = "clear_movie_path_button";
-            this.clear_movie_path_button.Size = new System.Drawing.Size(31, 26);
+            this.clear_movie_path_button.Size = new System.Drawing.Size(36, 26);
             this.clear_movie_path_button.TabIndex = 11;
             this.clear_movie_path_button.UseVisualStyleBackColor = false;
             this.clear_movie_path_button.Click += new System.EventHandler(this.clearPath);
@@ -170,10 +175,10 @@
             // 
             this.themes_gb.Controls.Add(this.dark_rb);
             this.themes_gb.Controls.Add(this.light_rb);
-            this.themes_gb.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.themes_gb.Location = new System.Drawing.Point(344, 14);
+            this.themes_gb.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.themes_gb.Location = new System.Drawing.Point(419, 16);
             this.themes_gb.Name = "themes_gb";
-            this.themes_gb.Size = new System.Drawing.Size(67, 84);
+            this.themes_gb.Size = new System.Drawing.Size(77, 91);
             this.themes_gb.TabIndex = 10;
             this.themes_gb.TabStop = false;
             this.themes_gb.Text = "Themes";
@@ -181,10 +186,11 @@
             // dark_rb
             // 
             this.dark_rb.AutoSize = true;
-            this.dark_rb.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dark_rb.Location = new System.Drawing.Point(6, 48);
+            this.dark_rb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dark_rb.Font = new System.Drawing.Font("Raleway", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dark_rb.Location = new System.Drawing.Point(8, 55);
             this.dark_rb.Name = "dark_rb";
-            this.dark_rb.Size = new System.Drawing.Size(52, 20);
+            this.dark_rb.Size = new System.Drawing.Size(57, 22);
             this.dark_rb.TabIndex = 1;
             this.dark_rb.Text = "Dark";
             this.dark_rb.UseVisualStyleBackColor = true;
@@ -194,10 +200,11 @@
             // 
             this.light_rb.AutoSize = true;
             this.light_rb.Checked = true;
-            this.light_rb.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.light_rb.Location = new System.Drawing.Point(6, 22);
+            this.light_rb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.light_rb.Font = new System.Drawing.Font("Raleway", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.light_rb.Location = new System.Drawing.Point(8, 25);
             this.light_rb.Name = "light_rb";
-            this.light_rb.Size = new System.Drawing.Size(56, 20);
+            this.light_rb.Size = new System.Drawing.Size(60, 22);
             this.light_rb.TabIndex = 0;
             this.light_rb.TabStop = true;
             this.light_rb.Text = "Light";
@@ -207,64 +214,66 @@
             // open_book_path_button
             // 
             this.open_book_path_button.BackColor = System.Drawing.Color.Khaki;
+            this.open_book_path_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.open_book_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.open_book_path_button.Image = ((System.Drawing.Image)(resources.GetObject("open_book_path_button.Image")));
-            this.open_book_path_button.Location = new System.Drawing.Point(278, 71);
+            this.open_book_path_button.Location = new System.Drawing.Point(335, 81);
             this.open_book_path_button.Name = "open_book_path_button";
-            this.open_book_path_button.Size = new System.Drawing.Size(31, 27);
+            this.open_book_path_button.Size = new System.Drawing.Size(36, 26);
             this.open_book_path_button.TabIndex = 9;
             this.open_book_path_button.UseVisualStyleBackColor = false;
             this.open_book_path_button.Click += new System.EventHandler(this.openPath);
             // 
             // book_path_tb
             // 
-            this.book_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.book_path_tb.Location = new System.Drawing.Point(86, 71);
+            this.book_path_tb.Font = new System.Drawing.Font("Raleway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.book_path_tb.Location = new System.Drawing.Point(83, 81);
             this.book_path_tb.Name = "book_path_tb";
             this.book_path_tb.ReadOnly = true;
-            this.book_path_tb.Size = new System.Drawing.Size(186, 26);
+            this.book_path_tb.Size = new System.Drawing.Size(246, 26);
             this.book_path_tb.TabIndex = 8;
             this.book_path_tb.TextChanged += new System.EventHandler(this.pathChanged);
             // 
             // book_path_lbl
             // 
             this.book_path_lbl.AutoSize = true;
-            this.book_path_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.book_path_lbl.Location = new System.Drawing.Point(12, 75);
+            this.book_path_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.book_path_lbl.Location = new System.Drawing.Point(6, 89);
             this.book_path_lbl.Name = "book_path_lbl";
-            this.book_path_lbl.Size = new System.Drawing.Size(68, 16);
+            this.book_path_lbl.Size = new System.Drawing.Size(66, 15);
             this.book_path_lbl.TabIndex = 7;
             this.book_path_lbl.Text = "Book List:";
             // 
             // open_serie_path_button
             // 
             this.open_serie_path_button.BackColor = System.Drawing.Color.Khaki;
+            this.open_serie_path_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.open_serie_path_button.Font = new System.Drawing.Font("Advanced Pixel-7", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.open_serie_path_button.Image = ((System.Drawing.Image)(resources.GetObject("open_serie_path_button.Image")));
-            this.open_serie_path_button.Location = new System.Drawing.Point(278, 43);
+            this.open_serie_path_button.Location = new System.Drawing.Point(335, 49);
             this.open_serie_path_button.Name = "open_serie_path_button";
-            this.open_serie_path_button.Size = new System.Drawing.Size(31, 26);
+            this.open_serie_path_button.Size = new System.Drawing.Size(36, 26);
             this.open_serie_path_button.TabIndex = 6;
             this.open_serie_path_button.UseVisualStyleBackColor = false;
             this.open_serie_path_button.Click += new System.EventHandler(this.openPath);
             // 
             // serie_path_tb
             // 
-            this.serie_path_tb.Font = new System.Drawing.Font("Advanced Pixel-7", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serie_path_tb.Location = new System.Drawing.Point(86, 43);
+            this.serie_path_tb.Font = new System.Drawing.Font("Raleway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.serie_path_tb.Location = new System.Drawing.Point(83, 49);
             this.serie_path_tb.Name = "serie_path_tb";
             this.serie_path_tb.ReadOnly = true;
-            this.serie_path_tb.Size = new System.Drawing.Size(186, 26);
+            this.serie_path_tb.Size = new System.Drawing.Size(246, 26);
             this.serie_path_tb.TabIndex = 5;
             this.serie_path_tb.TextChanged += new System.EventHandler(this.pathChanged);
             // 
             // serie_path_lbl
             // 
             this.serie_path_lbl.AutoSize = true;
-            this.serie_path_lbl.Font = new System.Drawing.Font("Advanced Pixel-7", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serie_path_lbl.Location = new System.Drawing.Point(8, 47);
+            this.serie_path_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.serie_path_lbl.Location = new System.Drawing.Point(6, 57);
             this.serie_path_lbl.Name = "serie_path_lbl";
-            this.serie_path_lbl.Size = new System.Drawing.Size(72, 16);
+            this.serie_path_lbl.Size = new System.Drawing.Size(66, 15);
             this.serie_path_lbl.TabIndex = 4;
             this.serie_path_lbl.Text = "Serie List:";
             // 
@@ -275,14 +284,16 @@
             // settings_error_provider
             // 
             this.settings_error_provider.ContainerControl = this;
+            this.settings_error_provider.Icon = ((System.Drawing.Icon)(resources.GetObject("settings_error_provider.Icon")));
             // 
             // settings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(443, 156);
+            this.ClientSize = new System.Drawing.Size(539, 172);
             this.Controls.Add(this.settings_gb);
+            this.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
