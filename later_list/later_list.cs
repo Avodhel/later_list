@@ -710,9 +710,32 @@ namespace later_list
             }
             catch (FileNotFoundException)
             {
-                //MessageBox.Show("There isn't a " + which_section + " list.", "File Not Found",
-                //                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (whichSection == "movie" && Properties.Settings.Default.movie_path != "")
+                {
+                    showFileNotFoundMsg(whichSection);
+                    settingsForm.MovieTextBoxText = "";
+                    Properties.Settings.Default.movie_path = "";
+                }
+                else if (whichSection == "serie" && Properties.Settings.Default.serie_path != "")
+                {
+                    showFileNotFoundMsg(whichSection);
+                    settingsForm.SerieTextBoxText = "";
+                    Properties.Settings.Default.serie_path = "";
+                }
+                else if (whichSection == "book" && Properties.Settings.Default.book_path != "")
+                {
+                    showFileNotFoundMsg(whichSection);
+                    settingsForm.BookTextBoxText = "";
+                    Properties.Settings.Default.book_path = "";
+                }
+                Properties.Settings.Default.Save();
             }
+        }
+
+        private void showFileNotFoundMsg(string whichSection)
+        {
+            MessageBox.Show(whichSection + " list not found.", "File Not Found",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         #endregion
 
