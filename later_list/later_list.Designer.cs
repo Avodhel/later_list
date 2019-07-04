@@ -371,7 +371,7 @@
             this.laterListLogo.BackColor = System.Drawing.Color.Transparent;
             this.laterListLogo.Image = ((System.Drawing.Image)(resources.GetObject("laterListLogo.Image")));
             this.laterListLogo.InitialImage = null;
-            this.laterListLogo.Location = new System.Drawing.Point(16, 12);
+            this.laterListLogo.Location = new System.Drawing.Point(18, 12);
             this.laterListLogo.Name = "laterListLogo";
             this.laterListLogo.Size = new System.Drawing.Size(64, 64);
             this.laterListLogo.TabIndex = 22;
@@ -384,7 +384,7 @@
             this.bookSectionBtn.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.bookSectionBtn.Image = ((System.Drawing.Image)(resources.GetObject("bookSectionBtn.Image")));
             this.bookSectionBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bookSectionBtn.Location = new System.Drawing.Point(0, 199);
+            this.bookSectionBtn.Location = new System.Drawing.Point(0, 200);
             this.bookSectionBtn.Name = "bookSectionBtn";
             this.bookSectionBtn.Size = new System.Drawing.Size(99, 33);
             this.bookSectionBtn.TabIndex = 2;
@@ -416,7 +416,7 @@
             this.movieSectionBtn.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.movieSectionBtn.Image = ((System.Drawing.Image)(resources.GetObject("movieSectionBtn.Image")));
             this.movieSectionBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.movieSectionBtn.Location = new System.Drawing.Point(0, 121);
+            this.movieSectionBtn.Location = new System.Drawing.Point(0, 120);
             this.movieSectionBtn.Name = "movieSectionBtn";
             this.movieSectionBtn.Size = new System.Drawing.Size(99, 33);
             this.movieSectionBtn.TabIndex = 0;
