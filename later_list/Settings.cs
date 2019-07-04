@@ -15,6 +15,10 @@ namespace later_list
         #region variables
         string fileName;
         string filePath;
+        public Color lightBC = Color.FromArgb(242,242,242);
+        public Color darkBC = Color.FromArgb(51,51,51);
+        public Color lightTC = Color.FromArgb(242,242,242);
+        public Color darkTC = Color.FromArgb(31, 31, 31);
         #endregion
 
         #region settings opened
@@ -67,13 +71,13 @@ namespace later_list
                     {
                         light_rb.Checked = true;
                         dark_rb.Checked = false;
-                        ThemeManager.setAllBackcolors(SystemColors.InactiveBorder, Color.Black);
+                        ThemeManager.setAllBackcolors(lightBC, darkTC, darkTC);
                     }
                     if (Properties.Settings.Default.dark_checked == true)
                     {
                         dark_rb.Checked = true;
                         light_rb.Checked = false;
-                        ThemeManager.setAllBackcolors(SystemColors.InactiveCaptionText, Color.White);
+                        ThemeManager.setAllBackcolors(darkBC, lightTC, darkTC);
                     }
                 }
                 else if (confirm == DialogResult.Cancel)
@@ -263,7 +267,7 @@ namespace later_list
         {
             if (light_rb.Checked)
             {
-                ThemeManager.setAllBackcolors(SystemColors.InactiveBorder, Color.Black);
+                ThemeManager.setAllBackcolors(lightBC, darkTC, darkTC);
                 if (Properties.Settings.Default.dark_checked == true)
                 {
                     save_settings_button.Enabled = true;
@@ -271,7 +275,7 @@ namespace later_list
             }
             else if (dark_rb.Checked)
             {
-                ThemeManager.setAllBackcolors(SystemColors.InactiveCaptionText, Color.White);
+                ThemeManager.setAllBackcolors(darkBC, lightTC, darkTC);
                 if (Properties.Settings.Default.light_checked == true)
                 {
                     save_settings_button.Enabled = true;
@@ -382,7 +386,7 @@ namespace later_list
         }
 
         //SET ALL COLORS
-        public static void setAllBackcolors(Color BackColor, Color TextColor)
+        public static void setAllBackcolors(Color BackColor, Color TextColor, Color ButtonTextColor)
         {
             foreach (Form f in formList) if (f != null) f.BackColor = BackColor;
             foreach (GroupBox gb in gbList) if (gb != null) gb.ForeColor = TextColor;
@@ -392,7 +396,7 @@ namespace later_list
             foreach (ComboBox cb in cbList) if (cb != null) cb.BackColor = BackColor;
             foreach (ListBox lb in lbList) if (lb != null) lb.ForeColor = TextColor;
             foreach (ListBox lb in lbList) if (lb != null) lb.BackColor = BackColor;
-            foreach (Button b in buttonList) if (b != null) b.ForeColor = Color.Black;
+            foreach (Button b in buttonList) if (b != null) b.ForeColor = ButtonTextColor;
         }
     }
     #endregion

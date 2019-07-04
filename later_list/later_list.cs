@@ -726,14 +726,14 @@ namespace later_list
         {
             if (Properties.Settings.Default.light_checked == true)
             {
-                ThemeManager.setAllBackcolors(SystemColors.InactiveBorder, Color.Black);
+                ThemeManager.setAllBackcolors(settingsForm.lightBC, Color.Black, settingsForm.darkTC);
                 settingsForm.loadTheme();
                 settingsForm.LightThemeCheck = true;
                 settingsForm.DarkThemeCheck = false;
             }
             if (Properties.Settings.Default.dark_checked == true)
             {
-                ThemeManager.setAllBackcolors(SystemColors.InactiveCaptionText, Color.White);
+                ThemeManager.setAllBackcolors(settingsForm.darkBC, Color.White, settingsForm.darkTC);
                 settingsForm.loadTheme();
                 settingsForm.LightThemeCheck = false;
                 settingsForm.DarkThemeCheck = true;
