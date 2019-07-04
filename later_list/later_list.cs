@@ -132,7 +132,6 @@ namespace later_list
 
             ThemeManager.registerForm(this);
 
-            //ThemeManager.registerGB(sections_gb);
             ThemeManager.registerGB(list_operations_gb);
 
             ThemeManager.registerTB(name_tb);

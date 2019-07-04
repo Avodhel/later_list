@@ -257,11 +257,11 @@
             this.version_lbl.AutoSize = true;
             this.version_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.version_lbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.version_lbl.Location = new System.Drawing.Point(13, 325);
+            this.version_lbl.Location = new System.Drawing.Point(36, 325);
             this.version_lbl.Name = "version_lbl";
-            this.version_lbl.Size = new System.Drawing.Size(69, 15);
+            this.version_lbl.Size = new System.Drawing.Size(30, 15);
             this.version_lbl.TabIndex = 3;
-            this.version_lbl.Text = "v1.2 demo";
+            this.version_lbl.Text = "v1.2";
             // 
             // list_operations_gb
             // 
