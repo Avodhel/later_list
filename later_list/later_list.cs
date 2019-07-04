@@ -207,6 +207,9 @@ namespace later_list
                 movieSectionBtn.BackColor = SystemColors.ButtonFace;
                 serieSectionBtn.BackColor = SystemColors.Highlight;
                 bookSectionBtn.BackColor = SystemColors.Highlight;
+                //movieSectionBtn.Enabled = false;
+                //serieSectionBtn.Enabled = true;
+                //bookSectionBtn.Enabled = true;
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -248,6 +251,9 @@ namespace later_list
                 movieSectionBtn.BackColor = SystemColors.Highlight;
                 serieSectionBtn.BackColor = SystemColors.ButtonFace;
                 bookSectionBtn.BackColor = SystemColors.Highlight;
+                //movieSectionBtn.Enabled = true;
+                //serieSectionBtn.Enabled = false;
+                //bookSectionBtn.Enabled = true;
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -289,6 +295,9 @@ namespace later_list
                 movieSectionBtn.BackColor = SystemColors.Highlight;
                 serieSectionBtn.BackColor = SystemColors.Highlight;
                 bookSectionBtn.BackColor = SystemColors.ButtonFace;
+                //movieSectionBtn.Enabled = true;
+                //serieSectionBtn.Enabled = true;
+                //bookSectionBtn.Enabled = false;
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels

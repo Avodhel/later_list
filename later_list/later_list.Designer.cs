@@ -54,22 +54,22 @@
             this.settings_button = new System.Windows.Forms.Button();
             this.error_provider = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.movieSectionBtn = new System.Windows.Forms.Button();
-            this.serieSectionBtn = new System.Windows.Forms.Button();
+            this.laterListLogo = new System.Windows.Forms.PictureBox();
             this.bookSectionBtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.serieSectionBtn = new System.Windows.Forms.Button();
+            this.movieSectionBtn = new System.Windows.Forms.Button();
             this.list_operations_gb.SuspendLayout();
             this.input_fields_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error_provider)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.laterListLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // add_button
             // 
             this.add_button.BackColor = System.Drawing.Color.PaleGreen;
             this.add_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.add_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.add_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.add_button.Image = ((System.Drawing.Image)(resources.GetObject("add_button.Image")));
             this.add_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.add_button.Location = new System.Drawing.Point(18, 118);
@@ -95,10 +95,10 @@
             // 
             this.movie_name_lbl.AutoSize = true;
             this.movie_name_lbl.BackColor = System.Drawing.Color.Transparent;
-            this.movie_name_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.movie_name_lbl.Location = new System.Drawing.Point(4, 6);
+            this.movie_name_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.movie_name_lbl.Location = new System.Drawing.Point(4, 8);
             this.movie_name_lbl.Name = "movie_name_lbl";
-            this.movie_name_lbl.Size = new System.Drawing.Size(87, 15);
+            this.movie_name_lbl.Size = new System.Drawing.Size(88, 15);
             this.movie_name_lbl.TabIndex = 4;
             this.movie_name_lbl.Text = "Movie Name:";
             // 
@@ -131,7 +131,7 @@
             this.remove_button.BackColor = System.Drawing.Color.Salmon;
             this.remove_button.Enabled = false;
             this.remove_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.remove_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.remove_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.remove_button.Image = ((System.Drawing.Image)(resources.GetObject("remove_button.Image")));
             this.remove_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.remove_button.Location = new System.Drawing.Point(209, 118);
@@ -146,7 +146,7 @@
             // 
             this.genre_lbl.AutoSize = true;
             this.genre_lbl.BackColor = System.Drawing.Color.Transparent;
-            this.genre_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.genre_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.genre_lbl.Location = new System.Drawing.Point(43, 47);
             this.genre_lbl.Name = "genre_lbl";
             this.genre_lbl.Size = new System.Drawing.Size(48, 15);
@@ -159,7 +159,7 @@
             this.edit_button.BackColor = System.Drawing.Color.Yellow;
             this.edit_button.Enabled = false;
             this.edit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.edit_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.edit_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.edit_button.Image = ((System.Drawing.Image)(resources.GetObject("edit_button.Image")));
             this.edit_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.edit_button.Location = new System.Drawing.Point(18, 157);
@@ -174,7 +174,7 @@
             // 
             this.clear_button.BackColor = System.Drawing.Color.Thistle;
             this.clear_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clear_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.clear_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.clear_button.Image = ((System.Drawing.Image)(resources.GetObject("clear_button.Image")));
             this.clear_button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.clear_button.Location = new System.Drawing.Point(315, 32);
@@ -203,7 +203,7 @@
             this.save_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.save_button.Enabled = false;
             this.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.save_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.save_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.save_button.Image = ((System.Drawing.Image)(resources.GetObject("save_button.Image")));
             this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.save_button.Location = new System.Drawing.Point(209, 157);
@@ -232,10 +232,10 @@
             // 
             this.book_name_lbl.AutoSize = true;
             this.book_name_lbl.BackColor = System.Drawing.Color.Transparent;
-            this.book_name_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.book_name_lbl.Location = new System.Drawing.Point(9, 6);
+            this.book_name_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.book_name_lbl.Location = new System.Drawing.Point(9, 8);
             this.book_name_lbl.Name = "book_name_lbl";
-            this.book_name_lbl.Size = new System.Drawing.Size(82, 15);
+            this.book_name_lbl.Size = new System.Drawing.Size(83, 15);
             this.book_name_lbl.TabIndex = 17;
             this.book_name_lbl.Text = "Book Name:";
             this.book_name_lbl.Visible = false;
@@ -244,10 +244,10 @@
             // 
             this.serie_name_lbl.AutoSize = true;
             this.serie_name_lbl.BackColor = System.Drawing.Color.Transparent;
-            this.serie_name_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.serie_name_lbl.Location = new System.Drawing.Point(9, 6);
+            this.serie_name_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.serie_name_lbl.Location = new System.Drawing.Point(9, 8);
             this.serie_name_lbl.Name = "serie_name_lbl";
-            this.serie_name_lbl.Size = new System.Drawing.Size(82, 15);
+            this.serie_name_lbl.Size = new System.Drawing.Size(83, 15);
             this.serie_name_lbl.TabIndex = 4;
             this.serie_name_lbl.Text = "Serie Name:";
             this.serie_name_lbl.Visible = false;
@@ -255,13 +255,13 @@
             // version_lbl
             // 
             this.version_lbl.AutoSize = true;
-            this.version_lbl.Font = new System.Drawing.Font("Raleway", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.version_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.version_lbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.version_lbl.Location = new System.Drawing.Point(33, 325);
+            this.version_lbl.Location = new System.Drawing.Point(13, 325);
             this.version_lbl.Name = "version_lbl";
-            this.version_lbl.Size = new System.Drawing.Size(35, 18);
+            this.version_lbl.Size = new System.Drawing.Size(69, 15);
             this.version_lbl.TabIndex = 3;
-            this.version_lbl.Text = "v1.2";
+            this.version_lbl.Text = "v1.2 demo";
             // 
             // list_operations_gb
             // 
@@ -276,7 +276,8 @@
             this.list_operations_gb.Controls.Add(this.book_listbox);
             this.list_operations_gb.Controls.Add(this.add_button);
             this.list_operations_gb.Controls.Add(this.movie_listbox);
-            this.list_operations_gb.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.list_operations_gb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.list_operations_gb.Font = new System.Drawing.Font("Raleway", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.list_operations_gb.Location = new System.Drawing.Point(105, 3);
             this.list_operations_gb.Name = "list_operations_gb";
             this.list_operations_gb.Size = new System.Drawing.Size(394, 340);
@@ -318,10 +319,10 @@
             // 
             this.author_lbl.AutoSize = true;
             this.author_lbl.BackColor = System.Drawing.Color.Transparent;
-            this.author_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.author_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.author_lbl.Location = new System.Drawing.Point(39, 47);
             this.author_lbl.Name = "author_lbl";
-            this.author_lbl.Size = new System.Drawing.Size(52, 15);
+            this.author_lbl.Size = new System.Drawing.Size(53, 15);
             this.author_lbl.TabIndex = 18;
             this.author_lbl.Text = "Author:";
             this.author_lbl.Visible = false;
@@ -354,7 +355,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.laterListLogo);
             this.panel1.Controls.Add(this.bookSectionBtn);
             this.panel1.Controls.Add(this.settings_button);
             this.panel1.Controls.Add(this.serieSectionBtn);
@@ -365,37 +366,16 @@
             this.panel1.Size = new System.Drawing.Size(100, 359);
             this.panel1.TabIndex = 22;
             // 
-            // movieSectionBtn
+            // laterListLogo
             // 
-            this.movieSectionBtn.BackColor = System.Drawing.Color.Transparent;
-            this.movieSectionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.movieSectionBtn.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.movieSectionBtn.Image = ((System.Drawing.Image)(resources.GetObject("movieSectionBtn.Image")));
-            this.movieSectionBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.movieSectionBtn.Location = new System.Drawing.Point(0, 121);
-            this.movieSectionBtn.Name = "movieSectionBtn";
-            this.movieSectionBtn.Size = new System.Drawing.Size(99, 33);
-            this.movieSectionBtn.TabIndex = 0;
-            this.movieSectionBtn.Text = "Movies";
-            this.movieSectionBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.movieSectionBtn.UseVisualStyleBackColor = false;
-            this.movieSectionBtn.Click += new System.EventHandler(this.chooseSection);
-            // 
-            // serieSectionBtn
-            // 
-            this.serieSectionBtn.BackColor = System.Drawing.Color.Transparent;
-            this.serieSectionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.serieSectionBtn.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.serieSectionBtn.Image = ((System.Drawing.Image)(resources.GetObject("serieSectionBtn.Image")));
-            this.serieSectionBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.serieSectionBtn.Location = new System.Drawing.Point(0, 160);
-            this.serieSectionBtn.Name = "serieSectionBtn";
-            this.serieSectionBtn.Size = new System.Drawing.Size(99, 33);
-            this.serieSectionBtn.TabIndex = 1;
-            this.serieSectionBtn.Text = "Series";
-            this.serieSectionBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.serieSectionBtn.UseVisualStyleBackColor = false;
-            this.serieSectionBtn.Click += new System.EventHandler(this.chooseSection);
+            this.laterListLogo.BackColor = System.Drawing.Color.Transparent;
+            this.laterListLogo.Image = ((System.Drawing.Image)(resources.GetObject("laterListLogo.Image")));
+            this.laterListLogo.InitialImage = null;
+            this.laterListLogo.Location = new System.Drawing.Point(16, 12);
+            this.laterListLogo.Name = "laterListLogo";
+            this.laterListLogo.Size = new System.Drawing.Size(64, 64);
+            this.laterListLogo.TabIndex = 22;
+            this.laterListLogo.TabStop = false;
             // 
             // bookSectionBtn
             // 
@@ -413,16 +393,37 @@
             this.bookSectionBtn.UseVisualStyleBackColor = false;
             this.bookSectionBtn.Click += new System.EventHandler(this.chooseSection);
             // 
-            // pictureBox1
+            // serieSectionBtn
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(65, 65);
-            this.pictureBox1.TabIndex = 22;
-            this.pictureBox1.TabStop = false;
+            this.serieSectionBtn.BackColor = System.Drawing.Color.Transparent;
+            this.serieSectionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.serieSectionBtn.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.serieSectionBtn.Image = ((System.Drawing.Image)(resources.GetObject("serieSectionBtn.Image")));
+            this.serieSectionBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.serieSectionBtn.Location = new System.Drawing.Point(0, 160);
+            this.serieSectionBtn.Name = "serieSectionBtn";
+            this.serieSectionBtn.Size = new System.Drawing.Size(99, 33);
+            this.serieSectionBtn.TabIndex = 1;
+            this.serieSectionBtn.Text = "Series";
+            this.serieSectionBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.serieSectionBtn.UseVisualStyleBackColor = false;
+            this.serieSectionBtn.Click += new System.EventHandler(this.chooseSection);
+            // 
+            // movieSectionBtn
+            // 
+            this.movieSectionBtn.BackColor = System.Drawing.Color.Transparent;
+            this.movieSectionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.movieSectionBtn.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.movieSectionBtn.Image = ((System.Drawing.Image)(resources.GetObject("movieSectionBtn.Image")));
+            this.movieSectionBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.movieSectionBtn.Location = new System.Drawing.Point(0, 121);
+            this.movieSectionBtn.Name = "movieSectionBtn";
+            this.movieSectionBtn.Size = new System.Drawing.Size(99, 33);
+            this.movieSectionBtn.TabIndex = 0;
+            this.movieSectionBtn.Text = "Movies";
+            this.movieSectionBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.movieSectionBtn.UseVisualStyleBackColor = false;
+            this.movieSectionBtn.Click += new System.EventHandler(this.chooseSection);
             // 
             // later_list
             // 
@@ -447,7 +448,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.error_provider)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.laterListLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -481,7 +482,7 @@
         private System.Windows.Forms.Button bookSectionBtn;
         private System.Windows.Forms.Button serieSectionBtn;
         private System.Windows.Forms.Button movieSectionBtn;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox laterListLogo;
     }
 }
 
