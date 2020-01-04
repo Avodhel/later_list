@@ -162,29 +162,29 @@ namespace later_list
         #region settings input fields
         private void PathChanged(object sender, EventArgs e)
         {
-            if (movie_path_tb.Text == "")
+            if (movie_path_tb.Text == string.Empty)
             {
                 clear_movie_path_button.Enabled = false;
             }
-            else if (movie_path_tb.Text != "")
+            else if (movie_path_tb.Text != string.Empty)
             {
                 clear_movie_path_button.Enabled = true;
             }
 
-            if (serie_path_tb.Text == "")
+            if (serie_path_tb.Text == string.Empty)
             {
                 clear_serie_path_button.Enabled = false;
             }
-            else if (serie_path_tb.Text != "")
+            else if (serie_path_tb.Text != string.Empty)
             {
                 clear_serie_path_button.Enabled = true;
             }
 
-            if (book_path_tb.Text == "")
+            if (book_path_tb.Text == string.Empty)
             {
                 clear_book_path_button.Enabled = false;
             }
-            else if (book_path_tb.Text != "")
+            else if (book_path_tb.Text != string.Empty)
             {
                 clear_book_path_button.Enabled = true;
             }
@@ -252,13 +252,13 @@ namespace later_list
             switch (((Button)sender).Name)
             {
                 case "clear_movie_path_button":
-                    movie_path_tb.Text = "";
+                    movie_path_tb.Text = string.Empty;
                     break;
                 case "clear_serie_path_button":
-                    serie_path_tb.Text = "";
+                    serie_path_tb.Text = string.Empty;
                     break;
                 case "clear_book_path_button":
-                    book_path_tb.Text = "";
+                    book_path_tb.Text = string.Empty;
                     break;
             }
         }

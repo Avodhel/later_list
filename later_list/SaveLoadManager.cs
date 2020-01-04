@@ -10,8 +10,14 @@ namespace later_list
 {
     public static class SaveLoadManager
     {
-        public static string savePath;
-        public static string loadPath;
+        private static string savePath;
+        private static string loadPath;
+
+        public static void SetPaths(string filePath)
+        {
+            savePath = filePath;
+            loadPath = filePath;
+        }
 
         public static void SaveList(bool show_message, Button save_button, string whichSection, ListBox listBox)
         {
@@ -47,19 +53,19 @@ namespace later_list
             }
             catch (FileNotFoundException)
             {
-                if (whichSection == "movie" && Properties.Settings.Default.movie_path != "")
+                if (whichSection == "movie" && Properties.Settings.Default.movie_path != string.Empty)
                 {
                     ShowFileNotFoundMsg(whichSection);
                     settingsForm.MovieTextBoxText = String.Empty;
                     Properties.Settings.Default.movie_path = String.Empty;
                 }
-                else if (whichSection == "serie" && Properties.Settings.Default.serie_path != "")
+                else if (whichSection == "serie" && Properties.Settings.Default.serie_path != string.Empty)
                 {
                     ShowFileNotFoundMsg(whichSection);
                     settingsForm.SerieTextBoxText = String.Empty;
                     Properties.Settings.Default.serie_path = String.Empty;
                 }
-                else if (whichSection == "book" && Properties.Settings.Default.book_path != "")
+                else if (whichSection == "book" && Properties.Settings.Default.book_path != string.Empty)
                 {
                     ShowFileNotFoundMsg(whichSection);
                     settingsForm.BookTextBoxText = String.Empty;
