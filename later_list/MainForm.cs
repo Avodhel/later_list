@@ -21,89 +21,6 @@ namespace later_list
         string authorPart;
         string genrePart;
         string listPath;
-        string[] movieGenres = {"Action",
-                                 "Adventure",
-                                 "Animation",
-                                 "Biography",
-                                 "Comedy",
-                                 "Crime",
-                                 "Documentary",
-                                 "Drama",
-                                 "Family",
-                                 "Fantasy",
-                                 "Film Noir",
-                                 "History",
-                                 "Horror",
-                                 "Music",
-                                 "Musical",
-                                 "Mystery",
-                                 "Romance",
-                                 "Sci-Fi",
-                                 "Short",
-                                 "Sitcom",
-                                 "Sport",
-                                 "Superhero",
-                                 "Thriller",
-                                 "War",
-                                 "Western"};
-        string[] serieGenres = {"Action",
-                                 "Adventure",
-                                 "Animation",
-                                 "Biography",
-                                 "Comedy",
-                                 "Crime",
-                                 "Documentary",
-                                 "Drama",
-                                 "Family",
-                                 "Fantasy",
-                                 "Film Noir",
-                                 "History",
-                                 "Horror",
-                                 "Music",
-                                 "Musical",
-                                 "Mystery",
-                                 "Romance",
-                                 "Sci-Fi",
-                                 "Short",
-                                 "Sitcom",
-                                 "Sport",
-                                 "Superhero",
-                                 "Thriller",
-                                 "War",
-                                 "Western"};
-        string[] bookGenres = {"Action and Adventure",
-                                "Anthology",
-                                "Biography/Autobiography",
-                                "Classic",
-                                "Comic and Graphic Novel",
-                                "Crime and Detective",
-                                "Drama",
-                                "Essay",
-                                "Fable",
-                                "Fairy Tale",
-                                "Fan-Fiction",
-                                "Fantasy",
-                                "Historical Fiction",
-                                "Horror",
-                                "Humor",
-                                "Legend",
-                                "Magical Realism",
-                                "Memoir",
-                                "Mystery",
-                                "Mythology",
-                                "Narrative Nonfiction",
-                                "Periodicals",
-                                "Realistic Fiction",
-                                "Reference Books",
-                                "Romance",
-                                "Satire",
-                                "Self-help Book",
-                                "Sci-Fi",
-                                "Short Story",
-                                "Speech",
-                                "Suspense/Thriller",
-                                "Textbook",
-                                "Poetry"};
         bool canAddListControl = true;
         ListBox listBox = new ListBox();
         SettingsForm settingsForm = new SettingsForm();
@@ -348,18 +265,20 @@ namespace later_list
         private void LoadGenres()
         {
             genre_cb.Items.Clear();
-            switch (whichSection)
-            {
-                case "movie":
-                    genre_cb.Items.AddRange(movieGenres);
-                    break;
-                case "serie":
-                    genre_cb.Items.AddRange(serieGenres);
-                    break;
-                case "book":
-                    genre_cb.Items.AddRange(bookGenres);
-                    break;
-            }
+            genre_cb.Items.AddRange(DataManager.GetGenreList(whichSection));
+
+            //switch (whichSection)
+            //{
+            //    case "movie":
+            //        genre_cb.Items.AddRange(DataManager.GetGenre(whichSection));
+            //        break;
+            //    case "serie":
+            //        genre_cb.Items.AddRange(DataManager.GetGenre(whichSection));
+            //        break;
+            //    case "book":
+            //        genre_cb.Items.AddRange(DataManager.GetGenre(whichSection));
+            //        break;
+            //}
         }
         #endregion
 
@@ -638,7 +557,7 @@ namespace later_list
         #region choose and load listbox
         private void ChooseListbox()
         {
-            listBox.Items.Clear();
+            //listBox.Items.Clear();
             switch (whichSection)
             {
                 case "movie":
