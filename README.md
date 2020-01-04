@@ -1,4 +1,6 @@
-![later_list_logo](later_list_logo.png)
+<h1 align="center">
+	<img width="90" src="later_list_logo.png" alt="timext">
+</h1>
 
 ### Make your own later list for movies, series and books.
 
