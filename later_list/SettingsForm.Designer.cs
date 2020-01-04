@@ -1,6 +1,6 @@
 ﻿namespace later_list
 {
-    partial class settings
+    partial class SettingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(settings));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.open_movie_path_button = new System.Windows.Forms.Button();
             this.movie_path_tb = new System.Windows.Forms.TextBox();
             this.movie_path_lbl = new System.Windows.Forms.Label();
@@ -65,7 +65,7 @@
             this.open_movie_path_button.Size = new System.Drawing.Size(36, 26);
             this.open_movie_path_button.TabIndex = 5;
             this.open_movie_path_button.UseVisualStyleBackColor = false;
-            this.open_movie_path_button.Click += new System.EventHandler(this.openPath);
+            this.open_movie_path_button.Click += new System.EventHandler(this.OpenPath);
             // 
             // movie_path_tb
             // 
@@ -75,7 +75,7 @@
             this.movie_path_tb.ReadOnly = true;
             this.movie_path_tb.Size = new System.Drawing.Size(226, 25);
             this.movie_path_tb.TabIndex = 4;
-            this.movie_path_tb.TextChanged += new System.EventHandler(this.pathChanged);
+            this.movie_path_tb.TextChanged += new System.EventHandler(this.PathChanged);
             // 
             // movie_path_lbl
             // 
@@ -101,8 +101,8 @@
             this.save_settings_button.TabIndex = 6;
             this.save_settings_button.Text = "Save Settings";
             this.save_settings_button.UseVisualStyleBackColor = false;
-            this.save_settings_button.EnabledChanged += new System.EventHandler(this.save_settings_button_EnabledChanged);
-            this.save_settings_button.Click += new System.EventHandler(this.save_settings_button_Click);
+            this.save_settings_button.EnabledChanged += new System.EventHandler(this.SaveSettingsButtonEnabledChanged);
+            this.save_settings_button.Click += new System.EventHandler(this.SaveSettingsButtonClick);
             // 
             // settings_gb
             // 
@@ -141,7 +141,7 @@
             this.clear_book_path_button.Size = new System.Drawing.Size(36, 26);
             this.clear_book_path_button.TabIndex = 13;
             this.clear_book_path_button.UseVisualStyleBackColor = false;
-            this.clear_book_path_button.Click += new System.EventHandler(this.clearPath);
+            this.clear_book_path_button.Click += new System.EventHandler(this.ClearPath);
             // 
             // clear_serie_path_button
             // 
@@ -155,7 +155,7 @@
             this.clear_serie_path_button.Size = new System.Drawing.Size(36, 26);
             this.clear_serie_path_button.TabIndex = 12;
             this.clear_serie_path_button.UseVisualStyleBackColor = false;
-            this.clear_serie_path_button.Click += new System.EventHandler(this.clearPath);
+            this.clear_serie_path_button.Click += new System.EventHandler(this.ClearPath);
             // 
             // clear_movie_path_button
             // 
@@ -169,7 +169,7 @@
             this.clear_movie_path_button.Size = new System.Drawing.Size(36, 26);
             this.clear_movie_path_button.TabIndex = 11;
             this.clear_movie_path_button.UseVisualStyleBackColor = false;
-            this.clear_movie_path_button.Click += new System.EventHandler(this.clearPath);
+            this.clear_movie_path_button.Click += new System.EventHandler(this.ClearPath);
             // 
             // themes_gb
             // 
@@ -195,7 +195,7 @@
             this.dark_rb.TabIndex = 1;
             this.dark_rb.Text = "Dark";
             this.dark_rb.UseVisualStyleBackColor = true;
-            this.dark_rb.CheckedChanged += new System.EventHandler(this.theme_rb_CheckedChanged);
+            this.dark_rb.CheckedChanged += new System.EventHandler(this.ThemeRadioButtonCheckedChanged);
             // 
             // light_rb
             // 
@@ -210,7 +210,7 @@
             this.light_rb.TabStop = true;
             this.light_rb.Text = "Light";
             this.light_rb.UseVisualStyleBackColor = true;
-            this.light_rb.CheckedChanged += new System.EventHandler(this.theme_rb_CheckedChanged);
+            this.light_rb.CheckedChanged += new System.EventHandler(this.ThemeRadioButtonCheckedChanged);
             // 
             // open_book_path_button
             // 
@@ -223,7 +223,7 @@
             this.open_book_path_button.Size = new System.Drawing.Size(36, 26);
             this.open_book_path_button.TabIndex = 9;
             this.open_book_path_button.UseVisualStyleBackColor = false;
-            this.open_book_path_button.Click += new System.EventHandler(this.openPath);
+            this.open_book_path_button.Click += new System.EventHandler(this.OpenPath);
             // 
             // book_path_tb
             // 
@@ -233,7 +233,7 @@
             this.book_path_tb.ReadOnly = true;
             this.book_path_tb.Size = new System.Drawing.Size(226, 25);
             this.book_path_tb.TabIndex = 8;
-            this.book_path_tb.TextChanged += new System.EventHandler(this.pathChanged);
+            this.book_path_tb.TextChanged += new System.EventHandler(this.PathChanged);
             // 
             // book_path_lbl
             // 
@@ -256,7 +256,7 @@
             this.open_serie_path_button.Size = new System.Drawing.Size(36, 26);
             this.open_serie_path_button.TabIndex = 6;
             this.open_serie_path_button.UseVisualStyleBackColor = false;
-            this.open_serie_path_button.Click += new System.EventHandler(this.openPath);
+            this.open_serie_path_button.Click += new System.EventHandler(this.OpenPath);
             // 
             // serie_path_tb
             // 
@@ -266,7 +266,7 @@
             this.serie_path_tb.ReadOnly = true;
             this.serie_path_tb.Size = new System.Drawing.Size(226, 25);
             this.serie_path_tb.TabIndex = 5;
-            this.serie_path_tb.TextChanged += new System.EventHandler(this.pathChanged);
+            this.serie_path_tb.TextChanged += new System.EventHandler(this.PathChanged);
             // 
             // serie_path_lbl
             // 
@@ -300,8 +300,8 @@
             this.MaximizeBox = false;
             this.Name = "settings";
             this.Text = "Settings";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_FormClosing);
-            this.Load += new System.EventHandler(this.Settings_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsFormClosing);
+            this.Load += new System.EventHandler(this.SettingsLoad);
             this.settings_gb.ResumeLayout(false);
             this.settings_gb.PerformLayout();
             this.themes_gb.ResumeLayout(false);

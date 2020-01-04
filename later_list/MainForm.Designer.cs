@@ -1,6 +1,6 @@
 ﻿namespace later_list
 {
-    partial class later_list
+    partial class MainForm
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(later_list));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.add_button = new System.Windows.Forms.Button();
             this.movie_listbox = new System.Windows.Forms.ListBox();
             this.movie_name_lbl = new System.Windows.Forms.Label();
@@ -78,7 +78,7 @@
             this.add_button.TabIndex = 0;
             this.add_button.Text = "Add to List";
             this.add_button.UseVisualStyleBackColor = false;
-            this.add_button.Click += new System.EventHandler(this.add_button_Click);
+            this.add_button.Click += new System.EventHandler(this.AddButtonClick);
             // 
             // movie_listbox
             // 
@@ -89,7 +89,7 @@
             this.movie_listbox.Name = "movie_listbox";
             this.movie_listbox.Size = new System.Drawing.Size(356, 124);
             this.movie_listbox.TabIndex = 8;
-            this.movie_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
+            this.movie_listbox.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
             // movie_name_lbl
             // 
@@ -115,7 +115,7 @@
             this.genre_cb.Name = "genre_cb";
             this.genre_cb.Size = new System.Drawing.Size(179, 26);
             this.genre_cb.TabIndex = 6;
-            this.genre_cb.Click += new System.EventHandler(this.input_fields_Click);
+            this.genre_cb.Click += new System.EventHandler(this.InputFieldsClick);
             // 
             // name_tb
             // 
@@ -124,7 +124,7 @@
             this.name_tb.Name = "name_tb";
             this.name_tb.Size = new System.Drawing.Size(179, 25);
             this.name_tb.TabIndex = 10;
-            this.name_tb.Click += new System.EventHandler(this.input_fields_Click);
+            this.name_tb.Click += new System.EventHandler(this.InputFieldsClick);
             // 
             // remove_button
             // 
@@ -140,7 +140,7 @@
             this.remove_button.TabIndex = 11;
             this.remove_button.Text = "Remove Item";
             this.remove_button.UseVisualStyleBackColor = false;
-            this.remove_button.Click += new System.EventHandler(this.remove_button_Click);
+            this.remove_button.Click += new System.EventHandler(this.RemoveButtonClick);
             // 
             // genre_lbl
             // 
@@ -168,7 +168,7 @@
             this.edit_button.TabIndex = 13;
             this.edit_button.Text = "Edit Item";
             this.edit_button.UseVisualStyleBackColor = false;
-            this.edit_button.Click += new System.EventHandler(this.edit_button_Click);
+            this.edit_button.Click += new System.EventHandler(this.EditButtonClick);
             // 
             // clear_button
             // 
@@ -184,7 +184,7 @@
             this.clear_button.Text = "Clear Fields";
             this.clear_button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.clear_button.UseVisualStyleBackColor = false;
-            this.clear_button.Click += new System.EventHandler(this.clear_button_Click);
+            this.clear_button.Click += new System.EventHandler(this.ClearButtonClick);
             // 
             // serie_listbox
             // 
@@ -196,7 +196,7 @@
             this.serie_listbox.Size = new System.Drawing.Size(356, 124);
             this.serie_listbox.TabIndex = 9;
             this.serie_listbox.Visible = false;
-            this.serie_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
+            this.serie_listbox.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
             // save_button
             // 
@@ -213,8 +213,8 @@
             this.save_button.TabIndex = 18;
             this.save_button.Text = "Save List";
             this.save_button.UseVisualStyleBackColor = false;
-            this.save_button.EnabledChanged += new System.EventHandler(this.save_button_EnabledChanged);
-            this.save_button.Click += new System.EventHandler(this.save_button_Click);
+            this.save_button.EnabledChanged += new System.EventHandler(this.SaveButtonEnabledChanged);
+            this.save_button.Click += new System.EventHandler(this.SaveButtonClick);
             // 
             // book_listbox
             // 
@@ -226,7 +226,7 @@
             this.book_listbox.Size = new System.Drawing.Size(356, 124);
             this.book_listbox.TabIndex = 10;
             this.book_listbox.Visible = false;
-            this.book_listbox.SelectedIndexChanged += new System.EventHandler(this.selectedIndexChanged);
+            this.book_listbox.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
             // book_name_lbl
             // 
@@ -297,7 +297,7 @@
             this.discard_button.Text = "Discard";
             this.discard_button.UseVisualStyleBackColor = false;
             this.discard_button.Visible = false;
-            this.discard_button.Click += new System.EventHandler(this.discard_button_Click);
+            this.discard_button.Click += new System.EventHandler(this.DiscardButtonClick);
             // 
             // input_fields_panel
             // 
@@ -345,7 +345,7 @@
             this.settings_button.Size = new System.Drawing.Size(28, 28);
             this.settings_button.TabIndex = 21;
             this.settings_button.UseVisualStyleBackColor = true;
-            this.settings_button.Click += new System.EventHandler(this.settings_button_Click);
+            this.settings_button.Click += new System.EventHandler(this.SettingsButtonClick);
             // 
             // error_provider
             // 
@@ -361,9 +361,10 @@
             this.panel1.Controls.Add(this.serieSectionBtn);
             this.panel1.Controls.Add(this.movieSectionBtn);
             this.panel1.Controls.Add(this.version_lbl);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(100, 359);
+            this.panel1.Size = new System.Drawing.Size(100, 350);
             this.panel1.TabIndex = 22;
             // 
             // laterListLogo
@@ -391,7 +392,7 @@
             this.bookSectionBtn.Text = "Books";
             this.bookSectionBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bookSectionBtn.UseVisualStyleBackColor = false;
-            this.bookSectionBtn.Click += new System.EventHandler(this.chooseSection);
+            this.bookSectionBtn.Click += new System.EventHandler(this.ChooseSection);
             // 
             // serieSectionBtn
             // 
@@ -407,7 +408,7 @@
             this.serieSectionBtn.Text = "Series";
             this.serieSectionBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.serieSectionBtn.UseVisualStyleBackColor = false;
-            this.serieSectionBtn.Click += new System.EventHandler(this.chooseSection);
+            this.serieSectionBtn.Click += new System.EventHandler(this.ChooseSection);
             // 
             // movieSectionBtn
             // 
@@ -423,7 +424,7 @@
             this.movieSectionBtn.Text = "Movies";
             this.movieSectionBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.movieSectionBtn.UseVisualStyleBackColor = false;
-            this.movieSectionBtn.Click += new System.EventHandler(this.chooseSection);
+            this.movieSectionBtn.Click += new System.EventHandler(this.ChooseSection);
             // 
             // later_list
             // 
@@ -439,9 +440,9 @@
             this.MaximizeBox = false;
             this.Name = "later_list";
             this.Text = "Later List";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.later_list_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.later_list_FormClosed);
-            this.Load += new System.EventHandler(this.later_list_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormClosed);
+            this.Load += new System.EventHandler(this.MainFormLoad);
             this.list_operations_gb.ResumeLayout(false);
             this.input_fields_panel.ResumeLayout(false);
             this.input_fields_panel.PerformLayout();

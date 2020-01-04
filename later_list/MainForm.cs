@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace later_list
 { 
-    public partial class later_list : Form
+    public partial class MainForm : Form
     {
         #region variables
         string whichSection = "movie";
@@ -20,8 +20,6 @@ namespace later_list
         string namePart;
         string authorPart;
         string genrePart;
-        string savePath;
-        string loadPath;
         string listPath;
         string[] movieGenres = {"Action",
                                  "Adventure",
@@ -108,54 +106,48 @@ namespace later_list
                                 "Poetry"};
         bool canAddListControl = true;
         ListBox listBox = new ListBox();
-        settings settingsForm = new settings();
+        SettingsForm settingsForm = new SettingsForm();
         #endregion
 
         #region start app
-        public later_list()
+        public MainForm()
         {
             this.CenterToScreen();
             InitializeComponent();
-            chooseListbox();
-            loadGenres();
+            ChooseListbox();
+            LoadGenres();
             if(whichSection == "movie" && Properties.Settings.Default.movie_path != "")
             {
-                loadList();
+                SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
             }
-            settingsForm.getSettings();
+            settingsForm.GetSettings();
             
         }
 
-        private void later_list_Load(object sender, EventArgs e)
+        private void MainFormLoad(object sender, EventArgs e)
         {
-            prepareSection(whichSection);
+            PrepareSection(whichSection);
 
-            ThemeManager.registerForm(this);
-
-            ThemeManager.registerGB(list_operations_gb);
-
-            ThemeManager.registerTB(name_tb);
-            ThemeManager.registerTB(author_tb);
-
-            ThemeManager.registerCB(genre_cb);
-
-            ThemeManager.registerLB(movie_listbox);
-            ThemeManager.registerLB(serie_listbox);
-            ThemeManager.registerLB(book_listbox);
-
-            ThemeManager.registerButton(clear_button);
-            ThemeManager.registerButton(add_button);
-            ThemeManager.registerButton(remove_button);
-            ThemeManager.registerButton(edit_button);
-            ThemeManager.registerButton(save_button);
-            ThemeManager.registerButton(discard_button);
-
-            themeControl();
+            ThemeManager.RegisterForm(this);
+            ThemeManager.RegisterGroupBox(list_operations_gb);
+            ThemeManager.RegisterTextBox(name_tb);
+            ThemeManager.RegisterTextBox(author_tb);
+            ThemeManager.RegisterCheckBox(genre_cb);
+            ThemeManager.RegisterListBox(movie_listbox);
+            ThemeManager.RegisterListBox(serie_listbox);
+            ThemeManager.RegisterListBox(book_listbox);
+            ThemeManager.RegisterButton(clear_button);
+            ThemeManager.RegisterButton(add_button);
+            ThemeManager.RegisterButton(remove_button);
+            ThemeManager.RegisterButton(edit_button);
+            ThemeManager.RegisterButton(save_button);
+            ThemeManager.RegisterButton(discard_button);
+            ThemeManager.ThemeControl(settingsForm);
         }
         #endregion
 
         #region exit from app
-        private void later_list_FormClosing(object sender, FormClosingEventArgs e)
+        private void MainFormClosing(object sender, FormClosingEventArgs e)
         {
             if (save_button.Enabled == true)
             {
@@ -173,30 +165,30 @@ namespace later_list
             }
         }
 
-        private void later_list_FormClosed(object sender, FormClosedEventArgs e)
+        private void MainFormClosed(object sender, FormClosedEventArgs e)
         {
-            ThemeManager.unRegisterForm(this);
+            ThemeManager.UnRegisterForm(this);
         }
         #endregion
 
         #region choose section
-        private void chooseSection(object sender, EventArgs e)
+        private void ChooseSection(object sender, EventArgs e)
         {
             switch (((Button)sender).Name)
             {
                 case "movieSectionBtn":
-                    prepareSection("movie");
+                    PrepareSection("movie");
                     break;
                 case "serieSectionBtn":
-                    prepareSection("serie");
+                    PrepareSection("serie");
                     break;
                 case "bookSectionBtn":
-                    prepareSection("book");
+                    PrepareSection("book");
                     break;
             }
         }
 
-        private void prepareSection(string section)
+        private void PrepareSection(string section)
         {
             if (section == "movie")
             {
@@ -206,9 +198,6 @@ namespace later_list
                 movieSectionBtn.BackColor = SystemColors.ButtonFace;
                 serieSectionBtn.BackColor = SystemColors.Highlight;
                 bookSectionBtn.BackColor = SystemColors.Highlight;
-                //movieSectionBtn.Enabled = false;
-                //serieSectionBtn.Enabled = true;
-                //bookSectionBtn.Enabled = true;
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -226,15 +215,15 @@ namespace later_list
                 serie_listbox.Visible = false;
                 book_listbox.Visible = false;
                 //load list
-                chooseListbox();
+                ChooseListbox();
                 if (Properties.Settings.Default.movie_path != "")
                 {
-                    loadList();
+                    SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
                 }
                 //load genres
-                loadGenres();
+                LoadGenres();
                 //refresh input fields
-                refreshInputFields();
+                RefreshInputFields();
                 //enable buttons
                 add_button.Enabled = true;
                 remove_button.Enabled = false;
@@ -250,9 +239,6 @@ namespace later_list
                 movieSectionBtn.BackColor = SystemColors.Highlight;
                 serieSectionBtn.BackColor = SystemColors.ButtonFace;
                 bookSectionBtn.BackColor = SystemColors.Highlight;
-                //movieSectionBtn.Enabled = true;
-                //serieSectionBtn.Enabled = false;
-                //bookSectionBtn.Enabled = true;
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -270,15 +256,15 @@ namespace later_list
                 serie_listbox.Visible = true;
                 book_listbox.Visible = false;
                 //load list
-                chooseListbox();
+                ChooseListbox();
                 if (Properties.Settings.Default.serie_path != "")
                 {
-                    loadList();
+                    SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
                 }
                 //load genres
-                loadGenres();
+                LoadGenres();
                 //refresh input fields
-                refreshInputFields();
+                RefreshInputFields();
                 //enable buttons
                 add_button.Enabled = true;
                 remove_button.Enabled = false;
@@ -294,9 +280,6 @@ namespace later_list
                 movieSectionBtn.BackColor = SystemColors.Highlight;
                 serieSectionBtn.BackColor = SystemColors.Highlight;
                 bookSectionBtn.BackColor = SystemColors.ButtonFace;
-                //movieSectionBtn.Enabled = true;
-                //serieSectionBtn.Enabled = true;
-                //bookSectionBtn.Enabled = false;
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -314,15 +297,15 @@ namespace later_list
                 serie_listbox.Visible = false;
                 book_listbox.Visible = true;
                 //load list
-                chooseListbox();
+                ChooseListbox();
                 if (Properties.Settings.Default.book_path != "")
                 {
-                    loadList();
+                    SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
                 }
                 //load genres
-                loadGenres();
+                LoadGenres();
                 //refresh input fields
-                refreshInputFields();
+                RefreshInputFields();
                 //enable buttons
                 add_button.Enabled = true;
                 remove_button.Enabled = false;
@@ -333,7 +316,7 @@ namespace later_list
         #endregion
 
         #region input fields
-        private void input_fields_Click(object sender, EventArgs e)
+        private void InputFieldsClick(object sender, EventArgs e)
         {
             if (name_tb.Text == "" && genre_cb.Text == "")
             {
@@ -343,26 +326,26 @@ namespace later_list
             }
         }
 
-        private void clear_button_Click(object sender, EventArgs e)
+        private void ClearButtonClick(object sender, EventArgs e)
         {
             movie_listbox.ClearSelected();
             serie_listbox.ClearSelected();
             book_listbox.ClearSelected();
-            refreshInputFields();
+            RefreshInputFields();
             //enable buttons
             add_button.Enabled = true;
             remove_button.Enabled = false;
             edit_button.Enabled = false;
         }
 
-        private void refreshInputFields()
+        private void RefreshInputFields()
         {
             name_tb.Text = "";
             genre_cb.Text = "";
             author_tb.Text = "";
         }
 
-        private void loadGenres()
+        private void LoadGenres()
         {
             genre_cb.Items.Clear();
             switch (whichSection)
@@ -381,7 +364,7 @@ namespace later_list
         #endregion
 
         #region add
-        private void add_button_Click(object sender, EventArgs e)
+        private void AddButtonClick(object sender, EventArgs e)
         {
             if(name_tb.Text != "")
             {
@@ -399,18 +382,18 @@ namespace later_list
             if (whichSection != "book" && canAddListControl)
             {
                 data = name_tb.Text + " (" + genre_cb.Text + ")";
-                addToList(data);
-                refreshInputFields();
+                AddToList(data);
+                RefreshInputFields();
             }
             else if(whichSection == "book" && canAddListControl)
             {
                 data = name_tb.Text + " - " + author_tb.Text + " (" + genre_cb.Text + ")";
-                addToList(data);
-                refreshInputFields();
+                AddToList(data);
+                RefreshInputFields();
             }
         }
 
-        private void addToList(string info)
+        private void AddToList(string info)
         {
             switch (whichSection)
             {
@@ -428,18 +411,18 @@ namespace later_list
         #endregion
 
         #region remove
-        private void remove_button_Click(object sender, EventArgs e)
+        private void RemoveButtonClick(object sender, EventArgs e)
         {
             save_button.Enabled = true;
 
             listBox.Items.Remove(listBox.SelectedItem);
             //refresh input fields
-            refreshInputFields();
+            RefreshInputFields();
         }
         #endregion
 
         #region edit
-        private void selectedIndexChanged(object sender, EventArgs e)
+        private void SelectedIndexChanged(object sender, EventArgs e)
         {
             add_button.Enabled = false;
             remove_button.Enabled = true;
@@ -496,7 +479,7 @@ namespace later_list
             }
         }
 
-        private void edit_button_Click(object sender, EventArgs e)
+        private void EditButtonClick(object sender, EventArgs e)
         {
             save_button.Enabled = true;
 
@@ -511,12 +494,12 @@ namespace later_list
                listBox.Items.Insert(index, name_tb.Text + " - " + author_tb.Text + " (" + genre_cb.Text + ")");
             }
             //refresh input fields
-            refreshInputFields();
+            RefreshInputFields();
         }
         #endregion
 
         #region save
-        private void setListPath()
+        private void SetListPath()
         {
             switch (whichSection)
             {
@@ -532,7 +515,7 @@ namespace later_list
             }
         }
 
-        private void setFileName(string fileName)
+        private void SetFileName(string fileName)
         {
             switch (whichSection)
             {
@@ -548,9 +531,9 @@ namespace later_list
             }
         }
 
-        private void save_button_Click(object sender, EventArgs e)
+        private void SaveButtonClick(object sender, EventArgs e)
         {
-            setListPath();
+            SetListPath();
 
             if ( listPath == "")
             {
@@ -560,25 +543,25 @@ namespace later_list
                 savefiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
                 if (savefiledialog.ShowDialog() == DialogResult.OK)
                 {
-                    setFileName(savefiledialog.FileName);
-                    settingsForm.saveSettings();
-                    setListPath();
-                    savePath = listPath;
-                    loadPath = listPath;
-                    saveList(true);
+                    SetFileName(savefiledialog.FileName);
+                    settingsForm.SaveSettings();
+                    SetListPath();
+                    SaveLoadManager.savePath = listPath;
+                    SaveLoadManager.loadPath = listPath;
+                    SaveLoadManager.SaveList(true, save_button, whichSection, listBox);
                 }
                 else
                 {
-                    settingsForm.getSettings();
+                    settingsForm.GetSettings();
                 }
             }
             else if (listPath != "")
             {
-                saveList(true);
+                SaveLoadManager.SaveList(true, save_button, whichSection, listBox);
             }
         }
 
-        private void save_button_EnabledChanged(object sender, EventArgs e)
+        private void SaveButtonEnabledChanged(object sender, EventArgs e)
         {
             if (save_button.Enabled == true)
             {
@@ -612,7 +595,7 @@ namespace later_list
         #endregion
 
         #region discard
-        private void discard_button_Click(object sender, EventArgs e)
+        private void DiscardButtonClick(object sender, EventArgs e)
         {
             DialogResult confirm = MessageBox.Show("All changes will discard, Continue ?", "Discard",
                                         MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -625,21 +608,21 @@ namespace later_list
                         movie_listbox.Items.Clear();
                         if (Properties.Settings.Default.movie_path != "")
                         {
-                            loadList();
+                            SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
                         }
                         break;
                     case "serie":
                         serie_listbox.Items.Clear();
                         if (Properties.Settings.Default.serie_path != "")
                         {
-                            loadList();
+                            SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
                         }
                         break;
                     case "book":
                         book_listbox.Items.Clear();
                         if (Properties.Settings.Default.book_path != "")
                         {
-                            loadList();
+                            SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
                         }
                         break;
                 }
@@ -652,114 +635,35 @@ namespace later_list
         }
         #endregion
 
-        #region save and load system
-        private void chooseListbox()
+        #region choose and load listbox
+        private void ChooseListbox()
         {
             listBox.Items.Clear();
             switch (whichSection)
             {
                 case "movie":
                     listBox = movie_listbox;
-                    savePath = Properties.Settings.Default.movie_path;
-                    loadPath = Properties.Settings.Default.movie_path;
+                    SaveLoadManager.savePath = Properties.Settings.Default.movie_path;
+                    SaveLoadManager.loadPath = Properties.Settings.Default.movie_path;
                     break;
                 case "serie":
                     listBox = serie_listbox;
-                    savePath = Properties.Settings.Default.serie_path;
-                    loadPath = Properties.Settings.Default.serie_path;
+                    SaveLoadManager.savePath = Properties.Settings.Default.serie_path;
+                    SaveLoadManager.loadPath = Properties.Settings.Default.serie_path;
                     break;
                 case "book":
                     listBox = book_listbox;
-                    savePath = Properties.Settings.Default.book_path;
-                    loadPath = Properties.Settings.Default.book_path;
+                    SaveLoadManager.savePath = Properties.Settings.Default.book_path;
+                    SaveLoadManager.loadPath = Properties.Settings.Default.book_path;
                     break;
             }
-        }
-        
-        private void saveList(bool show_message)
-        {
-            StreamWriter saveFile = new StreamWriter(savePath);
-            foreach (var item in listBox.Items)
-            {
-                saveFile.WriteLine(item);
-            }
-
-            saveFile.Close();
-
-            if (show_message)
-            {
-                MessageBox.Show(whichSection + " list saved!");
-                show_message = false;
-                save_button.Enabled = false;
-            }
-        }
-        
-        private void loadList()
-        {
-            try
-            {
-                using (StreamReader loadFile = new StreamReader(loadPath))
-                {
-                    string line;
-                    while ((line = loadFile.ReadLine()) != null)
-                    {
-                        listBox.Items.Add(line);
-                    }
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                if (whichSection == "movie" && Properties.Settings.Default.movie_path != "")
-                {
-                    showFileNotFoundMsg(whichSection);
-                    settingsForm.MovieTextBoxText = "";
-                    Properties.Settings.Default.movie_path = "";
-                }
-                else if (whichSection == "serie" && Properties.Settings.Default.serie_path != "")
-                {
-                    showFileNotFoundMsg(whichSection);
-                    settingsForm.SerieTextBoxText = "";
-                    Properties.Settings.Default.serie_path = "";
-                }
-                else if (whichSection == "book" && Properties.Settings.Default.book_path != "")
-                {
-                    showFileNotFoundMsg(whichSection);
-                    settingsForm.BookTextBoxText = "";
-                    Properties.Settings.Default.book_path = "";
-                }
-                Properties.Settings.Default.Save();
-            }
-        }
-
-        private void showFileNotFoundMsg(string whichSection)
-        {
-            MessageBox.Show(whichSection + " list not found.", "File Not Found",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         #endregion
 
         #region settings screen
-        private void settings_button_Click(object sender, EventArgs e)
+        private void SettingsButtonClick(object sender, EventArgs e)
         {
             settingsForm.ShowDialog();
-        }
-
-        private void themeControl()
-        {
-            if (Properties.Settings.Default.light_checked == true)
-            {
-                ThemeManager.setAllBackcolors(settingsForm.lightBC, Color.Black, settingsForm.darkTC);
-                settingsForm.loadTheme();
-                settingsForm.LightThemeCheck = true;
-                settingsForm.DarkThemeCheck = false;
-            }
-            if (Properties.Settings.Default.dark_checked == true)
-            {
-                ThemeManager.setAllBackcolors(settingsForm.darkBC, Color.White, settingsForm.darkTC);
-                settingsForm.loadTheme();
-                settingsForm.LightThemeCheck = false;
-                settingsForm.DarkThemeCheck = true;
-            }
         }
         #endregion
     }

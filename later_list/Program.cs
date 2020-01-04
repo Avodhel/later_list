@@ -16,7 +16,7 @@ namespace later_list
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new later_list());
+            Application.Run(new MainForm());
         }
     }
 }
