@@ -1,24 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace later_list
 {
     public partial class SettingsForm : Form, IForm
     {
-        #region variables
-        private string filePath;
+        #region Variables
 
-        public Color lightThemeBackgroundColor = Color.FromArgb(242,242,242);
-        public Color darkThemeBackgroundColor = Color.FromArgb(51,51,51);
-        public Color lightThemeTextColor = Color.FromArgb(242,242,242);
-        public Color darkThemeTextColor = Color.FromArgb(31, 31, 31);
+        private string filePath;
+        //private Form mainForm = null;
+
+        #endregion
+
+        #region Properties
 
         public string MovieFilePathText
         {
@@ -49,22 +43,23 @@ namespace later_list
             get { return dark_rb.Checked; }
             set { dark_rb.Checked = value; }
         }
+
         #endregion 
 
-        #region settings opened
+        #region Settings Form Opened
+
         public SettingsForm()
         {
-            this.StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterParent;
             InitializeComponent();
             LoadTheme();
         }
 
-        private Form mainForm = null;
-        public SettingsForm(Form settings)
-        {
-            mainForm = settings as SettingsForm;
-            InitializeComponent();
-        }
+        //public SettingsForm(Form settings)
+        //{
+        //    //mainForm = settings as SettingsForm;
+        //    InitializeComponent();
+        //}
 
         private void SettingsLoad(object sender, EventArgs e)
         {
@@ -81,9 +76,11 @@ namespace later_list
             ThemeManager.RegisterTextBox(book_path_tb);
             ThemeManager.RegisterButton(save_settings_button);
         }
+
         #endregion
 
-        #region settings closed
+        #region Settings Form Closed
+
         private void SettingsFormClosing(object sender, FormClosingEventArgs e)
         {
             if (save_settings_button.Enabled == true)
@@ -103,9 +100,11 @@ namespace later_list
                 }
             }
         }
+
         #endregion
 
-        #region settings form state
+        #region Settings Form State
+
         public void SaveSettings()
         {
             SetAllFilePathsToProperties();
@@ -127,9 +126,11 @@ namespace later_list
                 }
             }
         }
+
         #endregion
 
-        #region settings input fields
+        #region Input Fields
+
         private void PathChanged(object sender, EventArgs e)
         {
             if (MovieFilePathText == string.Empty)
@@ -159,9 +160,11 @@ namespace later_list
                 clear_book_path_button.Enabled = true;
             }
         }
+
         #endregion
 
-        #region file paths
+        #region File Paths
+
         public void GetAllFilePathsFromProperties()
         {
             MovieFilePathText = Properties.Settings.Default.movie_path;
@@ -244,9 +247,11 @@ namespace later_list
                     break;
             }
         }
+
         #endregion
 
-        #region settings form button actions
+        #region Button Actions
+
         private void SaveSettingsButtonClick(object sender, EventArgs e)
         {
             SaveSettings();
@@ -284,7 +289,9 @@ namespace later_list
         {
             if (LightThemeCheck)
             {
-                ThemeManager.SetAllThemeColors(lightThemeBackgroundColor, darkThemeTextColor, darkThemeTextColor);
+                ThemeManager.SetAllThemeColors(Colors.LightThemeBackgroundColor, 
+                                               Colors.DarkThemeTextColor, 
+                                               Colors.DarkThemeTextColor);
                 if (Properties.Settings.Default.dark_checked == true)
                 {
                     save_settings_button.Enabled = true;
@@ -292,7 +299,9 @@ namespace later_list
             }
             else if (DarkThemeCheck)
             {
-                ThemeManager.SetAllThemeColors(darkThemeBackgroundColor, lightThemeTextColor, darkThemeTextColor);
+                ThemeManager.SetAllThemeColors(Colors.DarkThemeBackgroundColor, 
+                                               Colors.LightThemeTextColor, 
+                                               Colors.DarkThemeTextColor);
                 if (Properties.Settings.Default.light_checked == true)
                 {
                     save_settings_button.Enabled = true;
@@ -307,6 +316,7 @@ namespace later_list
             if (buttonName == "open_book_path_button") return "book";
             return null;
         }
+
         #endregion
 
     }

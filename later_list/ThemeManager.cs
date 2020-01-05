@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -107,13 +103,13 @@ namespace later_list
         {
             if (Properties.Settings.Default.light_checked == true)
             {
-                SetAllThemeColors(settingsForm.lightThemeBackgroundColor, Color.Black, settingsForm.darkThemeTextColor);
+                SetAllThemeColors(Colors.LightThemeBackgroundColor, Color.Black, Colors.DarkThemeTextColor);
                 settingsForm.LightThemeCheck = true;
                 settingsForm.DarkThemeCheck = false;
             }
             if (Properties.Settings.Default.dark_checked == true)
             {
-                SetAllThemeColors(settingsForm.darkThemeBackgroundColor, Color.White, settingsForm.darkThemeTextColor);
+                SetAllThemeColors(Colors.DarkThemeBackgroundColor, Color.White, Colors.DarkThemeTextColor);
                 settingsForm.LightThemeCheck = false;
                 settingsForm.DarkThemeCheck = true;
             }

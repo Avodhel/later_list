@@ -78,7 +78,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataManager.cs" />
+    <Compile Include="Colors.cs" />
+    <Compile Include="Genres.cs" />
     <Compile Include="IForm.cs" />
     <Compile Include="SaveLoadManager.cs" />
     <Compile Include="SettingsForm.cs">

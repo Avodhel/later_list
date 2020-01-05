@@ -1,19 +1,13 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace later_list
 { 
     public partial class MainForm : Form, IForm
     {
-        #region variables
+        #region Variables
+
         private string whichSection = "movie";
         private string data;
         private string getExistedData;
@@ -24,16 +18,18 @@ namespace later_list
         private bool addToListControl = true;
         private ListBox listBox = new ListBox();
         private SettingsForm settingsForm = new SettingsForm();
+
         #endregion
 
-        #region start app
+        #region Start App
+
         public MainForm()
         {
-            this.CenterToScreen();
+            CenterToScreen();
             InitializeComponent();
             ChooseAndLoadListbox();
             LoadGenres();
-            if (whichSection == "movie" && Properties.Settings.Default.movie_path != "")
+            if (whichSection == "movie" && Properties.Settings.Default.movie_path != string.Empty)
             {
                 SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
             }
@@ -65,9 +61,11 @@ namespace later_list
             ThemeManager.RegisterButton(discard_button);
             ThemeManager.CurrrentTheme(settingsForm);
         }
+
         #endregion
 
-        #region exit from app
+        #region Exit From App
+
         private void MainFormClosing(object sender, FormClosingEventArgs e)
         {
             if (save_button.Enabled == true)
@@ -90,9 +88,11 @@ namespace later_list
         {
             ThemeManager.UnRegisterForm(this);
         }
+
         #endregion
 
-        #region choose section
+        #region Choosing Section
+
         private void ChooseSection(object sender, EventArgs e)
         {
             switch (((Button)sender).Name)
@@ -234,9 +234,11 @@ namespace later_list
                 save_button.Enabled = false;
             }
         }
+
         #endregion
 
-        #region input fields
+        #region Input Fields
+
         private void InputFieldsClick(object sender, EventArgs e)
         {
             if (name_tb.Text == string.Empty && genre_cb.Text == string.Empty)
@@ -269,11 +271,13 @@ namespace later_list
         private void LoadGenres()
         {
             genre_cb.Items.Clear();
-            genre_cb.Items.AddRange(DataManager.GetGenreList(whichSection));
+            genre_cb.Items.AddRange(Genres.GetGenres(whichSection));
         }
+
         #endregion
 
-        #region add
+        #region Add Data
+
         private void AddButtonClick(object sender, EventArgs e)
         {
             NameFieldCheck();
@@ -327,20 +331,22 @@ namespace later_list
                     break;
             }
         }
+
         #endregion
 
-        #region remove
+        #region Removo Data
+
         private void RemoveButtonClick(object sender, EventArgs e)
         {
             save_button.Enabled = true;
-
             listBox.Items.Remove(listBox.SelectedItem);
-            //refresh input fields
             RefreshInputFields();
         }
+
         #endregion
 
-        #region edit
+        #region Edit Data
+
         private void SelectedIndexChanged(object sender, EventArgs e)
         {
             add_button.Enabled = false;
@@ -418,9 +424,11 @@ namespace later_list
                 listBox.Items.Insert(index, name_tb.Text + " - " + author_tb.Text + " (" + genre_cb.Text + ")");
             }
         }
+
         #endregion
 
-        #region save
+        #region Save Data
+
         private void SaveButtonClick(object sender, EventArgs e)
         {
             GetFilePath();
@@ -506,9 +514,11 @@ namespace later_list
                 discard_button.Visible = false;
             }
         }
+
         #endregion
 
-        #region discard
+        #region Discard Data
+
         private void DiscardButtonClick(object sender, EventArgs e)
         {
             DialogResult confirm = MessageBox.Show("All changes will discard, Continue ?", "Discard",
@@ -552,9 +562,11 @@ namespace later_list
                     break;
             }
         }
+
         #endregion
 
-        #region choose and load listbox
+        #region Choose and Load ListBox
+
         private void ChooseAndLoadListbox()
         {
             switch (whichSection)
@@ -573,13 +585,16 @@ namespace later_list
                     break;
             }
         }
+
         #endregion
 
-        #region settings form
+        #region Settings Form
+
         private void SettingsButtonClick(object sender, EventArgs e)
         {
             settingsForm.ShowDialog();
         }
+
         #endregion
     }
 }
