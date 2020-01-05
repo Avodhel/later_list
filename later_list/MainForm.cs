@@ -16,7 +16,7 @@ namespace later_list
         #region variables
         private string whichSection = "movie";
         private string data;
-        private string getInfo;
+        private string getExistedData;
         private string namePart;
         private string authorPart;
         private string genrePart;
@@ -33,7 +33,7 @@ namespace later_list
             InitializeComponent();
             ChooseAndLoadListbox();
             LoadGenres();
-            if(whichSection == "movie" && Properties.Settings.Default.movie_path != "")
+            if (whichSection == "movie" && Properties.Settings.Default.movie_path != "")
             {
                 SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
             }
@@ -44,7 +44,11 @@ namespace later_list
         private void MainFormLoad(object sender, EventArgs e)
         {
             PrepareSection(whichSection);
+            LoadTheme();
+        }
 
+        private void LoadTheme()
+        {
             ThemeManager.RegisterForm(this);
             ThemeManager.RegisterGroupBox(list_operations_gb);
             ThemeManager.RegisterTextBox(name_tb);
@@ -59,7 +63,7 @@ namespace later_list
             ThemeManager.RegisterButton(edit_button);
             ThemeManager.RegisterButton(save_button);
             ThemeManager.RegisterButton(discard_button);
-            ThemeManager.ThemeControl(settingsForm);
+            ThemeManager.CurrrentTheme(settingsForm);
         }
         #endregion
 
@@ -345,15 +349,15 @@ namespace later_list
 
             try
             {
-                getInfo = listBox.SelectedItem.ToString();        
+                getExistedData = listBox.SelectedItem.ToString();        
                 if (whichSection != "book")
                 {
-                    namePart = getInfo.Split('(')[0];
+                    namePart = getExistedData.Split('(')[0];
                 }
                 else if (whichSection == "book")
                 {
-                    namePart = getInfo.Split('-')[0];
-                    authorPart = getInfo.Split('-')[1];
+                    namePart = getExistedData.Split('-')[0];
+                    authorPart = getExistedData.Split('-')[1];
                     authorPart = authorPart.TrimStart(' ');
                 }
                 namePart = namePart.TrimEnd(' ');
@@ -373,7 +377,7 @@ namespace later_list
 
                 try
                 {
-                    genrePart = getInfo.Split('(')[1];
+                    genrePart = getExistedData.Split('(')[1];
                     genrePart = genrePart.TrimEnd(')');
                 }
                 catch
@@ -438,13 +442,13 @@ namespace later_list
             switch (whichSection)
             {
                 case "movie":
-                    settingsForm.MovieTextBoxText = fileName;
+                    settingsForm.MovieFilePathText = fileName;
                     break;
                 case "serie":
-                    settingsForm.SerieTextBoxText = fileName;
+                    settingsForm.SerieFilePathText = fileName;
                     break;
                 case "book":
-                    settingsForm.BookTextBoxText = fileName;
+                    settingsForm.BookFilePathText = fileName;
                     break;
             }
         }
@@ -583,7 +587,7 @@ namespace later_list
         }
         #endregion
 
-        #region settings screen
+        #region settings form
         private void SettingsButtonClick(object sender, EventArgs e)
         {
             settingsForm.ShowDialog();

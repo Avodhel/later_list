@@ -13,95 +13,27 @@ namespace later_list
     public partial class SettingsForm : Form
     {
         #region variables
-        string fileName;
-        string filePath;
-        public Color lightBC = Color.FromArgb(242,242,242);
-        public Color darkBC = Color.FromArgb(51,51,51);
-        public Color lightTC = Color.FromArgb(242,242,242);
-        public Color darkTC = Color.FromArgb(31, 31, 31);
-        #endregion
+        private string fileName;
+        private string filePath;
 
-        #region settings opened
-        public SettingsForm()
-        {
-            this.StartPosition = FormStartPosition.CenterParent;
-            InitializeComponent();
-        }
+        public Color lightThemeBackgroundColor = Color.FromArgb(242,242,242);
+        public Color darkThemeBackgroundColor = Color.FromArgb(51,51,51);
+        public Color lightThemeTextColor = Color.FromArgb(242,242,242);
+        public Color darkThemeTextColor = Color.FromArgb(31, 31, 31);
 
-        private Form mainForm = null;
-        public SettingsForm(Form settings)
-        {
-            mainForm = settings as SettingsForm;
-            InitializeComponent();
-        }
-
-        private void SettingsLoad(object sender, EventArgs e)
-        {
-            LoadTheme();
-        }
-
-        public void LoadTheme()
-        {
-            ThemeManager.RegisterForm(this);
-
-            ThemeManager.RegisterGroupBox(settings_gb);
-            ThemeManager.RegisterGroupBox(themes_gb);
-
-            ThemeManager.RegisterTextBox(movie_path_tb);
-            ThemeManager.RegisterTextBox(serie_path_tb);
-            ThemeManager.RegisterTextBox(book_path_tb);
-
-            ThemeManager.RegisterButton(save_settings_button);
-        }
-        #endregion
-
-        #region settings closed
-        private void SettingsFormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (save_settings_button.Enabled == true)
-            {
-                DialogResult confirm = MessageBox.Show("Unsaved settings will be lost. Continue?", "Exit",
-                                                        MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-                if (confirm == DialogResult.OK)
-                {
-                    save_settings_button.Enabled = false;
-                    GetSettings();
-                    if (Properties.Settings.Default.light_checked == true)
-                    {
-                        light_rb.Checked = true;
-                        dark_rb.Checked = false;
-                        ThemeManager.SetAllBackColors(lightBC, darkTC, darkTC);
-                    }
-                    if (Properties.Settings.Default.dark_checked == true)
-                    {
-                        dark_rb.Checked = true;
-                        light_rb.Checked = false;
-                        ThemeManager.SetAllBackColors(darkBC, lightTC, darkTC);
-                    }
-                }
-                else if (confirm == DialogResult.Cancel)
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
-        #endregion
-
-        #region settings option variables
-        public string MovieTextBoxText
+        public string MovieFilePathText
         {
             get { return movie_path_tb.Text; }
             set { movie_path_tb.Text = value; }
         }
 
-        public string SerieTextBoxText
+        public string SerieFilePathText
         {
             get { return serie_path_tb.Text; }
             set { serie_path_tb.Text = value; }
         }
 
-        public string BookTextBoxText
+        public string BookFilePathText
         {
             get { return book_path_tb.Text; }
             set { book_path_tb.Text = value; }
@@ -120,40 +52,108 @@ namespace later_list
         }
         #endregion 
 
+        #region settings opened
+        public SettingsForm()
+        {
+            this.StartPosition = FormStartPosition.CenterParent;
+            InitializeComponent();
+            LoadTheme();
+        }
+
+        private Form mainForm = null;
+        public SettingsForm(Form settings)
+        {
+            mainForm = settings as SettingsForm;
+            InitializeComponent();
+        }
+
+        private void SettingsLoad(object sender, EventArgs e)
+        {
+            //LoadTheme();
+        }
+
+        public void LoadTheme()
+        {
+            ThemeManager.RegisterForm(this);
+            ThemeManager.RegisterGroupBox(settings_gb);
+            ThemeManager.RegisterGroupBox(themes_gb);
+            ThemeManager.RegisterTextBox(movie_path_tb);
+            ThemeManager.RegisterTextBox(serie_path_tb);
+            ThemeManager.RegisterTextBox(book_path_tb);
+            ThemeManager.RegisterButton(save_settings_button);
+        }
+        #endregion
+
+        #region settings closed
+        private void SettingsFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (save_settings_button.Enabled == true)
+            {
+                DialogResult confirm = MessageBox.Show("Unsaved settings will be lost. Continue?", "Exit",
+                                                        MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (confirm == DialogResult.OK)
+                {
+                    save_settings_button.Enabled = false;
+                    GetSettings();
+                    ThemeManager.CurrrentTheme(this);
+                }
+                else if (confirm == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+        #endregion
+
         #region settings datas
         public void GetSettings()
         {
-            movie_path_tb.Text = Properties.Settings.Default.movie_path;
-            serie_path_tb.Text = Properties.Settings.Default.serie_path;
-            book_path_tb.Text = Properties.Settings.Default.book_path;
+            MovieFilePathText = Properties.Settings.Default.movie_path;
+            SerieFilePathText = Properties.Settings.Default.serie_path;
+            BookFilePathText = Properties.Settings.Default.book_path;
         }
 
         public void SaveSettings()
         {
-            Properties.Settings.Default.movie_path = movie_path_tb.Text;
-            Properties.Settings.Default.serie_path = serie_path_tb.Text;
-            Properties.Settings.Default.book_path = book_path_tb.Text;
-            if (light_rb.Checked)
+            SetFilePath();
+            SetThemeOption();
+            save_settings_button.Enabled = false;
+            Properties.Settings.Default.Save();
+            CheckSettingsFormState();
+        }
+
+        private void SetFilePath()
+        {
+            Properties.Settings.Default.movie_path = MovieFilePathText;
+            Properties.Settings.Default.serie_path = SerieFilePathText;
+            Properties.Settings.Default.book_path = BookFilePathText;
+        }
+
+        private void SetThemeOption()
+        {
+            if (LightThemeCheck)
             {
                 Properties.Settings.Default.light_checked = true;
                 Properties.Settings.Default.dark_checked = false;
             }
 
-            if (dark_rb.Checked)
+            if (DarkThemeCheck)
             {
                 Properties.Settings.Default.dark_checked = true;
                 Properties.Settings.Default.light_checked = false;
             }
-            save_settings_button.Enabled = false;
-            Properties.Settings.Default.Save();
+        }
 
+        private void CheckSettingsFormState()
+        {
             //check settings form is already open
             FormCollection fc = Application.OpenForms;
             foreach (Form frm in fc)
             {
-                if (frm.Name == "settings")
+                if (frm.Name == this.Name)
                 {
-                    this.Close(); //if it's, close it
+                    this.Close(); //if it's open, close it
                 }
             }
         }
@@ -162,29 +162,29 @@ namespace later_list
         #region settings input fields
         private void PathChanged(object sender, EventArgs e)
         {
-            if (movie_path_tb.Text == string.Empty)
+            if (MovieFilePathText == string.Empty)
             {
                 clear_movie_path_button.Enabled = false;
             }
-            else if (movie_path_tb.Text != string.Empty)
+            else if (MovieFilePathText != string.Empty)
             {
                 clear_movie_path_button.Enabled = true;
             }
 
-            if (serie_path_tb.Text == string.Empty)
+            if (SerieFilePathText == string.Empty)
             {
                 clear_serie_path_button.Enabled = false;
             }
-            else if (serie_path_tb.Text != string.Empty)
+            else if (SerieFilePathText != string.Empty)
             {
                 clear_serie_path_button.Enabled = true;
             }
 
-            if (book_path_tb.Text == string.Empty)
+            if (BookFilePathText == string.Empty)
             {
                 clear_book_path_button.Enabled = false;
             }
-            else if (book_path_tb.Text != string.Empty)
+            else if (BookFilePathText != string.Empty)
             {
                 clear_book_path_button.Enabled = true;
             }
@@ -197,13 +197,13 @@ namespace later_list
             switch (whichButton)
             {
                 case "open_movie_path_button":
-                    movie_path_tb.Text = fileName;
+                    MovieFilePathText = fileName;
                     break;
                 case "open_serie_path_button":
-                    serie_path_tb.Text = fileName;
+                    SerieFilePathText = fileName;
                     break;
                 case "open_book_path_button":
-                    book_path_tb.Text = fileName;
+                    BookFilePathText = fileName;
                     break;
             }
         }
@@ -252,30 +252,30 @@ namespace later_list
             switch (((Button)sender).Name)
             {
                 case "clear_movie_path_button":
-                    movie_path_tb.Text = string.Empty;
+                    MovieFilePathText = string.Empty;
                     break;
                 case "clear_serie_path_button":
-                    serie_path_tb.Text = string.Empty;
+                    SerieFilePathText = string.Empty;
                     break;
                 case "clear_book_path_button":
-                    book_path_tb.Text = string.Empty;
+                    BookFilePathText = string.Empty;
                     break;
             }
         }
 
         public void ThemeRadioButtonCheckedChanged(object sender, EventArgs e)
         {
-            if (light_rb.Checked)
+            if (LightThemeCheck)
             {
-                ThemeManager.SetAllBackColors(lightBC, darkTC, darkTC);
+                ThemeManager.SetAllThemeColors(lightThemeBackgroundColor, darkThemeTextColor, darkThemeTextColor);
                 if (Properties.Settings.Default.dark_checked == true)
                 {
                     save_settings_button.Enabled = true;
                 }
             }
-            else if (dark_rb.Checked)
+            else if (DarkThemeCheck)
             {
-                ThemeManager.SetAllBackColors(darkBC, lightTC, darkTC);
+                ThemeManager.SetAllThemeColors(darkThemeBackgroundColor, lightThemeTextColor, darkThemeTextColor);
                 if (Properties.Settings.Default.light_checked == true)
                 {
                     save_settings_button.Enabled = true;

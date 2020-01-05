@@ -56,20 +56,20 @@ namespace later_list
                 if (whichSection == "movie" && Properties.Settings.Default.movie_path != string.Empty)
                 {
                     ShowFileNotFoundMsg(whichSection);
-                    settingsForm.MovieTextBoxText = String.Empty;
-                    Properties.Settings.Default.movie_path = String.Empty;
+                    settingsForm.MovieFilePathText = string.Empty;
+                    Properties.Settings.Default.movie_path = string.Empty;
                 }
                 else if (whichSection == "serie" && Properties.Settings.Default.serie_path != string.Empty)
                 {
                     ShowFileNotFoundMsg(whichSection);
-                    settingsForm.SerieTextBoxText = String.Empty;
-                    Properties.Settings.Default.serie_path = String.Empty;
+                    settingsForm.SerieFilePathText = string.Empty;
+                    Properties.Settings.Default.serie_path = string.Empty;
                 }
                 else if (whichSection == "book" && Properties.Settings.Default.book_path != string.Empty)
                 {
                     ShowFileNotFoundMsg(whichSection);
-                    settingsForm.BookTextBoxText = String.Empty;
-                    Properties.Settings.Default.book_path = String.Empty;
+                    settingsForm.BookFilePathText = string.Empty;
+                    Properties.Settings.Default.book_path = string.Empty;
                 }
                 Properties.Settings.Default.Save();
             }

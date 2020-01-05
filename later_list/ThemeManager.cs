@@ -88,8 +88,8 @@ namespace later_list
             if (buttonList.Contains(btn)) buttonList.Remove(btn);
         }
 
-        //SET ALL COLORS
-        public static void SetAllBackColors(Color BackColor, Color TextColor, Color ButtonTextColor)
+        //SET ALL THEME COLORS
+        public static void SetAllThemeColors(Color BackColor, Color TextColor, Color ButtonTextColor)
         {
             foreach (Form     f  in formList    ) if (f  != null) f.BackColor  = BackColor;
             foreach (GroupBox gb in groupBoxList) if (gb != null) gb.ForeColor = TextColor;
@@ -102,20 +102,18 @@ namespace later_list
             foreach (Button   b  in buttonList  ) if (b  != null) b.ForeColor  = ButtonTextColor;
         }
 
-        //THEME CONTROL
-        public static void ThemeControl(SettingsForm settingsForm)
+        //CURRENT THEME
+        public static void CurrrentTheme(SettingsForm settingsForm)
         {
             if (Properties.Settings.Default.light_checked == true)
             {
-                ThemeManager.SetAllBackColors(settingsForm.lightBC, Color.Black, settingsForm.darkTC);
-                settingsForm.LoadTheme();
+                SetAllThemeColors(settingsForm.lightThemeBackgroundColor, Color.Black, settingsForm.darkThemeTextColor);
                 settingsForm.LightThemeCheck = true;
                 settingsForm.DarkThemeCheck = false;
             }
             if (Properties.Settings.Default.dark_checked == true)
             {
-                ThemeManager.SetAllBackColors(settingsForm.darkBC, Color.White, settingsForm.darkTC);
-                settingsForm.LoadTheme();
+                SetAllThemeColors(settingsForm.darkThemeBackgroundColor, Color.White, settingsForm.darkThemeTextColor);
                 settingsForm.LightThemeCheck = false;
                 settingsForm.DarkThemeCheck = true;
             }
