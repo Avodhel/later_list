@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataManager.cs" />
+    <Compile Include="IForm.cs" />
     <Compile Include="SaveLoadManager.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>

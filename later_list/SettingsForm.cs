@@ -10,10 +10,9 @@ using System.Windows.Forms;
 
 namespace later_list
 {
-    public partial class SettingsForm : Form
+    public partial class SettingsForm : Form, IForm
     {
         #region variables
-        private string fileName;
         private string filePath;
 
         public Color lightThemeBackgroundColor = Color.FromArgb(242,242,242);
@@ -120,7 +119,7 @@ namespace later_list
             SetThemeOption();
             save_settings_button.Enabled = false;
             Properties.Settings.Default.Save();
-            CheckSettingsFormState();
+            SettingsFormState();
         }
 
         private void SetFilePath()
@@ -145,7 +144,7 @@ namespace later_list
             }
         }
 
-        private void CheckSettingsFormState()
+        private void SettingsFormState()
         {
             //check settings form is already open
             FormCollection fc = Application.OpenForms;
@@ -191,52 +190,50 @@ namespace later_list
         }
         #endregion
 
-        #region settings buttons
-        private void SetFileName(string whichButton, string fileName)
+        #region file paths
+        public void SetFilePath(string whichSection, string _filePath)
         {
-            switch (whichButton)
+            switch (whichSection)
             {
-                case "open_movie_path_button":
-                    MovieFilePathText = fileName;
+                case "movie":
+                    MovieFilePathText = _filePath;
                     break;
-                case "open_serie_path_button":
-                    SerieFilePathText = fileName;
+                case "serie":
+                    SerieFilePathText = _filePath;
                     break;
-                case "open_book_path_button":
-                    BookFilePathText = fileName;
+                case "book":
+                    BookFilePathText = _filePath;
                     break;
             }
         }
 
-        private void DetectButton(string whichButton)
+        private void GetFilePath(string whichSection)
         {
-            switch (whichButton)
+            switch (whichSection)
             {
-                case "open_movie_path_button":
+                case "movie":
                     filePath = @Properties.Settings.Default.movie_path;
-                    fileName = "movielist";
                     break;
-                case "open_serie_path_button":
+                case "serie":
                     filePath = @Properties.Settings.Default.serie_path;
-                    fileName = "serielist";
                     break;
-                case "open_book_path_button":
+                case "book":
                     filePath = @Properties.Settings.Default.book_path;
-                    fileName = "booklist";
                     break;
             }
         }
+
         private void OpenPath(object sender, EventArgs e)
         {
-            DetectButton(((Button)sender).Name);
+            GetFilePath(DetectSectionFromButton(((Button)sender).Name));
             openfiledialog.InitialDirectory = filePath;
             openfiledialog.RestoreDirectory = true;
-            openfiledialog.FileName = fileName;
+            openfiledialog.FileName = DetectSectionFromButton(((Button)sender).Name) + "list";
             openfiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
             openfiledialog.FilterIndex = 0;
             if (openfiledialog.ShowDialog() == DialogResult.OK)
             {
-                SetFileName(((Button)sender).Name, openfiledialog.FileName);
+                SetFilePath(DetectSectionFromButton(((Button)sender).Name), openfiledialog.FileName);
                 save_settings_button.Enabled = true;
             }
             else
@@ -262,7 +259,9 @@ namespace later_list
                     break;
             }
         }
+        #endregion
 
+        #region settings buttons
         public void ThemeRadioButtonCheckedChanged(object sender, EventArgs e)
         {
             if (LightThemeCheck)
@@ -299,6 +298,14 @@ namespace later_list
             {
                 settings_error_provider.Clear();
             }
+        }
+
+        private string DetectSectionFromButton(string buttonName)
+        {
+            if (buttonName == "open_movie_path_button") return "movie";
+            if (buttonName == "open_serie_path_button") return "serie";
+            if (buttonName == "open_book_path_button") return "book";
+            return null;
         }
         #endregion
 

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace later_list
 { 
-    public partial class MainForm : Form
+    public partial class MainForm : Form, IForm
     {
         #region variables
         private string whichSection = "movie";
@@ -47,7 +47,7 @@ namespace later_list
             LoadTheme();
         }
 
-        private void LoadTheme()
+        public void LoadTheme()
         {
             ThemeManager.RegisterForm(this);
             ThemeManager.RegisterGroupBox(list_operations_gb);
@@ -421,7 +421,13 @@ namespace later_list
         #endregion
 
         #region save
-        private void SetListPath()
+        private void SaveButtonClick(object sender, EventArgs e)
+        {
+            GetFilePath();
+            FileExistenceControl();
+        }
+
+        private void GetFilePath()
         {
             switch (whichSection)
             {
@@ -437,27 +443,9 @@ namespace later_list
             }
         }
 
-        private void SetFileName(string fileName)
+        private void FileExistenceControl()
         {
-            switch (whichSection)
-            {
-                case "movie":
-                    settingsForm.MovieFilePathText = fileName;
-                    break;
-                case "serie":
-                    settingsForm.SerieFilePathText = fileName;
-                    break;
-                case "book":
-                    settingsForm.BookFilePathText = fileName;
-                    break;
-            }
-        }
-
-        private void SaveButtonClick(object sender, EventArgs e)
-        {
-            SetListPath();
-
-            if ( listPath == string.Empty)
+            if (listPath == string.Empty)
             {
                 CreateFileAndSave();
             }
@@ -475,9 +463,9 @@ namespace later_list
             savefiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
             if (savefiledialog.ShowDialog() == DialogResult.OK)
             {
-                SetFileName(savefiledialog.FileName);
+                settingsForm.SetFilePath(whichSection, savefiledialog.FileName);
                 settingsForm.SaveSettings();
-                SetListPath();
+                GetFilePath();
                 SaveLoadManager.SetPaths(listPath);
                 SaveLoadManager.SaveList(true, save_button, whichSection, listBox);
             }
