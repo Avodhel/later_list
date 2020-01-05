@@ -94,7 +94,7 @@ namespace later_list
                 if (confirm == DialogResult.OK)
                 {
                     save_settings_button.Enabled = false;
-                    GetSettings();
+                    GetAllFilePathsFromProperties();
                     ThemeManager.CurrrentTheme(this);
                 }
                 else if (confirm == DialogResult.Cancel)
@@ -105,43 +105,14 @@ namespace later_list
         }
         #endregion
 
-        #region settings datas
-        public void GetSettings()
-        {
-            MovieFilePathText = Properties.Settings.Default.movie_path;
-            SerieFilePathText = Properties.Settings.Default.serie_path;
-            BookFilePathText = Properties.Settings.Default.book_path;
-        }
-
+        #region settings form state
         public void SaveSettings()
         {
-            SetFilePath();
+            SetAllFilePathsToProperties();
             SetThemeOption();
             save_settings_button.Enabled = false;
             Properties.Settings.Default.Save();
             SettingsFormState();
-        }
-
-        private void SetFilePath()
-        {
-            Properties.Settings.Default.movie_path = MovieFilePathText;
-            Properties.Settings.Default.serie_path = SerieFilePathText;
-            Properties.Settings.Default.book_path = BookFilePathText;
-        }
-
-        private void SetThemeOption()
-        {
-            if (LightThemeCheck)
-            {
-                Properties.Settings.Default.light_checked = true;
-                Properties.Settings.Default.dark_checked = false;
-            }
-
-            if (DarkThemeCheck)
-            {
-                Properties.Settings.Default.dark_checked = true;
-                Properties.Settings.Default.light_checked = false;
-            }
         }
 
         private void SettingsFormState()
@@ -191,6 +162,20 @@ namespace later_list
         #endregion
 
         #region file paths
+        public void GetAllFilePathsFromProperties()
+        {
+            MovieFilePathText = Properties.Settings.Default.movie_path;
+            SerieFilePathText = Properties.Settings.Default.serie_path;
+            BookFilePathText = Properties.Settings.Default.book_path;
+        }
+
+        private void SetAllFilePathsToProperties()
+        {
+            Properties.Settings.Default.movie_path = MovieFilePathText;
+            Properties.Settings.Default.serie_path = SerieFilePathText;
+            Properties.Settings.Default.book_path = BookFilePathText;
+        }
+
         public void SetFilePath(string whichSection, string _filePath)
         {
             switch (whichSection)
@@ -238,7 +223,7 @@ namespace later_list
             }
             else
             {
-                GetSettings();
+                GetAllFilePathsFromProperties();
                 save_settings_button.Enabled = false;
             }
         }
@@ -261,7 +246,40 @@ namespace later_list
         }
         #endregion
 
-        #region settings buttons
+        #region settings form button actions
+        private void SaveSettingsButtonClick(object sender, EventArgs e)
+        {
+            SaveSettings();
+            MessageBox.Show("Settings Saved!");
+        }
+
+        private void SaveSettingsButtonEnabledChanged(object sender, EventArgs e)
+        {
+            if (save_settings_button.Enabled == true)
+            {
+                settings_error_provider.SetError(save_settings_button, "There're unsaved settings!");
+            }
+            if (save_settings_button.Enabled == false)
+            {
+                settings_error_provider.Clear();
+            }
+        }
+
+        private void SetThemeOption()
+        {
+            if (LightThemeCheck)
+            {
+                Properties.Settings.Default.light_checked = true;
+                Properties.Settings.Default.dark_checked = false;
+            }
+
+            if (DarkThemeCheck)
+            {
+                Properties.Settings.Default.dark_checked = true;
+                Properties.Settings.Default.light_checked = false;
+            }
+        }
+
         public void ThemeRadioButtonCheckedChanged(object sender, EventArgs e)
         {
             if (LightThemeCheck)
@@ -279,24 +297,6 @@ namespace later_list
                 {
                     save_settings_button.Enabled = true;
                 }
-            }
-        }
-
-        private void SaveSettingsButtonClick(object sender, EventArgs e)
-        {
-            SaveSettings();
-            MessageBox.Show("Settings Saved!");
-        }
-
-        private void SaveSettingsButtonEnabledChanged(object sender, EventArgs e)
-        {
-            if (save_settings_button.Enabled == true)
-            {
-                settings_error_provider.SetError(save_settings_button, "There're unsaved settings!");
-            }
-            if (save_settings_button.Enabled == false)
-            {
-                settings_error_provider.Clear();
             }
         }
 

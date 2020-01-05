@@ -37,7 +37,7 @@ namespace later_list
             {
                 SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
             }
-            settingsForm.GetSettings();
+            settingsForm.GetAllFilePathsFromProperties();
             
         }
 
@@ -471,7 +471,7 @@ namespace later_list
             }
             else
             {
-                settingsForm.GetSettings();
+                settingsForm.GetAllFilePathsFromProperties();
             }
         }
 
