@@ -272,7 +272,13 @@ namespace later_list
         #region add
         private void AddButtonClick(object sender, EventArgs e)
         {
-            if(name_tb.Text != string.Empty)
+            NameFieldCheck();
+            PrepareDataToAdd();
+        }
+
+        private void NameFieldCheck()
+        {
+            if (name_tb.Text != string.Empty)
             {
                 save_button.Enabled = true;
                 addToListControl = true;
@@ -284,14 +290,17 @@ namespace later_list
                 save_button.Enabled = false;
                 addToListControl = false;
             }
+        }
 
+        private void PrepareDataToAdd()
+        {
             if (whichSection != "book" && addToListControl)
             {
                 data = name_tb.Text + " (" + genre_cb.Text + ")";
                 AddToList(data);
                 RefreshInputFields();
             }
-            else if(whichSection == "book" && addToListControl)
+            else if (whichSection == "book" && addToListControl)
             {
                 data = name_tb.Text + " - " + author_tb.Text + " (" + genre_cb.Text + ")";
                 AddToList(data);
@@ -299,18 +308,18 @@ namespace later_list
             }
         }
 
-        private void AddToList(string info)
+        private void AddToList(string data)
         {
             switch (whichSection)
             {
                 case "movie":
-                    movie_listbox.Items.Add(info);
+                    movie_listbox.Items.Add(data);
                     break;
                 case "serie":
-                    serie_listbox.Items.Add(info);
+                    serie_listbox.Items.Add(data);
                     break;
                 case "book":
-                    book_listbox.Items.Add(info);
+                    book_listbox.Items.Add(data);
                     break;
             }
         }
@@ -388,19 +397,22 @@ namespace later_list
         private void EditButtonClick(object sender, EventArgs e)
         {
             save_button.Enabled = true;
-
             int index = listBox.SelectedIndex;
             listBox.Items.RemoveAt(index);
-            if(whichSection != "book")
+            PrepareDataToEdit(index);
+            RefreshInputFields();
+        }
+
+        private void PrepareDataToEdit(int index)
+        {
+            if (whichSection != "book")
             {
                 listBox.Items.Insert(index, name_tb.Text + " (" + genre_cb.Text + ")");
             }
             else if (whichSection == "book")
             {
-               listBox.Items.Insert(index, name_tb.Text + " - " + author_tb.Text + " (" + genre_cb.Text + ")");
+                listBox.Items.Insert(index, name_tb.Text + " - " + author_tb.Text + " (" + genre_cb.Text + ")");
             }
-            //refresh input fields
-            RefreshInputFields();
         }
         #endregion
 
@@ -443,26 +455,31 @@ namespace later_list
 
             if ( listPath == string.Empty)
             {
-                savefiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                savefiledialog.RestoreDirectory = true;
-                savefiledialog.FileName = whichSection + "list";
-                savefiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-                if (savefiledialog.ShowDialog() == DialogResult.OK)
-                {
-                    SetFileName(savefiledialog.FileName);
-                    settingsForm.SaveSettings();
-                    SetListPath();
-                    SaveLoadManager.SetPaths(listPath);
-                    SaveLoadManager.SaveList(true, save_button, whichSection, listBox);
-                }
-                else
-                {
-                    settingsForm.GetSettings();
-                }
+                CreateFileAndSave();
             }
             else if (listPath != string.Empty)
             {
                 SaveLoadManager.SaveList(true, save_button, whichSection, listBox);
+            }
+        }
+
+        private void CreateFileAndSave()
+        {
+            savefiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            savefiledialog.RestoreDirectory = true;
+            savefiledialog.FileName = whichSection + "list";
+            savefiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            if (savefiledialog.ShowDialog() == DialogResult.OK)
+            {
+                SetFileName(savefiledialog.FileName);
+                settingsForm.SaveSettings();
+                SetListPath();
+                SaveLoadManager.SetPaths(listPath);
+                SaveLoadManager.SaveList(true, save_button, whichSection, listBox);
+            }
+            else
+            {
+                settingsForm.GetSettings();
             }
         }
 
@@ -507,35 +524,40 @@ namespace later_list
 
             if (confirm == DialogResult.OK)
             {
-                switch (whichSection)
-                {
-                    case "movie":
-                        movie_listbox.Items.Clear();
-                        if (Properties.Settings.Default.movie_path != string.Empty)
-                        {
-                            SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
-                        }
-                        break;
-                    case "serie":
-                        serie_listbox.Items.Clear();
-                        if (Properties.Settings.Default.serie_path != string.Empty)
-                        {
-                            SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
-                        }
-                        break;
-                    case "book":
-                        book_listbox.Items.Clear();
-                        if (Properties.Settings.Default.book_path != string.Empty)
-                        {
-                            SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
-                        }
-                        break;
-                }
+                LoadPreviousFile();
                 save_button.Enabled = false;
             }
             else if (confirm == DialogResult.Cancel)
             {
                
+            }
+        }
+
+        private void LoadPreviousFile()
+        {
+            switch (whichSection)
+            {
+                case "movie":
+                    movie_listbox.Items.Clear();
+                    if (Properties.Settings.Default.movie_path != string.Empty)
+                    {
+                        SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
+                    }
+                    break;
+                case "serie":
+                    serie_listbox.Items.Clear();
+                    if (Properties.Settings.Default.serie_path != string.Empty)
+                    {
+                        SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
+                    }
+                    break;
+                case "book":
+                    book_listbox.Items.Clear();
+                    if (Properties.Settings.Default.book_path != string.Empty)
+                    {
+                        SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
+                    }
+                    break;
             }
         }
         #endregion
