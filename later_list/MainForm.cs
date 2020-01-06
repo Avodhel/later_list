@@ -9,15 +9,13 @@ namespace later_list
         #region Variables
 
         private string whichSection = "movie";
-        private string data;
         private string getExistedData;
-        private string namePart;
-        private string authorPart;
-        private string genrePart;
         private string listPath;
-        private bool addToListControl = true;
+        private string refactoredData;
+        private string newEditedData;
         private ListBox listBox = new ListBox();
         private SettingsForm settingsForm = new SettingsForm();
+        private SectionManager sectionManager = new SectionManager();
 
         #endregion
 
@@ -280,72 +278,100 @@ namespace later_list
 
         private void AddButtonClick(object sender, EventArgs e)
         {
-            NameFieldCheck();
-            PrepareDataToAdd();
+            AddNewDataToList(NameFieldCheck());
         }
 
-        private void NameFieldCheck()
+        private bool NameFieldCheck()
         {
-            if (name_tb.Text != string.Empty)
+            if (name_tb.Text != string.Empty) return true;
+            else return false;
+        }
+
+        private void AddNewDataToList(bool nameFieldRequireCheck)
+        {
+            if (nameFieldRequireCheck)
             {
+                if (whichSection == "movie")
+                {
+                    AddNewMovie();
+                }
+                else if (whichSection == "serie")
+                {
+                    AddNewSerie();
+                }
+                else if (whichSection == "book")
+                {
+                    AddNewBook();
+                }
+                RefreshInputFields();
                 save_button.Enabled = true;
-                addToListControl = true;
             }
-            else if (name_tb.Text == string.Empty)
+            else
             {
                 MessageBox.Show("Please add a " + whichSection + " name", "Warning",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 save_button.Enabled = false;
-                addToListControl = false;
             }
         }
 
-        private void PrepareDataToAdd()
+        private void AddNewMovie()
         {
-            if (whichSection != "book" && addToListControl)
+            MovieModel newMovieData = new MovieModel
             {
-                data = name_tb.Text + " (" + genre_cb.Text + ")";
-                AddToList(data);
-                RefreshInputFields();
-            }
-            else if (whichSection == "book" && addToListControl)
-            {
-                data = name_tb.Text + " - " + author_tb.Text + " (" + genre_cb.Text + ")";
-                AddToList(data);
-                RefreshInputFields();
-            }
+                Name = name_tb.Text,
+                Genre = genre_cb.Text
+            };
+
+            refactoredData = DataRefactor.MovieAddDataRefactor(newMovieData);
+            sectionManager.AddDataToList(refactoredData, movie_listbox);
         }
 
-        private void AddToList(string data)
+        private void AddNewSerie()
         {
-            switch (whichSection)
+            SerieModel newSerieData = new SerieModel
             {
-                case "movie":
-                    movie_listbox.Items.Add(data);
-                    break;
-                case "serie":
-                    serie_listbox.Items.Add(data);
-                    break;
-                case "book":
-                    book_listbox.Items.Add(data);
-                    break;
-            }
+                Name = name_tb.Text,
+                Genre = genre_cb.Text
+            };
+
+            refactoredData = DataRefactor.SerieAddDataRefactor(newSerieData);
+            sectionManager.AddDataToList(refactoredData, serie_listbox);
+        }
+
+        private void AddNewBook()
+        {
+            BookModel newBookData = new BookModel
+            {
+                Name = name_tb.Text,
+                Author = author_tb.Text,
+                Genre = genre_cb.Text
+            };
+
+            refactoredData = DataRefactor.BookAddDataRefactor(newBookData);
+            sectionManager.AddDataToList(refactoredData, book_listbox);
         }
 
         #endregion
 
-        #region Removo Data
+        #region Remove Data
 
         private void RemoveButtonClick(object sender, EventArgs e)
         {
             save_button.Enabled = true;
-            listBox.Items.Remove(listBox.SelectedItem);
+            sectionManager.RemoveDataFromList(listBox);
             RefreshInputFields();
         }
 
         #endregion
 
         #region Edit Data
+
+        private void EditButtonClick(object sender, EventArgs e)
+        {
+            SendEditedDataToList();
+            save_button.Enabled = true;
+            RefreshInputFields();
+        }
 
         private void SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -355,48 +381,26 @@ namespace later_list
 
             try
             {
-                getExistedData = listBox.SelectedItem.ToString();        
-                if (whichSection != "book")
+                getExistedData = listBox.SelectedItem.ToString();
+                if (whichSection == "movie")
                 {
-                    namePart = getExistedData.Split('(')[0];
+                    MovieModel currentMovieData = DataRefactor.MovieExistedDataRefactor(getExistedData);
+                    name_tb.Text = currentMovieData.Name;
+                    genre_cb.Text = currentMovieData.Genre;
                 }
-                else if (whichSection == "book")
+                if (whichSection == "serie")
                 {
-                    namePart = getExistedData.Split('-')[0];
-                    authorPart = getExistedData.Split('-')[1];
-                    authorPart = authorPart.TrimStart(' ');
+                    SerieModel currentSerieData = DataRefactor.SerieExistedDataRefactor(getExistedData);
+                    name_tb.Text = currentSerieData.Name;
+                    genre_cb.Text = currentSerieData.Genre;
                 }
-                namePart = namePart.TrimEnd(' ');
-
                 if (whichSection == "book")
                 {
-                    try
-                    {
-                        authorPart = authorPart.Split('(')[0];
-                        authorPart = authorPart.TrimEnd(' ');
-                    }
-                    catch
-                    {
-                        authorPart = string.Empty;
-                    }
+                    BookModel currentBookData = DataRefactor.BookExistedDataRefactor(getExistedData);
+                    name_tb.Text = currentBookData.Name;
+                    author_tb.Text = currentBookData.Author;
+                    genre_cb.Text = currentBookData.Genre;
                 }
-
-                try
-                {
-                    genrePart = getExistedData.Split('(')[1];
-                    genrePart = genrePart.TrimEnd(')');
-                }
-                catch
-                {
-                    genrePart = string.Empty;
-                }
-
-                name_tb.Text = namePart;
-                if (whichSection == "book")
-                {
-                    author_tb.Text = authorPart;
-                }
-                genre_cb.Text = genrePart;
             }
             catch
             {
@@ -404,25 +408,40 @@ namespace later_list
             }
         }
 
-        private void EditButtonClick(object sender, EventArgs e)
+        private void SendEditedDataToList()
         {
-            save_button.Enabled = true;
+            if (whichSection == "movie")
+            {
+                MovieModel editedMovieData = new MovieModel
+                {
+                    Name = name_tb.Text,
+                    Genre = genre_cb.Text
+                };
+                newEditedData = DataRefactor.MovieAddDataRefactor(editedMovieData);
+            }
+            if (whichSection == "serie")
+            {
+                SerieModel editedSerieData = new SerieModel
+                {
+                    Name = name_tb.Text,
+                    Genre = genre_cb.Text
+                };
+                newEditedData = DataRefactor.SerieAddDataRefactor(editedSerieData);
+            }
+            if (whichSection == "book")
+            {
+                BookModel editedBookData = new BookModel
+                {
+                    Name = name_tb.Text,
+                    Author = author_tb.Text,
+                    Genre = genre_cb.Text
+                };
+                newEditedData = DataRefactor.BookAddDataRefactor(editedBookData);
+            }
+
             int index = listBox.SelectedIndex;
             listBox.Items.RemoveAt(index);
-            PrepareDataToEdit(index);
-            RefreshInputFields();
-        }
-
-        private void PrepareDataToEdit(int index)
-        {
-            if (whichSection != "book")
-            {
-                listBox.Items.Insert(index, name_tb.Text + " (" + genre_cb.Text + ")");
-            }
-            else if (whichSection == "book")
-            {
-                listBox.Items.Insert(index, name_tb.Text + " - " + author_tb.Text + " (" + genre_cb.Text + ")");
-            }
+            sectionManager.InsertEditedDataToList(index, newEditedData, listBox);
         }
 
         #endregion
@@ -596,5 +615,6 @@ namespace later_list
         }
 
         #endregion
+
     }
 }

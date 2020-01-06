@@ -78,10 +78,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataRefactor.cs" />
+    <Compile Include="Models\BookModel.cs" />
     <Compile Include="Colors.cs" />
     <Compile Include="Genres.cs" />
-    <Compile Include="IForm.cs" />
+    <Compile Include="Interfaces\IModel.cs" />
+    <Compile Include="Interfaces\IForm.cs" />
+    <Compile Include="Models\MovieModel.cs" />
     <Compile Include="SaveLoadManager.cs" />
+    <Compile Include="Models\SerieModel.cs" />
+    <Compile Include="SectionManager.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -426,7 +426,7 @@
             this.movieSectionBtn.UseVisualStyleBackColor = false;
             this.movieSectionBtn.Click += new System.EventHandler(this.ChooseSection);
             // 
-            // later_list
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -438,7 +438,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "later_list";
+            this.Name = "MainForm";
             this.Text = "Later List";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormClosed);
