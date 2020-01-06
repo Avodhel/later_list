@@ -297,37 +297,21 @@ namespace later_list
 
         private void AddNewMovie()
         {
-            MovieModel newMovieData = new MovieModel
-            {
-                Name = name_tb.Text,
-                Genre = genre_cb.Text
-            };
-
+            MovieModel newMovieData = new MovieModel(name_tb.Text, genre_cb.Text);
             refactoredData = DataRefactor.MovieNewDataRefactor(newMovieData);
             sectionManager.AddDataToList(refactoredData, movie_listbox);
         }
 
         private void AddNewSerie()
         {
-            SerieModel newSerieData = new SerieModel
-            {
-                Name = name_tb.Text,
-                Genre = genre_cb.Text
-            };
-
+            SerieModel newSerieData = new SerieModel(name_tb.Text, genre_cb.Text);
             refactoredData = DataRefactor.SerieNewDataRefactor(newSerieData);
             sectionManager.AddDataToList(refactoredData, serie_listbox);
         }
 
         private void AddNewBook()
         {
-            BookModel newBookData = new BookModel
-            {
-                Name = name_tb.Text,
-                Author = author_tb.Text,
-                Genre = genre_cb.Text
-            };
-
+            BookModel newBookData = new BookModel(name_tb.Text, author_tb.Text, genre_cb.Text);
             refactoredData = DataRefactor.BookNewDataRefactor(newBookData);
             sectionManager.AddDataToList(refactoredData, book_listbox);
         }
@@ -393,30 +377,17 @@ namespace later_list
         {
             if (whichSection == "movie")
             {
-                MovieModel editedMovieData = new MovieModel
-                {
-                    Name = name_tb.Text,
-                    Genre = genre_cb.Text
-                };
+                MovieModel editedMovieData = new MovieModel(name_tb.Text, genre_cb.Text);
                 newEditedData = DataRefactor.MovieNewDataRefactor(editedMovieData);
             }
             if (whichSection == "serie")
             {
-                SerieModel editedSerieData = new SerieModel
-                {
-                    Name = name_tb.Text,
-                    Genre = genre_cb.Text
-                };
+                SerieModel editedSerieData = new SerieModel(name_tb.Text, genre_cb.Text);
                 newEditedData = DataRefactor.SerieNewDataRefactor(editedSerieData);
             }
             if (whichSection == "book")
             {
-                BookModel editedBookData = new BookModel
-                {
-                    Name = name_tb.Text,
-                    Author = author_tb.Text,
-                    Genre = genre_cb.Text
-                };
+                BookModel editedBookData = new BookModel(name_tb.Text, author_tb.Text, genre_cb.Text);
                 newEditedData = DataRefactor.BookNewDataRefactor(editedBookData);
             }
 

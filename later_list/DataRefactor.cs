@@ -29,13 +29,7 @@
         {
             string namePart, genrePart;
             Refactors.ExistedDataRefactorWithTwoParameters(getExistedData, out namePart, out genrePart);
-
-            MovieModel currentMovieData = new MovieModel
-            {
-                Name = namePart,
-                Genre = genrePart
-            };
-
+            MovieModel currentMovieData = new MovieModel(namePart, genrePart);
             return currentMovieData;
         }
 
@@ -43,13 +37,7 @@
         {
             string namePart, genrePart;
             Refactors.ExistedDataRefactorWithTwoParameters(getExistedData, out namePart, out genrePart);
-
-            SerieModel currentSerieData = new SerieModel
-            {
-                Name = namePart,
-                Genre = genrePart
-            };
-
+            SerieModel currentSerieData = new SerieModel(namePart, genrePart);
             return currentSerieData;
         }
 
@@ -57,14 +45,7 @@
         {
             string namePart, authorPart, genrePart;
             Refactors.ExistedDataRefactorWithThreeParameters(getExistedData, out namePart, out authorPart, out genrePart);
-
-            BookModel currentBookData = new BookModel
-            {
-                Name = namePart,
-                Author = authorPart,
-                Genre = genrePart
-            };
-
+            BookModel currentBookData = new BookModel(namePart, authorPart, genrePart);
             return currentBookData;
         }
     }
