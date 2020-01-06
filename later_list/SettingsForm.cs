@@ -46,7 +46,7 @@ namespace later_list
 
         #endregion 
 
-        #region Settings Form Opened
+        #region Constructors
 
         public SettingsForm()
         {
@@ -64,17 +64,6 @@ namespace later_list
         private void SettingsLoad(object sender, EventArgs e)
         {
             //LoadTheme();
-        }
-
-        public void LoadTheme()
-        {
-            ThemeManager.RegisterForm(this);
-            ThemeManager.RegisterGroupBox(settings_gb);
-            ThemeManager.RegisterGroupBox(themes_gb);
-            ThemeManager.RegisterTextBox(movie_path_tb);
-            ThemeManager.RegisterTextBox(serie_path_tb);
-            ThemeManager.RegisterTextBox(book_path_tb);
-            ThemeManager.RegisterButton(save_settings_button);
         }
 
         #endregion
@@ -315,6 +304,21 @@ namespace later_list
             if (buttonName == "open_serie_path_button") return "serie";
             if (buttonName == "open_book_path_button") return "book";
             return null;
+        }
+
+        #endregion
+
+        #region Load Theme
+
+        public void LoadTheme()
+        {
+            ThemeManager.RegisterForm(this);
+            ThemeManager.RegisterGroupBox(settings_gb);
+            ThemeManager.RegisterGroupBox(themes_gb);
+            ThemeManager.RegisterTextBox(movie_path_tb);
+            ThemeManager.RegisterTextBox(serie_path_tb);
+            ThemeManager.RegisterTextBox(book_path_tb);
+            ThemeManager.RegisterButton(save_settings_button);
         }
 
         #endregion

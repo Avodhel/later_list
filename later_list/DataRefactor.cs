@@ -2,38 +2,33 @@
 {
     public static class DataRefactor
     {
-        public static string MovieAddDataRefactor(MovieModel newMovieData)
+        /// <summary>
+        /// Re-arrangement data according to section before adding to list
+        /// </summary>
+
+        public static string MovieNewDataRefactor(MovieModel newMovieData)
         {
-            return newMovieData.Name + " (" + newMovieData.Genre + ")";
+            return Refactors.NewDataRefactorWithTwoParameters(newMovieData.Name, newMovieData.Genre);
         }
 
-        public static string SerieAddDataRefactor(SerieModel newSerieData)
+        public static string SerieNewDataRefactor(SerieModel newSerieData)
         {
-            return newSerieData.Name + " (" + newSerieData.Genre + ")";
+            return Refactors.NewDataRefactorWithTwoParameters(newSerieData.Name, newSerieData.Genre);
         }
 
-        public static string BookAddDataRefactor(BookModel newBookData)
+        public static string BookNewDataRefactor(BookModel newBookData)
         {
-            return newBookData.Name + " - " + newBookData.Author + " (" + newBookData.Genre + ")";
+            return Refactors.NewDataRefactorWithThreeParameters(newBookData.Name, newBookData.Author, newBookData.Genre);
         }
+
+        /// <summary>
+        /// Re-arrangement data according to section before editing and adding to list
+        /// </summary>
 
         public static MovieModel MovieExistedDataRefactor(string getExistedData)
         {
-            string namePart;
-            string genrePart;
-
-            namePart = getExistedData.Split('(')[0];
-            namePart = namePart.TrimEnd(' ');
-
-            try
-            {
-                genrePart = getExistedData.Split('(')[1];
-                genrePart = genrePart.TrimEnd(')');
-            }
-            catch
-            {
-                genrePart = string.Empty;
-            }
+            string namePart, genrePart;
+            Refactors.ExistedDataRefactorWithTwoParameters(getExistedData, out namePart, out genrePart);
 
             MovieModel currentMovieData = new MovieModel
             {
@@ -44,24 +39,10 @@
             return currentMovieData;
         }
 
-
         public static SerieModel SerieExistedDataRefactor(string getExistedData)
         {
-            string namePart;
-            string genrePart;
-
-            namePart = getExistedData.Split('(')[0];
-            namePart = namePart.TrimEnd(' ');
-
-            try
-            {
-                genrePart = getExistedData.Split('(')[1];
-                genrePart = genrePart.TrimEnd(')');
-            }
-            catch
-            {
-                genrePart = string.Empty;
-            }
+            string namePart, genrePart;
+            Refactors.ExistedDataRefactorWithTwoParameters(getExistedData, out namePart, out genrePart);
 
             SerieModel currentSerieData = new SerieModel
             {
@@ -74,35 +55,8 @@
 
         public static BookModel BookExistedDataRefactor(string getExistedData)
         {
-            string namePart;
-            string authorPart;
-            string genrePart;
-
-
-            namePart = getExistedData.Split('-')[0];
-            authorPart = getExistedData.Split('-')[1];
-            authorPart = authorPart.TrimStart(' ');
-            namePart = namePart.TrimEnd(' ');
-
-            try
-            {
-                authorPart = authorPart.Split('(')[0];
-                authorPart = authorPart.TrimEnd(' ');
-            }
-            catch
-            {
-                authorPart = string.Empty;
-            }
-
-            try
-            {
-                genrePart = getExistedData.Split('(')[1];
-                genrePart = genrePart.TrimEnd(')');
-            }
-            catch
-            {
-                genrePart = string.Empty;
-            }
+            string namePart, authorPart, genrePart;
+            Refactors.ExistedDataRefactorWithThreeParameters(getExistedData, out namePart, out authorPart, out genrePart);
 
             BookModel currentBookData = new BookModel
             {

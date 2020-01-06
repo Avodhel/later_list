@@ -19,7 +19,7 @@ namespace later_list
 
         #endregion
 
-        #region Start App
+        #region Constructors
 
         public MainForm()
         {
@@ -39,25 +39,6 @@ namespace later_list
         {
             PrepareSection(whichSection);
             LoadTheme();
-        }
-
-        public void LoadTheme()
-        {
-            ThemeManager.RegisterForm(this);
-            ThemeManager.RegisterGroupBox(list_operations_gb);
-            ThemeManager.RegisterTextBox(name_tb);
-            ThemeManager.RegisterTextBox(author_tb);
-            ThemeManager.RegisterCheckBox(genre_cb);
-            ThemeManager.RegisterListBox(movie_listbox);
-            ThemeManager.RegisterListBox(serie_listbox);
-            ThemeManager.RegisterListBox(book_listbox);
-            ThemeManager.RegisterButton(clear_button);
-            ThemeManager.RegisterButton(add_button);
-            ThemeManager.RegisterButton(remove_button);
-            ThemeManager.RegisterButton(edit_button);
-            ThemeManager.RegisterButton(save_button);
-            ThemeManager.RegisterButton(discard_button);
-            ThemeManager.CurrrentTheme(settingsForm);
         }
 
         #endregion
@@ -322,7 +303,7 @@ namespace later_list
                 Genre = genre_cb.Text
             };
 
-            refactoredData = DataRefactor.MovieAddDataRefactor(newMovieData);
+            refactoredData = DataRefactor.MovieNewDataRefactor(newMovieData);
             sectionManager.AddDataToList(refactoredData, movie_listbox);
         }
 
@@ -334,7 +315,7 @@ namespace later_list
                 Genre = genre_cb.Text
             };
 
-            refactoredData = DataRefactor.SerieAddDataRefactor(newSerieData);
+            refactoredData = DataRefactor.SerieNewDataRefactor(newSerieData);
             sectionManager.AddDataToList(refactoredData, serie_listbox);
         }
 
@@ -347,7 +328,7 @@ namespace later_list
                 Genre = genre_cb.Text
             };
 
-            refactoredData = DataRefactor.BookAddDataRefactor(newBookData);
+            refactoredData = DataRefactor.BookNewDataRefactor(newBookData);
             sectionManager.AddDataToList(refactoredData, book_listbox);
         }
 
@@ -417,7 +398,7 @@ namespace later_list
                     Name = name_tb.Text,
                     Genre = genre_cb.Text
                 };
-                newEditedData = DataRefactor.MovieAddDataRefactor(editedMovieData);
+                newEditedData = DataRefactor.MovieNewDataRefactor(editedMovieData);
             }
             if (whichSection == "serie")
             {
@@ -426,7 +407,7 @@ namespace later_list
                     Name = name_tb.Text,
                     Genre = genre_cb.Text
                 };
-                newEditedData = DataRefactor.SerieAddDataRefactor(editedSerieData);
+                newEditedData = DataRefactor.SerieNewDataRefactor(editedSerieData);
             }
             if (whichSection == "book")
             {
@@ -436,7 +417,7 @@ namespace later_list
                     Author = author_tb.Text,
                     Genre = genre_cb.Text
                 };
-                newEditedData = DataRefactor.BookAddDataRefactor(editedBookData);
+                newEditedData = DataRefactor.BookNewDataRefactor(editedBookData);
             }
 
             int index = listBox.SelectedIndex;
@@ -612,6 +593,29 @@ namespace later_list
         private void SettingsButtonClick(object sender, EventArgs e)
         {
             settingsForm.ShowDialog();
+        }
+
+        #endregion
+
+        #region Load Theme
+
+        public void LoadTheme()
+        {
+            ThemeManager.RegisterForm(this);
+            ThemeManager.RegisterGroupBox(list_operations_gb);
+            ThemeManager.RegisterTextBox(name_tb);
+            ThemeManager.RegisterTextBox(author_tb);
+            ThemeManager.RegisterCheckBox(genre_cb);
+            ThemeManager.RegisterListBox(movie_listbox);
+            ThemeManager.RegisterListBox(serie_listbox);
+            ThemeManager.RegisterListBox(book_listbox);
+            ThemeManager.RegisterButton(clear_button);
+            ThemeManager.RegisterButton(add_button);
+            ThemeManager.RegisterButton(remove_button);
+            ThemeManager.RegisterButton(edit_button);
+            ThemeManager.RegisterButton(save_button);
+            ThemeManager.RegisterButton(discard_button);
+            ThemeManager.CurrrentTheme(settingsForm);
         }
 
         #endregion

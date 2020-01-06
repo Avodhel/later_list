@@ -85,6 +85,7 @@
     <Compile Include="Interfaces\IModel.cs" />
     <Compile Include="Interfaces\IForm.cs" />
     <Compile Include="Models\MovieModel.cs" />
+    <Compile Include="Refactors.cs" />
     <Compile Include="SaveLoadManager.cs" />
     <Compile Include="Models\SerieModel.cs" />
     <Compile Include="SectionManager.cs" />
