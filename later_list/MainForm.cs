@@ -33,10 +33,7 @@ namespace later_list
             InitializeComponent();
             ChooseAndLoadListbox();
             LoadGenres();
-            if (Properties.Settings.Default.movie_path != string.Empty)
-            {
-                SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
-            }
+            SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
             settingsForm.GetAllFilePathsFromProperties();   
         }
 
@@ -101,6 +98,8 @@ namespace later_list
             input_fields_panel.VerticalScroll.Value = 0;
             //load list
             ChooseAndLoadListbox();
+            //load data file
+            SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
             //load genres
             LoadGenres();
             //refresh input fields
@@ -131,10 +130,6 @@ namespace later_list
                 movie_listbox.Visible = true;
                 serie_listbox.Visible = false;
                 book_listbox.Visible = false;
-                if (Properties.Settings.Default.movie_path != string.Empty)
-                {
-                    SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
-                }
             }
 
             if (section == Sections.Serie)
@@ -157,10 +152,6 @@ namespace later_list
                 movie_listbox.Visible = false;
                 serie_listbox.Visible = true;
                 book_listbox.Visible = false;
-                if (Properties.Settings.Default.serie_path != string.Empty)
-                {
-                    SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
-                }
             }
 
             if (section == Sections.Book)
@@ -183,10 +174,6 @@ namespace later_list
                 movie_listbox.Visible = false;
                 serie_listbox.Visible = false;
                 book_listbox.Visible = true;
-                if (Properties.Settings.Default.book_path != string.Empty)
-                {
-                    SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
-                }
             }
         }
 
@@ -469,7 +456,7 @@ namespace later_list
 
             if (confirm == DialogResult.OK)
             {
-                LoadPreviousFile();
+                LoadPreviousFileVersion();
                 save_button.Enabled = false;
             }
             else if (confirm == DialogResult.Cancel)
@@ -478,32 +465,21 @@ namespace later_list
             }
         }
 
-        private void LoadPreviousFile()
+        private void LoadPreviousFileVersion()
         {
             switch (currentSection)
             {
                 case Sections.Movie:
                     movie_listbox.Items.Clear();
-                    if (Properties.Settings.Default.movie_path != string.Empty)
-                    {
-                        SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
-                    }
                     break;
                 case Sections.Serie:
                     serie_listbox.Items.Clear();
-                    if (Properties.Settings.Default.serie_path != string.Empty)
-                    {
-                        SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
-                    }
                     break;
                 case Sections.Book:
                     book_listbox.Items.Clear();
-                    if (Properties.Settings.Default.book_path != string.Empty)
-                    {
-                        SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
-                    }
                     break;
             }
+            SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
         }
 
         #endregion

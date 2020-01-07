@@ -37,12 +37,15 @@ namespace later_list
             try
             {
                 listBox.Items.Clear();
-                using (StreamReader loadFile = new StreamReader(loadPath))
+                if (loadPath != string.Empty)
                 {
-                    string line;
-                    while ((line = loadFile.ReadLine()) != null)
+                    using (StreamReader loadFile = new StreamReader(loadPath))
                     {
-                        listBox.Items.Add(line);
+                        string line;
+                        while ((line = loadFile.ReadLine()) != null)
+                        {
+                            listBox.Items.Add(line);
+                        }
                     }
                 }
             }
