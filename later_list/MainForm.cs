@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace later_list
 { 
-    public partial class MainForm : Form, IForm
+    public partial class MainForm : Form
     {
         #region Variables
 
@@ -22,6 +21,137 @@ namespace later_list
         private ListBox listBox = new ListBox();
         private SettingsForm settingsForm = new SettingsForm();
         private DataManager sectionManager = new DataManager();
+        private ViewManager viewManager;
+
+        #endregion
+
+        #region Properties
+
+        public GroupBox ListOperationsGB
+        {
+            get { return list_operations_gb; }
+            set { list_operations_gb = value; }
+        }
+
+        public TextBox NameTextBox
+        {
+            get { return name_tb; }
+            set { name_tb = value; }
+        }
+
+        public TextBox AuthorTextBox
+        {
+            get { return author_tb; }
+            set { author_tb = value; }
+        }
+
+        public ComboBox GenreComboBox
+        {
+            get { return genre_cb; }
+            set { genre_cb = value; }
+        }
+
+        public ListBox MovieListBox
+        {
+            get { return movie_listbox; }
+            set { movie_listbox = value; }
+        }
+
+        public ListBox SerieListBox
+        {
+            get { return serie_listbox; }
+            set { serie_listbox = value; }
+        }
+
+        public ListBox BookListBox
+        {
+            get { return book_listbox; }
+            set { book_listbox = value; }
+        }
+
+        public Button AddButton
+        {
+            get { return add_button; }
+            set { add_button = value; }
+        }
+
+        public Button ClearButton
+        {
+            get { return clear_button; }
+            set { clear_button = value; }
+        }
+
+        public Button RemoveButton
+        {
+            get { return remove_button; }
+            set { remove_button = value; }
+        }
+
+        public Button EditButton
+        {
+            get { return edit_button; }
+            set { edit_button = value; }
+        }
+
+        public Button SaveButton
+        {
+            get { return save_button; }
+            set { save_button = value; }
+        }
+
+        public Button DiscardButton
+        {
+            get { return discard_button; }
+            set { discard_button = value; }
+        }
+
+        public Button MovieSectionButton
+        {
+            get { return movieSectionBtn; }
+            set { movieSectionBtn = value; }
+        }
+
+        public Button SerieSectionButton
+        {
+            get { return serieSectionBtn; }
+            set { serieSectionBtn = value; }
+        }
+
+        public Button BookSectionButton
+        {
+            get { return bookSectionBtn; }
+            set { bookSectionBtn = value; }
+        }
+
+        public Label MovieNameLabel
+        {
+            get { return movie_name_lbl; }
+            set { movie_name_lbl = value; }
+        }
+
+        public Label SerieNameLabel
+        {
+            get { return serie_name_lbl; }
+            set { serie_name_lbl = value; }
+        }
+
+        public Label BookNameLabel
+        {
+            get { return book_name_lbl; }
+            set { book_name_lbl = value; }
+        }
+
+        public Label AuthorLabel
+        {
+            get { return author_lbl; }
+            set { author_lbl = value; }
+        }
+
+        public Label GenreLabel
+        {
+            get { return genre_lbl; }
+            set { genre_lbl = value; }
+        }
 
         #endregion
 
@@ -29,10 +159,11 @@ namespace later_list
 
         public MainForm()
         {
+            viewManager = new ViewManager(this, settingsForm);
             CenterToScreen();
             InitializeComponent();
             ChooseAndLoadListbox();
-            LoadGenres();
+            viewManager.LoadGenresToCombobox(currentSection);
             SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
             settingsForm.GetAllFilePathsFromProperties();   
         }
@@ -40,7 +171,7 @@ namespace later_list
         private void MainFormLoad(object sender, EventArgs e)
         {
             PrepareSection(currentSection);
-            LoadTheme();
+            viewManager.LoadThemeForMain();
         }
 
         #endregion
@@ -93,87 +224,51 @@ namespace later_list
         private void PrepareSection(Sections section)
         {
             currentSection = section;
-            list_operations_gb.Text = section + "s";
-            //panel scroll
+            //refresh panel scroll
             input_fields_panel.VerticalScroll.Value = 0;
             //load list
             ChooseAndLoadListbox();
             //load data file
             SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
-            //load genres
-            LoadGenres();
-            //refresh input fields
-            RefreshInputFields();
-            //enable buttons
-            add_button.Enabled = true;
-            remove_button.Enabled = false;
-            edit_button.Enabled = false;
-            save_button.Enabled = false;
+            //prepare section view
+            viewManager.SectionTransition(section);
 
             if (section == Sections.Movie)
             {
-                //section buttons
-                movieSectionBtn.BackColor = Colors.SectionButtonActiveColor;
-                serieSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
-                bookSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
-                //labels
-                movie_name_lbl.Visible = true;
-                serie_name_lbl.Visible = false;
-                book_name_lbl.Visible = false;
-                author_lbl.Visible = false;
-                genre_lbl.Location = new Point(43, 47);
-                //checkbox
-                genre_cb.Location = new Point(97, 41);
-                //textbox
-                author_tb.Visible = false;
-                //listbox
-                movie_listbox.Visible = true;
-                serie_listbox.Visible = false;
-                book_listbox.Visible = false;
+                viewManager.MovieSectionSelected();
             }
 
             if (section == Sections.Serie)
             {
-                //section buttons
-                movieSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
-                serieSectionBtn.BackColor = Colors.SectionButtonActiveColor;
-                bookSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
-                //labels
-                movie_name_lbl.Visible = false;
-                serie_name_lbl.Visible = true;
-                book_name_lbl.Visible = false;
-                author_lbl.Visible = false;
-                genre_lbl.Location = new Point(43, 47);
-                //checkbox
-                genre_cb.Location = new Point(97, 41);
-                //textbox
-                author_tb.Visible = false;
-                //listbox
-                movie_listbox.Visible = false;
-                serie_listbox.Visible = true;
-                book_listbox.Visible = false;
+                viewManager.SerieSectionSelected();
             }
 
             if (section == Sections.Book)
             {
-                //section buttons
-                movieSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
-                serieSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
-                bookSectionBtn.BackColor = Colors.SectionButtonActiveColor;
-                //labels
-                movie_name_lbl.Visible = false;
-                serie_name_lbl.Visible = false;
-                book_name_lbl.Visible = true;
-                author_lbl.Visible = true;
-                genre_lbl.Location = new Point(43, 82);
-                //checkbox
-                genre_cb.Location = new Point(97, 76);
-                //textbox
-                author_tb.Visible = true;
-                //listbox
-                movie_listbox.Visible = false;
-                serie_listbox.Visible = false;
-                book_listbox.Visible = true;
+                viewManager.BookSectionSelected();
+            }
+        }
+
+        #endregion
+
+        #region Choose and Load ListBox
+
+        private void ChooseAndLoadListbox()
+        {
+            switch (currentSection)
+            {
+                case Sections.Movie:
+                    listBox = MovieListBox;
+                    SaveLoadManager.SetPaths(Properties.Settings.Default.movie_path);
+                    break;
+                case Sections.Serie:
+                    listBox = SerieListBox;
+                    SaveLoadManager.SetPaths(Properties.Settings.Default.serie_path);
+                    break;
+                case Sections.Book:
+                    listBox = BookListBox;
+                    SaveLoadManager.SetPaths(Properties.Settings.Default.book_path);
+                    break;
             }
         }
 
@@ -183,96 +278,71 @@ namespace later_list
 
         private void InputFieldsClick(object sender, EventArgs e)
         {
-            if (name_tb.Text == string.Empty && genre_cb.Text == string.Empty)
-            {
-                add_button.Enabled = true;
-                remove_button.Enabled = false;
-                edit_button.Enabled = false;
-            }
+            viewManager.InputFieldClicked();
         }
 
         private void ClearButtonClick(object sender, EventArgs e)
         {
-            movie_listbox.ClearSelected();
-            serie_listbox.ClearSelected();
-            book_listbox.ClearSelected();
-            RefreshInputFields();
-            //enable buttons
-            add_button.Enabled = true;
-            remove_button.Enabled = false;
-            edit_button.Enabled = false;
-        }
-
-        private void RefreshInputFields()
-        {
-            name_tb.Text = string.Empty;
-            genre_cb.Text = string.Empty;
-            author_tb.Text = string.Empty;
-        }
-
-        private void LoadGenres()
-        {
-            genre_cb.Items.Clear();
-            genre_cb.Items.AddRange(Genres.GetGenres(currentSection));
+            viewManager.ClearButtonClicked();
         }
 
         #endregion
 
         #region Add Data
 
+        bool NameFieldRequireCheck => (NameTextBox.Text != string.Empty) ? true : false;
+
         private void AddButtonClick(object sender, EventArgs e)
         {
-            AddNewDataToList(NameFieldCheck);
-        }
-
-        bool NameFieldCheck => (name_tb.Text != string.Empty)? true: false;
-
-        private void AddNewDataToList(bool nameFieldRequireCheck)
-        {
-            if (nameFieldRequireCheck)
+            if (NameFieldRequireCheck)
             {
-                if (currentSection == Sections.Movie)
-                {
-                    AddNewMovie();
-                }
-                else if (currentSection == Sections.Serie)
-                {
-                    AddNewSerie();
-                }
-                else if (currentSection == Sections.Book)
-                {
-                    AddNewBook();
-                }
-                RefreshInputFields();
-                save_button.Enabled = true;
+                AddNewDataToList();
+                viewManager.RefreshInputFields();
+                SaveButton.Enabled = true;
             }
             else
             {
                 MessageBox.Show("Please add a " + currentSection + " name", "Warning",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                save_button.Enabled = false;
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                SaveButton.Enabled = false;
+            }
+        }
+
+        private void AddNewDataToList()
+        {
+            if (currentSection == Sections.Movie)
+            {
+                AddNewMovie();
+            }
+            else if (currentSection == Sections.Serie)
+            {
+                AddNewSerie();
+            }
+            else if (currentSection == Sections.Book)
+            {
+                AddNewBook();
             }
         }
 
         private void AddNewMovie()
         {
-            MovieModel newMovieData = new MovieModel(name_tb.Text, genre_cb.Text);
+            MovieModel newMovieData = new MovieModel(NameTextBox.Text, GenreComboBox.Text);
             refactoredData = DataRefactor.MovieNewDataRefactor(newMovieData);
-            sectionManager.AddDataToList(refactoredData, movie_listbox);
+            sectionManager.AddDataToList(refactoredData, MovieListBox);
         }
 
         private void AddNewSerie()
         {
-            SerieModel newSerieData = new SerieModel(name_tb.Text, genre_cb.Text);
+            SerieModel newSerieData = new SerieModel(NameTextBox.Text, GenreComboBox.Text);
             refactoredData = DataRefactor.SerieNewDataRefactor(newSerieData);
-            sectionManager.AddDataToList(refactoredData, serie_listbox);
+            sectionManager.AddDataToList(refactoredData, SerieListBox);
         }
 
         private void AddNewBook()
         {
-            BookModel newBookData = new BookModel(name_tb.Text, author_tb.Text, genre_cb.Text);
+            BookModel newBookData = new BookModel(NameTextBox.Text, AuthorTextBox.Text, GenreComboBox.Text);
             refactoredData = DataRefactor.BookNewDataRefactor(newBookData);
-            sectionManager.AddDataToList(refactoredData, book_listbox);
+            sectionManager.AddDataToList(refactoredData, BookListBox);
         }
 
         #endregion
@@ -281,9 +351,8 @@ namespace later_list
 
         private void RemoveButtonClick(object sender, EventArgs e)
         {
-            save_button.Enabled = true;
             sectionManager.RemoveDataFromList(listBox);
-            RefreshInputFields();
+            viewManager.RemoveButtonClicked();
         }
 
         #endregion
@@ -293,15 +362,12 @@ namespace later_list
         private void EditButtonClick(object sender, EventArgs e)
         {
             SendEditedDataToList();
-            save_button.Enabled = true;
-            RefreshInputFields();
+            viewManager.EditButtonClicked();
         }
 
         private void SelectedIndexChanged(object sender, EventArgs e)
         {
-            add_button.Enabled = false;
-            remove_button.Enabled = true;
-            edit_button.Enabled = true;
+            viewManager.EditRemoveButtonsActive();
 
             try
             {
@@ -309,21 +375,21 @@ namespace later_list
                 if (currentSection == Sections.Movie)
                 {
                     MovieModel currentMovieData = DataRefactor.MovieExistedDataRefactor(getExistedData);
-                    name_tb.Text = currentMovieData.Name;
-                    genre_cb.Text = currentMovieData.Genre;
+                    NameTextBox.Text = currentMovieData.Name;
+                    GenreComboBox.Text = currentMovieData.Genre;
                 }
                 if (currentSection == Sections.Serie)
                 {
                     SerieModel currentSerieData = DataRefactor.SerieExistedDataRefactor(getExistedData);
-                    name_tb.Text = currentSerieData.Name;
-                    genre_cb.Text = currentSerieData.Genre;
+                    NameTextBox.Text = currentSerieData.Name;
+                    GenreComboBox.Text = currentSerieData.Genre;
                 }
                 if (currentSection == Sections.Book)
                 {
                     BookModel currentBookData = DataRefactor.BookExistedDataRefactor(getExistedData);
-                    name_tb.Text = currentBookData.Name;
-                    author_tb.Text = currentBookData.Author;
-                    genre_cb.Text = currentBookData.Genre;
+                    NameTextBox.Text = currentBookData.Name;
+                    AuthorTextBox.Text = currentBookData.Author;
+                    GenreComboBox.Text = currentBookData.Genre;
                 }
             }
             catch
@@ -336,17 +402,17 @@ namespace later_list
         {
             if (currentSection == Sections.Movie)
             {
-                MovieModel editedMovieData = new MovieModel(name_tb.Text, genre_cb.Text);
+                MovieModel editedMovieData = new MovieModel(NameTextBox.Text, GenreComboBox.Text);
                 newEditedData = DataRefactor.MovieNewDataRefactor(editedMovieData);
             }
             if (currentSection == Sections.Serie)
             {
-                SerieModel editedSerieData = new SerieModel(name_tb.Text, genre_cb.Text);
+                SerieModel editedSerieData = new SerieModel(NameTextBox.Text, GenreComboBox.Text);
                 newEditedData = DataRefactor.SerieNewDataRefactor(editedSerieData);
             }
             if (currentSection == Sections.Book)
             {
-                BookModel editedBookData = new BookModel(name_tb.Text, author_tb.Text, genre_cb.Text);
+                BookModel editedBookData = new BookModel(NameTextBox.Text, AuthorTextBox.Text, GenreComboBox.Text);
                 newEditedData = DataRefactor.BookNewDataRefactor(editedBookData);
             }
 
@@ -415,33 +481,17 @@ namespace later_list
 
         private void SaveButtonEnabledChanged(object sender, EventArgs e)
         {
-            if (save_button.Enabled == true)
+            if (SaveButton.Enabled == true)
             {
-                switch (currentSection)
-                {
-                    case Sections.Movie:
-                        serieSectionBtn.Enabled = false;
-                        bookSectionBtn.Enabled = false;
-                        break;
-                    case Sections.Serie:
-                        movieSectionBtn.Enabled = false;
-                        bookSectionBtn.Enabled = false;
-                        break;
-                    case Sections.Book:
-                        movieSectionBtn.Enabled = false;
-                        serieSectionBtn.Enabled = false;
-                        break;
-                }
+                viewManager.TransitionBetweenSecionsDeactive(currentSection);
                 error_provider.SetError(save_button, "There're unsaved changes in " + currentSection + " list!");
-                discard_button.Visible = true;
+                DiscardButton.Visible = true;
             }
             if (save_button.Enabled == false)
             {
-                movieSectionBtn.Enabled = true;
-                serieSectionBtn.Enabled = true;
-                bookSectionBtn.Enabled = true;
+                viewManager.TransitionBetweenSectionsActive();
                 error_provider.Clear();
-                discard_button.Visible = false;
+                DiscardButton.Visible = false;
             }
         }
 
@@ -457,7 +507,7 @@ namespace later_list
             if (confirm == DialogResult.OK)
             {
                 LoadPreviousFileVersion();
-                save_button.Enabled = false;
+                SaveButton.Enabled = false;
             }
             else if (confirm == DialogResult.Cancel)
             {
@@ -470,39 +520,16 @@ namespace later_list
             switch (currentSection)
             {
                 case Sections.Movie:
-                    movie_listbox.Items.Clear();
+                    MovieListBox.Items.Clear();
                     break;
                 case Sections.Serie:
-                    serie_listbox.Items.Clear();
+                    SerieListBox.Items.Clear();
                     break;
                 case Sections.Book:
-                    book_listbox.Items.Clear();
+                    BookListBox.Items.Clear();
                     break;
             }
             SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
-        }
-
-        #endregion
-
-        #region Choose and Load ListBox
-
-        private void ChooseAndLoadListbox()
-        {
-            switch (currentSection)
-            {
-                case Sections.Movie:
-                    listBox = movie_listbox;
-                    SaveLoadManager.SetPaths(Properties.Settings.Default.movie_path);
-                    break;
-                case Sections.Serie:
-                    listBox = serie_listbox;
-                    SaveLoadManager.SetPaths(Properties.Settings.Default.serie_path);
-                    break;
-                case Sections.Book:
-                    listBox = book_listbox;
-                    SaveLoadManager.SetPaths(Properties.Settings.Default.book_path);
-                    break;
-            }
         }
 
         #endregion
@@ -511,30 +538,7 @@ namespace later_list
 
         private void SettingsButtonClick(object sender, EventArgs e)
         {
-            settingsForm.ShowDialog();
-        }
-
-        #endregion
-
-        #region Load Theme
-
-        public void LoadTheme()
-        {
-            ThemeManager.RegisterForm(this);
-            ThemeManager.RegisterGroupBox(list_operations_gb);
-            ThemeManager.RegisterTextBox(name_tb);
-            ThemeManager.RegisterTextBox(author_tb);
-            ThemeManager.RegisterCheckBox(genre_cb);
-            ThemeManager.RegisterListBox(movie_listbox);
-            ThemeManager.RegisterListBox(serie_listbox);
-            ThemeManager.RegisterListBox(book_listbox);
-            ThemeManager.RegisterButton(clear_button);
-            ThemeManager.RegisterButton(add_button);
-            ThemeManager.RegisterButton(remove_button);
-            ThemeManager.RegisterButton(edit_button);
-            ThemeManager.RegisterButton(save_button);
-            ThemeManager.RegisterButton(discard_button);
-            ThemeManager.CurrrentTheme(settingsForm);
+            viewManager.SettingsButtonClicked();
         }
 
         #endregion

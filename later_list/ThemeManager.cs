@@ -48,12 +48,12 @@ namespace later_list
         //COMBOBOX
         private static List<ComboBox> comboBoxList = new List<ComboBox>();
 
-        public static void RegisterCheckBox(ComboBox cb)
+        public static void RegisterComboBox(ComboBox cb)
         {
             if (!comboBoxList.Contains(cb)) comboBoxList.Add(cb);
         }
 
-        public static void UnRegisterCheckBox(ComboBox cb)
+        public static void UnRegisterComboBox(ComboBox cb)
         {
             if (comboBoxList.Contains(cb)) comboBoxList.Remove(cb);
         }

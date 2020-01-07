@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace later_list
 {
-    public partial class SettingsForm : Form, IForm
+    public partial class SettingsForm : Form
     {
         #region Variables
 
