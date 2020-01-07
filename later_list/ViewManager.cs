@@ -30,6 +30,21 @@ namespace later_list
             RefreshInputFields();
             AddButtonActive();
             mainForm.SaveButton.Enabled = false;
+
+            if (section == MainForm.Sections.Movie)
+            {
+                MovieSectionSelected();
+            }
+
+            if (section == MainForm.Sections.Serie)
+            {
+                SerieSectionSelected();
+            }
+
+            if (section == MainForm.Sections.Book)
+            {
+                BookSectionSelected();
+            }
         }
 
         public void TransitionBetweenSectionsActive()

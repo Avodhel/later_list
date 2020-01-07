@@ -8,7 +8,6 @@ namespace later_list
         #region Variables
 
         private string filePath;
-        //private Form mainForm = null;
 
         #endregion
 
@@ -54,12 +53,6 @@ namespace later_list
             InitializeComponent();
             LoadTheme();
         }
-
-        //public SettingsForm(Form settings)
-        //{
-        //    //mainForm = settings as SettingsForm;
-        //    InitializeComponent();
-        //}
 
         private void SettingsLoad(object sender, EventArgs e)
         {

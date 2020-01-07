@@ -18,7 +18,7 @@ namespace later_list
         private string listPath;
         private string refactoredData;
         private string newEditedData;
-        private ListBox listBox = new ListBox();
+        private ListBox currentListBox = new ListBox();
         private SettingsForm settingsForm = new SettingsForm();
         private DataManager sectionManager = new DataManager();
         private ViewManager viewManager;
@@ -164,7 +164,7 @@ namespace later_list
             InitializeComponent();
             ChooseAndLoadListbox();
             viewManager.LoadGenresToCombobox(currentSection);
-            SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
+            SaveLoadManager.LoadList(currentSection, settingsForm, currentListBox);
             settingsForm.GetAllFilePathsFromProperties();   
         }
 
@@ -180,7 +180,7 @@ namespace later_list
 
         private void MainFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (save_button.Enabled == true)
+            if (SaveButton.Enabled)
             {
                 DialogResult confirm = MessageBox.Show("Unsaved changes will be lost. Continue?", "Exit",
                                                         MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -229,24 +229,9 @@ namespace later_list
             //load list
             ChooseAndLoadListbox();
             //load data file
-            SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
+            SaveLoadManager.LoadList(currentSection, settingsForm, currentListBox);
             //prepare section view
             viewManager.SectionTransition(section);
-
-            if (section == Sections.Movie)
-            {
-                viewManager.MovieSectionSelected();
-            }
-
-            if (section == Sections.Serie)
-            {
-                viewManager.SerieSectionSelected();
-            }
-
-            if (section == Sections.Book)
-            {
-                viewManager.BookSectionSelected();
-            }
         }
 
         #endregion
@@ -258,15 +243,15 @@ namespace later_list
             switch (currentSection)
             {
                 case Sections.Movie:
-                    listBox = MovieListBox;
+                    currentListBox = MovieListBox;
                     SaveLoadManager.SetPaths(Properties.Settings.Default.movie_path);
                     break;
                 case Sections.Serie:
-                    listBox = SerieListBox;
+                    currentListBox = SerieListBox;
                     SaveLoadManager.SetPaths(Properties.Settings.Default.serie_path);
                     break;
                 case Sections.Book:
-                    listBox = BookListBox;
+                    currentListBox = BookListBox;
                     SaveLoadManager.SetPaths(Properties.Settings.Default.book_path);
                     break;
             }
@@ -351,7 +336,7 @@ namespace later_list
 
         private void RemoveButtonClick(object sender, EventArgs e)
         {
-            sectionManager.RemoveDataFromList(listBox);
+            sectionManager.RemoveDataFromList(currentListBox);
             viewManager.RemoveButtonClicked();
         }
 
@@ -371,7 +356,7 @@ namespace later_list
 
             try
             {
-                getExistedData = listBox.SelectedItem.ToString();
+                getExistedData = currentListBox.SelectedItem.ToString();
                 if (currentSection == Sections.Movie)
                 {
                     MovieModel currentMovieData = DataRefactor.MovieExistedDataRefactor(getExistedData);
@@ -416,9 +401,9 @@ namespace later_list
                 newEditedData = DataRefactor.BookNewDataRefactor(editedBookData);
             }
 
-            int index = listBox.SelectedIndex;
-            listBox.Items.RemoveAt(index);
-            sectionManager.InsertEditedDataToList(index, newEditedData, listBox);
+            int index = currentListBox.SelectedIndex;
+            currentListBox.Items.RemoveAt(index);
+            sectionManager.InsertEditedDataToList(index, newEditedData, currentListBox);
         }
 
         #endregion
@@ -455,7 +440,7 @@ namespace later_list
             }
             else if (listPath != string.Empty)
             {
-                SaveLoadManager.SaveList(true, save_button, currentSection, listBox);
+                SaveLoadManager.SaveList(true, save_button, currentSection, currentListBox);
             }
         }
 
@@ -471,7 +456,7 @@ namespace later_list
                 settingsForm.SaveSettings();
                 GetFilePath();
                 SaveLoadManager.SetPaths(listPath);
-                SaveLoadManager.SaveList(true, save_button, currentSection, listBox);
+                SaveLoadManager.SaveList(true, save_button, currentSection, currentListBox);
             }
             else
             {
@@ -481,13 +466,13 @@ namespace later_list
 
         private void SaveButtonEnabledChanged(object sender, EventArgs e)
         {
-            if (SaveButton.Enabled == true)
+            if (SaveButton.Enabled)
             {
                 viewManager.TransitionBetweenSecionsDeactive(currentSection);
                 error_provider.SetError(save_button, "There're unsaved changes in " + currentSection + " list!");
                 DiscardButton.Visible = true;
             }
-            if (save_button.Enabled == false)
+            else
             {
                 viewManager.TransitionBetweenSectionsActive();
                 error_provider.Clear();
@@ -517,19 +502,8 @@ namespace later_list
 
         private void LoadPreviousFileVersion()
         {
-            switch (currentSection)
-            {
-                case Sections.Movie:
-                    MovieListBox.Items.Clear();
-                    break;
-                case Sections.Serie:
-                    SerieListBox.Items.Clear();
-                    break;
-                case Sections.Book:
-                    BookListBox.Items.Clear();
-                    break;
-            }
-            SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
+            currentListBox.Items.Clear();
+            SaveLoadManager.LoadList(currentSection, settingsForm, currentListBox);
         }
 
         #endregion
