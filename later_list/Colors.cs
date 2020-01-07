@@ -23,5 +23,15 @@ namespace later_list
         {
             get { return Color.FromArgb(31, 31, 31); }
         }
+
+        public static Color SectionButtonActiveColor
+        {
+            get { return SystemColors.ButtonFace; }
+        }
+
+        public static Color SectionButtonDeactiveColor
+        {
+            get { return SystemColors.Highlight; }
+        }
     }
 }

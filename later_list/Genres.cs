@@ -86,11 +86,11 @@
                                             "Textbook",
                                             "Poetry"};
 
-        public static string[] GetGenres(string whichSection)
+        public static string[] GetGenres(MainForm.Sections section)
         {
-            if (whichSection == "movie") return movieGenres;
-            if (whichSection == "serie") return serieGenres;
-            if (whichSection == "book")  return bookGenres;
+            if (section == MainForm.Sections.Movie) return movieGenres;
+            if (section == MainForm.Sections.Serie) return serieGenres;
+            if (section == MainForm.Sections.Book)  return bookGenres;
             return null;
         }
     }

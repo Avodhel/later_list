@@ -8,7 +8,13 @@ namespace later_list
     {
         #region Variables
 
-        private string whichSection = "movie";
+        public enum Sections
+        {
+            Movie,
+            Serie,
+            Book
+        }
+        private Sections currentSection;
         private string getExistedData;
         private string listPath;
         private string refactoredData;
@@ -27,17 +33,16 @@ namespace later_list
             InitializeComponent();
             ChooseAndLoadListbox();
             LoadGenres();
-            if (whichSection == "movie" && Properties.Settings.Default.movie_path != string.Empty)
+            if (Properties.Settings.Default.movie_path != string.Empty)
             {
-                SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
+                SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
             }
-            settingsForm.GetAllFilePathsFromProperties();
-            
+            settingsForm.GetAllFilePathsFromProperties();   
         }
 
         private void MainFormLoad(object sender, EventArgs e)
         {
-            PrepareSection(whichSection);
+            PrepareSection(currentSection);
             LoadTheme();
         }
 
@@ -77,27 +82,27 @@ namespace later_list
             switch (((Button)sender).Name)
             {
                 case "movieSectionBtn":
-                    PrepareSection("movie");
+                    PrepareSection(Sections.Movie);
                     break;
                 case "serieSectionBtn":
-                    PrepareSection("serie");
+                    PrepareSection(Sections.Serie);
                     break;
                 case "bookSectionBtn":
-                    PrepareSection("book");
+                    PrepareSection(Sections.Book);
                     break;
             }
         }
 
-        private void PrepareSection(string section)
+        private void PrepareSection(Sections section)
         {
-            if (section == "movie")
+            if (section == Sections.Movie)
             {
-                whichSection = "movie";
-                list_operations_gb.Text = "Movies";
+                currentSection = section;
+                list_operations_gb.Text = section + "s";
                 //section buttons
-                movieSectionBtn.BackColor = SystemColors.ButtonFace;
-                serieSectionBtn.BackColor = SystemColors.Highlight;
-                bookSectionBtn.BackColor = SystemColors.Highlight;
+                movieSectionBtn.BackColor = Colors.SectionButtonActiveColor;
+                serieSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
+                bookSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -118,7 +123,7 @@ namespace later_list
                 ChooseAndLoadListbox();
                 if (Properties.Settings.Default.movie_path != string.Empty)
                 {
-                    SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
+                    SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
                 }
                 //load genres
                 LoadGenres();
@@ -131,14 +136,14 @@ namespace later_list
                 save_button.Enabled = false;
             }
 
-            if (section == "serie")
+            if (section == Sections.Serie)
             {
-                whichSection = "serie";
-                list_operations_gb.Text = "Series";
+                currentSection = section;
+                list_operations_gb.Text = section + "s";
                 //section buttons
-                movieSectionBtn.BackColor = SystemColors.Highlight;
-                serieSectionBtn.BackColor = SystemColors.ButtonFace;
-                bookSectionBtn.BackColor = SystemColors.Highlight;
+                movieSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
+                serieSectionBtn.BackColor = Colors.SectionButtonActiveColor;
+                bookSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -159,7 +164,7 @@ namespace later_list
                 ChooseAndLoadListbox();
                 if (Properties.Settings.Default.serie_path != string.Empty)
                 {
-                    SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
+                    SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
                 }
                 //load genres
                 LoadGenres();
@@ -172,14 +177,14 @@ namespace later_list
                 save_button.Enabled = false;
             }
 
-            if (section == "book")
+            if (section == Sections.Book)
             {
-                whichSection = "book";
-                list_operations_gb.Text = "Books";
+                currentSection = section;
+                list_operations_gb.Text = section + "s";
                 //section buttons
-                movieSectionBtn.BackColor = SystemColors.Highlight;
-                serieSectionBtn.BackColor = SystemColors.Highlight;
-                bookSectionBtn.BackColor = SystemColors.ButtonFace;
+                movieSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
+                serieSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
+                bookSectionBtn.BackColor = Colors.SectionButtonActiveColor;
                 //panel scroll
                 input_fields_panel.VerticalScroll.Value = 0;
                 //labels
@@ -200,7 +205,7 @@ namespace later_list
                 ChooseAndLoadListbox();
                 if (Properties.Settings.Default.book_path != string.Empty)
                 {
-                    SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
+                    SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
                 }
                 //load genres
                 LoadGenres();
@@ -250,7 +255,7 @@ namespace later_list
         private void LoadGenres()
         {
             genre_cb.Items.Clear();
-            genre_cb.Items.AddRange(Genres.GetGenres(whichSection));
+            genre_cb.Items.AddRange(Genres.GetGenres(currentSection));
         }
 
         #endregion
@@ -259,28 +264,24 @@ namespace later_list
 
         private void AddButtonClick(object sender, EventArgs e)
         {
-            AddNewDataToList(NameFieldCheck());
+            AddNewDataToList(NameFieldCheck);
         }
 
-        private bool NameFieldCheck()
-        {
-            if (name_tb.Text != string.Empty) return true;
-            else return false;
-        }
+        bool NameFieldCheck => (name_tb.Text != string.Empty)? true: false;
 
         private void AddNewDataToList(bool nameFieldRequireCheck)
         {
             if (nameFieldRequireCheck)
             {
-                if (whichSection == "movie")
+                if (currentSection == Sections.Movie)
                 {
                     AddNewMovie();
                 }
-                else if (whichSection == "serie")
+                else if (currentSection == Sections.Serie)
                 {
                     AddNewSerie();
                 }
-                else if (whichSection == "book")
+                else if (currentSection == Sections.Book)
                 {
                     AddNewBook();
                 }
@@ -289,7 +290,7 @@ namespace later_list
             }
             else
             {
-                MessageBox.Show("Please add a " + whichSection + " name", "Warning",
+                MessageBox.Show("Please add a " + currentSection + " name", "Warning",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 save_button.Enabled = false;
             }
@@ -347,19 +348,19 @@ namespace later_list
             try
             {
                 getExistedData = listBox.SelectedItem.ToString();
-                if (whichSection == "movie")
+                if (currentSection == Sections.Movie)
                 {
                     MovieModel currentMovieData = DataRefactor.MovieExistedDataRefactor(getExistedData);
                     name_tb.Text = currentMovieData.Name;
                     genre_cb.Text = currentMovieData.Genre;
                 }
-                if (whichSection == "serie")
+                if (currentSection == Sections.Serie)
                 {
                     SerieModel currentSerieData = DataRefactor.SerieExistedDataRefactor(getExistedData);
                     name_tb.Text = currentSerieData.Name;
                     genre_cb.Text = currentSerieData.Genre;
                 }
-                if (whichSection == "book")
+                if (currentSection == Sections.Book)
                 {
                     BookModel currentBookData = DataRefactor.BookExistedDataRefactor(getExistedData);
                     name_tb.Text = currentBookData.Name;
@@ -375,17 +376,17 @@ namespace later_list
 
         private void SendEditedDataToList()
         {
-            if (whichSection == "movie")
+            if (currentSection == Sections.Movie)
             {
                 MovieModel editedMovieData = new MovieModel(name_tb.Text, genre_cb.Text);
                 newEditedData = DataRefactor.MovieNewDataRefactor(editedMovieData);
             }
-            if (whichSection == "serie")
+            if (currentSection == Sections.Serie)
             {
                 SerieModel editedSerieData = new SerieModel(name_tb.Text, genre_cb.Text);
                 newEditedData = DataRefactor.SerieNewDataRefactor(editedSerieData);
             }
-            if (whichSection == "book")
+            if (currentSection == Sections.Book)
             {
                 BookModel editedBookData = new BookModel(name_tb.Text, author_tb.Text, genre_cb.Text);
                 newEditedData = DataRefactor.BookNewDataRefactor(editedBookData);
@@ -408,15 +409,15 @@ namespace later_list
 
         private void GetFilePath()
         {
-            switch (whichSection)
+            switch (currentSection)
             {
-                case "movie":
+                case Sections.Movie:
                     listPath = Properties.Settings.Default.movie_path;
                     break;
-                case "serie":
+                case Sections.Serie:
                     listPath = Properties.Settings.Default.serie_path;
                     break;
-                case "book":
+                case Sections.Book:
                     listPath = Properties.Settings.Default.book_path;
                     break;
             }
@@ -430,7 +431,7 @@ namespace later_list
             }
             else if (listPath != string.Empty)
             {
-                SaveLoadManager.SaveList(true, save_button, whichSection, listBox);
+                SaveLoadManager.SaveList(true, save_button, currentSection, listBox);
             }
         }
 
@@ -438,15 +439,15 @@ namespace later_list
         {
             savefiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             savefiledialog.RestoreDirectory = true;
-            savefiledialog.FileName = whichSection + "list";
+            savefiledialog.FileName = currentSection + "list";
             savefiledialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
             if (savefiledialog.ShowDialog() == DialogResult.OK)
             {
-                settingsForm.SetFilePath(whichSection, savefiledialog.FileName);
+                settingsForm.SetFilePath(currentSection, savefiledialog.FileName);
                 settingsForm.SaveSettings();
                 GetFilePath();
                 SaveLoadManager.SetPaths(listPath);
-                SaveLoadManager.SaveList(true, save_button, whichSection, listBox);
+                SaveLoadManager.SaveList(true, save_button, currentSection, listBox);
             }
             else
             {
@@ -458,22 +459,22 @@ namespace later_list
         {
             if (save_button.Enabled == true)
             {
-                switch (whichSection)
+                switch (currentSection)
                 {
-                    case "movie":
+                    case Sections.Movie:
                         serieSectionBtn.Enabled = false;
                         bookSectionBtn.Enabled = false;
                         break;
-                    case "serie":
+                    case Sections.Serie:
                         movieSectionBtn.Enabled = false;
                         bookSectionBtn.Enabled = false;
                         break;
-                    case "book":
+                    case Sections.Book:
                         movieSectionBtn.Enabled = false;
                         serieSectionBtn.Enabled = false;
                         break;
                 }
-                error_provider.SetError(save_button, "There're unsaved changes in " + whichSection + " list!");
+                error_provider.SetError(save_button, "There're unsaved changes in " + currentSection + " list!");
                 discard_button.Visible = true;
             }
             if (save_button.Enabled == false)
@@ -508,27 +509,27 @@ namespace later_list
 
         private void LoadPreviousFile()
         {
-            switch (whichSection)
+            switch (currentSection)
             {
-                case "movie":
+                case Sections.Movie:
                     movie_listbox.Items.Clear();
                     if (Properties.Settings.Default.movie_path != string.Empty)
                     {
-                        SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
+                        SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
                     }
                     break;
-                case "serie":
+                case Sections.Serie:
                     serie_listbox.Items.Clear();
                     if (Properties.Settings.Default.serie_path != string.Empty)
                     {
-                        SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
+                        SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
                     }
                     break;
-                case "book":
+                case Sections.Book:
                     book_listbox.Items.Clear();
                     if (Properties.Settings.Default.book_path != string.Empty)
                     {
-                        SaveLoadManager.LoadList(whichSection, settingsForm, listBox);
+                        SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
                     }
                     break;
             }
@@ -540,17 +541,17 @@ namespace later_list
 
         private void ChooseAndLoadListbox()
         {
-            switch (whichSection)
+            switch (currentSection)
             {
-                case "movie":
+                case Sections.Movie:
                     listBox = movie_listbox;
                     SaveLoadManager.SetPaths(Properties.Settings.Default.movie_path);
                     break;
-                case "serie":
+                case Sections.Serie:
                     listBox = serie_listbox;
                     SaveLoadManager.SetPaths(Properties.Settings.Default.serie_path);
                     break;
-                case "book":
+                case Sections.Book:
                     listBox = book_listbox;
                     SaveLoadManager.SetPaths(Properties.Settings.Default.book_path);
                     break;
