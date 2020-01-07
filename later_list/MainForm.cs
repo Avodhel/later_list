@@ -21,7 +21,7 @@ namespace later_list
         private string newEditedData;
         private ListBox listBox = new ListBox();
         private SettingsForm settingsForm = new SettingsForm();
-        private SectionManager sectionManager = new SectionManager();
+        private DataManager sectionManager = new DataManager();
 
         #endregion
 
@@ -77,7 +77,7 @@ namespace later_list
 
         #region Choosing Section
 
-        private void ChooseSection(object sender, EventArgs e)
+        private void SectionSelected(object sender, EventArgs e)
         {
             switch (((Button)sender).Name)
             {
@@ -95,16 +95,28 @@ namespace later_list
 
         private void PrepareSection(Sections section)
         {
+            currentSection = section;
+            list_operations_gb.Text = section + "s";
+            //panel scroll
+            input_fields_panel.VerticalScroll.Value = 0;
+            //load list
+            ChooseAndLoadListbox();
+            //load genres
+            LoadGenres();
+            //refresh input fields
+            RefreshInputFields();
+            //enable buttons
+            add_button.Enabled = true;
+            remove_button.Enabled = false;
+            edit_button.Enabled = false;
+            save_button.Enabled = false;
+
             if (section == Sections.Movie)
             {
-                currentSection = section;
-                list_operations_gb.Text = section + "s";
                 //section buttons
                 movieSectionBtn.BackColor = Colors.SectionButtonActiveColor;
                 serieSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
                 bookSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
-                //panel scroll
-                input_fields_panel.VerticalScroll.Value = 0;
                 //labels
                 movie_name_lbl.Visible = true;
                 serie_name_lbl.Visible = false;
@@ -119,33 +131,18 @@ namespace later_list
                 movie_listbox.Visible = true;
                 serie_listbox.Visible = false;
                 book_listbox.Visible = false;
-                //load list
-                ChooseAndLoadListbox();
                 if (Properties.Settings.Default.movie_path != string.Empty)
                 {
                     SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
                 }
-                //load genres
-                LoadGenres();
-                //refresh input fields
-                RefreshInputFields();
-                //enable buttons
-                add_button.Enabled = true;
-                remove_button.Enabled = false;
-                edit_button.Enabled = false;
-                save_button.Enabled = false;
             }
 
             if (section == Sections.Serie)
             {
-                currentSection = section;
-                list_operations_gb.Text = section + "s";
                 //section buttons
                 movieSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
                 serieSectionBtn.BackColor = Colors.SectionButtonActiveColor;
                 bookSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
-                //panel scroll
-                input_fields_panel.VerticalScroll.Value = 0;
                 //labels
                 movie_name_lbl.Visible = false;
                 serie_name_lbl.Visible = true;
@@ -160,33 +157,18 @@ namespace later_list
                 movie_listbox.Visible = false;
                 serie_listbox.Visible = true;
                 book_listbox.Visible = false;
-                //load list
-                ChooseAndLoadListbox();
                 if (Properties.Settings.Default.serie_path != string.Empty)
                 {
                     SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
                 }
-                //load genres
-                LoadGenres();
-                //refresh input fields
-                RefreshInputFields();
-                //enable buttons
-                add_button.Enabled = true;
-                remove_button.Enabled = false;
-                edit_button.Enabled = false;
-                save_button.Enabled = false;
             }
 
             if (section == Sections.Book)
             {
-                currentSection = section;
-                list_operations_gb.Text = section + "s";
                 //section buttons
                 movieSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
                 serieSectionBtn.BackColor = Colors.SectionButtonDeactiveColor;
                 bookSectionBtn.BackColor = Colors.SectionButtonActiveColor;
-                //panel scroll
-                input_fields_panel.VerticalScroll.Value = 0;
                 //labels
                 movie_name_lbl.Visible = false;
                 serie_name_lbl.Visible = false;
@@ -201,21 +183,10 @@ namespace later_list
                 movie_listbox.Visible = false;
                 serie_listbox.Visible = false;
                 book_listbox.Visible = true;
-                //load list
-                ChooseAndLoadListbox();
                 if (Properties.Settings.Default.book_path != string.Empty)
                 {
                     SaveLoadManager.LoadList(currentSection, settingsForm, listBox);
                 }
-                //load genres
-                LoadGenres();
-                //refresh input fields
-                RefreshInputFields();
-                //enable buttons
-                add_button.Enabled = true;
-                remove_button.Enabled = false;
-                edit_button.Enabled = false;
-                save_button.Enabled = false;
             }
         }
 

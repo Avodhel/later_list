@@ -2,7 +2,7 @@
 
 namespace later_list
 {
-    public class SectionManager
+    public class DataManager
     {
         public void AddDataToList(string data, ListBox listBox)
         {

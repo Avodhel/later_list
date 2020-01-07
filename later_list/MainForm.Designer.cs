@@ -392,7 +392,7 @@
             this.bookSectionBtn.Text = "Books";
             this.bookSectionBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bookSectionBtn.UseVisualStyleBackColor = false;
-            this.bookSectionBtn.Click += new System.EventHandler(this.ChooseSection);
+            this.bookSectionBtn.Click += new System.EventHandler(this.SectionSelected);
             // 
             // serieSectionBtn
             // 
@@ -408,7 +408,7 @@
             this.serieSectionBtn.Text = "Series";
             this.serieSectionBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.serieSectionBtn.UseVisualStyleBackColor = false;
-            this.serieSectionBtn.Click += new System.EventHandler(this.ChooseSection);
+            this.serieSectionBtn.Click += new System.EventHandler(this.SectionSelected);
             // 
             // movieSectionBtn
             // 
@@ -424,7 +424,7 @@
             this.movieSectionBtn.Text = "Movies";
             this.movieSectionBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.movieSectionBtn.UseVisualStyleBackColor = false;
-            this.movieSectionBtn.Click += new System.EventHandler(this.ChooseSection);
+            this.movieSectionBtn.Click += new System.EventHandler(this.SectionSelected);
             // 
             // MainForm
             // 
