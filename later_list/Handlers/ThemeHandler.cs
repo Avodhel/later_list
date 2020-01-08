@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace later_list
 {
-    public static class ThemeManager
+    public static class ThemeHandler
     {
         //FORM
         private static List<Form> formList = new List<Form>();

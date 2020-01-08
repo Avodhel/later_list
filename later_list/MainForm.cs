@@ -20,8 +20,8 @@ namespace later_list
         private string newEditedData;
         private ListBox currentListBox = new ListBox();
         private SettingsForm settingsForm = new SettingsForm();
-        private DataManager sectionManager = new DataManager();
-        private ViewManager viewManager;
+        private DataHandler sectionHandler = new DataHandler();
+        private MainViewHandler mViewHandler;
 
         #endregion
 
@@ -159,24 +159,25 @@ namespace later_list
 
         public MainForm()
         {
-            viewManager = new ViewManager(this, settingsForm);
             CenterToScreen();
             InitializeComponent();
-            ChooseAndLoadListbox();
-            viewManager.LoadGenresToCombobox(currentSection);
-            SaveLoadManager.LoadList(currentSection, settingsForm, currentListBox);
+            mViewHandler = new MainViewHandler(this, settingsForm);
+            SetCurrentListBox();
+            SetFilePath();
             settingsForm.GetAllFilePathsFromProperties();   
         }
 
         private void MainFormLoad(object sender, EventArgs e)
         {
+            mViewHandler.LoadTheme();
+            mViewHandler.LoadGenresToCombobox(currentSection);
             PrepareSection(currentSection);
-            viewManager.LoadThemeForMain();
+            SaveLoadHandler.LoadList(currentSection, settingsForm, currentListBox);
         }
 
         #endregion
 
-        #region Exit From App
+        #region Form Close
 
         private void MainFormClosing(object sender, FormClosingEventArgs e)
         {
@@ -198,7 +199,7 @@ namespace later_list
 
         private void MainFormClosed(object sender, FormClosedEventArgs e)
         {
-            ThemeManager.UnRegisterForm(this);
+            ThemeHandler.UnRegisterForm(this);
         }
 
         #endregion
@@ -224,37 +225,41 @@ namespace later_list
         private void PrepareSection(Sections section)
         {
             currentSection = section;
+            SetCurrentListBox();
+            SetFilePath();
+            SaveLoadHandler.LoadList(currentSection, settingsForm, currentListBox);
+            mViewHandler.SectionTransition(section);
             //refresh panel scroll
             input_fields_panel.VerticalScroll.Value = 0;
-            //load list
-            ChooseAndLoadListbox();
-            //load data file
-            SaveLoadManager.LoadList(currentSection, settingsForm, currentListBox);
-            //prepare section view
-            viewManager.SectionTransition(section);
         }
 
         #endregion
 
-        #region Choose and Load ListBox
+        #region ListBox
 
-        private void ChooseAndLoadListbox()
+        private void SetCurrentListBox()
         {
-            switch (currentSection)
-            {
-                case Sections.Movie:
-                    currentListBox = MovieListBox;
-                    SaveLoadManager.SetPaths(Properties.Settings.Default.movie_path);
-                    break;
-                case Sections.Serie:
-                    currentListBox = SerieListBox;
-                    SaveLoadManager.SetPaths(Properties.Settings.Default.serie_path);
-                    break;
-                case Sections.Book:
-                    currentListBox = BookListBox;
-                    SaveLoadManager.SetPaths(Properties.Settings.Default.book_path);
-                    break;
-            }
+            if (currentSection == Sections.Movie) currentListBox = MovieListBox;
+            if (currentSection == Sections.Serie) currentListBox = SerieListBox;
+            if (currentSection == Sections.Book) currentListBox = BookListBox;
+        }
+
+        #endregion
+
+        #region File Paths
+
+        private void GetFilePath()
+        {
+            if (currentSection == Sections.Movie) listPath = Properties.Settings.Default.movie_path;
+            if (currentSection == Sections.Serie) listPath = Properties.Settings.Default.serie_path;
+            if (currentSection == Sections.Book)  listPath = Properties.Settings.Default.book_path;
+        }
+
+        private void SetFilePath()
+        {
+            if (currentSection == Sections.Movie) SaveLoadHandler.SetPaths(Properties.Settings.Default.movie_path);
+            if (currentSection == Sections.Serie) SaveLoadHandler.SetPaths(Properties.Settings.Default.serie_path);
+            if (currentSection == Sections.Book)  SaveLoadHandler.SetPaths(Properties.Settings.Default.book_path);
         }
 
         #endregion
@@ -263,12 +268,12 @@ namespace later_list
 
         private void InputFieldsClick(object sender, EventArgs e)
         {
-            viewManager.InputFieldClicked();
+            mViewHandler.InputFieldClicked();
         }
 
         private void ClearButtonClick(object sender, EventArgs e)
         {
-            viewManager.ClearButtonClicked();
+            mViewHandler.ClearButtonClicked();
         }
 
         #endregion
@@ -282,7 +287,7 @@ namespace later_list
             if (NameFieldRequireCheck)
             {
                 AddNewDataToList();
-                viewManager.RefreshInputFields();
+                mViewHandler.RefreshInputFields();
                 SaveButton.Enabled = true;
             }
             else
@@ -313,21 +318,21 @@ namespace later_list
         {
             MovieModel newMovieData = new MovieModel(NameTextBox.Text, GenreComboBox.Text);
             refactoredData = DataRefactor.MovieNewDataRefactor(newMovieData);
-            sectionManager.AddDataToList(refactoredData, MovieListBox);
+            sectionHandler.AddDataToList(refactoredData, MovieListBox);
         }
 
         private void AddNewSerie()
         {
             SerieModel newSerieData = new SerieModel(NameTextBox.Text, GenreComboBox.Text);
             refactoredData = DataRefactor.SerieNewDataRefactor(newSerieData);
-            sectionManager.AddDataToList(refactoredData, SerieListBox);
+            sectionHandler.AddDataToList(refactoredData, SerieListBox);
         }
 
         private void AddNewBook()
         {
             BookModel newBookData = new BookModel(NameTextBox.Text, AuthorTextBox.Text, GenreComboBox.Text);
             refactoredData = DataRefactor.BookNewDataRefactor(newBookData);
-            sectionManager.AddDataToList(refactoredData, BookListBox);
+            sectionHandler.AddDataToList(refactoredData, BookListBox);
         }
 
         #endregion
@@ -336,8 +341,8 @@ namespace later_list
 
         private void RemoveButtonClick(object sender, EventArgs e)
         {
-            sectionManager.RemoveDataFromList(currentListBox);
-            viewManager.RemoveButtonClicked();
+            sectionHandler.RemoveDataFromList(currentListBox);
+            mViewHandler.RemoveButtonClicked();
         }
 
         #endregion
@@ -347,12 +352,12 @@ namespace later_list
         private void EditButtonClick(object sender, EventArgs e)
         {
             SendEditedDataToList();
-            viewManager.EditButtonClicked();
+            mViewHandler.EditButtonClicked();
         }
 
         private void SelectedIndexChanged(object sender, EventArgs e)
         {
-            viewManager.EditRemoveButtonsActive();
+            mViewHandler.EditRemoveButtonsActive();
 
             try
             {
@@ -403,7 +408,7 @@ namespace later_list
 
             int index = currentListBox.SelectedIndex;
             currentListBox.Items.RemoveAt(index);
-            sectionManager.InsertEditedDataToList(index, newEditedData, currentListBox);
+            sectionHandler.InsertEditedDataToList(index, newEditedData, currentListBox);
         }
 
         #endregion
@@ -416,22 +421,6 @@ namespace later_list
             FileExistenceControl();
         }
 
-        private void GetFilePath()
-        {
-            switch (currentSection)
-            {
-                case Sections.Movie:
-                    listPath = Properties.Settings.Default.movie_path;
-                    break;
-                case Sections.Serie:
-                    listPath = Properties.Settings.Default.serie_path;
-                    break;
-                case Sections.Book:
-                    listPath = Properties.Settings.Default.book_path;
-                    break;
-            }
-        }
-
         private void FileExistenceControl()
         {
             if (listPath == string.Empty)
@@ -440,7 +429,7 @@ namespace later_list
             }
             else if (listPath != string.Empty)
             {
-                SaveLoadManager.SaveList(true, save_button, currentSection, currentListBox);
+                SaveLoadHandler.SaveList(true, save_button, currentSection, currentListBox);
             }
         }
 
@@ -455,8 +444,8 @@ namespace later_list
                 settingsForm.SetFilePath(currentSection, savefiledialog.FileName);
                 settingsForm.SaveSettings();
                 GetFilePath();
-                SaveLoadManager.SetPaths(listPath);
-                SaveLoadManager.SaveList(true, save_button, currentSection, currentListBox);
+                SaveLoadHandler.SetPaths(listPath);
+                SaveLoadHandler.SaveList(true, save_button, currentSection, currentListBox);
             }
             else
             {
@@ -468,13 +457,13 @@ namespace later_list
         {
             if (SaveButton.Enabled)
             {
-                viewManager.TransitionBetweenSecionsDeactive(currentSection);
+                mViewHandler.TransitionBetweenSectionsDeactive(currentSection);
                 error_provider.SetError(save_button, "There're unsaved changes in " + currentSection + " list!");
                 DiscardButton.Visible = true;
             }
             else
             {
-                viewManager.TransitionBetweenSectionsActive();
+                mViewHandler.TransitionBetweenSectionsActive();
                 error_provider.Clear();
                 DiscardButton.Visible = false;
             }
@@ -503,7 +492,7 @@ namespace later_list
         private void LoadPreviousFileVersion()
         {
             currentListBox.Items.Clear();
-            SaveLoadManager.LoadList(currentSection, settingsForm, currentListBox);
+            SaveLoadHandler.LoadList(currentSection, settingsForm, currentListBox);
         }
 
         #endregion
@@ -512,7 +501,7 @@ namespace later_list
 
         private void SettingsButtonClick(object sender, EventArgs e)
         {
-            viewManager.SettingsButtonClicked();
+            mViewHandler.SettingsButtonClicked();
         }
 
         #endregion

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace later_list
 {
-    public static class SaveLoadManager
+    public static class SaveLoadHandler
     {
         private static string savePath;
         private static string loadPath;
@@ -54,19 +54,19 @@ namespace later_list
                 if (section == MainForm.Sections.Movie && Properties.Settings.Default.movie_path != string.Empty)
                 {
                     ShowFileNotFoundMsg(section);
-                    settingsForm.MovieFilePathText = string.Empty;
+                    settingsForm.MovieFilePathTextBox.Text = string.Empty;
                     Properties.Settings.Default.movie_path = string.Empty;
                 }
                 else if (section == MainForm.Sections.Serie && Properties.Settings.Default.serie_path != string.Empty)
                 {
                     ShowFileNotFoundMsg(section);
-                    settingsForm.SerieFilePathText = string.Empty;
+                    settingsForm.SerieFilePathTextBox.Text = string.Empty;
                     Properties.Settings.Default.serie_path = string.Empty;
                 }
                 else if (section == MainForm.Sections.Book && Properties.Settings.Default.book_path != string.Empty)
                 {
                     ShowFileNotFoundMsg(section);
-                    settingsForm.BookFilePathText = string.Empty;
+                    settingsForm.BookFilePathTextBox.Text = string.Empty;
                     Properties.Settings.Default.book_path = string.Empty;
                 }
                 Properties.Settings.Default.Save();
