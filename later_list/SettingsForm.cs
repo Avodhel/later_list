@@ -85,7 +85,7 @@ namespace later_list
 
         private void SettingsFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (save_settings_button.Enabled == true)
+            if (save_settings_button.Enabled)
             {
                 DialogResult confirm = MessageBox.Show("Unsaved settings will be lost. Continue?", "Exit",
                                                         MessageBoxButtons.OKCancel, MessageBoxIcon.Question);

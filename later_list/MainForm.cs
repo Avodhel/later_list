@@ -429,7 +429,7 @@ namespace later_list
             }
             else if (listPath != string.Empty)
             {
-                SaveLoadHandler.SaveList(true, save_button, currentSection, currentListBox);
+                SaveLoadHandler.SaveList(true, SaveButton, currentSection, currentListBox);
             }
         }
 
@@ -445,7 +445,7 @@ namespace later_list
                 settingsForm.SaveSettings();
                 GetFilePath();
                 SaveLoadHandler.SetPaths(listPath);
-                SaveLoadHandler.SaveList(true, save_button, currentSection, currentListBox);
+                SaveLoadHandler.SaveList(true, SaveButton, currentSection, currentListBox);
             }
             else
             {

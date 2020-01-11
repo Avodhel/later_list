@@ -14,7 +14,7 @@ namespace later_list
             loadPath = filePath;
         }
 
-        public static void SaveList(bool show_message, Button save_button, MainForm.Sections section, ListBox listBox)
+        public static void SaveList(bool showMessage, Button saveButton, MainForm.Sections section, ListBox listBox)
         {
             StreamWriter saveFile = new StreamWriter(savePath);
             foreach (var item in listBox.Items)
@@ -24,11 +24,11 @@ namespace later_list
 
             saveFile.Close();
 
-            if (show_message)
+            if (showMessage)
             {
-                MessageBox.Show(section + " list saved!");
-                show_message = false;
-                save_button.Enabled = false;
+                MessageBox.Show(section + "list saved!");
+                showMessage = false;
+                saveButton.Enabled = false;
             }
         }
 
@@ -37,40 +37,51 @@ namespace later_list
             try
             {
                 listBox.Items.Clear();
-                if (loadPath != string.Empty)
+                using (StreamReader loadFile = new StreamReader(loadPath))
                 {
-                    using (StreamReader loadFile = new StreamReader(loadPath))
+                    string line;
+                    while ((line = loadFile.ReadLine()) != null)
                     {
-                        string line;
-                        while ((line = loadFile.ReadLine()) != null)
-                        {
-                            listBox.Items.Add(line);
-                        }
+                        listBox.Items.Add(line);
+                        listBox.Sorted = true;
                     }
                 }
             }
             catch (FileNotFoundException)
             {
-                if (section == MainForm.Sections.Movie && Properties.Settings.Default.movie_path != string.Empty)
-                {
-                    ShowFileNotFoundMsg(section);
-                    settingsForm.MovieFilePathTextBox.Text = string.Empty;
-                    Properties.Settings.Default.movie_path = string.Empty;
-                }
-                else if (section == MainForm.Sections.Serie && Properties.Settings.Default.serie_path != string.Empty)
-                {
-                    ShowFileNotFoundMsg(section);
-                    settingsForm.SerieFilePathTextBox.Text = string.Empty;
-                    Properties.Settings.Default.serie_path = string.Empty;
-                }
-                else if (section == MainForm.Sections.Book && Properties.Settings.Default.book_path != string.Empty)
-                {
-                    ShowFileNotFoundMsg(section);
-                    settingsForm.BookFilePathTextBox.Text = string.Empty;
-                    Properties.Settings.Default.book_path = string.Empty;
-                }
-                Properties.Settings.Default.Save();
+                NotFoundExceptions(section, settingsForm);
             }
+            catch (DirectoryNotFoundException)
+            {
+                NotFoundExceptions(section, settingsForm);
+            }
+            catch (System.ArgumentException)
+            {
+
+            }
+        }
+
+        private static void NotFoundExceptions(MainForm.Sections section, SettingsForm settingsForm)
+        {
+            if (section == MainForm.Sections.Movie && Properties.Settings.Default.movie_path != string.Empty)
+            {
+                ShowFileNotFoundMsg(section);
+                settingsForm.MovieFilePathTextBox.Text = string.Empty;
+                Properties.Settings.Default.movie_path = string.Empty;
+            }
+            else if (section == MainForm.Sections.Serie && Properties.Settings.Default.serie_path != string.Empty)
+            {
+                ShowFileNotFoundMsg(section);
+                settingsForm.SerieFilePathTextBox.Text = string.Empty;
+                Properties.Settings.Default.serie_path = string.Empty;
+            }
+            else if (section == MainForm.Sections.Book && Properties.Settings.Default.book_path != string.Empty)
+            {
+                ShowFileNotFoundMsg(section);
+                settingsForm.BookFilePathTextBox.Text = string.Empty;
+                Properties.Settings.Default.book_path = string.Empty;
+            }
+            Properties.Settings.Default.Save();
         }
 
         private static void ShowFileNotFoundMsg(MainForm.Sections section)
