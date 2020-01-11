@@ -85,14 +85,14 @@ namespace later_list
 
         private void SettingsFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (save_settings_button.Enabled)
+            if (SaveSettingsButton.Enabled)
             {
                 DialogResult confirm = MessageBox.Show("Unsaved settings will be lost. Continue?", "Exit",
                                                         MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 if (confirm == DialogResult.OK)
                 {
-                    save_settings_button.Enabled = false;
+                    SaveSettingsButton.Enabled = false;
                     GetAllFilePathsFromProperties();
                     ThemeHandler.CurrrentTheme(this);
                 }

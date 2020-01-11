@@ -20,7 +20,7 @@ namespace later_list
         private string newEditedData;
         private ListBox currentListBox = new ListBox();
         private SettingsForm settingsForm = new SettingsForm();
-        private DataHandler sectionHandler = new DataHandler();
+        private DataHandler dataHandler = new DataHandler();
         private MainViewHandler mViewHandler;
 
         #endregion
@@ -280,15 +280,18 @@ namespace later_list
 
         #region Add Data
 
-        bool NameFieldRequireCheck => (NameTextBox.Text != string.Empty) ? true : false;
-
         private void AddButtonClick(object sender, EventArgs e)
+        {
+            NameFieldState();
+        }
+
+        private bool NameFieldRequireCheck => (NameTextBox.Text != string.Empty) ? true : false;
+
+        private void NameFieldState()
         {
             if (NameFieldRequireCheck)
             {
                 AddNewDataToList();
-                mViewHandler.RefreshInputFields();
-                SaveButton.Enabled = true;
             }
             else
             {
@@ -300,39 +303,48 @@ namespace later_list
 
         private void AddNewDataToList()
         {
-            if (currentSection == Sections.Movie)
-            {
-                AddNewMovie();
-            }
-            else if (currentSection == Sections.Serie)
-            {
-                AddNewSerie();
-            }
-            else if (currentSection == Sections.Book)
-            {
-                AddNewBook();
-            }
+            if (currentSection == Sections.Movie) AddNewMovie();
+            if (currentSection == Sections.Serie) AddNewSerie();
+            if (currentSection == Sections.Book)  AddNewBook();
         }
 
         private void AddNewMovie()
         {
             MovieModel newMovieData = new MovieModel(NameTextBox.Text, GenreComboBox.Text);
             refactoredData = DataRefactor.MovieNewDataRefactor(newMovieData);
-            sectionHandler.AddDataToList(refactoredData, MovieListBox);
+            DuplicateState();
         }
 
         private void AddNewSerie()
         {
             SerieModel newSerieData = new SerieModel(NameTextBox.Text, GenreComboBox.Text);
             refactoredData = DataRefactor.SerieNewDataRefactor(newSerieData);
-            sectionHandler.AddDataToList(refactoredData, SerieListBox);
+            DuplicateState();
         }
 
         private void AddNewBook()
         {
             BookModel newBookData = new BookModel(NameTextBox.Text, AuthorTextBox.Text, GenreComboBox.Text);
             refactoredData = DataRefactor.BookNewDataRefactor(newBookData);
-            sectionHandler.AddDataToList(refactoredData, BookListBox);
+            DuplicateState();
+        }
+
+        private bool DuplicateCheck => (currentListBox.Items.Contains(refactoredData)) ? true : false;
+
+        private void DuplicateState()
+        {
+            if (DuplicateCheck)
+            {
+                MessageBox.Show("This " + currentSection + " is already exist", "Warning",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                SaveButton.Enabled = false;
+            }
+            else
+            {
+                dataHandler.AddDataToList(refactoredData, currentListBox);
+                mViewHandler.RefreshInputFields();
+                SaveButton.Enabled = true;
+            }
         }
 
         #endregion
@@ -341,7 +353,7 @@ namespace later_list
 
         private void RemoveButtonClick(object sender, EventArgs e)
         {
-            sectionHandler.RemoveDataFromList(currentListBox);
+            dataHandler.RemoveDataFromList(currentListBox);
             mViewHandler.RemoveButtonClicked();
         }
 
@@ -408,7 +420,7 @@ namespace later_list
 
             int index = currentListBox.SelectedIndex;
             currentListBox.Items.RemoveAt(index);
-            sectionHandler.InsertEditedDataToList(index, newEditedData, currentListBox);
+            dataHandler.InsertEditedDataToList(index, newEditedData, currentListBox);
         }
 
         #endregion
