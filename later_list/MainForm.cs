@@ -16,7 +16,7 @@ namespace later_list
 
         private Sections currentSection;
         private string listPath;
-        private ListViewItem formattedData;
+        private ListViewItem newData;
         private ListViewItem newEditedData;
         private ListView currentListView = new ListView();
         private SettingsForm settingsForm = new SettingsForm();
@@ -310,37 +310,50 @@ namespace later_list
         private void AddNewMovie()
         {
             string[] row = { NameTextBox.Text, GenreComboBox.Text };
-            formattedData = new ListViewItem(row);
+            newData = new ListViewItem(row);
             DuplicateState();
         }
 
         private void AddNewSerie()
         {
             string[] row = { NameTextBox.Text, GenreComboBox.Text };
-            formattedData = new ListViewItem(row);
+            newData = new ListViewItem(row);
             DuplicateState();
         }
 
         private void AddNewBook()
         {
             string[] row = { NameTextBox.Text, AuthorTextBox.Text, GenreComboBox.Text };
-            formattedData = new ListViewItem(row);
+            newData = new ListViewItem(row);
             DuplicateState();
         }
 
-        private bool DuplicateCheck => (currentListView.Items.Contains(formattedData)) ? true : false;
+        //private bool DuplicateCheck => (currentListView.Items.ContainsKey(NameTextBox.Text)) ? true : false;
+
+        private bool DuplicateCheck()
+        {
+            ListViewItem lvi = currentListView.FindItemWithText(NameTextBox.Text);
+            if (lvi != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         private void DuplicateState()
         {
-            if (DuplicateCheck)
+            if (DuplicateCheck())
             {
-                MessageBox.Show("This " + currentSection + " is already exist", "Warning",
+                MessageBox.Show("This " + currentSection + " is already in list.", "Warning",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 SaveButton.Enabled = false;
             }
             else
             {
-                dataHandler.AddDataToList(formattedData, currentListView);
+                dataHandler.AddDataToList(newData, currentListView);
                 mViewHandler.RefreshInputFields();
                 SaveButton.Enabled = true;
             }
