@@ -13,10 +13,11 @@ namespace later_list
             Serie,
             Book
         }
+
         private Sections currentSection;
         private string getExistedData;
         private string listPath;
-        private string refactoredData;
+        private string formattedData;
         private string newEditedData;
         private ListBox currentListBox = new ListBox();
         private SettingsForm settingsForm = new SettingsForm();
@@ -159,7 +160,7 @@ namespace later_list
 
         public MainForm()
         {
-            CenterToScreen();
+            //CenterToScreen();
             InitializeComponent();
             mViewHandler = new MainViewHandler(this, settingsForm);
             SetCurrentListBox();
@@ -311,25 +312,25 @@ namespace later_list
         private void AddNewMovie()
         {
             MovieModel newMovieData = new MovieModel(NameTextBox.Text, GenreComboBox.Text);
-            refactoredData = DataRefactor.MovieNewDataRefactor(newMovieData);
+            formattedData = DataFormatter.MovieNewDataFormatter(newMovieData);
             DuplicateState();
         }
 
         private void AddNewSerie()
         {
             SerieModel newSerieData = new SerieModel(NameTextBox.Text, GenreComboBox.Text);
-            refactoredData = DataRefactor.SerieNewDataRefactor(newSerieData);
+            formattedData = DataFormatter.SerieNewDataFormatter(newSerieData);
             DuplicateState();
         }
 
         private void AddNewBook()
         {
             BookModel newBookData = new BookModel(NameTextBox.Text, AuthorTextBox.Text, GenreComboBox.Text);
-            refactoredData = DataRefactor.BookNewDataRefactor(newBookData);
+            formattedData = DataFormatter.BookNewDataFormatter(newBookData);
             DuplicateState();
         }
 
-        private bool DuplicateCheck => (currentListBox.Items.Contains(refactoredData)) ? true : false;
+        private bool DuplicateCheck => (currentListBox.Items.Contains(formattedData)) ? true : false;
 
         private void DuplicateState()
         {
@@ -341,7 +342,7 @@ namespace later_list
             }
             else
             {
-                dataHandler.AddDataToList(refactoredData, currentListBox);
+                dataHandler.AddDataToList(formattedData, currentListBox);
                 mViewHandler.RefreshInputFields();
                 SaveButton.Enabled = true;
             }
@@ -376,19 +377,19 @@ namespace later_list
                 getExistedData = currentListBox.SelectedItem.ToString();
                 if (currentSection == Sections.Movie)
                 {
-                    MovieModel currentMovieData = DataRefactor.MovieExistedDataRefactor(getExistedData);
+                    MovieModel currentMovieData = DataFormatter.MovieExistedDataFormatter(getExistedData);
                     NameTextBox.Text = currentMovieData.Name;
                     GenreComboBox.Text = currentMovieData.Genre;
                 }
                 if (currentSection == Sections.Serie)
                 {
-                    SerieModel currentSerieData = DataRefactor.SerieExistedDataRefactor(getExistedData);
+                    SerieModel currentSerieData = DataFormatter.SerieExistedDataFormatter(getExistedData);
                     NameTextBox.Text = currentSerieData.Name;
                     GenreComboBox.Text = currentSerieData.Genre;
                 }
                 if (currentSection == Sections.Book)
                 {
-                    BookModel currentBookData = DataRefactor.BookExistedDataRefactor(getExistedData);
+                    BookModel currentBookData = DataFormatter.BookExistedDataFormatter(getExistedData);
                     NameTextBox.Text = currentBookData.Name;
                     AuthorTextBox.Text = currentBookData.Author;
                     GenreComboBox.Text = currentBookData.Genre;
@@ -405,17 +406,17 @@ namespace later_list
             if (currentSection == Sections.Movie)
             {
                 MovieModel editedMovieData = new MovieModel(NameTextBox.Text, GenreComboBox.Text);
-                newEditedData = DataRefactor.MovieNewDataRefactor(editedMovieData);
+                newEditedData = DataFormatter.MovieNewDataFormatter(editedMovieData);
             }
             if (currentSection == Sections.Serie)
             {
                 SerieModel editedSerieData = new SerieModel(NameTextBox.Text, GenreComboBox.Text);
-                newEditedData = DataRefactor.SerieNewDataRefactor(editedSerieData);
+                newEditedData = DataFormatter.SerieNewDataFormatter(editedSerieData);
             }
             if (currentSection == Sections.Book)
             {
                 BookModel editedBookData = new BookModel(NameTextBox.Text, AuthorTextBox.Text, GenreComboBox.Text);
-                newEditedData = DataRefactor.BookNewDataRefactor(editedBookData);
+                newEditedData = DataFormatter.BookNewDataFormatter(editedBookData);
             }
 
             int index = currentListBox.SelectedIndex;

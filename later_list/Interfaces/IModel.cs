@@ -4,5 +4,6 @@
     {
         string Name { get; set; }
         string Genre { get; set; }
+        //string FormatLayout();
     }
 }

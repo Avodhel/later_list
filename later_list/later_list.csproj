@@ -78,7 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataRefactor.cs" />
+    <Compile Include="DataFormatter.cs" />
     <Compile Include="Handlers\SettingsViewHandler.cs" />
     <Compile Include="Interfaces\IViewHandler.cs" />
     <Compile Include="Models\BookModel.cs" />
@@ -86,7 +86,7 @@
     <Compile Include="Genres.cs" />
     <Compile Include="Interfaces\IModel.cs" />
     <Compile Include="Models\MovieModel.cs" />
-    <Compile Include="Refactors.cs" />
+    <Compile Include="Handlers\FormatHandler.cs" />
     <Compile Include="Handlers\SaveLoadHandler.cs" />
     <Compile Include="Models\SerieModel.cs" />
     <Compile Include="Handlers\DataHandler.cs" />
