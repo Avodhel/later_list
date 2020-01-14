@@ -14,12 +14,33 @@ namespace later_list
             loadPath = filePath;
         }
 
-        public static void SaveList(bool showMessage, Button saveButton, MainForm.Sections section, ListBox listBox)
+        #region Save
+
+        public static void SaveList(bool showMessage, Button saveButton, MainForm.Sections section, ListView listView)
         {
             StreamWriter saveFile = new StreamWriter(savePath);
-            foreach (var item in listBox.Items)
+            foreach (ListViewItem item in listView.Items)
             {
-                saveFile.WriteLine(item);
+                if (section == MainForm.Sections.Movie)
+                {
+                    MovieModel mv = new MovieModel(item.Text, item.SubItems[1].Text);
+                    string formattedData = DataFormatter.MovieNewDataFormatter(mv);
+                    saveFile.WriteLine(formattedData);
+                }
+
+                if (section == MainForm.Sections.Serie)
+                {
+                    SerieModel sv = new SerieModel(item.Text, item.SubItems[1].Text);
+                    string formattedData = DataFormatter.SerieNewDataFormatter(sv);
+                    saveFile.WriteLine(formattedData);
+                }
+
+                if (section == MainForm.Sections.Book)
+                {
+                    BookModel bv = new BookModel(item.Text, item.SubItems[1].Text, item.SubItems[2].Text);
+                    string formattedData = DataFormatter.BookNewDataFormatter(bv);
+                    saveFile.WriteLine(formattedData);
+                }
             }
 
             saveFile.Close();
@@ -32,18 +53,42 @@ namespace later_list
             }
         }
 
-        public static void LoadList(MainForm.Sections section, SettingsForm settingsForm, ListBox listBox)
+        #endregion
+
+        #region Load
+
+        public static void LoadList(MainForm.Sections section, SettingsForm settingsForm, ListView listView)
         {
             try
             {
-                listBox.Items.Clear();
+                listView.Items.Clear();
                 using (StreamReader loadFile = new StreamReader(loadPath))
                 {
                     string line;
                     while ((line = loadFile.ReadLine()) != null)
                     {
-                        listBox.Items.Add(line);
-                        listBox.Sorted = true;
+                        if (section == MainForm.Sections.Movie)
+                        {
+                            MovieModel formattedLine = DataFormatter.MovieExistedDataFormatter(line);
+                            string[] row = { formattedLine.Name, formattedLine.Genre };
+                            var listViewItem = new ListViewItem(row);
+                            listView.Items.Add(listViewItem);
+                        }
+                        if (section == MainForm.Sections.Serie)
+                        {
+                            SerieModel formattedLine = DataFormatter.SerieExistedDataFormatter(line);
+                            string[] row = { formattedLine.Name, formattedLine.Genre };
+                            var listViewItem = new ListViewItem(row);
+                            listView.Items.Add(listViewItem);
+                        }
+                        if (section == MainForm.Sections.Book)
+                        {
+                            BookModel formattedLine = DataFormatter.BookExistedDataFormatter(line);
+                            string[] row = { formattedLine.Name, formattedLine.Author, formattedLine.Genre };
+                            var listViewItem = new ListViewItem(row);
+                            listView.Items.Add(listViewItem);
+                        }
+                        listView.Sorting = SortOrder.Ascending;
                     }
                 }
             }
@@ -60,6 +105,8 @@ namespace later_list
 
             }
         }
+
+        #endregion
 
         private static void NotFoundExceptions(MainForm.Sections section, SettingsForm settingsForm)
         {

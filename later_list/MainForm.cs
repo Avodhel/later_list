@@ -15,11 +15,10 @@ namespace later_list
         }
 
         private Sections currentSection;
-        private string getExistedData;
         private string listPath;
-        private string formattedData;
-        private string newEditedData;
-        private ListBox currentListBox = new ListBox();
+        private ListViewItem formattedData;
+        private ListViewItem newEditedData;
+        private ListView currentListView = new ListView();
         private SettingsForm settingsForm = new SettingsForm();
         private DataHandler dataHandler = new DataHandler();
         private MainViewHandler mViewHandler;
@@ -52,22 +51,22 @@ namespace later_list
             set { genre_cb = value; }
         }
 
-        public ListBox MovieListBox
+        public ListView MovieListView
         {
-            get { return movie_listbox; }
-            set { movie_listbox = value; }
+            get { return movie_listview; }
+            set { movie_listview = value; }
         }
 
-        public ListBox SerieListBox
+        public ListView SerieListView
         {
-            get { return serie_listbox; }
-            set { serie_listbox = value; }
+            get { return serie_listview; }
+            set { serie_listview = value; }
         }
 
-        public ListBox BookListBox
+        public ListView BookListView
         {
-            get { return book_listbox; }
-            set { book_listbox = value; }
+            get { return book_listview; }
+            set { book_listview = value; }
         }
 
         public Button AddButton
@@ -163,7 +162,7 @@ namespace later_list
             //CenterToScreen();
             InitializeComponent();
             mViewHandler = new MainViewHandler(this, settingsForm);
-            SetCurrentListBox();
+            SetCurrentListView();
             SetFilePath();
             settingsForm.GetAllFilePathsFromProperties();   
         }
@@ -173,7 +172,7 @@ namespace later_list
             mViewHandler.LoadTheme();
             mViewHandler.LoadGenresToCombobox(currentSection);
             PrepareSection(currentSection);
-            SaveLoadHandler.LoadList(currentSection, settingsForm, currentListBox);
+            SaveLoadHandler.LoadList(currentSection, settingsForm, currentListView);
         }
 
         #endregion
@@ -226,9 +225,9 @@ namespace later_list
         private void PrepareSection(Sections section)
         {
             currentSection = section;
-            SetCurrentListBox();
+            SetCurrentListView();
             SetFilePath();
-            SaveLoadHandler.LoadList(currentSection, settingsForm, currentListBox);
+            SaveLoadHandler.LoadList(currentSection, settingsForm, currentListView);
             mViewHandler.SectionTransition(section);
             //refresh panel scroll
             input_fields_panel.VerticalScroll.Value = 0;
@@ -238,11 +237,11 @@ namespace later_list
 
         #region ListBox
 
-        private void SetCurrentListBox()
+        private void SetCurrentListView()
         {
-            if (currentSection == Sections.Movie) currentListBox = MovieListBox;
-            if (currentSection == Sections.Serie) currentListBox = SerieListBox;
-            if (currentSection == Sections.Book) currentListBox = BookListBox;
+            if (currentSection == Sections.Movie) currentListView = movie_listview;
+            if (currentSection == Sections.Serie) currentListView = serie_listview;
+            if (currentSection == Sections.Book) currentListView = book_listview;
         }
 
         #endregion
@@ -311,26 +310,26 @@ namespace later_list
 
         private void AddNewMovie()
         {
-            MovieModel newMovieData = new MovieModel(NameTextBox.Text, GenreComboBox.Text);
-            formattedData = DataFormatter.MovieNewDataFormatter(newMovieData);
+            string[] row = { NameTextBox.Text, GenreComboBox.Text };
+            formattedData = new ListViewItem(row);
             DuplicateState();
         }
 
         private void AddNewSerie()
         {
-            SerieModel newSerieData = new SerieModel(NameTextBox.Text, GenreComboBox.Text);
-            formattedData = DataFormatter.SerieNewDataFormatter(newSerieData);
+            string[] row = { NameTextBox.Text, GenreComboBox.Text };
+            formattedData = new ListViewItem(row);
             DuplicateState();
         }
 
         private void AddNewBook()
         {
-            BookModel newBookData = new BookModel(NameTextBox.Text, AuthorTextBox.Text, GenreComboBox.Text);
-            formattedData = DataFormatter.BookNewDataFormatter(newBookData);
+            string[] row = { NameTextBox.Text, AuthorTextBox.Text, GenreComboBox.Text };
+            formattedData = new ListViewItem(row);
             DuplicateState();
         }
 
-        private bool DuplicateCheck => (currentListBox.Items.Contains(formattedData)) ? true : false;
+        private bool DuplicateCheck => (currentListView.Items.Contains(formattedData)) ? true : false;
 
         private void DuplicateState()
         {
@@ -342,7 +341,7 @@ namespace later_list
             }
             else
             {
-                dataHandler.AddDataToList(formattedData, currentListBox);
+                dataHandler.AddDataToList(formattedData, currentListView);
                 mViewHandler.RefreshInputFields();
                 SaveButton.Enabled = true;
             }
@@ -354,7 +353,7 @@ namespace later_list
 
         private void RemoveButtonClick(object sender, EventArgs e)
         {
-            dataHandler.RemoveDataFromList(currentListBox);
+            dataHandler.RemoveDataFromList(currentListView);
             mViewHandler.RemoveButtonClicked();
         }
 
@@ -374,25 +373,21 @@ namespace later_list
 
             try
             {
-                getExistedData = currentListBox.SelectedItem.ToString();
                 if (currentSection == Sections.Movie)
                 {
-                    MovieModel currentMovieData = DataFormatter.MovieExistedDataFormatter(getExistedData);
-                    NameTextBox.Text = currentMovieData.Name;
-                    GenreComboBox.Text = currentMovieData.Genre;
+                    NameTextBox.Text = currentListView.SelectedItems[0].SubItems[0].Text;
+                    GenreComboBox.Text = currentListView.SelectedItems[0].SubItems[1].Text;
                 }
                 if (currentSection == Sections.Serie)
                 {
-                    SerieModel currentSerieData = DataFormatter.SerieExistedDataFormatter(getExistedData);
-                    NameTextBox.Text = currentSerieData.Name;
-                    GenreComboBox.Text = currentSerieData.Genre;
+                    NameTextBox.Text = currentListView.SelectedItems[0].SubItems[0].Text;
+                    GenreComboBox.Text = currentListView.SelectedItems[0].SubItems[1].Text;
                 }
                 if (currentSection == Sections.Book)
                 {
-                    BookModel currentBookData = DataFormatter.BookExistedDataFormatter(getExistedData);
-                    NameTextBox.Text = currentBookData.Name;
-                    AuthorTextBox.Text = currentBookData.Author;
-                    GenreComboBox.Text = currentBookData.Genre;
+                    NameTextBox.Text = currentListView.SelectedItems[0].SubItems[0].Text;
+                    AuthorTextBox.Text = currentListView.SelectedItems[0].SubItems[1].Text;
+                    GenreComboBox.Text = currentListView.SelectedItems[0].SubItems[2].Text;
                 }
             }
             catch
@@ -405,23 +400,23 @@ namespace later_list
         {
             if (currentSection == Sections.Movie)
             {
-                MovieModel editedMovieData = new MovieModel(NameTextBox.Text, GenreComboBox.Text);
-                newEditedData = DataFormatter.MovieNewDataFormatter(editedMovieData);
+                string[] row = { NameTextBox.Text, GenreComboBox.Text };
+                newEditedData = new ListViewItem(row);
             }
             if (currentSection == Sections.Serie)
             {
-                SerieModel editedSerieData = new SerieModel(NameTextBox.Text, GenreComboBox.Text);
-                newEditedData = DataFormatter.SerieNewDataFormatter(editedSerieData);
+                string[] row = { NameTextBox.Text, GenreComboBox.Text };
+                newEditedData = new ListViewItem(row);
             }
             if (currentSection == Sections.Book)
             {
-                BookModel editedBookData = new BookModel(NameTextBox.Text, AuthorTextBox.Text, GenreComboBox.Text);
-                newEditedData = DataFormatter.BookNewDataFormatter(editedBookData);
+                string[] row = { NameTextBox.Text, AuthorTextBox.Text, GenreComboBox.Text };
+                newEditedData = new ListViewItem(row);
             }
 
-            int index = currentListBox.SelectedIndex;
-            currentListBox.Items.RemoveAt(index);
-            dataHandler.InsertEditedDataToList(index, newEditedData, currentListBox);
+            var index = currentListView.SelectedIndices[0];
+            currentListView.Items.RemoveAt(0);
+            dataHandler.InsertEditedDataToList(index, newEditedData, currentListView);
         }
 
         #endregion
@@ -442,7 +437,7 @@ namespace later_list
             }
             else if (listPath != string.Empty)
             {
-                SaveLoadHandler.SaveList(true, SaveButton, currentSection, currentListBox);
+                SaveLoadHandler.SaveList(true, SaveButton, currentSection, currentListView);
             }
         }
 
@@ -458,7 +453,7 @@ namespace later_list
                 settingsForm.SaveSettings();
                 GetFilePath();
                 SaveLoadHandler.SetPaths(listPath);
-                SaveLoadHandler.SaveList(true, SaveButton, currentSection, currentListBox);
+                SaveLoadHandler.SaveList(true, SaveButton, currentSection, currentListView);
             }
             else
             {
@@ -504,8 +499,8 @@ namespace later_list
 
         private void LoadPreviousFileVersion()
         {
-            currentListBox.Items.Clear();
-            SaveLoadHandler.LoadList(currentSection, settingsForm, currentListBox);
+            currentListView.Items.Clear();
+            SaveLoadHandler.LoadList(currentSection, settingsForm, currentListView);
         }
 
         #endregion

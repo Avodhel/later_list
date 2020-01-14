@@ -94,9 +94,9 @@ namespace later_list
             //textbox
             mainForm.AuthorTextBox.Visible = false;
             //listbox
-            mainForm.MovieListBox.Visible = true;
-            mainForm.SerieListBox.Visible = false;
-            mainForm.BookListBox.Visible = false;
+            mainForm.MovieListView.Visible = true;
+            mainForm.SerieListView.Visible = false;
+            mainForm.BookListView.Visible = false;
         }
 
         public void SerieSectionSelected()
@@ -116,9 +116,9 @@ namespace later_list
             //textbox
             mainForm.AuthorTextBox.Visible = false;
             //listbox
-            mainForm.MovieListBox.Visible = false;
-            mainForm.SerieListBox.Visible = true;
-            mainForm.BookListBox.Visible = false;
+            mainForm.MovieListView.Visible = false;
+            mainForm.SerieListView.Visible = true;
+            mainForm.BookListView.Visible = false;
         }
 
         public void BookSectionSelected()
@@ -138,9 +138,9 @@ namespace later_list
             //textbox
             mainForm.AuthorTextBox.Visible = true;
             //listbox
-            mainForm.MovieListBox.Visible = false;
-            mainForm.SerieListBox.Visible = false;
-            mainForm.BookListBox.Visible = true;
+            mainForm.MovieListView.Visible = false;
+            mainForm.SerieListView.Visible = false;
+            mainForm.BookListView.Visible = true;
         }
 
         #endregion
@@ -184,9 +184,9 @@ namespace later_list
 
         public void ClearButtonClicked()
         {
-            mainForm.MovieListBox.ClearSelected();
-            mainForm.SerieListBox.ClearSelected();
-            mainForm.BookListBox.ClearSelected();
+            mainForm.MovieListView.SelectedItems.Clear();
+            mainForm.SerieListView.SelectedItems.Clear();
+            mainForm.BookListView.SelectedItems.Clear();
             RefreshInputFields();
             AddButtonActive();
         }
@@ -219,9 +219,9 @@ namespace later_list
             ThemeHandler.RegisterTextBox(mainForm.NameTextBox);
             ThemeHandler.RegisterTextBox(mainForm.AuthorTextBox);
             ThemeHandler.RegisterComboBox(mainForm.GenreComboBox);
-            ThemeHandler.RegisterListBox(mainForm.MovieListBox);
-            ThemeHandler.RegisterListBox(mainForm.SerieListBox);
-            ThemeHandler.RegisterListBox(mainForm.BookListBox);
+            ThemeHandler.RegisterListView(mainForm.MovieListView);
+            ThemeHandler.RegisterListView(mainForm.SerieListView);
+            ThemeHandler.RegisterListView(mainForm.BookListView);
             ThemeHandler.RegisterButton(mainForm.ClearButton);
             ThemeHandler.RegisterButton(mainForm.AddButton);
             ThemeHandler.RegisterButton(mainForm.RemoveButton);

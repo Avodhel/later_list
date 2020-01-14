@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.add_button = new System.Windows.Forms.Button();
-            this.movie_listbox = new System.Windows.Forms.ListBox();
             this.movie_name_lbl = new System.Windows.Forms.Label();
             this.genre_cb = new System.Windows.Forms.ComboBox();
             this.name_tb = new System.Windows.Forms.TextBox();
@@ -39,9 +38,7 @@
             this.genre_lbl = new System.Windows.Forms.Label();
             this.edit_button = new System.Windows.Forms.Button();
             this.clear_button = new System.Windows.Forms.Button();
-            this.serie_listbox = new System.Windows.Forms.ListBox();
             this.save_button = new System.Windows.Forms.Button();
-            this.book_listbox = new System.Windows.Forms.ListBox();
             this.book_name_lbl = new System.Windows.Forms.Label();
             this.serie_name_lbl = new System.Windows.Forms.Label();
             this.version_lbl = new System.Windows.Forms.Label();
@@ -58,6 +55,16 @@
             this.bookSectionBtn = new System.Windows.Forms.Button();
             this.serieSectionBtn = new System.Windows.Forms.Button();
             this.movieSectionBtn = new System.Windows.Forms.Button();
+            this.movie_listview = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.serie_listview = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.book_listview = new System.Windows.Forms.ListView();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.list_operations_gb.SuspendLayout();
             this.input_fields_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error_provider)).BeginInit();
@@ -79,17 +86,6 @@
             this.add_button.Text = "Add to List";
             this.add_button.UseVisualStyleBackColor = false;
             this.add_button.Click += new System.EventHandler(this.AddButtonClick);
-            // 
-            // movie_listbox
-            // 
-            this.movie_listbox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.movie_listbox.HorizontalScrollbar = true;
-            this.movie_listbox.ItemHeight = 16;
-            this.movie_listbox.Location = new System.Drawing.Point(18, 201);
-            this.movie_listbox.Name = "movie_listbox";
-            this.movie_listbox.Size = new System.Drawing.Size(356, 132);
-            this.movie_listbox.TabIndex = 8;
-            this.movie_listbox.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
             // movie_name_lbl
             // 
@@ -186,18 +182,6 @@
             this.clear_button.UseVisualStyleBackColor = false;
             this.clear_button.Click += new System.EventHandler(this.ClearButtonClick);
             // 
-            // serie_listbox
-            // 
-            this.serie_listbox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.serie_listbox.HorizontalScrollbar = true;
-            this.serie_listbox.ItemHeight = 16;
-            this.serie_listbox.Location = new System.Drawing.Point(18, 201);
-            this.serie_listbox.Name = "serie_listbox";
-            this.serie_listbox.Size = new System.Drawing.Size(356, 132);
-            this.serie_listbox.TabIndex = 9;
-            this.serie_listbox.Visible = false;
-            this.serie_listbox.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
-            // 
             // save_button
             // 
             this.save_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -215,18 +199,6 @@
             this.save_button.UseVisualStyleBackColor = false;
             this.save_button.EnabledChanged += new System.EventHandler(this.SaveButtonEnabledChanged);
             this.save_button.Click += new System.EventHandler(this.SaveButtonClick);
-            // 
-            // book_listbox
-            // 
-            this.book_listbox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.book_listbox.HorizontalScrollbar = true;
-            this.book_listbox.ItemHeight = 16;
-            this.book_listbox.Location = new System.Drawing.Point(18, 201);
-            this.book_listbox.Name = "book_listbox";
-            this.book_listbox.Size = new System.Drawing.Size(356, 132);
-            this.book_listbox.TabIndex = 10;
-            this.book_listbox.Visible = false;
-            this.book_listbox.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
             // book_name_lbl
             // 
@@ -261,26 +233,26 @@
             this.version_lbl.Name = "version_lbl";
             this.version_lbl.Size = new System.Drawing.Size(30, 15);
             this.version_lbl.TabIndex = 3;
-            this.version_lbl.Text = "v1.2";
+            this.version_lbl.Text = "v1.3";
             // 
             // list_operations_gb
             // 
             this.list_operations_gb.BackColor = System.Drawing.Color.Transparent;
+            this.list_operations_gb.Controls.Add(this.movie_listview);
+            this.list_operations_gb.Controls.Add(this.serie_listview);
+            this.list_operations_gb.Controls.Add(this.book_listview);
             this.list_operations_gb.Controls.Add(this.discard_button);
             this.list_operations_gb.Controls.Add(this.save_button);
-            this.list_operations_gb.Controls.Add(this.serie_listbox);
             this.list_operations_gb.Controls.Add(this.input_fields_panel);
             this.list_operations_gb.Controls.Add(this.edit_button);
             this.list_operations_gb.Controls.Add(this.clear_button);
             this.list_operations_gb.Controls.Add(this.remove_button);
-            this.list_operations_gb.Controls.Add(this.book_listbox);
             this.list_operations_gb.Controls.Add(this.add_button);
-            this.list_operations_gb.Controls.Add(this.movie_listbox);
             this.list_operations_gb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.list_operations_gb.Font = new System.Drawing.Font("Raleway", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.list_operations_gb.Location = new System.Drawing.Point(105, 3);
             this.list_operations_gb.Name = "list_operations_gb";
-            this.list_operations_gb.Size = new System.Drawing.Size(394, 340);
+            this.list_operations_gb.Size = new System.Drawing.Size(394, 337);
             this.list_operations_gb.TabIndex = 20;
             this.list_operations_gb.TabStop = false;
             this.list_operations_gb.Text = "Movies";
@@ -290,9 +262,9 @@
             this.discard_button.BackColor = System.Drawing.Color.Salmon;
             this.discard_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.discard_button.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.discard_button.Location = new System.Drawing.Point(375, 201);
+            this.discard_button.Location = new System.Drawing.Point(375, 200);
             this.discard_button.Name = "discard_button";
-            this.discard_button.Size = new System.Drawing.Size(14, 132);
+            this.discard_button.Size = new System.Drawing.Size(14, 130);
             this.discard_button.TabIndex = 22;
             this.discard_button.Text = "Discard";
             this.discard_button.UseVisualStyleBackColor = false;
@@ -364,7 +336,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(100, 350);
+            this.panel1.Size = new System.Drawing.Size(100, 349);
             this.panel1.TabIndex = 22;
             // 
             // laterListLogo
@@ -426,12 +398,97 @@
             this.movieSectionBtn.UseVisualStyleBackColor = false;
             this.movieSectionBtn.Click += new System.EventHandler(this.SectionSelected);
             // 
+            // movie_listview
+            // 
+            this.movie_listview.BackColor = System.Drawing.SystemColors.Window;
+            this.movie_listview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.movie_listview.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.movie_listview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.movie_listview.Location = new System.Drawing.Point(18, 200);
+            this.movie_listview.MultiSelect = false;
+            this.movie_listview.Name = "movie_listview";
+            this.movie_listview.Size = new System.Drawing.Size(356, 130);
+            this.movie_listview.TabIndex = 23;
+            this.movie_listview.UseCompatibleStateImageBehavior = false;
+            this.movie_listview.View = System.Windows.Forms.View.Details;
+            this.movie_listview.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Movie Name";
+            this.columnHeader1.Width = 200;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Genre";
+            this.columnHeader2.Width = 100;
+            // 
+            // serie_listview
+            // 
+            this.serie_listview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4});
+            this.serie_listview.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.serie_listview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.serie_listview.Location = new System.Drawing.Point(18, 200);
+            this.serie_listview.MultiSelect = false;
+            this.serie_listview.Name = "serie_listview";
+            this.serie_listview.Size = new System.Drawing.Size(356, 130);
+            this.serie_listview.TabIndex = 24;
+            this.serie_listview.UseCompatibleStateImageBehavior = false;
+            this.serie_listview.View = System.Windows.Forms.View.Details;
+            this.serie_listview.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Serie Name";
+            this.columnHeader3.Width = 200;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Genre";
+            this.columnHeader4.Width = 90;
+            // 
+            // book_listview
+            // 
+            this.book_listview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7});
+            this.book_listview.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.book_listview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.book_listview.Location = new System.Drawing.Point(18, 200);
+            this.book_listview.MultiSelect = false;
+            this.book_listview.Name = "book_listview";
+            this.book_listview.Size = new System.Drawing.Size(356, 130);
+            this.book_listview.TabIndex = 25;
+            this.book_listview.UseCompatibleStateImageBehavior = false;
+            this.book_listview.View = System.Windows.Forms.View.Details;
+            this.book_listview.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Book Name";
+            this.columnHeader5.Width = 123;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Author";
+            this.columnHeader6.Width = 116;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Genre";
+            this.columnHeader7.Width = 65;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(506, 350);
+            this.ClientSize = new System.Drawing.Size(507, 349);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.list_operations_gb);
             this.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -458,7 +515,6 @@
         #endregion
 
         private System.Windows.Forms.Button add_button;
-        private System.Windows.Forms.ListBox movie_listbox;
         private System.Windows.Forms.Label movie_name_lbl;
         private System.Windows.Forms.ComboBox genre_cb;
         private System.Windows.Forms.TextBox name_tb;
@@ -467,8 +523,6 @@
         private System.Windows.Forms.Button edit_button;
         private System.Windows.Forms.Label serie_name_lbl;
         private System.Windows.Forms.Label book_name_lbl;
-        private System.Windows.Forms.ListBox book_listbox;
-        private System.Windows.Forms.ListBox serie_listbox;
         private System.Windows.Forms.Button save_button;
         private System.Windows.Forms.Button clear_button;
         private System.Windows.Forms.Label version_lbl;
@@ -485,6 +539,16 @@
         private System.Windows.Forms.Button serieSectionBtn;
         private System.Windows.Forms.Button movieSectionBtn;
         private System.Windows.Forms.PictureBox laterListLogo;
+        private System.Windows.Forms.ListView movie_listview;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ListView book_listview;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ListView serie_listview;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
 

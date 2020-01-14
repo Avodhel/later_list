@@ -4,19 +4,19 @@ namespace later_list
 {
     public class DataHandler
     {
-        public void AddDataToList(string data, ListBox listBox)
+        public void AddDataToList(ListViewItem data, ListView listView)
         {
-            listBox.Items.Add(data);
+            listView.Items.Add(data);
         }
 
-        public void RemoveDataFromList(ListBox listBox)
+        public void RemoveDataFromList(ListView listView)
         {
-            listBox.Items.Remove(listBox.SelectedItem);
+            listView.Items.RemoveAt(listView.SelectedIndices[0]);
         }
 
-        public void InsertEditedDataToList(int index, string editedData, ListBox listBox)
+        public void InsertEditedDataToList(int index, ListViewItem editedData, ListView listView)
         {
-            listBox.Items.Insert(index, editedData);
+            listView.Items.Insert(index, editedData);
         }
     }
 }

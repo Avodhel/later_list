@@ -58,17 +58,17 @@ namespace later_list
             if (comboBoxList.Contains(cb)) comboBoxList.Remove(cb);
         }
 
-        //LISTBOX
-        private static List<ListBox> listBoxList = new List<ListBox>();
+        //LISTVIEW
+        private static List<ListView> listViewList = new List<ListView>();
 
-        public static void RegisterListBox(ListBox lb)
+        public static void RegisterListView(ListView lv)
         {
-            if (!listBoxList.Contains(lb)) listBoxList.Add(lb);
+            if (!listViewList.Contains(lv)) listViewList.Add(lv);
         }
 
-        public static void UnRegisterListBox(ListBox lb)
+        public static void UnRegisterListView(ListView lb)
         {
-            if (listBoxList.Contains(lb)) listBoxList.Remove(lb);
+            if (listViewList.Contains(lb)) listViewList.Remove(lb);
         }
 
         //BUTTON
@@ -93,8 +93,8 @@ namespace later_list
             foreach (TextBox  tb in textBoxList ) if (tb != null) tb.BackColor = BackColor;
             foreach (ComboBox cb in comboBoxList) if (cb != null) cb.ForeColor = TextColor;
             foreach (ComboBox cb in comboBoxList) if (cb != null) cb.BackColor = BackColor;
-            foreach (ListBox  lb in listBoxList ) if (lb != null) lb.ForeColor = TextColor;
-            foreach (ListBox  lb in listBoxList ) if (lb != null) lb.BackColor = BackColor;
+            foreach (ListView lv in listViewList) if (lv != null) lv.ForeColor = TextColor;
+            foreach (ListView lv in listViewList) if (lv != null) lv.BackColor = BackColor;
             foreach (Button   b  in buttonList  ) if (b  != null) b.ForeColor  = ButtonTextColor;
         }
 
