@@ -23,22 +23,22 @@ namespace later_list
             {
                 if (section == MainForm.Sections.Movie)
                 {
-                    MovieModel mv = new MovieModel(item.Text, item.SubItems[1].Text);
-                    string formattedData = DataFormatter.MovieNewDataFormatter(mv);
+                    MovieModel movieData = new MovieModel(item.Text, item.SubItems[1].Text);
+                    string formattedData = DataFormatter.MovieNewDataFormatter(movieData);
                     saveFile.WriteLine(formattedData);
                 }
 
                 if (section == MainForm.Sections.Serie)
                 {
-                    SerieModel sv = new SerieModel(item.Text, item.SubItems[1].Text);
-                    string formattedData = DataFormatter.SerieNewDataFormatter(sv);
+                    SerieModel serieData = new SerieModel(item.Text, item.SubItems[1].Text);
+                    string formattedData = DataFormatter.SerieNewDataFormatter(serieData);
                     saveFile.WriteLine(formattedData);
                 }
 
                 if (section == MainForm.Sections.Book)
                 {
-                    BookModel bv = new BookModel(item.Text, item.SubItems[1].Text, item.SubItems[2].Text);
-                    string formattedData = DataFormatter.BookNewDataFormatter(bv);
+                    BookModel bookData = new BookModel(item.Text, item.SubItems[1].Text, item.SubItems[2].Text);
+                    string formattedData = DataFormatter.BookNewDataFormatter(bookData);
                     saveFile.WriteLine(formattedData);
                 }
             }
@@ -88,7 +88,6 @@ namespace later_list
                             var listViewItem = new ListViewItem(row);
                             listView.Items.Add(listViewItem);
                         }
-                        listView.Sorting = SortOrder.Ascending;
                     }
                 }
             }

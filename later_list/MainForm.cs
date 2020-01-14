@@ -224,24 +224,23 @@ namespace later_list
 
         private void PrepareSection(Sections section)
         {
+            input_fields_panel.VerticalScroll.Value = 0;
             currentSection = section;
             SetCurrentListView();
             SetFilePath();
             SaveLoadHandler.LoadList(currentSection, settingsForm, currentListView);
             mViewHandler.SectionTransition(section);
-            //refresh panel scroll
-            input_fields_panel.VerticalScroll.Value = 0;
         }
 
         #endregion
 
-        #region ListBox
+        #region ListView
 
         private void SetCurrentListView()
         {
-            if (currentSection == Sections.Movie) currentListView = movie_listview;
-            if (currentSection == Sections.Serie) currentListView = serie_listview;
-            if (currentSection == Sections.Book) currentListView = book_listview;
+            if (currentSection == Sections.Movie) currentListView = MovieListView;
+            if (currentSection == Sections.Serie) currentListView = SerieListView;
+            if (currentSection == Sections.Book) currentListView = BookListView;
         }
 
         #endregion

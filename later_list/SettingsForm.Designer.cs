@@ -69,6 +69,7 @@
             // 
             // movie_path_tb
             // 
+            this.movie_path_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.movie_path_tb.Font = new System.Drawing.Font("Raleway", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.movie_path_tb.Location = new System.Drawing.Point(80, 23);
             this.movie_path_tb.Name = "movie_path_tb";
@@ -187,11 +188,10 @@
             // dark_rb
             // 
             this.dark_rb.AutoSize = true;
-            this.dark_rb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dark_rb.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.dark_rb.Location = new System.Drawing.Point(8, 55);
             this.dark_rb.Name = "dark_rb";
-            this.dark_rb.Size = new System.Drawing.Size(52, 19);
+            this.dark_rb.Size = new System.Drawing.Size(53, 19);
             this.dark_rb.TabIndex = 1;
             this.dark_rb.Text = "Dark";
             this.dark_rb.UseVisualStyleBackColor = true;
@@ -201,11 +201,10 @@
             // 
             this.light_rb.AutoSize = true;
             this.light_rb.Checked = true;
-            this.light_rb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.light_rb.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.light_rb.Location = new System.Drawing.Point(8, 22);
             this.light_rb.Name = "light_rb";
-            this.light_rb.Size = new System.Drawing.Size(55, 19);
+            this.light_rb.Size = new System.Drawing.Size(56, 19);
             this.light_rb.TabIndex = 0;
             this.light_rb.TabStop = true;
             this.light_rb.Text = "Light";
@@ -227,6 +226,7 @@
             // 
             // book_path_tb
             // 
+            this.book_path_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.book_path_tb.Font = new System.Drawing.Font("Raleway", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.book_path_tb.Location = new System.Drawing.Point(80, 88);
             this.book_path_tb.Name = "book_path_tb";
@@ -260,6 +260,7 @@
             // 
             // serie_path_tb
             // 
+            this.serie_path_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.serie_path_tb.Font = new System.Drawing.Font("Raleway", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.serie_path_tb.Location = new System.Drawing.Point(80, 56);
             this.serie_path_tb.Name = "serie_path_tb";
@@ -287,7 +288,7 @@
             this.settings_error_provider.ContainerControl = this;
             this.settings_error_provider.Icon = ((System.Drawing.Icon)(resources.GetObject("settings_error_provider.Icon")));
             // 
-            // settings
+            // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -298,7 +299,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "settings";
+            this.Name = "SettingsForm";
             this.Text = "Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsFormClosing);
             this.Load += new System.EventHandler(this.SettingsLoad);

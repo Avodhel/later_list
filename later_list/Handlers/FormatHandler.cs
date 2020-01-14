@@ -8,13 +8,13 @@
 
         public static string FormatNewDataWithTwoParams(string p1, string p2)
         {
-            string strFormat = "{0, -30}{1, -10}";
+            string strFormat = "{0, -35}{1, -10}";
             return string.Format(strFormat, p1, "(" + p2 + ")");
         }
 
         public static string FormatNewDataWithThreeParams(string p1, string p2, string p3)
         {
-            string strFormat = "{0, -15}{1, -15}{2, -10}";
+            string strFormat = "{0, -20}{1, -20}{2, -10}";
             return string.Format(strFormat, p1, " - " + p2, "(" + p3 + ")");
         }
 
