@@ -52,25 +52,15 @@ namespace later_list
             mainForm.MovieSectionButton.Enabled = true;
             mainForm.SerieSectionButton.Enabled = true;
             mainForm.BookSectionButton.Enabled = true;
+            mainForm.SettingsButton.Enabled = true;
         }
 
         public void TransitionBetweenSectionsDeactive(MainForm.Sections section)
         {
-            switch (section)
-            {
-                case MainForm.Sections.Movie:
-                    mainForm.SerieSectionButton.Enabled = false;
-                    mainForm.BookSectionButton.Enabled = false;
-                    break;
-                case MainForm.Sections.Serie:
-                    mainForm.MovieSectionButton.Enabled = false;
-                    mainForm.BookSectionButton.Enabled = false;
-                    break;
-                case MainForm.Sections.Book:
-                    mainForm.MovieSectionButton.Enabled = false;
-                    mainForm.SerieSectionButton.Enabled = false;
-                    break;
-            }
+            mainForm.MovieSectionButton.Enabled = false;
+            mainForm.SerieSectionButton.Enabled = false;
+            mainForm.BookSectionButton.Enabled = false;
+            mainForm.SettingsButton.Enabled = false;
         }
 
         #endregion
@@ -145,25 +135,63 @@ namespace later_list
 
         #endregion
 
+        #region Button Active/Deactive
+
+        public void ClearButtonActive()
+        {
+            mainForm.ClearButton.Enabled = true;
+            mainForm.ClearButton.BackColor = Colors.ClearButtonActiveColor;
+        }
+
+        public void ClearButtonDeactive()
+        {
+            mainForm.ClearButton.Enabled = false;
+            mainForm.ClearButton.BackColor = Colors.OptionButtonsDeactiveColor;
+        }
+
         public void AddButtonActive()
         {
             mainForm.AddButton.Enabled = true;
+            mainForm.AddButton.BackColor = Colors.AddButtonActiveColor;
             mainForm.RemoveButton.Enabled = false;
+            mainForm.RemoveButton.BackColor = Colors.OptionButtonsDeactiveColor;
             mainForm.EditButton.Enabled = false;
+            mainForm.EditButton.BackColor = Colors.OptionButtonsDeactiveColor;
         }
 
         public void EditRemoveButtonsActive()
         {
             mainForm.AddButton.Enabled = false;
+            mainForm.AddButton.BackColor = Colors.OptionButtonsDeactiveColor;
             mainForm.RemoveButton.Enabled = true;
+            mainForm.RemoveButton.BackColor = Colors.RemoveButtonActiveColor;
             mainForm.EditButton.Enabled = true;
+            mainForm.EditButton.BackColor = Colors.EditButtonActiveColor;
+            ClearButtonActive();
         }
+
+        public void SaveButtonActive()
+        {
+            mainForm.SaveButton.Enabled = true;
+            mainForm.SaveButton.BackColor = Colors.SaveListButtonActiveColor;
+        }
+
+        public void SaveButtonDeactive()
+        {
+            mainForm.SaveButton.Enabled = false;
+            mainForm.SaveButton.BackColor = Colors.OptionButtonsDeactiveColor;
+        }
+
+        #endregion
+
+        #region Input Field
 
         public void RefreshInputFields()
         {
             mainForm.NameTextBox.Text = string.Empty;
             mainForm.GenreComboBox.Text = string.Empty;
             mainForm.AuthorTextBox.Text = string.Empty;
+            ClearButtonDeactive();
         }
 
         public void InputFieldClicked()
@@ -174,11 +202,17 @@ namespace later_list
             }
         }
 
+        #endregion
+
+        #region Genres
+
         public void LoadGenresToCombobox(MainForm.Sections section)
         {
             mainForm.GenreComboBox.Items.Clear();
             mainForm.GenreComboBox.Items.AddRange(Genres.GetGenres(section));
         }
+
+        #endregion
 
         #region Button Clicked
 
@@ -193,13 +227,13 @@ namespace later_list
 
         public void RemoveButtonClicked()
         {
-            mainForm.SaveButton.Enabled = true;
+            SaveButtonActive();
             RefreshInputFields();
         }
 
         public void EditButtonClicked()
         {
-            mainForm.SaveButton.Enabled = true;
+            SaveButtonActive();
             RefreshInputFields();
         }
 

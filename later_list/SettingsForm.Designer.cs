@@ -90,10 +90,11 @@
             // 
             // save_settings_button
             // 
-            this.save_settings_button.BackColor = System.Drawing.SystemColors.Highlight;
+            this.save_settings_button.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.save_settings_button.Enabled = false;
             this.save_settings_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.save_settings_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.settings_error_provider.SetIconPadding(this.save_settings_button, 15);
             this.save_settings_button.Image = ((System.Drawing.Image)(resources.GetObject("save_settings_button.Image")));
             this.save_settings_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.save_settings_button.Location = new System.Drawing.Point(80, 120);

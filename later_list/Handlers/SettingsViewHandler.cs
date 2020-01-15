@@ -4,10 +4,30 @@
     {
         private readonly SettingsForm settingsForm;
 
+        #region Constructor
+
         public SettingsViewHandler(SettingsForm _settingsForm)
         {
             settingsForm = _settingsForm;
         }
+
+        #endregion
+
+        #region Button Active/Deactive
+
+        public void SaveSettingsButtonActive()
+        {
+            settingsForm.SaveSettingsButton.Enabled = true;
+            settingsForm.SaveSettingsButton.BackColor = Colors.SaveSettingsButtonActiveColor;
+        }
+
+        public void SaveSettingsButtonDeactive()
+        {
+            settingsForm.SaveSettingsButton.Enabled = false;
+            settingsForm.SaveSettingsButton.BackColor = Colors.OptionButtonsDeactiveColor;
+        }
+
+        #endregion
 
         #region Theme
 
@@ -20,7 +40,7 @@
                                                Colors.DarkThemeTextColor);
                 if (Properties.Settings.Default.dark_checked == true)
                 {
-                    settingsForm.SaveSettingsButton.Enabled = true;
+                    SaveSettingsButtonActive();
                 }
             }
             else if (settingsForm.DarkThemeCheck)
@@ -30,7 +50,7 @@
                                                Colors.DarkThemeTextColor);
                 if (Properties.Settings.Default.light_checked == true)
                 {
-                    settingsForm.SaveSettingsButton.Enabled = true;
+                    SaveSettingsButtonActive();
                 }
             }
         }

@@ -50,6 +50,7 @@ namespace later_list
                 MessageBox.Show(section + "list saved!");
                 showMessage = false;
                 saveButton.Enabled = false;
+                saveButton.BackColor = Colors.OptionButtonsDeactiveColor;
             }
         }
 

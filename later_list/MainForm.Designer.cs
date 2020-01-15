@@ -76,14 +76,15 @@
             // 
             this.add_button.BackColor = System.Drawing.Color.PaleGreen;
             this.add_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.add_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.add_button.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.add_button.Image = ((System.Drawing.Image)(resources.GetObject("add_button.Image")));
             this.add_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.add_button.Location = new System.Drawing.Point(18, 118);
+            this.add_button.Location = new System.Drawing.Point(500, 120);
             this.add_button.Name = "add_button";
-            this.add_button.Size = new System.Drawing.Size(165, 30);
+            this.add_button.Size = new System.Drawing.Size(79, 33);
             this.add_button.TabIndex = 0;
-            this.add_button.Text = "Add to List";
+            this.add_button.Text = "Add";
+            this.add_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.add_button.UseVisualStyleBackColor = false;
             this.add_button.Click += new System.EventHandler(this.AddButtonClick);
             // 
@@ -108,35 +109,38 @@
             "Drama",
             "Fiction",
             "Science Fiction"});
-            this.genre_cb.Location = new System.Drawing.Point(97, 41);
+            this.genre_cb.Location = new System.Drawing.Point(97, 76);
             this.genre_cb.Name = "genre_cb";
-            this.genre_cb.Size = new System.Drawing.Size(179, 26);
+            this.genre_cb.Size = new System.Drawing.Size(256, 26);
             this.genre_cb.TabIndex = 6;
+            this.genre_cb.TextChanged += new System.EventHandler(this.InputTextChanged);
             this.genre_cb.Click += new System.EventHandler(this.InputFieldsClick);
             // 
             // name_tb
             // 
             this.name_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.name_tb.Font = new System.Drawing.Font("Raleway", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.name_tb.Location = new System.Drawing.Point(97, 4);
+            this.name_tb.Location = new System.Drawing.Point(97, 8);
             this.name_tb.Name = "name_tb";
-            this.name_tb.Size = new System.Drawing.Size(179, 25);
+            this.name_tb.Size = new System.Drawing.Size(256, 25);
             this.name_tb.TabIndex = 10;
             this.name_tb.Click += new System.EventHandler(this.InputFieldsClick);
+            this.name_tb.TextChanged += new System.EventHandler(this.InputTextChanged);
             // 
             // remove_button
             // 
             this.remove_button.BackColor = System.Drawing.Color.Salmon;
             this.remove_button.Enabled = false;
             this.remove_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.remove_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.remove_button.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.remove_button.Image = ((System.Drawing.Image)(resources.GetObject("remove_button.Image")));
             this.remove_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.remove_button.Location = new System.Drawing.Point(209, 118);
+            this.remove_button.Location = new System.Drawing.Point(500, 160);
             this.remove_button.Name = "remove_button";
-            this.remove_button.Size = new System.Drawing.Size(165, 30);
+            this.remove_button.Size = new System.Drawing.Size(79, 33);
             this.remove_button.TabIndex = 11;
-            this.remove_button.Text = "Remove Item";
+            this.remove_button.Text = "Remove";
+            this.remove_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.remove_button.UseVisualStyleBackColor = false;
             this.remove_button.Click += new System.EventHandler(this.RemoveButtonClick);
             // 
@@ -145,7 +149,7 @@
             this.genre_lbl.AutoSize = true;
             this.genre_lbl.BackColor = System.Drawing.Color.Transparent;
             this.genre_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.genre_lbl.Location = new System.Drawing.Point(43, 47);
+            this.genre_lbl.Location = new System.Drawing.Point(43, 81);
             this.genre_lbl.Name = "genre_lbl";
             this.genre_lbl.Size = new System.Drawing.Size(48, 15);
             this.genre_lbl.TabIndex = 12;
@@ -157,47 +161,52 @@
             this.edit_button.BackColor = System.Drawing.Color.Yellow;
             this.edit_button.Enabled = false;
             this.edit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.edit_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.edit_button.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.edit_button.Image = ((System.Drawing.Image)(resources.GetObject("edit_button.Image")));
             this.edit_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.edit_button.Location = new System.Drawing.Point(18, 157);
+            this.edit_button.Location = new System.Drawing.Point(500, 200);
             this.edit_button.Name = "edit_button";
-            this.edit_button.Size = new System.Drawing.Size(165, 30);
+            this.edit_button.Size = new System.Drawing.Size(79, 33);
             this.edit_button.TabIndex = 13;
-            this.edit_button.Text = "Edit Item";
+            this.edit_button.Text = "Edit";
+            this.edit_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.edit_button.UseVisualStyleBackColor = false;
             this.edit_button.Click += new System.EventHandler(this.EditButtonClick);
             // 
             // clear_button
             // 
-            this.clear_button.BackColor = System.Drawing.Color.Thistle;
+            this.clear_button.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.clear_button.Enabled = false;
             this.clear_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clear_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.clear_button.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.clear_button.Image = ((System.Drawing.Image)(resources.GetObject("clear_button.Image")));
-            this.clear_button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.clear_button.Location = new System.Drawing.Point(315, 32);
+            this.clear_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.clear_button.Location = new System.Drawing.Point(500, 51);
             this.clear_button.Name = "clear_button";
-            this.clear_button.Size = new System.Drawing.Size(59, 71);
+            this.clear_button.Size = new System.Drawing.Size(79, 25);
             this.clear_button.TabIndex = 19;
-            this.clear_button.Text = "Clear Fields";
-            this.clear_button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.clear_button.Text = "Clear";
+            this.clear_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.clear_button.UseVisualStyleBackColor = false;
             this.clear_button.Click += new System.EventHandler(this.ClearButtonClick);
             // 
             // save_button
             // 
-            this.save_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.save_button.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.save_button.Enabled = false;
             this.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.save_button.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.save_button.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.error_provider.SetIconAlignment(this.save_button, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.error_provider.SetIconPadding(this.save_button, 8);
             this.save_button.Image = ((System.Drawing.Image)(resources.GetObject("save_button.Image")));
             this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.save_button.Location = new System.Drawing.Point(209, 157);
+            this.save_button.Location = new System.Drawing.Point(500, 294);
             this.save_button.Name = "save_button";
             this.save_button.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.save_button.Size = new System.Drawing.Size(165, 30);
+            this.save_button.Size = new System.Drawing.Size(79, 28);
             this.save_button.TabIndex = 18;
             this.save_button.Text = "Save List";
+            this.save_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.save_button.UseVisualStyleBackColor = false;
             this.save_button.EnabledChanged += new System.EventHandler(this.SaveButtonEnabledChanged);
             this.save_button.Click += new System.EventHandler(this.SaveButtonClick);
@@ -244,17 +253,12 @@
             this.list_operations_gb.Controls.Add(this.serie_listview);
             this.list_operations_gb.Controls.Add(this.book_listview);
             this.list_operations_gb.Controls.Add(this.discard_button);
-            this.list_operations_gb.Controls.Add(this.save_button);
             this.list_operations_gb.Controls.Add(this.input_fields_panel);
-            this.list_operations_gb.Controls.Add(this.edit_button);
-            this.list_operations_gb.Controls.Add(this.clear_button);
-            this.list_operations_gb.Controls.Add(this.remove_button);
-            this.list_operations_gb.Controls.Add(this.add_button);
             this.list_operations_gb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.list_operations_gb.Font = new System.Drawing.Font("Raleway", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.list_operations_gb.Location = new System.Drawing.Point(105, 3);
             this.list_operations_gb.Name = "list_operations_gb";
-            this.list_operations_gb.Size = new System.Drawing.Size(394, 337);
+            this.list_operations_gb.Size = new System.Drawing.Size(390, 337);
             this.list_operations_gb.TabIndex = 20;
             this.list_operations_gb.TabStop = false;
             this.list_operations_gb.Text = "Movies";
@@ -268,10 +272,10 @@
             this.movieGenreHeader});
             this.movie_listview.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.movie_listview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.movie_listview.Location = new System.Drawing.Point(18, 200);
+            this.movie_listview.Location = new System.Drawing.Point(20, 156);
             this.movie_listview.MultiSelect = false;
             this.movie_listview.Name = "movie_listview";
-            this.movie_listview.Size = new System.Drawing.Size(356, 130);
+            this.movie_listview.Size = new System.Drawing.Size(349, 173);
             this.movie_listview.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.movie_listview.TabIndex = 23;
             this.movie_listview.UseCompatibleStateImageBehavior = false;
@@ -296,10 +300,10 @@
             this.serieGenreHeader});
             this.serie_listview.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.serie_listview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.serie_listview.Location = new System.Drawing.Point(18, 200);
+            this.serie_listview.Location = new System.Drawing.Point(20, 156);
             this.serie_listview.MultiSelect = false;
             this.serie_listview.Name = "serie_listview";
-            this.serie_listview.Size = new System.Drawing.Size(356, 130);
+            this.serie_listview.Size = new System.Drawing.Size(349, 173);
             this.serie_listview.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.serie_listview.TabIndex = 24;
             this.serie_listview.UseCompatibleStateImageBehavior = false;
@@ -325,10 +329,10 @@
             this.bookGenreHeader});
             this.book_listview.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.book_listview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.book_listview.Location = new System.Drawing.Point(18, 200);
+            this.book_listview.Location = new System.Drawing.Point(20, 156);
             this.book_listview.MultiSelect = false;
             this.book_listview.Name = "book_listview";
-            this.book_listview.Size = new System.Drawing.Size(356, 130);
+            this.book_listview.Size = new System.Drawing.Size(349, 173);
             this.book_listview.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.book_listview.TabIndex = 25;
             this.book_listview.UseCompatibleStateImageBehavior = false;
@@ -355,9 +359,9 @@
             this.discard_button.BackColor = System.Drawing.Color.Salmon;
             this.discard_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.discard_button.Font = new System.Drawing.Font("Raleway", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.discard_button.Location = new System.Drawing.Point(375, 200);
+            this.discard_button.Location = new System.Drawing.Point(3, 156);
             this.discard_button.Name = "discard_button";
-            this.discard_button.Size = new System.Drawing.Size(14, 130);
+            this.discard_button.Size = new System.Drawing.Size(14, 173);
             this.discard_button.TabIndex = 22;
             this.discard_button.Text = "Discard";
             this.discard_button.UseVisualStyleBackColor = false;
@@ -376,9 +380,9 @@
             this.input_fields_panel.Controls.Add(this.book_name_lbl);
             this.input_fields_panel.Controls.Add(this.genre_cb);
             this.input_fields_panel.Font = new System.Drawing.Font("Raleway", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.input_fields_panel.Location = new System.Drawing.Point(11, 32);
+            this.input_fields_panel.Location = new System.Drawing.Point(13, 40);
             this.input_fields_panel.Name = "input_fields_panel";
-            this.input_fields_panel.Size = new System.Drawing.Size(299, 71);
+            this.input_fields_panel.Size = new System.Drawing.Size(356, 108);
             this.input_fields_panel.TabIndex = 22;
             // 
             // author_lbl
@@ -386,7 +390,7 @@
             this.author_lbl.AutoSize = true;
             this.author_lbl.BackColor = System.Drawing.Color.Transparent;
             this.author_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.author_lbl.Location = new System.Drawing.Point(39, 47);
+            this.author_lbl.Location = new System.Drawing.Point(38, 45);
             this.author_lbl.Name = "author_lbl";
             this.author_lbl.Size = new System.Drawing.Size(53, 15);
             this.author_lbl.TabIndex = 18;
@@ -397,11 +401,12 @@
             // 
             this.author_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.author_tb.Font = new System.Drawing.Font("Raleway", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.author_tb.Location = new System.Drawing.Point(98, 41);
+            this.author_tb.Location = new System.Drawing.Point(97, 41);
             this.author_tb.Name = "author_tb";
-            this.author_tb.Size = new System.Drawing.Size(179, 25);
+            this.author_tb.Size = new System.Drawing.Size(256, 25);
             this.author_tb.TabIndex = 19;
             this.author_tb.Visible = false;
+            this.author_tb.TextChanged += new System.EventHandler(this.InputTextChanged);
             // 
             // settings_button
             // 
@@ -431,7 +436,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(100, 349);
+            this.panel1.Size = new System.Drawing.Size(100, 350);
             this.panel1.TabIndex = 22;
             // 
             // laterListLogo
@@ -498,9 +503,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(504, 349);
+            this.ClientSize = new System.Drawing.Size(579, 350);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.list_operations_gb);
+            this.Controls.Add(this.add_button);
+            this.Controls.Add(this.remove_button);
+            this.Controls.Add(this.save_button);
+            this.Controls.Add(this.edit_button);
+            this.Controls.Add(this.clear_button);
             this.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

@@ -33,5 +33,40 @@ namespace later_list
         {
             get { return SystemColors.Highlight; }
         }
+
+        public static Color OptionButtonsDeactiveColor
+        {
+            get { return SystemColors.InactiveCaption; }
+        }
+
+        public static Color AddButtonActiveColor
+        {
+            get { return Color.PaleGreen; }
+        }
+
+        public static Color EditButtonActiveColor
+        {
+            get { return Color.Yellow; }
+        }
+
+        public static Color RemoveButtonActiveColor
+        {
+            get { return Color.Salmon; }
+        }
+
+        public static Color SaveListButtonActiveColor
+        {
+            get { return Color.FromArgb(255, 128, 0); }
+        }
+
+        public static Color ClearButtonActiveColor
+        {
+            get { return Color.Thistle; }
+        }
+
+        public static Color SaveSettingsButtonActiveColor
+        {
+            get { return SystemColors.Highlight; }
+        }
     }
 }

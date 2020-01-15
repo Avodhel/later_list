@@ -105,6 +105,12 @@ namespace later_list
             set { discard_button = value; }
         }
 
+        public Button SettingsButton
+        {
+            get { return settings_button; }
+            set { settings_button = value; }
+        }
+
         public Button MovieSectionButton
         {
             get { return movieSectionBtn; }
@@ -265,6 +271,11 @@ namespace later_list
 
         #region Input Fields
 
+        private void InputTextChanged(object sender, EventArgs e)
+        {
+            mViewHandler.ClearButtonActive();
+        }
+
         private void InputFieldsClick(object sender, EventArgs e)
         {
             mViewHandler.InputFieldClicked();
@@ -349,13 +360,13 @@ namespace later_list
             {
                 MessageBox.Show("This " + currentSection + " is already in list.", "Warning",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                SaveButton.Enabled = false;
+                mViewHandler.SaveButtonDeactive();
             }
             else
             {
                 dataHandler.AddDataToList(newData, currentListView);
                 mViewHandler.RefreshInputFields();
-                SaveButton.Enabled = true;
+                mViewHandler.SaveButtonActive();
             }
         }
 
@@ -427,7 +438,7 @@ namespace later_list
             }
 
             var index = currentListView.SelectedIndices[0];
-            currentListView.Items.RemoveAt(0);
+            currentListView.Items.RemoveAt(index);
             dataHandler.InsertEditedDataToList(index, newEditedData, currentListView);
         }
 
@@ -501,7 +512,8 @@ namespace later_list
             if (confirm == DialogResult.OK)
             {
                 LoadPreviousFileVersion();
-                SaveButton.Enabled = false;
+                mViewHandler.AddButtonActive();
+                mViewHandler.SaveButtonDeactive();
             }
             else if (confirm == DialogResult.Cancel)
             {

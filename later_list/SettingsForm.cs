@@ -92,7 +92,7 @@ namespace later_list
 
                 if (confirm == DialogResult.OK)
                 {
-                    SaveSettingsButton.Enabled = false;
+                    sViewHandler.SaveSettingsButtonDeactive();
                     GetAllFilePathsFromProperties();
                     ThemeHandler.CurrrentTheme(this);
                 }
@@ -111,7 +111,7 @@ namespace later_list
         {
             SetAllFilePathsToProperties();
             SetThemeOption();
-            save_settings_button.Enabled = false;
+            sViewHandler.SaveSettingsButtonDeactive();
             Properties.Settings.Default.Save();
             SettingsFormState();
         }
@@ -210,18 +210,18 @@ namespace later_list
             if (openfiledialog.ShowDialog() == DialogResult.OK)
             {
                 SetFilePath(DetectSectionFromButton(((Button)sender).Name), openfiledialog.FileName);
-                save_settings_button.Enabled = true;
+                sViewHandler.SaveSettingsButtonActive();
             }
             else
             {
                 GetAllFilePathsFromProperties();
-                save_settings_button.Enabled = false;
+                sViewHandler.SaveSettingsButtonDeactive();
             }
         }
 
         private void ClearPath(object sender, EventArgs e)
         {
-            save_settings_button.Enabled = true;
+            sViewHandler.SaveSettingsButtonActive();
             switch (((Button)sender).Name)
             {
                 case "clear_movie_path_button":
@@ -248,9 +248,9 @@ namespace later_list
 
         private void SaveSettingsButtonEnabledChanged(object sender, EventArgs e)
         {
-            if (save_settings_button.Enabled)
+            if (SaveSettingsButton.Enabled)
             {
-                settings_error_provider.SetError(save_settings_button, "There're unsaved settings!");
+                settings_error_provider.SetError(SaveSettingsButton, "There're unsaved settings!");
             }
             else
             {
