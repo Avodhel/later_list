@@ -90,6 +90,7 @@
     <Compile Include="Handlers\SaveLoadHandler.cs" />
     <Compile Include="Models\SerieModel.cs" />
     <Compile Include="Handlers\DataHandler.cs" />
+    <Compile Include="Sections.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -185,18 +185,18 @@ namespace later_list
             Properties.Settings.Default.book_path = BookFilePathTextBox.Text;
         }
 
-        public void SetFilePath(MainForm.Sections section, string _filePath)
+        public void SetFilePath(Sections section, string _filePath)
         {
-            if (section == MainForm.Sections.Movie) MovieFilePathTextBox.Text = _filePath;
-            if (section == MainForm.Sections.Serie) SerieFilePathTextBox.Text = _filePath;
-            if (section == MainForm.Sections.Book)  BookFilePathTextBox.Text = _filePath;
+            if (section == Sections.Movie) MovieFilePathTextBox.Text = _filePath;
+            if (section == Sections.Serie) SerieFilePathTextBox.Text = _filePath;
+            if (section == Sections.Book)  BookFilePathTextBox.Text = _filePath;
         }
 
-        private void GetFilePath(MainForm.Sections section)
+        private void GetFilePath(Sections section)
         {
-            if (section == MainForm.Sections.Movie) filePath = @Properties.Settings.Default.movie_path;
-            if (section == MainForm.Sections.Serie) filePath = @Properties.Settings.Default.serie_path;
-            if (section == MainForm.Sections.Book)  filePath = @Properties.Settings.Default.book_path;
+            if (section == Sections.Movie) filePath = @Properties.Settings.Default.movie_path;
+            if (section == Sections.Serie) filePath = @Properties.Settings.Default.serie_path;
+            if (section == Sections.Book)  filePath = @Properties.Settings.Default.book_path;
         }
 
         private void OpenPath(object sender, EventArgs e)
@@ -278,12 +278,12 @@ namespace later_list
             sViewHandler.ThemeChanged();
         }
 
-        private MainForm.Sections DetectSectionFromButton(string buttonName)
+        private Sections DetectSectionFromButton(string buttonName)
         {
-            if (buttonName == "open_movie_path_button") return MainForm.Sections.Movie;
-            if (buttonName == "open_serie_path_button") return MainForm.Sections.Serie;
-            if (buttonName == "open_book_path_button") return MainForm.Sections.Book;
-            return MainForm.Sections.Movie;
+            if (buttonName == "open_movie_path_button") return Sections.Movie;
+            if (buttonName == "open_serie_path_button") return Sections.Serie;
+            if (buttonName == "open_book_path_button")  return Sections.Book;
+            return Sections.Movie;
         }
 
         #endregion

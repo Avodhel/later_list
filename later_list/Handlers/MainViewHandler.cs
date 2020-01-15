@@ -23,7 +23,7 @@ namespace later_list
 
         #region Section Transition
 
-        public void SectionTransition(MainForm.Sections section)
+        public void SectionTransition(Sections section)
         {
             mainForm.ListOperationsGB.Text = section + "s";
             LoadGenresToCombobox(section);
@@ -31,17 +31,17 @@ namespace later_list
             AddButtonActive();
             mainForm.SaveButton.Enabled = false;
 
-            if (section == MainForm.Sections.Movie)
+            if (section == Sections.Movie)
             {
                 MovieSectionSelected();
             }
 
-            if (section == MainForm.Sections.Serie)
+            if (section == Sections.Serie)
             {
                 SerieSectionSelected();
             }
 
-            if (section == MainForm.Sections.Book)
+            if (section == Sections.Book)
             {
                 BookSectionSelected();
             }
@@ -55,7 +55,7 @@ namespace later_list
             mainForm.SettingsButton.Enabled = true;
         }
 
-        public void TransitionBetweenSectionsDeactive(MainForm.Sections section)
+        public void TransitionBetweenSectionsDeactive()
         {
             mainForm.MovieSectionButton.Enabled = false;
             mainForm.SerieSectionButton.Enabled = false;
@@ -206,7 +206,7 @@ namespace later_list
 
         #region Genres
 
-        public void LoadGenresToCombobox(MainForm.Sections section)
+        public void LoadGenresToCombobox(Sections section)
         {
             mainForm.GenreComboBox.Items.Clear();
             mainForm.GenreComboBox.Items.AddRange(Genres.GetGenres(section));

@@ -7,13 +7,6 @@ namespace later_list
     {
         #region Variables
 
-        public enum Sections
-        {
-            Movie,
-            Serie,
-            Book
-        }
-
         private Sections currentSection;
         private string listPath;
         private ListViewItem newData;
@@ -315,7 +308,7 @@ namespace later_list
         {
             if (currentSection == Sections.Movie) AddNewMovie();
             if (currentSection == Sections.Serie) AddNewSerie();
-            if (currentSection == Sections.Book)  AddNewBook();
+            if (currentSection == Sections.Book) AddNewBook();
         }
 
         private void AddNewMovie()
@@ -488,7 +481,7 @@ namespace later_list
         {
             if (SaveButton.Enabled)
             {
-                mViewHandler.TransitionBetweenSectionsDeactive(currentSection);
+                mViewHandler.TransitionBetweenSectionsDeactive();
                 error_provider.SetError(save_button, "There're unsaved changes in " + currentSection + " list!");
                 DiscardButton.Visible = true;
             }
