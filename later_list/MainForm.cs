@@ -482,13 +482,13 @@ namespace later_list
             if (SaveButton.Enabled)
             {
                 mViewHandler.TransitionBetweenSectionsDeactive();
-                error_provider.SetError(save_button, "There're unsaved changes in " + currentSection + " list!");
+                error_provider.SetError(SaveButton, "There're unsaved changes in " + currentSection + " list!");
                 DiscardButton.Visible = true;
             }
             else
             {
                 mViewHandler.TransitionBetweenSectionsActive();
-                error_provider.Clear();
+                error_provider.SetError(SaveButton, string.Empty); //use this instead clear
                 DiscardButton.Visible = false;
             }
         }
