@@ -93,7 +93,7 @@
             this.movie_name_lbl.AutoSize = true;
             this.movie_name_lbl.BackColor = System.Drawing.Color.Transparent;
             this.movie_name_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.movie_name_lbl.Location = new System.Drawing.Point(4, 8);
+            this.movie_name_lbl.Location = new System.Drawing.Point(3, 12);
             this.movie_name_lbl.Name = "movie_name_lbl";
             this.movie_name_lbl.Size = new System.Drawing.Size(88, 15);
             this.movie_name_lbl.TabIndex = 4;
@@ -216,7 +216,7 @@
             this.book_name_lbl.AutoSize = true;
             this.book_name_lbl.BackColor = System.Drawing.Color.Transparent;
             this.book_name_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.book_name_lbl.Location = new System.Drawing.Point(9, 8);
+            this.book_name_lbl.Location = new System.Drawing.Point(8, 12);
             this.book_name_lbl.Name = "book_name_lbl";
             this.book_name_lbl.Size = new System.Drawing.Size(83, 15);
             this.book_name_lbl.TabIndex = 17;
@@ -228,7 +228,7 @@
             this.serie_name_lbl.AutoSize = true;
             this.serie_name_lbl.BackColor = System.Drawing.Color.Transparent;
             this.serie_name_lbl.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.serie_name_lbl.Location = new System.Drawing.Point(9, 8);
+            this.serie_name_lbl.Location = new System.Drawing.Point(8, 12);
             this.serie_name_lbl.Name = "serie_name_lbl";
             this.serie_name_lbl.Size = new System.Drawing.Size(83, 15);
             this.serie_name_lbl.TabIndex = 4;
