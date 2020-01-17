@@ -1,9 +1,9 @@
 ﻿namespace later_list
 {
-    public class MovieModel : IModel
+    public class MovieModel
     {
-        public string Name { get; set; }
-        public string Genre { get; set; }
+        public string Name { get; private set; }
+        public string Genre { get; private set; }
 
         public MovieModel(string name, string genre)
         {

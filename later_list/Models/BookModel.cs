@@ -1,10 +1,10 @@
 ﻿namespace later_list
 {
-    public class BookModel : IModel
+    public class BookModel
     {
-        public string Name { get; set; }
-        public string Author { get; set; }
-        public string Genre { get; set; }
+        public string Name { get; private set; }
+        public string Author { get; private set; }
+        public string Genre { get; private set; }
 
         public BookModel(string name, string author, string genre)
         {

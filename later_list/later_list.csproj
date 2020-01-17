@@ -84,7 +84,6 @@
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Colors.cs" />
     <Compile Include="Genres.cs" />
-    <Compile Include="Interfaces\IModel.cs" />
     <Compile Include="Models\MovieModel.cs" />
     <Compile Include="Handlers\FormatHandler.cs" />
     <Compile Include="Handlers\SaveLoadHandler.cs" />
