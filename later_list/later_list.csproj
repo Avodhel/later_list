@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataFormatter.cs" />
+    <Compile Include="Handlers\ErrorHandler.cs" />
     <Compile Include="Handlers\SettingsViewHandler.cs" />
     <Compile Include="Interfaces\IViewHandler.cs" />
     <Compile Include="Models\BookModel.cs" />

@@ -1,4 +1,7 @@
-﻿namespace later_list
+﻿using later_list.Handlers;
+using later_list.Models;
+
+namespace later_list
 {
     public static class DataFormatter
     {
@@ -27,24 +30,24 @@
 
         public static MovieModel MovieExistedDataFormatter(string getExistedData)
         {
-            string namePart, genrePart;
-            FormatHandler.SplitExistedDataWithTwoParams(getExistedData, out namePart, out genrePart);
+            FormatHandler.SplitExistedDataWithTwoParams(getExistedData, 
+                                                        out string namePart, out string genrePart);
             MovieModel currentMovieData = new MovieModel(namePart, genrePart);
             return currentMovieData;
         }
 
         public static SerieModel SerieExistedDataFormatter(string getExistedData)
         {
-            string namePart, genrePart;
-            FormatHandler.SplitExistedDataWithTwoParams(getExistedData, out namePart, out genrePart);
+            FormatHandler.SplitExistedDataWithTwoParams(getExistedData, 
+                                                        out string namePart, out string genrePart);
             SerieModel currentSerieData = new SerieModel(namePart, genrePart);
             return currentSerieData;
         }
 
         public static BookModel BookExistedDataFormatter(string getExistedData)
         {
-            string namePart, authorPart, genrePart;
-            FormatHandler.SplitExistedDataWithThreeParams(getExistedData, out namePart, out authorPart, out genrePart);
+            FormatHandler.SplitExistedDataWithThreeParams(getExistedData, 
+                                                          out string namePart, out string authorPart, out string genrePart);
             BookModel currentBookData = new BookModel(namePart, authorPart, genrePart);
             return currentBookData;
         }

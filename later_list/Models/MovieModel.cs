@@ -1,4 +1,4 @@
-﻿namespace later_list
+﻿namespace later_list.Models
 {
     public class MovieModel
     {

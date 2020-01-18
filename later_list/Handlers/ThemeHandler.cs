@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace later_list
+namespace later_list.Handlers
 {
     public static class ThemeHandler
     {

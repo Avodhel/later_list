@@ -1,4 +1,6 @@
-﻿namespace later_list
+﻿using later_list.Interfaces;
+
+namespace later_list.Handlers
 {
     public class SettingsViewHandler : IViewHandler
     {

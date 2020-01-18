@@ -30,6 +30,7 @@
         private static string[] serieGenres = {"Action",
                                              "Adventure",
                                              "Animation",
+                                             "Anime",
                                              "Biography",
                                              "Comedy",
                                              "Crime",

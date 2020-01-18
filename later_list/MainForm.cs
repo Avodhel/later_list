@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using later_list.Handlers;
 
 namespace later_list
 { 
@@ -13,7 +14,6 @@ namespace later_list
         private ListViewItem newEditedData;
         private ListView currentListView = new ListView();
         private SettingsForm settingsForm = new SettingsForm();
-        private DataHandler dataHandler = new DataHandler();
         private MainViewHandler mViewHandler;
 
         #endregion
@@ -288,11 +288,9 @@ namespace later_list
             NameFieldState();
         }
 
-        private bool NameFieldRequireCheck => (NameTextBox.Text != string.Empty) ? true : false;
-
         private void NameFieldState()
         {
-            if (NameFieldRequireCheck)
+            if (ErrorHandler.NameFieldRequireCheck(NameTextBox.Text))
             {
                 AddNewDataToList();
             }
@@ -332,32 +330,17 @@ namespace later_list
             DuplicateState();
         }
 
-        //private bool DuplicateCheck => (currentListView.Items.ContainsKey(NameTextBox.Text)) ? true : false;
-
-        private bool DuplicateCheck()
-        {
-            ListViewItem lvi = currentListView.FindItemWithText(NameTextBox.Text);
-            if (lvi != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         private void DuplicateState()
         {
-            if (DuplicateCheck())
+            if (ErrorHandler.DuplicateCheck(currentListView.FindItemWithText(NameTextBox.Text)))
             {
-                MessageBox.Show("This " + currentSection + " is already in list.", "Warning",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(NameTextBox.Text + " is already in " + currentSection + "list.", "Warning",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 mViewHandler.SaveButtonDeactive();
             }
             else
             {
-                dataHandler.AddDataToList(newData, currentListView);
+                DataHandler.AddDataToList(newData, currentListView);
                 mViewHandler.RefreshInputFields();
                 mViewHandler.SaveButtonActive();
             }
@@ -369,7 +352,7 @@ namespace later_list
 
         private void RemoveButtonClick(object sender, EventArgs e)
         {
-            dataHandler.RemoveDataFromList(currentListView);
+            DataHandler.RemoveDataFromList(currentListView);
             mViewHandler.RemoveButtonClicked();
         }
 
@@ -432,7 +415,7 @@ namespace later_list
 
             var index = currentListView.SelectedIndices[0];
             currentListView.Items.RemoveAt(index);
-            dataHandler.InsertEditedDataToList(index, newEditedData, currentListView);
+            DataHandler.InsertEditedDataToList(index, newEditedData, currentListView);
         }
 
         #endregion
@@ -488,7 +471,7 @@ namespace later_list
             else
             {
                 mViewHandler.TransitionBetweenSectionsActive();
-                error_provider.SetError(SaveButton, string.Empty); //use this instead clear
+                error_provider.SetError(SaveButton, string.Empty); //use this instead clear()
                 DiscardButton.Visible = false;
             }
         }

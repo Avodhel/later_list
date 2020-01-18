@@ -1,4 +1,4 @@
-﻿namespace later_list
+﻿namespace later_list.Interfaces
 {
     public interface IViewHandler
     {

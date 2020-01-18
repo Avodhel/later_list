@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
+using later_list.Interfaces;
 
-namespace later_list
+namespace later_list.Handlers
 {
     public class MainViewHandler : IViewHandler
     {
