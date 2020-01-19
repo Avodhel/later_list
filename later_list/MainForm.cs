@@ -154,11 +154,10 @@ namespace later_list
 
         #endregion
 
-        #region Constructors
+        #region Constructor
 
         public MainForm()
         {
-            //CenterToScreen();
             InitializeComponent();
             mViewHandler = new MainViewHandler(this, settingsForm);
             SetCurrentListView();
@@ -166,12 +165,21 @@ namespace later_list
             settingsForm.GetAllFilePathsFromProperties();   
         }
 
+        #endregion
+
+        #region Main Form Actions
+
         private void MainFormLoad(object sender, EventArgs e)
         {
             mViewHandler.LoadTheme();
             mViewHandler.LoadGenresToCombobox(currentSection);
             PrepareSection(currentSection);
             SaveLoadHandler.LoadList(currentSection, settingsForm, currentListView);
+        }
+
+        private void MainFormActivated(object sender, EventArgs e)
+        {
+            PrepareSection(currentSection);
         }
 
         #endregion

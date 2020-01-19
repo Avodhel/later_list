@@ -65,7 +65,7 @@ namespace later_list
 
         #endregion 
 
-        #region Constructors
+        #region Constructor
 
         public SettingsForm()
         {
@@ -75,14 +75,9 @@ namespace later_list
             sViewHandler.LoadTheme();
         }
 
-        private void SettingsLoad(object sender, EventArgs e)
-        {
-
-        }
-
         #endregion
 
-        #region Settings Form Close
+        #region Settings Form Actions
 
         private void SettingsFormClosing(object sender, FormClosingEventArgs e)
         {

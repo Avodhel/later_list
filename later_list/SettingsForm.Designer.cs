@@ -303,7 +303,6 @@
             this.Name = "SettingsForm";
             this.Text = "Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsFormClosing);
-            this.Load += new System.EventHandler(this.SettingsLoad);
             this.settings_gb.ResumeLayout(false);
             this.settings_gb.PerformLayout();
             this.themes_gb.ResumeLayout(false);
