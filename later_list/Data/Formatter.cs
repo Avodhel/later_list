@@ -1,6 +1,6 @@
-﻿namespace later_list.Handlers
+﻿namespace later_list.Data
 {
-    public static class FormatHandler
+    public static class Formatter
     {
         /// <summary>
         /// Methods for formatting data before adding to list

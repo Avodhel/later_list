@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
+using later_list.Data;
 
-namespace later_list.Handlers
+namespace later_list.Controllers
 {
-    public static class ThemeHandler
+    public static class ThemeController
     {
         //FORM
         private static List<Form> formList = new List<Form>();

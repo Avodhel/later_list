@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace later_list
+namespace later_list.Data
 {
     public static class Colors
     {

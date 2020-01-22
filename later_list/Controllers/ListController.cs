@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 
-namespace later_list.Handlers
+namespace later_list.Controllers
 {
-    public static class DataHandler
+    public static class ListController
     {
         public static void AddDataToList(ListViewItem data, ListView listView)
         {

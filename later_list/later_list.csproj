@@ -78,19 +78,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataFormatter.cs" />
-    <Compile Include="Handlers\ErrorHandler.cs" />
-    <Compile Include="Handlers\SettingsViewHandler.cs" />
-    <Compile Include="Interfaces\IViewHandler.cs" />
+    <Compile Include="Controllers\DataFormatController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Views\SettingsView.cs" />
+    <Compile Include="Interfaces\IView.cs" />
     <Compile Include="Models\BookModel.cs" />
-    <Compile Include="Colors.cs" />
-    <Compile Include="Genres.cs" />
+    <Compile Include="Data\Colors.cs" />
+    <Compile Include="Data\Genres.cs" />
     <Compile Include="Models\MovieModel.cs" />
-    <Compile Include="Handlers\FormatHandler.cs" />
-    <Compile Include="Handlers\SaveLoadHandler.cs" />
+    <Compile Include="Data\Formatter.cs" />
+    <Compile Include="Controllers\SaveLoadController.cs" />
     <Compile Include="Models\SerieModel.cs" />
-    <Compile Include="Handlers\DataHandler.cs" />
-    <Compile Include="Sections.cs" />
+    <Compile Include="Controllers\ListController.cs" />
+    <Compile Include="Data\Sections.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,8 +105,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Handlers\ThemeHandler.cs" />
-    <Compile Include="Handlers\MainViewHandler.cs" />
+    <Compile Include="Controllers\ThemeController.cs" />
+    <Compile Include="Views\MainView.cs" />
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>

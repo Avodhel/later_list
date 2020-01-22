@@ -1,6 +1,6 @@
 ﻿namespace later_list.Interfaces
 {
-    public interface IViewHandler
+    public interface IView
     {
         void LoadTheme();
     }

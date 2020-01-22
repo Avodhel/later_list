@@ -1,10 +1,11 @@
 ﻿using System.IO;
 using System.Windows.Forms;
+using later_list.Data;
 using later_list.Models;
 
-namespace later_list.Handlers
+namespace later_list.Controllers
 {
-    public static class SaveLoadHandler
+    public static class SaveLoadController
     {
         private static string savePath;
         private static string loadPath;
@@ -25,21 +26,21 @@ namespace later_list.Handlers
                 if (section == Sections.Movie)
                 {
                     MovieModel movieData = new MovieModel(item.Text, item.SubItems[1].Text);
-                    string formattedData = DataFormatter.MovieNewDataFormatter(movieData);
+                    string formattedData = DataFormatController.NewMovieDataFormatter(movieData);
                     saveFile.WriteLine(formattedData);
                 }
 
                 if (section == Sections.Serie)
                 {
                     SerieModel serieData = new SerieModel(item.Text, item.SubItems[1].Text);
-                    string formattedData = DataFormatter.SerieNewDataFormatter(serieData);
+                    string formattedData = DataFormatController.NewSerieDataFormatter(serieData);
                     saveFile.WriteLine(formattedData);
                 }
 
                 if (section == Sections.Book)
                 {
                     BookModel bookData = new BookModel(item.Text, item.SubItems[1].Text, item.SubItems[2].Text);
-                    string formattedData = DataFormatter.BookNewDataFormatter(bookData);
+                    string formattedData = DataFormatController.NewBookDataFormatter(bookData);
                     saveFile.WriteLine(formattedData);
                 }
             }
@@ -71,21 +72,21 @@ namespace later_list.Handlers
                     {
                         if (section == Sections.Movie)
                         {
-                            MovieModel formattedLine = DataFormatter.MovieExistedDataFormatter(line);
+                            MovieModel formattedLine = DataFormatController.ExistedMovieDataFormatter(line);
                             string[] row = { formattedLine.Name, formattedLine.Genre };
                             var listViewItem = new ListViewItem(row);
                             listView.Items.Add(listViewItem);
                         }
                         if (section == Sections.Serie)
                         {
-                            SerieModel formattedLine = DataFormatter.SerieExistedDataFormatter(line);
+                            SerieModel formattedLine = DataFormatController.ExistedSerieDataFormatter(line);
                             string[] row = { formattedLine.Name, formattedLine.Genre };
                             var listViewItem = new ListViewItem(row);
                             listView.Items.Add(listViewItem);
                         }
                         if (section == Sections.Book)
                         {
-                            BookModel formattedLine = DataFormatter.BookExistedDataFormatter(line);
+                            BookModel formattedLine = DataFormatController.ExistedBookDataFormatter(line);
                             string[] row = { formattedLine.Name, formattedLine.Author, formattedLine.Genre };
                             var listViewItem = new ListViewItem(row);
                             listView.Items.Add(listViewItem);

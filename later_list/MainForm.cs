@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using later_list.Handlers;
+using later_list.Data;
+using later_list.Views;
+using later_list.Controllers;
 
 namespace later_list
 { 
@@ -14,7 +16,7 @@ namespace later_list
         private ListViewItem newEditedData;
         private ListView currentListView = new ListView();
         private SettingsForm settingsForm = new SettingsForm();
-        private MainViewHandler mViewHandler;
+        private MainView mViewHandler;
 
         #endregion
 
@@ -159,7 +161,7 @@ namespace later_list
         public MainForm()
         {
             InitializeComponent();
-            mViewHandler = new MainViewHandler(this, settingsForm);
+            mViewHandler = new MainView(this, settingsForm);
             SetCurrentListView();
             SetFilePath();
             settingsForm.GetAllFilePathsFromProperties();   
@@ -174,7 +176,7 @@ namespace later_list
             mViewHandler.LoadTheme();
             mViewHandler.LoadGenresToCombobox(currentSection);
             PrepareSection(currentSection);
-            SaveLoadHandler.LoadList(currentSection, settingsForm, currentListView);
+            SaveLoadController.LoadList(currentSection, settingsForm, currentListView);
         }
 
         private void MainFormActivated(object sender, EventArgs e)
@@ -206,7 +208,7 @@ namespace later_list
 
         private void MainFormClosed(object sender, FormClosedEventArgs e)
         {
-            ThemeHandler.UnRegisterForm(this);
+            ThemeController.UnRegisterForm(this);
         }
 
         #endregion
@@ -235,7 +237,7 @@ namespace later_list
             currentSection = section;
             SetCurrentListView();
             SetFilePath();
-            SaveLoadHandler.LoadList(currentSection, settingsForm, currentListView);
+            SaveLoadController.LoadList(currentSection, settingsForm, currentListView);
             mViewHandler.SectionTransition(section);
         }
 
@@ -263,9 +265,9 @@ namespace later_list
 
         private void SetFilePath()
         {
-            if (currentSection == Sections.Movie) SaveLoadHandler.SetPaths(Properties.Settings.Default.movie_path);
-            if (currentSection == Sections.Serie) SaveLoadHandler.SetPaths(Properties.Settings.Default.serie_path);
-            if (currentSection == Sections.Book)  SaveLoadHandler.SetPaths(Properties.Settings.Default.book_path);
+            if (currentSection == Sections.Movie) SaveLoadController.SetPaths(Properties.Settings.Default.movie_path);
+            if (currentSection == Sections.Serie) SaveLoadController.SetPaths(Properties.Settings.Default.serie_path);
+            if (currentSection == Sections.Book)  SaveLoadController.SetPaths(Properties.Settings.Default.book_path);
         }
 
         #endregion
@@ -298,7 +300,7 @@ namespace later_list
 
         private void NameFieldState()
         {
-            if (ErrorHandler.NameFieldRequireCheck(NameTextBox.Text))
+            if (ErrorController.NameFieldRequireCheck(NameTextBox.Text))
             {
                 AddNewDataToList();
             }
@@ -340,7 +342,7 @@ namespace later_list
 
         private void DuplicateState()
         {
-            if (ErrorHandler.DuplicateCheck(currentListView.FindItemWithText(NameTextBox.Text)))
+            if (ErrorController.DuplicateCheck(currentListView.FindItemWithText(NameTextBox.Text)))
             {
                 MessageBox.Show(NameTextBox.Text + " is already in " + currentSection + "list.", "Warning",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -348,7 +350,7 @@ namespace later_list
             }
             else
             {
-                DataHandler.AddDataToList(newData, currentListView);
+                ListController.AddDataToList(newData, currentListView);
                 mViewHandler.RefreshInputFields();
                 mViewHandler.SaveButtonActive();
             }
@@ -360,7 +362,7 @@ namespace later_list
 
         private void RemoveButtonClick(object sender, EventArgs e)
         {
-            DataHandler.RemoveDataFromList(currentListView);
+            ListController.RemoveDataFromList(currentListView);
             mViewHandler.RemoveButtonClicked();
         }
 
@@ -423,7 +425,7 @@ namespace later_list
 
             var index = currentListView.SelectedIndices[0];
             currentListView.Items.RemoveAt(index);
-            DataHandler.InsertEditedDataToList(index, newEditedData, currentListView);
+            ListController.InsertEditedDataToList(index, newEditedData, currentListView);
         }
 
         #endregion
@@ -444,7 +446,7 @@ namespace later_list
             }
             else if (listPath != string.Empty)
             {
-                SaveLoadHandler.SaveList(true, SaveButton, currentSection, currentListView);
+                SaveLoadController.SaveList(true, SaveButton, currentSection, currentListView);
             }
         }
 
@@ -459,8 +461,8 @@ namespace later_list
                 settingsForm.SetFilePath(currentSection, savefiledialog.FileName);
                 settingsForm.SaveSettings();
                 GetFilePath();
-                SaveLoadHandler.SetPaths(listPath);
-                SaveLoadHandler.SaveList(true, SaveButton, currentSection, currentListView);
+                SaveLoadController.SetPaths(listPath);
+                SaveLoadController.SaveList(true, SaveButton, currentSection, currentListView);
             }
             else
             {
@@ -508,7 +510,7 @@ namespace later_list
         private void LoadPreviousFileVersion()
         {
             currentListView.Items.Clear();
-            SaveLoadHandler.LoadList(currentSection, settingsForm, currentListView);
+            SaveLoadController.LoadList(currentSection, settingsForm, currentListView);
         }
 
         #endregion

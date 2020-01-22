@@ -1,14 +1,16 @@
-﻿using later_list.Interfaces;
+﻿using later_list.Data;
+using later_list.Controllers;
+using later_list.Interfaces;
 
-namespace later_list.Handlers
+namespace later_list.Views
 {
-    public class SettingsViewHandler : IViewHandler
+    public class SettingsView : IView
     {
         private readonly SettingsForm settingsForm;
 
         #region Constructor
 
-        public SettingsViewHandler(SettingsForm _settingsForm)
+        public SettingsView(SettingsForm _settingsForm)
         {
             settingsForm = _settingsForm;
         }
@@ -37,7 +39,7 @@ namespace later_list.Handlers
         {
             if (settingsForm.LightThemeCheck)
             {
-                ThemeHandler.SetAllThemeColors(Colors.LightThemeBackgroundColor,
+                ThemeController.SetAllThemeColors(Colors.LightThemeBackgroundColor,
                                                Colors.DarkThemeTextColor,
                                                Colors.DarkThemeTextColor);
                 if (Properties.Settings.Default.dark_checked == true)
@@ -47,7 +49,7 @@ namespace later_list.Handlers
             }
             else if (settingsForm.DarkThemeCheck)
             {
-                ThemeHandler.SetAllThemeColors(Colors.DarkThemeBackgroundColor,
+                ThemeController.SetAllThemeColors(Colors.DarkThemeBackgroundColor,
                                                Colors.LightThemeTextColor,
                                                Colors.DarkThemeTextColor);
                 if (Properties.Settings.Default.light_checked == true)
@@ -59,13 +61,13 @@ namespace later_list.Handlers
 
         public void LoadTheme()
         {
-            ThemeHandler.RegisterForm(settingsForm);
-            ThemeHandler.RegisterGroupBox(settingsForm.SettingsGB);
-            ThemeHandler.RegisterGroupBox(settingsForm.ThemesGB);
-            ThemeHandler.RegisterTextBox(settingsForm.MovieFilePathTextBox);
-            ThemeHandler.RegisterTextBox(settingsForm.SerieFilePathTextBox);
-            ThemeHandler.RegisterTextBox(settingsForm.BookFilePathTextBox);
-            ThemeHandler.RegisterButton(settingsForm.SaveSettingsButton);
+            ThemeController.RegisterForm(settingsForm);
+            ThemeController.RegisterGroupBox(settingsForm.SettingsGB);
+            ThemeController.RegisterGroupBox(settingsForm.ThemesGB);
+            ThemeController.RegisterTextBox(settingsForm.MovieFilePathTextBox);
+            ThemeController.RegisterTextBox(settingsForm.SerieFilePathTextBox);
+            ThemeController.RegisterTextBox(settingsForm.BookFilePathTextBox);
+            ThemeController.RegisterButton(settingsForm.SaveSettingsButton);
         }
 
         #endregion

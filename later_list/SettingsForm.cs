@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using later_list.Handlers;
+using later_list.Data;
+using later_list.Views;
+using later_list.Controllers;
 
 namespace later_list
 {
@@ -9,7 +11,7 @@ namespace later_list
         #region Variables
 
         private string filePath;
-        private SettingsViewHandler sViewHandler;
+        private SettingsView sViewHandler;
 
         #endregion
 
@@ -71,13 +73,13 @@ namespace later_list
         {
             StartPosition = FormStartPosition.CenterParent;
             InitializeComponent();
-            sViewHandler = new SettingsViewHandler(this);
+            sViewHandler = new SettingsView(this);
             sViewHandler.LoadTheme();
         }
 
         #endregion
 
-        #region Settings Form Actions
+        #region Settings Form Close
 
         private void SettingsFormClosing(object sender, FormClosingEventArgs e)
         {
@@ -90,7 +92,7 @@ namespace later_list
                 {
                     sViewHandler.SaveSettingsButtonDeactive();
                     GetAllFilePathsFromProperties();
-                    ThemeHandler.CurrrentTheme(this);
+                    ThemeController.CurrrentTheme(this);
                 }
                 else if (confirm == DialogResult.Cancel)
                 {

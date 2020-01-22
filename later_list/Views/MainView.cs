@@ -1,9 +1,11 @@
 ﻿using System.Drawing;
+using later_list.Data;
+using later_list.Controllers;
 using later_list.Interfaces;
 
-namespace later_list.Handlers
+namespace later_list.Views
 {
-    public class MainViewHandler : IViewHandler
+    public class MainView : IView
     {
         #region variables
 
@@ -14,7 +16,7 @@ namespace later_list.Handlers
 
         #region Constructor
 
-        public MainViewHandler(MainForm _mainForm, SettingsForm _settingsForm)
+        public MainView(MainForm _mainForm, SettingsForm _settingsForm)
         {
             mainForm = _mainForm;
             settingsForm = _settingsForm;
@@ -249,21 +251,21 @@ namespace later_list.Handlers
 
         public void LoadTheme()
         {
-            ThemeHandler.RegisterForm(mainForm);
-            ThemeHandler.RegisterGroupBox(mainForm.ListOperationsGB);
-            ThemeHandler.RegisterTextBox(mainForm.NameTextBox);
-            ThemeHandler.RegisterTextBox(mainForm.AuthorTextBox);
-            ThemeHandler.RegisterComboBox(mainForm.GenreComboBox);
-            ThemeHandler.RegisterListView(mainForm.MovieListView);
-            ThemeHandler.RegisterListView(mainForm.SerieListView);
-            ThemeHandler.RegisterListView(mainForm.BookListView);
-            ThemeHandler.RegisterButton(mainForm.ClearButton);
-            ThemeHandler.RegisterButton(mainForm.AddButton);
-            ThemeHandler.RegisterButton(mainForm.RemoveButton);
-            ThemeHandler.RegisterButton(mainForm.EditButton);
-            ThemeHandler.RegisterButton(mainForm.SaveButton);
-            ThemeHandler.RegisterButton(mainForm.DiscardButton);
-            ThemeHandler.CurrrentTheme(settingsForm);
+            ThemeController.RegisterForm(mainForm);
+            ThemeController.RegisterGroupBox(mainForm.ListOperationsGB);
+            ThemeController.RegisterTextBox(mainForm.NameTextBox);
+            ThemeController.RegisterTextBox(mainForm.AuthorTextBox);
+            ThemeController.RegisterComboBox(mainForm.GenreComboBox);
+            ThemeController.RegisterListView(mainForm.MovieListView);
+            ThemeController.RegisterListView(mainForm.SerieListView);
+            ThemeController.RegisterListView(mainForm.BookListView);
+            ThemeController.RegisterButton(mainForm.ClearButton);
+            ThemeController.RegisterButton(mainForm.AddButton);
+            ThemeController.RegisterButton(mainForm.RemoveButton);
+            ThemeController.RegisterButton(mainForm.EditButton);
+            ThemeController.RegisterButton(mainForm.SaveButton);
+            ThemeController.RegisterButton(mainForm.DiscardButton);
+            ThemeController.CurrrentTheme(settingsForm);
         }
 
         #endregion
